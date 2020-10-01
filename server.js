@@ -1,5 +1,4 @@
 const express = require('express');
-const path = require('path');
 const app = express();
 const porta = process.env.PORT || 4200;
 
