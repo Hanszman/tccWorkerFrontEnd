@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './componentes/login/login.component';
+import { AuthService } from './componentes/login/auth.service';
 import { HomeComponent } from './componentes/home/home.component';
 
 @NgModule({
@@ -16,7 +17,7 @@ import { HomeComponent } from './componentes/home/home.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
