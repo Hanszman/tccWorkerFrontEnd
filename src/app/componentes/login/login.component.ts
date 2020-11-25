@@ -8,6 +8,8 @@ import { AuthService } from './auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  usuario: any = {};
+
   constructor(
     private authService: AuthService
   ) { }
@@ -17,6 +19,6 @@ export class LoginComponent implements OnInit {
   }
 
   fazerLogin(){
-
+    this.authService.fazerAuth(this.usuario);
   }
 }
