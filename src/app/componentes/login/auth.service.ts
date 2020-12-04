@@ -23,20 +23,26 @@ export class AuthService {
     return this.http.post(this.apiURL + 'login', usuario, {
       observe: 'response'
     }).subscribe(data => {
-      if (data.body['data']['sucesso'])
-        console.log('teste');
-      else
+      if (data.body['data']['sucesso']){
+        this.usuarioAutenticado = true;
+        this.mostrarMenuEmitter.emit(true);
+        this.router.navigate(['/']);
+      }
+      else {
+        this.usuarioAutenticado = false;
+        this.mostrarMenuEmitter.emit(false);
         alert(data.body['data']['mensagem']);
+      }
     });
 
-    if(usuario.dsc_login === 'usuario@email.com' && usuario.dsc_senha === '123456'){
-      this.usuarioAutenticado = true;
-      this.mostrarMenuEmitter.emit(true);
-      this.router.navigate(['/']);
-    }
-    else {
-      this.usuarioAutenticado = false;
-      this.mostrarMenuEmitter.emit(false);
-    }
+    // if(usuario.dsc_login === 'usuario@email.com' && usuario.dsc_senha === '123456'){
+    //   this.usuarioAutenticado = true;
+    //   this.mostrarMenuEmitter.emit(true);
+    //   this.router.navigate(['/']);
+    // }
+    // else {
+    //   this.usuarioAutenticado = false;
+    //   this.mostrarMenuEmitter.emit(false);
+    // }
   }
 }
