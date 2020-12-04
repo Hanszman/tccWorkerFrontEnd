@@ -19,6 +19,11 @@ export class LoginComponent implements OnInit {
   }
 
   fazerLogin(){
-    this.authService.fazerAuth(this.usuario);
+    if (this.usuario.dsc_login == undefined || this.usuario.dsc_login == '')
+      alert('Informe seu usuário!')
+    else if (this.usuario.dsc_senha == undefined || this.usuario.dsc_senha == '')
+      alert('Informe sua senha!')
+    else
+      this.authService.fazerAuth(this.usuario);
   }
 }
