@@ -23,7 +23,10 @@ export class AuthService {
     return this.http.post(this.apiURL + 'login', usuario, {
       observe: 'response'
     }).subscribe(data => {
-      console.log(data);
+      if (data.body['data']['sucesso'])
+        console.log('teste');
+      else
+        alert(data.body['data']['mensagem']);
     });
 
     if(usuario.dsc_login === 'usuario@email.com' && usuario.dsc_senha === '123456'){
