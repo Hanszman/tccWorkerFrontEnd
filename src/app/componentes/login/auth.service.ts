@@ -19,7 +19,6 @@ export class AuthService {
   ) { }
 
   fazerAuth(usuario: any){
-    console.log(usuario);
     return this.http.post(this.apiURL + 'login', usuario, {
       observe: 'response'
     }).subscribe(data => {
