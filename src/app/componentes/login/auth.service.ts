@@ -10,6 +10,7 @@ import { EventEmitter } from '@angular/core';
 export class AuthService {
 
   private apiURL = environment.apiURL;
+  private usarioLogadoStatus = false;
   private usuarioAutenticado: boolean = false;
   mostrarMenuEmitter = new EventEmitter<boolean>();
 
@@ -17,6 +18,14 @@ export class AuthService {
     private http: HttpClient,
     private router: Router
   ) { }
+
+  setUsuarioLogado(value: boolean){
+    this.usarioLogadoStatus = value;
+  }
+
+  get usuarioLogado() {
+    return this.usarioLogadoStatus;
+  }
 
   fazerAuth(usuario: any){
     return this.http.post(this.apiURL + 'login', usuario, {
@@ -26,6 +35,7 @@ export class AuthService {
         this.usuarioAutenticado = true;
         this.mostrarMenuEmitter.emit(true);
         this.router.navigate(['/']);
+        this.setUsuarioLogado(true);
       }
       else {
         this.usuarioAutenticado = false;
