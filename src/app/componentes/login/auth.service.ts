@@ -10,7 +10,7 @@ import { EventEmitter } from '@angular/core';
 export class AuthService {
 
   private apiURL = environment.apiURL;
-  private usarioLogadoStatus = false;
+  private usarioLogadoStatus = JSON.parse(localStorage.getItem('usuarioLogado') || 'false');
   private usuarioAutenticado: boolean = false;
   mostrarMenuEmitter = new EventEmitter<boolean>();
 
@@ -21,10 +21,11 @@ export class AuthService {
 
   setUsuarioLogado(value: boolean){
     this.usarioLogadoStatus = value;
+    localStorage.setItem('usuarioLogado', 'true')
   }
 
   get usuarioLogado() {
-    return this.usarioLogadoStatus;
+    return JSON.parse(localStorage.getItem('usuarioLogado') || this.usarioLogadoStatus.toString());
   }
 
   fazerAuth(usuario: any){
