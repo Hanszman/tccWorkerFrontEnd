@@ -44,15 +44,5 @@ export class AuthService {
         alert(data.body['data']['mensagem']);
       }
     });
-
-    // if(usuario.dsc_login === 'usuario@email.com' && usuario.dsc_senha === '123456'){
-    //   this.usuarioAutenticado = true;
-    //   this.mostrarMenuEmitter.emit(true);
-    //   this.router.navigate(['/']);
-    // }
-    // else {
-    //   this.usuarioAutenticado = false;
-    //   this.mostrarMenuEmitter.emit(false);
-    // }
   }
 }
