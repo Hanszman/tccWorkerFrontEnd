@@ -7,16 +7,16 @@ import { AppComponent } from './app.component';
 import { AuthService } from './componentes/login/auth.service';
 import { AuthGuard } from './componentes/login/auth.guard';
 import { LoginComponent } from './componentes/login/login.component';
-import { HomeComponent } from './componentes/home/home.component';
 import { LogoutComponent } from './componentes/logout/logout.component';
+import { HomeComponent } from './componentes/home/home.component';
 import { EmpresaReadComponent } from './componentes/empresa/empresa-read/empresa-read.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
     LogoutComponent,
+    HomeComponent,
     EmpresaReadComponent
   ],
   imports: [
