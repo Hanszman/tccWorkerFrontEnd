@@ -9,13 +9,15 @@ import { AuthGuard } from './componentes/login/auth.guard';
 import { LoginComponent } from './componentes/login/login.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { LogoutComponent } from './componentes/logout/logout.component';
+import { EmpresaReadComponent } from './componentes/empresa/empresa-read/empresa-read.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    LogoutComponent
+    LogoutComponent,
+    EmpresaReadComponent
   ],
   imports: [
     BrowserModule,
