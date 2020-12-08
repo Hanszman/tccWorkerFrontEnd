@@ -8,15 +8,12 @@ import { AuthService } from './componentes/login/auth.service';
 })
 export class AppComponent {
   title = 'tccWorkerFrontEnd';
-  mostrarMenu: boolean = false;
 
   constructor(
     private authService: AuthService
   ) {}
 
   ngOnInit(){
-    this.authService.mostrarMenuEmitter.subscribe(
-      mostrar => this.mostrarMenu = mostrar
-    );
+    
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -8,22 +9,29 @@ import { AuthService } from './auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  usuario: any = {};
+  usuario = {
+    dsc_login: '',
+    dsc_senha: '',
+  };
 
   constructor(
+    private router: Router,
     private authService: AuthService
   ) { }
 
   ngOnInit(): void {
-    console.log(localStorage.getItem('usuarioLogado'));
+    
   }
 
-  fazerLogin(){
+  async fazerLogin(){
     if (this.usuario.dsc_login == undefined || this.usuario.dsc_login == '')
       alert('Informe seu usuário!')
     else if (this.usuario.dsc_senha == undefined || this.usuario.dsc_senha == '')
       alert('Informe sua senha!')
-    else
-      this.authService.fazerAuth(this.usuario);
+    else {
+      const auth = await this.authService.fazerAuth(this.usuario);
+      console.log('Login efetuado: ' + auth);
+      this.router.navigate(['']);
+    }
   }
 }
