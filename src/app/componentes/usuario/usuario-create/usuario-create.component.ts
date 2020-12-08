@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuario-create',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsuarioCreateComponent implements OnInit {
 
-  constructor() { }
+  usuario: any = {};
+
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    window.localStorage.clear();
   }
 
+  criarUsuario(){
+    console.log('teste')
+  }
 }

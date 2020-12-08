@@ -9,10 +9,7 @@ import { AuthService } from './auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  usuario = {
-    dsc_login: '',
-    dsc_senha: '',
-  };
+  usuario: any = {};
 
   constructor(
     private router: Router,
