@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
+import { EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   private apiURL = environment.apiURL;
+  mostrarMenuEmitter = new EventEmitter<boolean>();
 
   constructor(
     private http: HttpClient,
@@ -23,10 +25,13 @@ export class AuthService {
         window.localStorage.setItem('token', data.body['data']['sucesso']);
         window.localStorage.setItem('id_usuario', data.body['data']['id_usuario']);
         window.localStorage.setItem('dsc_nome', data.body['data']['dsc_nome']);
+        this.mostrarMenuEmitter.emit(true);
         this.router.navigate(['']);
       }
-      else
+      else {
+        this.mostrarMenuEmitter.emit(false);
         alert(data.body['data']['mensagem']);
+      }
     });
   }
 }
