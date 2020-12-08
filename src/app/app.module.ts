@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { AuthService } from './componentes/login/auth.service';
 import { AuthGuard } from './componentes/login/auth.guard';
 import { LoginComponent } from './componentes/login/login.component';
-import { LogoutComponent } from './componentes/logout/logout.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { EmpresaReadComponent } from './componentes/empresa/empresa-read/empresa-read.component';
 import { UsuarioCreateComponent } from './componentes/usuario/usuario-create/usuario-create.component';
@@ -16,7 +15,6 @@ import { UsuarioCreateComponent } from './componentes/usuario/usuario-create/usu
   declarations: [
     AppComponent,
     LoginComponent,
-    LogoutComponent,
     HomeComponent,
     EmpresaReadComponent,
     UsuarioCreateComponent

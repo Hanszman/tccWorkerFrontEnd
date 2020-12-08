@@ -8,13 +8,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" [routerLink]="['']" routerLinkActive="router-link-active">Início<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" [routerLink]="['']">Início<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" [routerLink]="['empresa/read']" routerLinkActive="router-link-active">Empresa</a>
+                    <a class="nav-link" [routerLink]="['empresa/read']">Empresa</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['logout']" routerLinkActive="router-link-active">Logout</a>
+                <li class="nav-item active">
+                    <a class="nav-link" (click)="fazerLogout()" [routerLink]="['login']">Logout</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">

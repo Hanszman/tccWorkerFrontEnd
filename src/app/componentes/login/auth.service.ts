@@ -16,19 +16,17 @@ export class AuthService {
   ) { }
 
   fazerAuth(usuario: any){
-    return new Promise((resolve) => {
-      window.localStorage.setItem('token', 'meu-token');
-      resolve(true);
+    return this.http.post(this.apiURL + 'login', usuario, {
+      observe: 'response'
+    }).subscribe(data => {
+      if (data.body['data']['sucesso']){
+        window.localStorage.setItem('token', data.body['data']['sucesso']);
+        window.localStorage.setItem('id_usuario', data.body['data']['id_usuario']);
+        window.localStorage.setItem('dsc_nome', data.body['data']['dsc_nome']);
+        this.router.navigate(['']);
+      }
+      else
+        alert(data.body['data']['mensagem']);
     });
-    // return this.http.post(this.apiURL + 'login', usuario, {
-    //   observe: 'response'
-    // }).subscribe(data => {
-    //   if (data.body['data']['sucesso']){
-    //     this.router.navigate(['/']);
-    //   }
-    //   else {
-    //     alert(data.body['data']['mensagem']);
-    //   }
-    // });
   }
 }

@@ -20,18 +20,15 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
+    window.localStorage.clear();
   }
 
-  async fazerLogin(){
+  fazerLogin(){
     if (this.usuario.dsc_login == undefined || this.usuario.dsc_login == '')
       alert('Informe seu usuário!')
     else if (this.usuario.dsc_senha == undefined || this.usuario.dsc_senha == '')
       alert('Informe sua senha!')
-    else {
-      const auth = await this.authService.fazerAuth(this.usuario);
-      console.log('Login efetuado: ' + auth);
-      this.router.navigate(['']);
-    }
+    else
+      this.authService.fazerAuth(this.usuario);
   }
 }
