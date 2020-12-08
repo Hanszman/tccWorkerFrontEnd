@@ -5,15 +5,17 @@ import { AuthGuard } from './componentes/login/auth.guard';
 // Importando Componentes
 import { HomeComponent } from './componentes/home/home.component';
 import { LoginComponent } from './componentes/login/login.component';
-import { EmpresaReadComponent } from './componentes/empresa/empresa-read/empresa-read.component';
 import { UsuarioCreateComponent } from './componentes/usuario/usuario-create/usuario-create.component';
+import { EmpresaReadComponent } from './componentes/empresa/empresa-read/empresa-read.component';
+import { Pagina404Component } from './componentes/pagina404/pagina404/pagina404.component';
 
 // Definindo Rotas
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'empresa/read', component: EmpresaReadComponent, canActivate: [AuthGuard] },
-  { path: 'usuario/create', component: UsuarioCreateComponent }
+  { path: 'usuario/create', component: UsuarioCreateComponent },
+  { path: '**', component: Pagina404Component }
 ];
 
 @NgModule({

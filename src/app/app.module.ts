@@ -8,16 +8,19 @@ import { AuthService } from './componentes/login/auth.service';
 import { AuthGuard } from './componentes/login/auth.guard';
 import { LoginComponent } from './componentes/login/login.component';
 import { HomeComponent } from './componentes/home/home.component';
-import { EmpresaReadComponent } from './componentes/empresa/empresa-read/empresa-read.component';
 import { UsuarioCreateComponent } from './componentes/usuario/usuario-create/usuario-create.component';
+import { EmpresaReadComponent } from './componentes/empresa/empresa-read/empresa-read.component';
+import { Pagina404Component } from './componentes/pagina404/pagina404/pagina404.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
+    UsuarioCreateComponent,
     EmpresaReadComponent,
-    UsuarioCreateComponent
+    Pagina404Component
   ],
   imports: [
     BrowserModule,
