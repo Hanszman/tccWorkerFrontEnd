@@ -4,19 +4,23 @@
     <h5 class="text-dark">Crie sua conta</h5>
     <form (ngSubmit)="criarUsuario()" #form="ngForm">
         <div class="form-group">
-            <input class="form-control" type="text" id="dsc_nome" name="dsc_nome" placeholder="Nome" [(ngModel)]="usuario.dsc_nome" required>
+            <input class="form-control" type="text" id="dsc_nome" name="dsc_nome" placeholder="Nome" [(ngModel)]="usuario.dsc_nome">
+            <div id="msg_dsc_nome"></div>
         </div>
         <div class="form-group">
             <input class="form-control" type="text" id="dsc_sobrenome" name="dsc_sobrenome" placeholder="Sobrenome" [(ngModel)]="usuario.dsc_sobrenome">
         </div>
         <div class="form-group">
-            <input class="form-control" type="email" id="dsc_email" name="dsc_email" placeholder="E-mail" [(ngModel)]="usuario.dsc_email" required>
+            <input class="form-control" type="email" id="dsc_email" name="dsc_email" placeholder="E-mail" [(ngModel)]="usuario.dsc_email">
+            <div id="msg_dsc_email"></div>
         </div>
         <div class="form-group">
-            <input class="form-control" type="text" id="dsc_login" name="dsc_login" placeholder="Usuário" [(ngModel)]="usuario.dsc_login" required>
+            <input class="form-control" type="text" id="dsc_login" name="dsc_login" placeholder="Usuário" [(ngModel)]="usuario.dsc_login">
+            <div id="msg_dsc_login"></div>
         </div>
         <div class="form-group">
-            <input class="form-control" type="password" id="dsc_senha" name="dsc_senha" placeholder="Senha" [(ngModel)]="usuario.dsc_senha" required>
+            <input class="form-control" type="password" id="dsc_senha" name="dsc_senha" placeholder="Senha" [(ngModel)]="usuario.dsc_senha">
+            <div id="msg_dsc_senha"></div>
         </div>
         <button class="btn btn-success btn-lg btn-block" type="submit">Cadastrar</button>
         <button class="btn btn-link btn-lg btn-block" type="button" [routerLink]="['../../login']">Voltar</button>

@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthService } from './componentes/login/auth.service';
 import { AuthGuard } from './componentes/login/auth.guard';
+import { ValidaCamposService } from './servicos/valida-campos/valida-campos.service';
 import { LoginComponent } from './componentes/login/login.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { UsuarioCreateComponent } from './componentes/usuario/usuario-create/usuario-create.component';
@@ -27,7 +28,7 @@ import { Pagina404Component } from './componentes/pagina404/pagina404/pagina404.
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, ValidaCamposService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
