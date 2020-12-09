@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+.center-div {
+    display: flex;
+    justify-content: center;
+}
+.logo-title {
+    font-family: 'Brush Script MT', cursive;
+    .clean {
+        color: white;
+    }
+    .first {
+        color: #40454A;
+    }
+    .last {
+        color: #348A43;
+    }
+}
+.screen-title {
+    font-size: 50px;
+}
+.nav-title {
+    font-size: 30px !important;
+}
