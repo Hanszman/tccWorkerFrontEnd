@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
+import { Router } from '@angular/router';
 import { ValidaCamposService } from '../../../servicos/valida-campos/valida-campos.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class UsuarioCreateComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
+    private router: Router,
     private validaCamposService: ValidaCamposService
   ) { }
 
@@ -35,7 +37,13 @@ export class UsuarioCreateComponent implements OnInit {
       return this.http.post(this.apiURL + 'usuario/create', this.usuario, {
         observe: 'response'
       }).subscribe(data => {
-        console.log(data.body);
+        if (data.body['data']['sucesso']){
+          alert(data.body['data']['mensagem']);
+          this.router.navigate(['login']);
+        }
+        else {
+          alert(data.body['data']['mensagem']);
+        }
       });
     }
   }
