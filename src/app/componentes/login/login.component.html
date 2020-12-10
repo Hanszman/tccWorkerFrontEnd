@@ -11,7 +11,8 @@
             <input class="form-control" type="password" id="dsc_senha" name="dsc_senha" placeholder="Senha" [(ngModel)]="usuario.dsc_senha">
             <div id="msg_dsc_senha"></div>
         </div>
-        <button class="btn btn-success btn-lg btn-block" type="submit">Entrar</button>
+        <button class="btn btn-success btn-lg btn-block" type="submit">Entrar <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+        <button class="btn btn-primary btn-lg btn-block" type="button">Entrar com o Facebook <i class="fa fa-facebook-square" aria-hidden="true"></i></button>
         <button class="btn btn-link btn-lg btn-block" type="button" [routerLink]="['../usuario/create']">Crie sua conta</button>
     </form>
 </div>
