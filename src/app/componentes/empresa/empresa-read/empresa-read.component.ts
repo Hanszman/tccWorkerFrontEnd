@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-empresa-read',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmpresaReadComponent implements OnInit {
 
-  constructor() { }
+  apiURL = environment.apiURL;
+
+  constructor(
+    private http: HttpClient
+  ) { }
 
   ngOnInit(): void {
+    this.exibirEmpresas();
   }
 
+  exibirEmpresas(){
+    return this.http.get(this.apiURL + 'empresa/read', {
+      observe: 'response'
+    }).subscribe(data => {
+      console.log(data);
+    });
+  }
 }
