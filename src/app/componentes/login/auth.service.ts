@@ -9,7 +9,7 @@ import { EventEmitter } from '@angular/core';
 })
 export class AuthService {
 
-  private apiURL = environment.apiURL;
+  apiURL = environment.apiURL;
   mostrarMenuEmitter = new EventEmitter<boolean>();
 
   constructor(
