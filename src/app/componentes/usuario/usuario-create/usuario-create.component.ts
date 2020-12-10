@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 import { ValidaCamposService } from '../../../servicos/valida-campos/valida-campos.service';
 
 @Component({
@@ -9,8 +11,10 @@ import { ValidaCamposService } from '../../../servicos/valida-campos/valida-camp
 export class UsuarioCreateComponent implements OnInit {
 
   usuario: any = {};
+  apiURL = environment.apiURL;
 
   constructor(
+    private http: HttpClient,
     private validaCamposService: ValidaCamposService
   ) { }
 
@@ -28,7 +32,11 @@ export class UsuarioCreateComponent implements OnInit {
         this.usuario.dsc_email !== undefined && this.usuario.dsc_email !== '' &&
         this.usuario.dsc_login !== undefined && this.usuario.dsc_login !== '' &&
         this.usuario.dsc_senha !== undefined && this.usuario.dsc_senha !== ''){
-      console.log('teste');
+      return this.http.post(this.apiURL + 'usuario/create', this.usuario, {
+        observe: 'response'
+      }).subscribe(data => {
+        console.log(data.body);
+      });
     }
   }
 }
