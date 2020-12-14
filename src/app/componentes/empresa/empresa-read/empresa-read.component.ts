@@ -10,6 +10,7 @@ import { environment } from '../../../../environments/environment';
 export class EmpresaReadComponent implements OnInit {
 
   apiURL = environment.apiURL;
+  listaEmpresas: any;
 
   constructor(
     private http: HttpClient
@@ -23,7 +24,8 @@ export class EmpresaReadComponent implements OnInit {
     return this.http.get(this.apiURL + 'empresa/read', {
       observe: 'response'
     }).subscribe(data => {
-      console.log(data);
+      this.listaEmpresas = data.body['data'];
+      console.log(this.listaEmpresas);
     });
   }
 }
