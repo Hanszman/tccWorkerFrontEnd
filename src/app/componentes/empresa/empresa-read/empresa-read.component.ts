@@ -25,7 +25,6 @@ export class EmpresaReadComponent implements OnInit {
       observe: 'response'
     }).subscribe(data => {
       this.listaEmpresas = data.body['data'];
-      console.log(this.listaEmpresas);
     });
   }
 }
