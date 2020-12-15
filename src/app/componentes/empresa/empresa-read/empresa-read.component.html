@@ -1,3 +1,10 @@
+<form class="form">
+  <div class="row">
+    <a [routerLink]="['../create']" class="btn btn-success col-sm-4"><i class="fa fa-plus-circle" aria-hidden="true"></i> Criar Empresa</a>
+    <input class="form-control col-sm-4" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+    <button class="btn btn-outline-success col-sm-4" type="submit">Pesquisar <i class="fa fa-search" aria-hidden="true"></i></button>
+  </div>
+</form>
 <div class="row">
   <div *ngFor="let item of listaEmpresas" class="col-sm-4">
     <div class="card">
@@ -8,7 +15,7 @@
           <strong>CNPJ:</strong> {{ item.dsc_cnpj }}<br>
           <strong>Data de Fundação:</strong> {{ item.dat_fundacao }}<br>
         </p>
-        <a [routerLink]="['/', item.id_empresa]" class="btn btn-success btn-block">Selecionar</a>
+        <a [routerLink]="['/', item.id_empresa]" class="btn btn-success btn-block">Selecionar <i class="fa fa-paper-plane" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
