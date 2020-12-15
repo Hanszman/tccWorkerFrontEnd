@@ -18,27 +18,27 @@ const routes: Routes = [
   // { path: 'usuario/read', component: UsuarioReadComponent, canActivate: [AuthGuard] },
   // { path: 'usuario/read/:id', component: UsuarioDetailComponent, canActivate: [AuthGuard] },
   { path: 'usuario/create', component: UsuarioCreateComponent },
-  // { path: 'usuario/update', component: UsuarioUpdateComponent, canActivate: [AuthGuard] },
+  // { path: 'usuario/update/:id', component: UsuarioUpdateComponent, canActivate: [AuthGuard] },
   
   { path: 'empresa/read', component: EmpresaReadComponent, canActivate: [AuthGuard] },
   // { path: 'empresa/read/:id', component: EmpresaDetailComponent, canActivate: [AuthGuard] },
   // { path: 'empresa/create', component: EmpresaCreateComponent, canActivate: [AuthGuard] },
-  // { path: 'empresa/update', component: EmpresaUpdateComponent, canActivate: [AuthGuard] },
+  // { path: 'empresa/update/:id', component: EmpresaUpdateComponent, canActivate: [AuthGuard] },
   
   // { path: 'fornecedor/read', component: FornecedorReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   // { path: 'fornecedor/read/:id', component: FornecedorDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   // { path: 'fornecedor/create', component: FornecedorCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'fornecedor/update', component: FornecedorUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  // { path: 'fornecedor/update/:id', component: FornecedorUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
 
   // { path: 'cliente/read', component: ClienteReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   // { path: 'cliente/read/:id', component: ClienteDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   // { path: 'cliente/create', component: ClienteCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'cliente/update', component: ClienteUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  // { path: 'cliente/update/:id', component: ClienteUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
 
   // { path: 'projeto/read', component: ProjetoReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   // { path: 'projeto/read/:id', component: ProjetoDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   // { path: 'projeto/create', component: ProjetoCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'projeto/update', component: ProjetoUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  // { path: 'projeto/update/:id', component: ProjetoUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   
   { path: '**', component: Pagina404Component }
 ];
