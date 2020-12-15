@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './componentes/login/auth.guard';
+import { EmpresaAuthGuard } from './componentes/empresa/empresa-auth/empresa-auth.guard';
 
 // Importando Componentes
 import { HomeComponent } from './componentes/home/home.component';
@@ -12,7 +13,7 @@ import { Pagina404Component } from './componentes/pagina404/pagina404/pagina404.
 // Definindo Rotas
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   { path: 'empresa/read', component: EmpresaReadComponent, canActivate: [AuthGuard] },
   { path: 'usuario/create', component: UsuarioCreateComponent },
   { path: '**', component: Pagina404Component }
