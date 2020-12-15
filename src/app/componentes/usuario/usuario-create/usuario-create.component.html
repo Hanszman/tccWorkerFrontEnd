@@ -22,6 +22,10 @@
             <input class="form-control" type="password" id="dsc_senha" name="dsc_senha" placeholder="Senha" [(ngModel)]="usuario.dsc_senha">
             <div id="msg_dsc_senha"></div>
         </div>
+        <div class="form-group">
+            <input class="form-control" type="password" id="dsc_confirm_senha" name="dsc_confirm_senha" placeholder="Confirme sua senha" [(ngModel)]="usuario.dsc_confirm_senha">
+            <div id="msg_dsc_confirm_senha"></div>
+        </div>
         <button class="btn btn-success btn-lg btn-block" type="submit">Cadastrar <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
         <button class="btn btn-primary btn-lg btn-block" type="button">Cadastrar com o Facebook <i class="fa fa-facebook-square" aria-hidden="true"></i></button>
         <button class="btn btn-link btn-lg btn-block" type="button" [routerLink]="['../../login']">Voltar</button>

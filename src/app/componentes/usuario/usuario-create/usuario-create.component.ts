@@ -29,11 +29,18 @@ export class UsuarioCreateComponent implements OnInit {
     this.validaCamposService.validaCampo(this.usuario.dsc_email, 'dsc_email', 'Informe seu e-mail!');
     this.validaCamposService.validaCampo(this.usuario.dsc_login, 'dsc_login', 'Informe seu usuário!');
     this.validaCamposService.validaCampo(this.usuario.dsc_senha, 'dsc_senha', 'Informe sua senha!');
+    this.validaCamposService.validaCampo(this.usuario.dsc_confirm_senha, 'dsc_confirm_senha', 'Confirme sua senha!');
+
+    if(this.usuario.dsc_senha !== this.usuario.dsc_confirm_senha) {
+      alert('Senhas não correspondem!');
+      return false;
+    }
 
     if (this.usuario.dsc_nome !== undefined && this.usuario.dsc_nome !== '' &&
         this.usuario.dsc_email !== undefined && this.usuario.dsc_email !== '' &&
         this.usuario.dsc_login !== undefined && this.usuario.dsc_login !== '' &&
-        this.usuario.dsc_senha !== undefined && this.usuario.dsc_senha !== ''){
+        this.usuario.dsc_senha !== undefined && this.usuario.dsc_senha !== '' &&
+        this.usuario.dsc_confirm_senha !== undefined && this.usuario.dsc_confirm_senha !== ''){
       return this.http.post(this.apiURL + 'usuario/create', this.usuario, {
         observe: 'response'
       }).subscribe(data => {
