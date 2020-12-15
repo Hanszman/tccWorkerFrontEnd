@@ -30,7 +30,7 @@ import { Pagina404Component } from './componentes/pagina404/pagina404/pagina404.
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, AuthGuard, EmpresaAuthGuard, ValidaCamposService],
+  providers: [AuthService, AuthGuard, EmpresaAuthGuard, EmpresaAuthService, ValidaCamposService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
