@@ -7,14 +7,30 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li *ngIf="mostrarOpcoes" class="nav-item active">
-                    <a class="nav-link" [routerLink]="['']">Início<span class="sr-only">(current)</span></a>
+                <li *ngIf="mostrarOpcoes" class="nav-item">
+                    <a class="nav-link" [routerLink]="['']">Início</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" [routerLink]="['empresa/read']">Empresa</a>
+                <li *ngIf="mostrarOpcoes" class="nav-item">
+                    <a class="nav-link" [routerLink]="">Projetos</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" (click)="fazerLogout()" [routerLink]="['login']">Logout</a>
+                <li *ngIf="mostrarOpcoes" class="nav-item">
+                    <a class="nav-link" [routerLink]="">Clientes</a>
+                </li>
+                <li *ngIf="mostrarOpcoes" class="nav-item">
+                    <a class="nav-link" [routerLink]="">Fornecedores</a>
+                </li>
+                <li *ngIf="mostrarOpcoes" class="nav-item">
+                    <a class="nav-link" [routerLink]="">Controle de Ponto</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ dsc_nome }}</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" [routerLink]="['usuario/read/', id_usuario]">Meu Perfil</a>
+                      <a class="dropdown-item" [routerLink]="['empresa/read']">Minhas Empresas</a>
+                      <a class="dropdown-item" (click)="fazerLogout()" [routerLink]="['login']">Sair</a>
+                    </div>
                 </li>
             </ul>
         </div>

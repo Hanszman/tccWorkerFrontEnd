@@ -15,6 +15,8 @@ export class AppComponent {
   atualURL = window.location.href.toString().replace(this.webURL, '');
   mostrarMenu: boolean = false;
   mostrarOpcoes: boolean = false;
+  id_usuario = window.localStorage.getItem('id_usuario');
+  dsc_nome = window.localStorage.getItem('dsc_nome');
 
   constructor(
     private authService: AuthService,
