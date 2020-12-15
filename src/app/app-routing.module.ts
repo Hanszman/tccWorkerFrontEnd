@@ -6,7 +6,10 @@ import { EmpresaAuthGuard } from './componentes/empresa/empresa-servicos/empresa
 // Importando Componentes
 import { HomeComponent } from './componentes/home/home.component';
 import { LoginComponent } from './componentes/login/login.component';
+import { UsuarioReadComponent } from './componentes/usuario/usuario-read/usuario-read.component';
+import { UsuarioDetailComponent } from './componentes/usuario/usuario-detail/usuario-detail.component';
 import { UsuarioCreateComponent } from './componentes/usuario/usuario-create/usuario-create.component';
+import { UsuarioUpdateComponent } from './componentes/usuario/usuario-update/usuario-update.component';
 import { EmpresaReadComponent } from './componentes/empresa/empresa-read/empresa-read.component';
 import { Pagina404Component } from './componentes/pagina404/pagina404.component';
 
@@ -15,10 +18,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   
-  // { path: 'usuario/read', component: UsuarioReadComponent, canActivate: [AuthGuard] },
-  // { path: 'usuario/read/:id', component: UsuarioDetailComponent, canActivate: [AuthGuard] },
+  { path: 'usuario/read', component: UsuarioReadComponent, canActivate: [AuthGuard] },
+  { path: 'usuario/read/:id', component: UsuarioDetailComponent, canActivate: [AuthGuard] },
   { path: 'usuario/create', component: UsuarioCreateComponent },
-  // { path: 'usuario/update/:id', component: UsuarioUpdateComponent, canActivate: [AuthGuard] },
+  { path: 'usuario/update/:id', component: UsuarioUpdateComponent, canActivate: [AuthGuard] },
   
   { path: 'empresa/read', component: EmpresaReadComponent, canActivate: [AuthGuard] },
   // { path: 'empresa/read/:id', component: EmpresaDetailComponent, canActivate: [AuthGuard] },
