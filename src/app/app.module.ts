@@ -13,7 +13,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { UsuarioCreateComponent } from './componentes/usuario/usuario-create/usuario-create.component';
 import { EmpresaReadComponent } from './componentes/empresa/empresa-read/empresa-read.component';
-import { Pagina404Component } from './componentes/pagina404/pagina404/pagina404.component';
+import { Pagina404Component } from './componentes/pagina404/pagina404.component';
 
 @NgModule({
   declarations: [
