@@ -1,3 +1,11 @@
+<div class="row center-div">
+  <h1 class="first-color">Empresas <i class="fa fa-users last-color" aria-hidden="true"></i></h1>
+</div>
+
+<div class="row center-div">
+  <p>Selecione uma empresa:</p>
+</div>
+
 <form class="form">
   <div class="row menu-buttons">
     <a [routerLink]="['../create']" class="btn btn-success col-sm-4"><i class="fa fa-plus-circle" aria-hidden="true"></i> Criar Empresa</a>
@@ -5,6 +13,7 @@
     <button class="btn btn-outline-success col-sm-4" type="submit">Pesquisar <i class="fa fa-search" aria-hidden="true"></i></button>
   </div>
 </form>
+
 <div class="row">
   <div *ngFor="let item of listaEmpresas" class="col-sm-4">
     <div class="card">
