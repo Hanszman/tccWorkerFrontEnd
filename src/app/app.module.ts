@@ -16,6 +16,12 @@ import { UsuarioDetailComponent } from './componentes/usuario/usuario-detail/usu
 import { UsuarioCreateComponent } from './componentes/usuario/usuario-create/usuario-create.component';
 import { UsuarioUpdateComponent } from './componentes/usuario/usuario-update/usuario-update.component';
 import { EmpresaReadComponent } from './componentes/empresa/empresa-read/empresa-read.component';
+import { ClienteReadComponent } from './componentes/cliente/cliente-read/cliente-read.component';
+import { FornecedorReadComponent } from './componentes/fornecedor/fornecedor-read/fornecedor-read.component';
+import { ControlePontoReadComponent } from './componentes/controle-ponto/controle-ponto-read/controle-ponto-read.component';
+import { ProjetoReadComponent } from './componentes/projeto/projeto-read/projeto-read.component';
+import { AtividadeReadComponent } from './componentes/atividade/atividade-read/atividade-read.component';
+import { SprintReadComponent } from './componentes/sprint/sprint-read/sprint-read.component';
 import { Pagina404Component } from './componentes/pagina404/pagina404.component';
 
 @NgModule({
@@ -28,6 +34,12 @@ import { Pagina404Component } from './componentes/pagina404/pagina404.component'
     UsuarioCreateComponent,
     UsuarioUpdateComponent,
     EmpresaReadComponent,
+    ClienteReadComponent,
+    FornecedorReadComponent,
+    ControlePontoReadComponent,
+    ProjetoReadComponent,
+    AtividadeReadComponent,
+    SprintReadComponent,
     Pagina404Component
   ],
   imports: [
