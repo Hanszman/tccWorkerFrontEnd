@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   
-  { path: 'usuario/read', component: UsuarioReadComponent, canActivate: [AuthGuard] },
+  { path: 'usuario/read', component: UsuarioReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   { path: 'usuario/read/:id', component: UsuarioDetailComponent, canActivate: [AuthGuard] },
   { path: 'usuario/create', component: UsuarioCreateComponent },
   { path: 'usuario/update/:id', component: UsuarioUpdateComponent, canActivate: [AuthGuard] },
