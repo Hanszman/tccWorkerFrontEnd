@@ -11,7 +11,10 @@ import { EmpresaAuthService } from './componentes/empresa/empresa-servicos/empre
 import { ValidaCamposService } from './servicos/valida-campos/valida-campos.service';
 import { LoginComponent } from './componentes/login/login.component';
 import { HomeComponent } from './componentes/home/home.component';
+import { UsuarioReadComponent } from './componentes/usuario/usuario-read/usuario-read.component';
 import { UsuarioCreateComponent } from './componentes/usuario/usuario-create/usuario-create.component';
+import { UsuarioDetailComponent } from './componentes/usuario/usuario-detail/usuario-detail.component';
+import { UsuarioUpdateComponent } from './componentes/usuario/usuario-update/usuario-update.component';
 import { EmpresaReadComponent } from './componentes/empresa/empresa-read/empresa-read.component';
 import { Pagina404Component } from './componentes/pagina404/pagina404.component';
 
@@ -20,7 +23,10 @@ import { Pagina404Component } from './componentes/pagina404/pagina404.component'
     AppComponent,
     LoginComponent,
     HomeComponent,
+    UsuarioReadComponent,
     UsuarioCreateComponent,
+    UsuarioDetailComponent,
+    UsuarioUpdateComponent,
     EmpresaReadComponent,
     Pagina404Component
   ],
