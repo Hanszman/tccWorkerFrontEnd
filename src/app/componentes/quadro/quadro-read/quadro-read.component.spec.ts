@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SprintReadComponent } from './sprint-read.component';
+import { QuadroReadComponent } from './quadro-read.component';
 
-describe('SprintReadComponent', () => {
-  let component: SprintReadComponent;
-  let fixture: ComponentFixture<SprintReadComponent>;
+describe('QuadroReadComponent', () => {
+  let component: QuadroReadComponent;
+  let fixture: ComponentFixture<QuadroReadComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SprintReadComponent ]
+      declarations: [ QuadroReadComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SprintReadComponent);
+    fixture = TestBed.createComponent(QuadroReadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

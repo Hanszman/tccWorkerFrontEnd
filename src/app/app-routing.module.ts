@@ -16,7 +16,7 @@ import { FornecedorReadComponent } from './componentes/fornecedor/fornecedor-rea
 import { ControlePontoReadComponent } from './componentes/controle-ponto/controle-ponto-read/controle-ponto-read.component';
 import { ProjetoReadComponent } from './componentes/projeto/projeto-read/projeto-read.component';
 import { AtividadeReadComponent } from './componentes/atividade/atividade-read/atividade-read.component';
-import { SprintReadComponent } from './componentes/sprint/sprint-read/sprint-read.component';
+import { QuadroReadComponent } from './componentes/quadro/quadro-read/quadro-read.component';
 import { Pagina404Component } from './componentes/pagina404/pagina404.component';
 
 // Definindo Rotas
@@ -59,10 +59,10 @@ const routes: Routes = [
   // { path: 'atividade/create', component: AtividadeCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   // { path: 'atividade/update/:id', component: AtividadeUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
 
-  { path: 'sprint/read', component: SprintReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'sprint/read/:id', component: SprintDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'sprint/create', component: SprintCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'sprint/update/:id', component: SprintUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  { path: 'quadro/read', component: QuadroReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  // { path: 'quadro/read/:id', component: QuadroDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  // { path: 'quadro/create', component: QuadroCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  // { path: 'quadro/update/:id', component: QuadroUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   
   { path: '**', component: Pagina404Component }
 ];

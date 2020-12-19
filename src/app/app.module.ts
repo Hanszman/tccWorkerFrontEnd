@@ -21,7 +21,7 @@ import { FornecedorReadComponent } from './componentes/fornecedor/fornecedor-rea
 import { ControlePontoReadComponent } from './componentes/controle-ponto/controle-ponto-read/controle-ponto-read.component';
 import { ProjetoReadComponent } from './componentes/projeto/projeto-read/projeto-read.component';
 import { AtividadeReadComponent } from './componentes/atividade/atividade-read/atividade-read.component';
-import { SprintReadComponent } from './componentes/sprint/sprint-read/sprint-read.component';
+import { QuadroReadComponent } from './componentes/quadro/quadro-read/quadro-read.component';
 import { Pagina404Component } from './componentes/pagina404/pagina404.component';
 
 @NgModule({
@@ -39,7 +39,7 @@ import { Pagina404Component } from './componentes/pagina404/pagina404.component'
     ControlePontoReadComponent,
     ProjetoReadComponent,
     AtividadeReadComponent,
-    SprintReadComponent,
+    QuadroReadComponent,
     Pagina404Component
   ],
   imports: [
