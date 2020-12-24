@@ -24,6 +24,7 @@
                 <li *ngIf="mostrarOpcoes" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pessoas</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" [routerLink]="">Setores</a>
                         <a class="dropdown-item" [routerLink]="['usuario/read']">Funcionários</a>
                         <a class="dropdown-item" [routerLink]="['cliente/read']">Clientes</a>
                         <a class="dropdown-item" [routerLink]="['fornecedor/read']">Fornecedores</a>
