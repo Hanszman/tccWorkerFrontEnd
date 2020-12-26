@@ -28,6 +28,9 @@
         <p class="card-text">
           <strong>CNPJ:</strong> {{ item.dsc_cnpj }}<br>
           <strong>Data de Fundação:</strong> {{ item.dat_fundacao }}<br>
+          <strong>Seu Cargo:</strong> {{ item.dsc_cargo }}<br>
+          <strong>Seu Situação:</strong> {{ item.ind_status }}<br>
+          <strong>Tipo de Usuário:</strong> {{ item.ind_controle_acesso }}<br>
         </p>
         <a title="Selecionar empresa" (click)="selecionarEmpresa(item.id_empresa, item.dsc_nome)" class="btn btn-success btn-block">Selecionar <i class="fa fa-paper-plane" aria-hidden="true"></i></a>
       </div>
