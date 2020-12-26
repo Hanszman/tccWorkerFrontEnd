@@ -18,10 +18,14 @@ import { UsuarioUpdateComponent } from './componentes/usuario/usuario-update/usu
 import { EmpresaReadComponent } from './componentes/empresa/empresa-read/empresa-read.component';
 import { ClienteReadComponent } from './componentes/cliente/cliente-read/cliente-read.component';
 import { FornecedorReadComponent } from './componentes/fornecedor/fornecedor-read/fornecedor-read.component';
+import { SetorReadComponent } from './componentes/setor/setor-read/setor-read.component';
 import { ControlePontoReadComponent } from './componentes/controle-ponto/controle-ponto-read/controle-ponto-read.component';
 import { ProjetoReadComponent } from './componentes/projeto/projeto-read/projeto-read.component';
-import { AtividadeReadComponent } from './componentes/atividade/atividade-read/atividade-read.component';
 import { QuadroReadComponent } from './componentes/quadro/quadro-read/quadro-read.component';
+import { AtividadeReadComponent } from './componentes/atividade/atividade-read/atividade-read.component';
+import { EtapaReadComponent } from './componentes/etapa/etapa-read/etapa-read.component';
+import { CalendarioReadComponent } from './componentes/calendario/calendario-read/calendario-read.component';
+import { LembreteReadComponent } from './componentes/lembrete/lembrete-read/lembrete-read.component';
 import { Pagina404Component } from './componentes/pagina404/pagina404.component';
 
 @NgModule({
@@ -36,11 +40,15 @@ import { Pagina404Component } from './componentes/pagina404/pagina404.component'
     EmpresaReadComponent,
     ClienteReadComponent,
     FornecedorReadComponent,
+    SetorReadComponent,
     ControlePontoReadComponent,
     ProjetoReadComponent,
-    AtividadeReadComponent,
     QuadroReadComponent,
-    Pagina404Component
+    AtividadeReadComponent,
+    EtapaReadComponent,
+    CalendarioReadComponent,
+    LembreteReadComponent,
+    Pagina404Component,
   ],
   imports: [
     BrowserModule,

@@ -13,10 +13,14 @@ import { UsuarioUpdateComponent } from './componentes/usuario/usuario-update/usu
 import { EmpresaReadComponent } from './componentes/empresa/empresa-read/empresa-read.component';
 import { ClienteReadComponent } from './componentes/cliente/cliente-read/cliente-read.component';
 import { FornecedorReadComponent } from './componentes/fornecedor/fornecedor-read/fornecedor-read.component';
+import { SetorReadComponent } from './componentes/setor/setor-read/setor-read.component';
 import { ControlePontoReadComponent } from './componentes/controle-ponto/controle-ponto-read/controle-ponto-read.component';
 import { ProjetoReadComponent } from './componentes/projeto/projeto-read/projeto-read.component';
 import { QuadroReadComponent } from './componentes/quadro/quadro-read/quadro-read.component';
 import { AtividadeReadComponent } from './componentes/atividade/atividade-read/atividade-read.component';
+import { EtapaReadComponent } from './componentes/etapa/etapa-read/etapa-read.component';
+import { CalendarioReadComponent } from './componentes/calendario/calendario-read/calendario-read.component';
+import { LembreteReadComponent } from './componentes/lembrete/lembrete-read/lembrete-read.component';
 import { Pagina404Component } from './componentes/pagina404/pagina404.component';
 
 // Definindo Rotas
@@ -44,6 +48,11 @@ const routes: Routes = [
   // { path: 'fornecedor/create', component: FornecedorCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   // { path: 'fornecedor/update/:id', component: FornecedorUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
 
+  { path: 'setor/read', component: SetorReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  // { path: 'setor/read/:id', component: SetorDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  // { path: 'setor/create', component: SetorCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  // { path: 'setor/update/:id', component: SetorUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+
   { path: 'controle-ponto/read', component: ControlePontoReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   // { path: 'controle-ponto/read/:id', component: ControlePontoDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   // { path: 'controle-ponto/create', component: ControlePontoCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
@@ -63,6 +72,21 @@ const routes: Routes = [
   // { path: 'atividade/read/:id', component: AtividadeDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   // { path: 'atividade/create', component: AtividadeCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   // { path: 'atividade/update/:id', component: AtividadeUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+
+  { path: 'etapa/read', component: EtapaReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  // { path: 'etapa/read/:id', component: EtapaDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  // { path: 'etapa/create', component: EtapaCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  // { path: 'etapa/update/:id', component: EtapaUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+
+  { path: 'calendario/read', component: CalendarioReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  // { path: 'calendario/read/:id', component: CalendarioDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  // { path: 'calendario/create', component: CalendarioCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  // { path: 'calendario/update/:id', component: CalendarioUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+
+  { path: 'lembrete/read', component: LembreteReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  // { path: 'lembrete/read/:id', component: LembreteDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  // { path: 'lembrete/create', component: LembreteCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  // { path: 'lembrete/update/:id', component: LembreteUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   
   { path: '**', component: Pagina404Component }
 ];
