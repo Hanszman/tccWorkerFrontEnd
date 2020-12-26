@@ -3,7 +3,7 @@
 </div>
 
 <div class="row center-div">
-  <p>Selecione uma empresa da qual você participa:</p>
+  <p>Selecione uma empresa da qual você participa para gerenciá-la:</p>
 </div>
 
 <form (ngSubmit)="exibirEmpresas()" #form="ngForm">
@@ -19,12 +19,17 @@
     <div class="card">
       <img src="assets/images/user_group_icon.png" class="card-img-top">
       <div class="card-body">
-        <h5 class="card-title">{{ item.dsc_nome }}</h5>
+        <h5 class="card-title">
+          <a class="link-color" title="Detalhes da empresa" [routerLink]="['../read/', item.id_empresa]">
+            {{ item.dsc_nome }}
+            <i class="fa fa-info-circle last-color" aria-hidden="true"></i>
+          </a>
+        </h5>
         <p class="card-text">
           <strong>CNPJ:</strong> {{ item.dsc_cnpj }}<br>
           <strong>Data de Fundação:</strong> {{ item.dat_fundacao }}<br>
         </p>
-        <a (click)="selecionarEmpresa(item.id_empresa, item.dsc_nome)" class="btn btn-success btn-block">Selecionar <i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+        <a title="Selecionar empresa" (click)="selecionarEmpresa(item.id_empresa, item.dsc_nome)" class="btn btn-success btn-block">Selecionar <i class="fa fa-paper-plane" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
