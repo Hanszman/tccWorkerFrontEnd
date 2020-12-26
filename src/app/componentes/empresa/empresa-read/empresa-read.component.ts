@@ -30,7 +30,8 @@ export class EmpresaReadComponent implements OnInit {
 
   exibirEmpresas(){
     var id_usuario = window.localStorage.getItem('id_usuario');
-    return this.http.get(this.apiURL + 'empresa/read?id_usuario=' + id_usuario, {
+    var search = <HTMLElement>document.getElementById('search');
+    return this.http.get(this.apiURL + 'empresa/read?id_usuario=' + id_usuario + '&dsc_nome=' + search['value'], {
       observe: 'response'
     }).subscribe(data => {
       this.listaEmpresas = data.body['data'];
