@@ -13,21 +13,20 @@
                 <li *ngIf="mostrarOpcoes" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestão</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" [routerLink]="['controle-ponto/read']">Controle de Ponto</a>
                         <a class="dropdown-item" [routerLink]="['projeto/read']">Projetos</a>
                         <a class="dropdown-item" [routerLink]="['quadro/read']">Quadros</a>
                         <a class="dropdown-item" [routerLink]="['atividade/read']">Atividades</a>
                         <a class="dropdown-item" [routerLink]="">Etapas</a>
-                        <a class="dropdown-item" [routerLink]="">Relatórios</a>
                     </div>
                 </li>
                 <li *ngIf="mostrarOpcoes" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pessoas</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" [routerLink]="">Setores</a>
-                        <a class="dropdown-item" [routerLink]="['usuario/read']">Funcionários</a>
                         <a class="dropdown-item" [routerLink]="['cliente/read']">Clientes</a>
                         <a class="dropdown-item" [routerLink]="['fornecedor/read']">Fornecedores</a>
+                        <a class="dropdown-item" [routerLink]="['usuario/read']">Funcionários</a>
+                        <a class="dropdown-item" [routerLink]="">Setores</a>
+                        <a class="dropdown-item" [routerLink]="['controle-ponto/read']">Controle de Ponto</a>
                     </div>
                 </li>
                 <li *ngIf="mostrarOpcoes" class="nav-item dropdown">
@@ -35,7 +34,6 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" [routerLink]="">Calendário</a>
                         <a class="dropdown-item" [routerLink]="">Lembretes</a>
-                        <a class="dropdown-item" [routerLink]="">Notificações</a>
                     </div>
                 </li>
             </ul>
