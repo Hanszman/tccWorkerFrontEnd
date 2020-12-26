@@ -16,7 +16,7 @@
                         <a class="dropdown-item" [routerLink]="['projeto/read']">Projetos</a>
                         <a class="dropdown-item" [routerLink]="['quadro/read']">Quadros</a>
                         <a class="dropdown-item" [routerLink]="['atividade/read']">Atividades</a>
-                        <a class="dropdown-item" [routerLink]="">Etapas</a>
+                        <a class="dropdown-item" [routerLink]="['etapa/read']">Etapas</a>
                     </div>
                 </li>
                 <li *ngIf="mostrarOpcoes" class="nav-item dropdown">
@@ -25,15 +25,15 @@
                         <a class="dropdown-item" [routerLink]="['cliente/read']">Clientes</a>
                         <a class="dropdown-item" [routerLink]="['fornecedor/read']">Fornecedores</a>
                         <a class="dropdown-item" [routerLink]="['usuario/read']">Funcionários</a>
-                        <a class="dropdown-item" [routerLink]="">Setores</a>
+                        <a class="dropdown-item" [routerLink]="['setor/read']">Setores</a>
                         <a class="dropdown-item" [routerLink]="['controle-ponto/read']">Controle de Ponto</a>
                     </div>
                 </li>
                 <li *ngIf="mostrarOpcoes" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Agenda</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" [routerLink]="">Calendário</a>
-                        <a class="dropdown-item" [routerLink]="">Lembretes</a>
+                        <a class="dropdown-item" [routerLink]="['calendario/read']">Calendário</a>
+                        <a class="dropdown-item" [routerLink]="['lembrete/read']">Lembretes</a>
                     </div>
                 </li>
             </ul>
