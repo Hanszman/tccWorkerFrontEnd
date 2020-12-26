@@ -29,7 +29,8 @@ export class EmpresaReadComponent implements OnInit {
   }
 
   exibirEmpresas(){
-    return this.http.get(this.apiURL + 'empresa/read', {
+    var id_usuario = window.localStorage.getItem('id_usuario');
+    return this.http.get(this.apiURL + 'empresa/read?id_usuario=' + id_usuario, {
       observe: 'response'
     }).subscribe(data => {
       this.listaEmpresas = data.body['data'];
