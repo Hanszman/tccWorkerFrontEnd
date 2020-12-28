@@ -11,6 +11,8 @@ import { UsuarioDetailComponent } from './componentes/usuario/usuario-detail/usu
 import { UsuarioCreateComponent } from './componentes/usuario/usuario-create/usuario-create.component';
 import { UsuarioUpdateComponent } from './componentes/usuario/usuario-update/usuario-update.component';
 import { EmpresaReadComponent } from './componentes/empresa/empresa-read/empresa-read.component';
+import { EmpresaDetailComponent } from './componentes/empresa/empresa-detail/empresa-detail.component';
+import { EmpresaFormComponent } from './componentes/empresa/empresa-form/empresa-form.component';
 import { ClienteReadComponent } from './componentes/cliente/cliente-read/cliente-read.component';
 import { FornecedorReadComponent } from './componentes/fornecedor/fornecedor-read/fornecedor-read.component';
 import { SetorReadComponent } from './componentes/setor/setor-read/setor-read.component';
@@ -34,9 +36,9 @@ const routes: Routes = [
   { path: 'usuario/update/:id', component: UsuarioUpdateComponent, canActivate: [AuthGuard] },
   
   { path: 'empresa/read', component: EmpresaReadComponent, canActivate: [AuthGuard] },
-  // { path: 'empresa/read/:id', component: EmpresaDetailComponent, canActivate: [AuthGuard] },
-  // { path: 'empresa/create', component: EmpresaCreateComponent, canActivate: [AuthGuard] },
-  // { path: 'empresa/update/:id', component: EmpresaUpdateComponent, canActivate: [AuthGuard] },
+  { path: 'empresa/read/:id', component: EmpresaDetailComponent, canActivate: [AuthGuard] },
+  { path: 'empresa/create', component: EmpresaFormComponent, canActivate: [AuthGuard] },
+  { path: 'empresa/update/:id', component: EmpresaFormComponent, canActivate: [AuthGuard] },
   
   { path: 'cliente/read', component: ClienteReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   // { path: 'cliente/read/:id', component: ClienteDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },

@@ -16,6 +16,8 @@ import { UsuarioDetailComponent } from './componentes/usuario/usuario-detail/usu
 import { UsuarioCreateComponent } from './componentes/usuario/usuario-create/usuario-create.component';
 import { UsuarioUpdateComponent } from './componentes/usuario/usuario-update/usuario-update.component';
 import { EmpresaReadComponent } from './componentes/empresa/empresa-read/empresa-read.component';
+import { EmpresaDetailComponent } from './componentes/empresa/empresa-detail/empresa-detail.component';
+import { EmpresaFormComponent } from './componentes/empresa/empresa-form/empresa-form.component';
 import { ClienteReadComponent } from './componentes/cliente/cliente-read/cliente-read.component';
 import { FornecedorReadComponent } from './componentes/fornecedor/fornecedor-read/fornecedor-read.component';
 import { SetorReadComponent } from './componentes/setor/setor-read/setor-read.component';
@@ -38,6 +40,8 @@ import { Pagina404Component } from './componentes/pagina404/pagina404.component'
     UsuarioCreateComponent,
     UsuarioUpdateComponent,
     EmpresaReadComponent,
+    EmpresaDetailComponent,
+    EmpresaFormComponent,
     ClienteReadComponent,
     FornecedorReadComponent,
     SetorReadComponent,
@@ -48,7 +52,7 @@ import { Pagina404Component } from './componentes/pagina404/pagina404.component'
     EtapaReadComponent,
     CalendarioReadComponent,
     LembreteReadComponent,
-    Pagina404Component,
+    Pagina404Component
   ],
   imports: [
     BrowserModule,
