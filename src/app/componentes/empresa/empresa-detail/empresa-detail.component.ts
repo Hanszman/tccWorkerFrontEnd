@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-empresa-detail',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmpresaDetailComponent implements OnInit {
 
-  constructor() { }
+  apiURL = environment.apiURL;
+  detalhesEmpresa: any;
+  id;
 
-  ngOnInit(): void {
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient
+  ) {
+    this.route.params.subscribe(params => this.id = params['id']);
   }
 
+  ngOnInit(): void {
+    this.detalharEmpresa();
+    console.log(this.detalhesEmpresa);
+  }
+
+  detalharEmpresa(){
+    return this.http.get(this.apiURL + 'empresa/read/' + this.id, {
+      observe: 'response'
+    }).subscribe(data => {
+      this.detalhesEmpresa = data.body['data'];
+    });
+  }
 }
