@@ -8,7 +8,6 @@ import { AuthService } from './componentes/login/auth.service';
 import { AuthGuard } from './componentes/login/auth.guard';
 import { EmpresaAuthGuard } from './componentes/empresa/empresa-servicos/empresa-auth.guard';
 import { EmpresaAuthService } from './componentes/empresa/empresa-servicos/empresa-auth.service';
-import { ValidaCamposService } from './servicos/valida-campos/valida-campos.service';
 import { LoginComponent } from './componentes/login/login.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { UsuarioReadComponent } from './componentes/usuario/usuario-read/usuario-read.component';
@@ -29,6 +28,13 @@ import { EtapaReadComponent } from './componentes/etapa/etapa-read/etapa-read.co
 import { CalendarioReadComponent } from './componentes/calendario/calendario-read/calendario-read.component';
 import { LembreteReadComponent } from './componentes/lembrete/lembrete-read/lembrete-read.component';
 import { Pagina404Component } from './componentes/pagina404/pagina404.component';
+import { TableComponent } from './componentes/geral/table/table.component';
+import { TableService } from './componentes/geral/table/table.service';
+import { DetailComponent } from './componentes/geral/detail/detail.component';
+import { DetailService } from './componentes/geral/detail/detail.service';
+import { FormComponent } from './componentes/geral/form/form.component';
+import { FormService } from './componentes/geral/form/form.service';
+import { ValidaCamposService } from './servicos/valida-campos/valida-campos.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +58,10 @@ import { Pagina404Component } from './componentes/pagina404/pagina404.component'
     EtapaReadComponent,
     CalendarioReadComponent,
     LembreteReadComponent,
-    Pagina404Component
+    Pagina404Component,
+    TableComponent,
+    DetailComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +69,16 @@ import { Pagina404Component } from './componentes/pagina404/pagina404.component'
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, AuthGuard, EmpresaAuthGuard, EmpresaAuthService, ValidaCamposService],
+  providers: [
+    AuthService,
+    AuthGuard,
+    EmpresaAuthGuard,
+    EmpresaAuthService,
+    TableService,
+    DetailService,
+    FormService,
+    ValidaCamposService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
