@@ -23,7 +23,6 @@ export class EmpresaDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.detalharEmpresa();
-    console.log(this.detalhesEmpresa);
   }
 
   detalharEmpresa(){
