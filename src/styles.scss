@@ -17,6 +17,7 @@
 .center-div {
     display: flex;
     justify-content: center;
+    padding: 0 15px;
 }
 .logo-title {
     font-family: 'Brush Script MT', cursive;
@@ -37,4 +38,7 @@
     position: absolute;
     right: 5px;
     top: 5px;
+}
+.information {
+    padding: 20px;
 }
