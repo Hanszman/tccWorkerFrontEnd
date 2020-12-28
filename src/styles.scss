@@ -31,6 +31,10 @@
     padding: 15px;
 }
 .group-card {
-    align-items: center;
     justify-content: center;
+}
+.right-top {
+    position: absolute;
+    right: 5px;
+    top: 5px;
 }

@@ -18,6 +18,7 @@
   <div *ngFor="let item of listaEmpresas" class="col-sm-4">
     <div class="card">
       <img src="assets/images/user_group_icon.png" class="card-img-top">
+      <a class="btn btn-light right-top" title="Editar empresa"><i class="fa fa-pencil" aria-hidden="true"></i></a>
       <div class="card-body">
         <h5 class="card-title">
           <a class="link-color" title="Detalhes da empresa" [routerLink]="['../read/', item.id_empresa]">
