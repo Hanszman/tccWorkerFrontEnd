@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './componentes/login/auth.service';
 import { EmpresaAuthService } from './componentes/empresa/empresa-servicos/empresa-auth.service';
 import { environment } from '../environments/environment';
@@ -19,9 +20,12 @@ export class AppComponent {
   dsc_nome = window.localStorage.getItem('dsc_nome');
 
   constructor(
+    private translate: TranslateService,
     private authService: AuthService,
     private empresaAuth: EmpresaAuthService
-  ) {}
+  ) {
+    translate.setDefaultLang('br');
+  }
 
   ngOnInit(){
     this.authService.mostrarMenuEmitter.subscribe(
