@@ -10,5 +10,22 @@
     "atividade": {},
     "etapa": {},
     "calendario": {},
-    "lembrete": {}
+    "lembrete": {},
+    "telefone": {
+        "telefones": "Telefones",
+        "ind_tipo": "Tipo",
+        "dsc_telefone": "Número"
+    },
+    "endereco": {
+        "enderecos": "Endereços",
+        "dsc_logradouro": "Logradouro",
+        "dsc_numero": "Número",
+        "dsc_bairro": "Bairro",
+        "dsc_cidade": "Cidade",
+        "dsc_uf": "UF"
+    },
+    "email": {
+        "emails": "E-mail's",
+        "dsc_email": "Endereço de E-mail"
+    }
 }
