@@ -37,6 +37,7 @@ import { DetailService } from './componentes/geral/detail/detail.service';
 import { FormComponent } from './componentes/geral/form/form.component';
 import { FormService } from './componentes/geral/form/form.service';
 import { ValidaCamposService } from './servicos/valida-campos/valida-campos.service';
+import { ChartComponent } from './componentes/geral/chart/chart.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -67,7 +68,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     Pagina404Component,
     TableComponent,
     DetailComponent,
-    FormComponent
+    FormComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
