@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
-import { ValidaCamposService } from '../../servicos/valida-campos/valida-campos.service';
+import { ValidateService } from '../geral/validate/validate.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private validaCamposService: ValidaCamposService
+    private validate: ValidateService
   ) { }
 
   ngOnInit(): void {
@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
   }
 
   fazerLogin(){
-    this.validaCamposService.validaCampo(this.usuario.dsc_login, 'dsc_login', 'Informe seu usuário!');
-    this.validaCamposService.validaCampo(this.usuario.dsc_senha, 'dsc_senha', 'Informe sua senha!');
+    this.validate.validaCampo(this.usuario.dsc_login, 'dsc_login', 'Informe seu usuário!');
+    this.validate.validaCampo(this.usuario.dsc_senha, 'dsc_senha', 'Informe sua senha!');
 
     if (this.usuario.dsc_login !== undefined && this.usuario.dsc_login !== '' &&
         this.usuario.dsc_senha !== undefined && this.usuario.dsc_senha !== ''){

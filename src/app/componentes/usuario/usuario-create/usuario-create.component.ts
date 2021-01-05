@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { Router } from '@angular/router';
-import { ValidaCamposService } from '../../../servicos/valida-campos/valida-campos.service';
+import { ValidateService } from '../../geral/validate/validate.service';
 
 @Component({
   selector: 'app-usuario-create',
@@ -17,7 +17,7 @@ export class UsuarioCreateComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private validaCamposService: ValidaCamposService
+    private validate: ValidateService
   ) { }
 
   ngOnInit(): void {
@@ -25,11 +25,11 @@ export class UsuarioCreateComponent implements OnInit {
   }
 
   criarUsuario(){
-    this.validaCamposService.validaCampo(this.usuario.dsc_nome, 'dsc_nome', 'Informe seu nome!');
-    this.validaCamposService.validaCampo(this.usuario.dsc_email, 'dsc_email', 'Informe seu e-mail!');
-    this.validaCamposService.validaCampo(this.usuario.dsc_login, 'dsc_login', 'Informe seu usuário!');
-    this.validaCamposService.validaCampo(this.usuario.dsc_senha, 'dsc_senha', 'Informe sua senha!');
-    this.validaCamposService.validaCampo(this.usuario.dsc_confirm_senha, 'dsc_confirm_senha', 'Confirme sua senha!');
+    this.validate.validaCampo(this.usuario.dsc_nome, 'dsc_nome', 'Informe seu nome!');
+    this.validate.validaCampo(this.usuario.dsc_email, 'dsc_email', 'Informe seu e-mail!');
+    this.validate.validaCampo(this.usuario.dsc_login, 'dsc_login', 'Informe seu usuário!');
+    this.validate.validaCampo(this.usuario.dsc_senha, 'dsc_senha', 'Informe sua senha!');
+    this.validate.validaCampo(this.usuario.dsc_confirm_senha, 'dsc_confirm_senha', 'Confirme sua senha!');
 
     if(this.usuario.dsc_senha !== this.usuario.dsc_confirm_senha) {
       alert('Senhas não correspondem!');
