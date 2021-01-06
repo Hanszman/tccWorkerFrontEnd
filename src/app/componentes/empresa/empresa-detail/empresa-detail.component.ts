@@ -20,14 +20,14 @@ export class EmpresaDetailComponent implements OnInit {
   parametros;
   @Input() config = {
     titulo: 'empresa',
-    cabecalho: [
+    cabecalhos: [
       '',
     ],
     paginacao: 1
   };
   @Input() configTelefone = {
     titulo: 'telefone',
-    cabecalho: [
+    cabecalhos: [
       'ind_tipo',
       'dsc_telefone'
     ],
@@ -35,7 +35,7 @@ export class EmpresaDetailComponent implements OnInit {
   };
   @Input() configEndereco = {
     titulo: 'endereco',
-    cabecalho: [
+    cabecalhos: [
       'dsc_logradouro',
       'dsc_numero',
       'dsc_bairro',
@@ -46,7 +46,7 @@ export class EmpresaDetailComponent implements OnInit {
   };
   @Input() configEmail = {
     titulo: 'email',
-    cabecalho: [
+    cabecalhos: [
       'dsc_email'
     ],
     paginacao: 5

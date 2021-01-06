@@ -28,5 +28,22 @@
     "email": {
         "emails": "E-mail's",
         "dsc_email": "Endereço de E-mail"
+    },
+    "geral": {
+        "table": {
+            "novo": "Novo",
+            "filtrar": "Filtrar",
+            "detalhar": "Detalhar",
+            "registro": "Registro"
+        },
+        "detail": {
+
+        },
+        "form": {
+
+        },
+        "chart": {
+
+        }
     }
 }

@@ -1,1 +1,38 @@
-<p>table works!</p>
+<table class="geral-table">
+    <tr [hidden]="!existeFiltros">
+        <td [hidden]="!existeBotaoCriar">
+            <button class="btn btn-success" type="button" (click)="emiteClicaBotaoCriar()">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                <span>&nbsp;{{ 'geral.table.novo' | translate }}</span>
+            </button>
+        </td>
+        <td [hidden]="existeBotaoCriar"></td>
+        <td *ngFor="let item of config.cabecalhos" class="table-filter-cell">
+            <input type="text" placeholder="{{ tradutor(item) }}" [(ngModel)]="jsonFiltro[item]" (keydown.enter)="consultar(1)" class="form-control filtro-table">
+        </td>
+        <td>
+            <button class="btn btn-outline-success" type="button" (click)="consultar(1)" class="form-control">
+                <span>&nbsp;{{ 'geral.table.filtrar' | translate }}&nbsp;</span>
+                <i class="fa fa-search" aria-hidden="search"></i>
+            </button>
+        </td>
+    </tr>
+    <tr class="linhas-table">
+        <th [hidden]="!existeContagem">#</th>
+        <th *ngFor="let item of config.cabecalhos" class="cabecalho-table" (click)="ordenarCabecalho(item)">{{ tradutor(item) }}&nbsp;&nbsp;<i id="icone_{{item}}" class="direcao"></i></th>
+        <th [hidden]="!existeDetalhes">{{ 'geral.table.detalhar' | translate }}</th>
+        <th [hidden]="existeDetalhes"></th>
+    </tr>
+    <tr *ngFor="let linha of conjuntoDados; let i = index" class="linhas-table linha-dados" (click)="emiteSelecionaLinha(linha)">
+        <td [hidden]="!existeContagem" class="table-cells">{{ i+1 + (settings.pagination * (currentPage-1)) }}</td>
+        <td *ngFor="let item of config.cabecalhos" class="table-cells">{{ linha[item] }}</td>
+        <td [hidden]="!existeDetalhes" class="table-cells"><i class="fa fa-info-circle last-color informacao" aria-hidden="true"></i></td>
+        <td [hidden]="existeDetalhes"></td>
+    </tr>
+</table>
+<table *ngIf="!removePaginacao" [hidden]="!existeContagem" class="paginador-table">
+    <tr>
+        <td *ngFor="let bloco of paginador" [ngClass]="{ 'pagina-bloco-selecionada':bloco.label === paginaAtual }" (click)="consultar(bloco.pagina)">{{ bloco.label }}</td>
+    </tr>
+</table>
+<div *ngIf="existeContagem" [hidden]="!existeContagem" style="width: 100%"><p id="numero-registros-table"><span *ngIf="totalRegistros !== 0 ">{{ totalRegistros }} {{ 'geral.table.registro' | translate }}</span><span *ngIf="totalRegistros > 1 ">s</span></p></div>

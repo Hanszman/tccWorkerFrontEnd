@@ -1,21 +1,31 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TableService } from './table.service';
 import { TranslateService } from '@ngx-translate/core';
-import { Subscriber } from 'rxjs';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css'] //'../../../../styles.scss'
+  styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
 
   @Input() config;
   @Input() url: string;
   @Input() parametros: string = '';
+  @Input() existeFiltros = true;
+  @Input() existeBotaoCriar = true;
+  @Input() existeDetalhes = true;
+  @Input() existeContagem = true;
+  @Output() selecionaLinha = new EventEmitter();
+  @Output() clicaBotaoCriar = new EventEmitter();
   private conjuntoDados;
   private traducoes;
+  private paginador;
+  private paginaAtual;
+  private totalRegistros = 0;
+  private removePaginacao = false;
   private ordem = '';
+  private cabecalhoAnterior = '';
   private jsonFiltro = {};
 
   constructor(
@@ -24,13 +34,13 @@ export class TableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.consulta(1);
+    this.consultar(1);
     this.traduzir().subscribe((traducoes) => {
       this.traducoes = traducoes;
     })
   }
 
-  consulta(pagina){
+  consultar(pagina){
     var url = this.url + '?pagina=' + pagina + '&paginacao=' + this.config.paginacao;
     var filtro = this.parametros + this.ordem + Object.entries(this.jsonFiltro).map(e => e.join('=')).join('&');
     this.service.getTable(url, filtro).subscribe((data) => {
@@ -51,14 +61,28 @@ export class TableComponent implements OnInit {
   }
 
   traduzir(){
+    let idioma = 'br';
+    this.translate.use(idioma);
     return this.translate.get(this.config.titulo);
   }
 
-  tradutor(chave) {
+  tradutor(chave){
     if (this.traducoes !== undefined){
       if (chave in this.traducoes)
         return this.traducoes[chave];
       return '';
     }
+  }
+
+  ordenarCabecalho(cabecalho){
+    console.log('ordem');
+  }
+
+  emiteSelecionaLinha(linha) {
+    this.selecionaLinha.emit(linha);
+  }
+
+  emiteClicaBotaoCriar() {
+    this.clicaBotaoCriar.emit();
   }
 }
