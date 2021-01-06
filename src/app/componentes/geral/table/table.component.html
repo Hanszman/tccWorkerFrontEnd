@@ -1,9 +1,8 @@
 <table class="geral-table">
     <tr [hidden]="!existeFiltros">
         <td [hidden]="!existeBotaoCriar">
-            <button class="btn btn-success" type="button" (click)="emiteClicaBotaoCriar()">
+            <button class="btn btn-success form-control" type="button" (click)="emiteClicaBotaoCriar()" title="{{ 'geral.table.novo' | translate }}">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                <span>&nbsp;{{ 'geral.table.novo' | translate }}</span>
             </button>
         </td>
         <td [hidden]="existeBotaoCriar"></td>
@@ -11,8 +10,7 @@
             <input type="text" placeholder="{{ tradutor(item) }}" [(ngModel)]="jsonFiltro[item]" (keydown.enter)="consultar(1)" class="form-control filtro-table">
         </td>
         <td>
-            <button class="btn btn-outline-success" type="button" (click)="consultar(1)" class="form-control">
-                <span>&nbsp;{{ 'geral.table.filtrar' | translate }}&nbsp;</span>
+            <button class="btn btn-outline-success form-control" type="button" (click)="consultar(1)" title="{{ 'geral.table.filtrar' | translate }}">
                 <i class="fa fa-search" aria-hidden="search"></i>
             </button>
         </td>
