@@ -1,4 +1,4 @@
-<table class="geral-table">
+<!-- <table class="geral-table">
     <tr [hidden]="!existeFiltros">
         <td [hidden]="!existeBotaoCriar">
             <button class="btn btn-success form-control" type="button" (click)="emiteClicaBotaoCriar()" title="{{ 'geral.table.novo' | translate }}">
@@ -33,4 +33,4 @@
         <td *ngFor="let bloco of paginador" [ngClass]="{ 'pagina-bloco-selecionada':bloco.label === paginaAtual }" (click)="consultar(bloco.pagina)">{{ bloco.label }}</td>
     </tr>
 </table>
-<div *ngIf="existeContagem" [hidden]="!existeContagem" style="width: 100%"><p id="numero-registros-table"><span *ngIf="totalRegistros !== 0 ">{{ totalRegistros }} {{ 'geral.table.registro' | translate }}</span><span *ngIf="totalRegistros > 1 ">s</span></p></div>
+<div *ngIf="existeContagem" [hidden]="!existeContagem" style="width: 100%"><p id="numero-registros-table"><span *ngIf="totalRegistros !== 0 ">{{ totalRegistros }} {{ 'geral.table.registro' | translate }}</span><span *ngIf="totalRegistros > 1 ">s</span></p></div> -->
