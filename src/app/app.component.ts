@@ -52,4 +52,8 @@ export class AppComponent {
     this.mostrarMenu = false;
     window.localStorage.clear();
   }
+
+  trocarIdioma(idioma: string) {
+    this.translate.use(idioma);
+  }
 }
