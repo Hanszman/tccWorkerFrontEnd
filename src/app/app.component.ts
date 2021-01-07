@@ -30,7 +30,7 @@ export class AppComponent {
       mostrar => this.mostrarMenu = mostrar
     );
     if(!this.mostrarMenu){
-      if(window.localStorage.getItem('token') !== null && this.atualURL !== 'login' && this.atualURL !== 'usuario/create') {
+      if(this.localStorageItem('token') !== null && this.atualURL !== 'login' && this.atualURL !== 'usuario/create') {
         this.mostrarMenu = true;
       }
     }
@@ -39,7 +39,7 @@ export class AppComponent {
       mostrar => this.mostrarOpcoes = mostrar
     );
     if(!this.mostrarOpcoes && this.mostrarMenu){
-      if(window.localStorage.getItem('token_empresa') && this.atualURL !== 'empresa/read')
+      if(this.localStorageItem('token_empresa') && this.atualURL !== 'empresa/read')
         this.mostrarOpcoes = true;
     }
   }
