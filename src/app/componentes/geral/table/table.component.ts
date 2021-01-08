@@ -18,15 +18,15 @@ export class TableComponent implements OnInit {
   @Input() existeContagem = true;
   @Output() selecionaLinha = new EventEmitter();
   @Output() clicaBotaoCriar = new EventEmitter();
-  private conjuntoDados;
-  private traducoes;
-  private paginador;
-  private paginaAtual;
-  private totalRegistros = 0;
-  private removePaginacao = false;
-  private ordem = '';
-  private cabecalhoAnterior = '';
-  private jsonFiltro = {};
+  conjuntoDados;
+  traducoes;
+  paginador;
+  paginaAtual;
+  totalRegistros = 0;
+  removePaginacao = false;
+  ordem = '';
+  cabecalhoAnterior = '';
+  jsonFiltro = {};
 
   constructor(
     private service: TableService,
