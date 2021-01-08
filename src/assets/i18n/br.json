@@ -20,14 +20,14 @@
     "endereco": {
         "enderecos": "Endereços",
         "dsc_logradouro": "Logradouro",
-        "dsc_numero": "Número",
+        "dsc_numero": "Nº",
         "dsc_bairro": "Bairro",
         "dsc_cidade": "Cidade",
         "dsc_uf": "UF"
     },
     "email": {
         "emails": "E-mail's",
-        "dsc_email": "Endereço de E-mail"
+        "dsc_email": "E-mail"
     },
     "geral": {
         "table": {
