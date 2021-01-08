@@ -96,8 +96,27 @@ export class TableComponent implements OnInit {
     this.clicaBotaoCriar.emit();
   }
 
-  ordenarCabecalho(cabecalho){
-    console.log('ordem');
+  ordenarCabecalho(item){
+    let dir;
+    let icone = document.getElementById('icone_' + item);
+    let cabecalho = document.getElementsByClassName('direcao');
+    for (var i = 0; i < cabecalho.length; i++) {
+      cabecalho[i].classList.remove('fa');
+      cabecalho[i].classList.remove('fa-arrow-up');
+      cabecalho[i].classList.remove('fa-arrow-down');
+    }
+    if (this.cabecalhoAnterior == item) {
+      dir = 'desc';
+      this.cabecalhoAnterior = '';
+      icone.classList.add('fa', 'fa-arrow-up');
+    }
+    else {
+      dir = 'asc';
+      this.cabecalhoAnterior = item;
+      icone.classList.add('fa', 'fa-arrow-down');
+    }
+    this.ordem = 'ordenarPor=' + item + '&direcao=' + dir + '&';
+    this.consultar(1);
   }
 
   organizaPaginacao(ultimaPagina, paginaAtual){
