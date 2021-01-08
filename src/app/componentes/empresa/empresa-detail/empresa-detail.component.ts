@@ -31,7 +31,7 @@ export class EmpresaDetailComponent implements OnInit {
       'ind_tipo',
       'dsc_telefone'
     ],
-    paginacao: 5
+    paginacao: 1
   };
   @Input() configEndereco = {
     titulo: 'endereco',
