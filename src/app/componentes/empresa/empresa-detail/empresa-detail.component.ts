@@ -57,10 +57,10 @@ export class EmpresaDetailComponent implements OnInit {
     private http: HttpClient
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
-    this.url = 'empresa';
-    this.urlTelefone = 'telefone';
-    this.urlEndereco = 'endereco';
-    this.urlEmail = 'email';
+    this.url = 'empresa/read/:' + this.id;
+    this.urlTelefone = 'telefone/read';
+    this.urlEndereco = 'endereco/read';
+    this.urlEmail = 'email/read';
     this.parametros = 'id_empresa=' + this.id + '&';
   }
 
