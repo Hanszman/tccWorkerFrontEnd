@@ -7,7 +7,7 @@
 </div>
 
 <div class="row" *ngFor="let item of detalhesEmpresa">
-    <img class="information" src="assets/images/user_group_icon.png" width="348" height="318.67">
+    <img class="information" src="assets/images/user_group_icon.png" width="200">
     <p class="information">
         <strong>Nome:</strong> {{ item.dsc_nome }}<br>
         <strong>CNPJ:</strong> {{ item.dsc_cnpj }}<br>
@@ -16,14 +16,14 @@
     </p>
 </div>
 
-<div class="row center-div">
+<div class="row table-responsive div-table">
     <app-table [config]="configTelefone" [url]="urlTelefone" [parametros]="parametros"></app-table>
 </div>
 
-<div class="row center-div">
+<div class="row table-responsive div-table">
     <app-table [config]="configEndereco" [url]="urlEndereco" [parametros]="parametros"></app-table>
 </div>
 
-<div class="row center-div">
+<div class="row table-responsive div-table">
     <app-table [config]="configEmail" [url]="urlEmail" [parametros]="parametros"></app-table>
 </div>
