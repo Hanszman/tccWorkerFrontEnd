@@ -22,7 +22,7 @@
         <th [hidden]="existeDetalhes"></th>
     </tr>
     <tr *ngFor="let linha of conjuntoDados; let i = index" class="linhas-table linha-dados" (click)="emiteSelecionaLinha(linha)">
-        <td [hidden]="!existeContagem" class="table-cells">{{ i+1 + (settings.pagination * (currentPage-1)) }}</td>
+        <td [hidden]="!existeContagem" class="table-cells">{{ i+1 + (config.paginacao * (paginaAtual-1)) }}</td>
         <td *ngFor="let item of config.cabecalhos" class="table-cells">{{ linha[item] }}</td>
         <td [hidden]="!existeDetalhes" class="table-cells"><i class="fa fa-info-circle last-color informacao" aria-hidden="true"></i></td>
         <td [hidden]="existeDetalhes"></td>

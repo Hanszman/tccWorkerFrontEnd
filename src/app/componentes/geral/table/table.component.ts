@@ -43,21 +43,35 @@ export class TableComponent implements OnInit {
   consultar(pagina){
     var url = this.url + '?pagina=' + pagina + '&paginacao=' + this.config.paginacao;
     var filtro = this.parametros + this.ordem + Object.entries(this.jsonFiltro).map(e => e.join('=')).join('&');
-    this.service.getTable(url, filtro).subscribe((data) => {
-      this.mapearDados(data.body);
+    this.service.getTable(url, filtro).subscribe((obj) => {
+      this.mapearDados(obj.body);
     });
   }
 
-  mapearDados(dados){
-    if (dados !== undefined) {
-      if ('data' in dados['data']) {
+  mapearDados(obj){
+    if (obj.data) {
+      if (obj.data.dados) {
         this.conjuntoDados = [];
+        this.totalRegistros = obj.data['total'];
+        this.paginaAtual = obj.data['pagina_atual'];
+        this.organizaPaginacao(obj.data['ultima_pagina'], obj.data['pagina_atual']);
+        if (this.paginador.length == 0)
+          this.removePaginacao = true;
+        else
+          this.removePaginacao = false;
+        obj.data.dados.forEach(elemento => {
+          this.config.cabecalhos.forEach(item => {
+            if (!(item in elemento))
+              throw "Formato incorreto de dados";
+          });
+          this.conjuntoDados.push(elemento);
+        });
       }
       else
-        throw "Objeto não contém dados";
+        throw "Conjunto de dados não está corretamente definido!"  
     }
     else
-      throw "Dados não recebidos";
+      throw "Objeto não possui conjunto de dados!"
   }
 
   traduzir(){
@@ -74,15 +88,89 @@ export class TableComponent implements OnInit {
     }
   }
 
-  ordenarCabecalho(cabecalho){
-    console.log('ordem');
-  }
-
   emiteSelecionaLinha(linha) {
     this.selecionaLinha.emit(linha);
   }
 
   emiteClicaBotaoCriar() {
     this.clicaBotaoCriar.emit();
+  }
+
+  ordenarCabecalho(cabecalho){
+    console.log('ordem');
+  }
+
+  organizaPaginacao(ultimaPagina, paginaAtual){
+    this.paginador = [];
+    if(ultimaPagina > 1){
+      this.paginador.push({
+        label: '<<',
+        pagina: '1'
+      });
+      this.paginador.push({
+        label: '<',
+        pagina: paginaAtual > 1 ? paginaAtual - 1 : 1
+      });
+      const arvorePaginacao = [
+        {
+          paginadorBloco: (paginaAtual - 3) > 0 ? paginaAtual - 3 : 0,
+          peso:4
+        },
+        {
+          paginadorBloco: (paginaAtual - 2) > 0 ? paginaAtual - 2 : 0,
+          peso:5
+        },
+        {
+          paginadorBloco: (paginaAtual - 1) > 0 ? paginaAtual - 1 : 0,
+          peso:9
+        },
+        {
+          paginadorBloco: paginaAtual,
+          peso:10
+        },
+        {
+          paginadorBloco: (paginaAtual + 1) > ultimaPagina ? 0 : paginaAtual + 1,
+          peso:8
+        },
+        {
+          paginadorBloco: (paginaAtual + 2) > ultimaPagina ? 0 : paginaAtual + 2,
+          peso:7
+        },
+        {
+          paginadorBloco: (paginaAtual + 3) > ultimaPagina ? 0 : paginaAtual + 3,
+          peso:6
+        }
+      ]
+      let maximoPesoLista = [];
+      arvorePaginacao.forEach((folha) => {
+        if (folha.paginadorBloco !== 0) {
+          if (maximoPesoLista.length < 4)
+            maximoPesoLista.push(folha.peso);
+          else {
+            let listaMinima = Math.min(...maximoPesoLista);
+            if(folha.peso > listaMinima){
+              let indice = maximoPesoLista.indexOf(listaMinima);
+              maximoPesoLista[indice] = folha.peso;
+            }
+          }            
+        }
+      });
+      arvorePaginacao.forEach((folha)=>{
+        if(maximoPesoLista.includes(folha.peso)){
+          this.paginador.push({
+            label: folha.paginadorBloco,
+            pagina: folha.paginadorBloco
+          });
+        }         
+      });
+      this.paginador.push({
+        label: '>',
+        pagina: paginaAtual + 1 < ultimaPagina ? paginaAtual + 1 : ultimaPagina
+      });
+      this.paginador.push({
+        label: '>>',
+        pagina: ultimaPagina
+      });
+    }
   }
 }
