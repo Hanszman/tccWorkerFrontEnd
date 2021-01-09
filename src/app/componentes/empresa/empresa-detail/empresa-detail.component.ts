@@ -22,8 +22,7 @@ export class EmpresaDetailComponent implements OnInit {
     titulo: 'empresa',
     cabecalhos: [
       '',
-    ],
-    paginacao: 1
+    ]
   };
   @Input() configTelefone = {
     titulo: 'telefone',
@@ -57,7 +56,7 @@ export class EmpresaDetailComponent implements OnInit {
     private http: HttpClient
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
-    this.url = 'empresa/read/:' + this.id;
+    this.url = 'empresa/read';
     this.urlTelefone = 'telefone/read';
     this.urlEndereco = 'endereco/read';
     this.urlEmail = 'email/read';
