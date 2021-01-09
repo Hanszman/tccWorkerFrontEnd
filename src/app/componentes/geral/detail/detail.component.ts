@@ -12,11 +12,8 @@ export class DetailComponent implements OnInit {
   @Input() config;
   @Input() url: string;
   @Input() id;
-  @Input() duasColunas = false;
   conjuntoDados;
   traducoes;
-  par = [];
-  impar = [];
 
   constructor(
     private service: DetailService,
