@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DetailService } from './detail.service';
 import { TranslateService } from '@ngx-translate/core';
 
