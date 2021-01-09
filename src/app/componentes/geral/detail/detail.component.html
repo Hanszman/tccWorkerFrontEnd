@@ -1,8 +1,10 @@
 <div class="row">
-    <img [hidden]="!existeFoto" class="details" src="" width="200">
-    <div class="details" *ngFor="let item of config.cabecalhos">
-        <div *ngFor="let linha of conjuntoDados">
-            <p><b>{{ tradutor(item) }}:</b> {{ linha[item] }}</p>
+    <img [hidden]="!existeFoto" class="details" src="assets/images/user_group_icon.png" width="200">
+    <div class="details">
+        <div *ngFor="let item of config.cabecalhos">
+            <div *ngFor="let linha of conjuntoDados">
+                <div><b>{{ tradutor(item) }}:</b> {{ linha[item] }}</div>
+            </div>
         </div>
     </div>
 </div>

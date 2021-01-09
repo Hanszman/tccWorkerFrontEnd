@@ -6,17 +6,7 @@
     <p>Detalhes da empresa:</p>
 </div>
 
-<div class="row" *ngFor="let item of detalhesEmpresa">
-    <img class="details" src="assets/images/user_group_icon.png" width="200">
-    <p class="details">
-        <strong>Nome:</strong> {{ item.dsc_nome }}<br>
-        <strong>CNPJ:</strong> {{ item.dsc_cnpj }}<br>
-        <strong>Data de Fundação:</strong> {{ item.dat_fundacao }}<br>
-        <strong>Quantidade de Colaboradores:</strong> {{ item.qtd_usuario }}<br>
-    </p>
-</div>
-
-<app-detail [config]="config" [url]="url" [id]="id"></app-detail>
+<app-detail [config]="config" [url]="url" [id]="id" [existeFoto]=true></app-detail>
 
 <div class="row table-responsive div-table">
     <h4>Telefones</h4>
