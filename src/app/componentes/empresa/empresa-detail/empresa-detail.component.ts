@@ -21,7 +21,10 @@ export class EmpresaDetailComponent implements OnInit {
   @Input() config = {
     titulo: 'empresa',
     cabecalhos: [
-      '',
+      'dsc_nome',
+      'dsc_cnpj',
+      'dat_fundacao',
+      'qtd_usuario'
     ]
   };
   @Input() configTelefone = {

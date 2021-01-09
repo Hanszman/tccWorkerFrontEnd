@@ -12,6 +12,7 @@ export class DetailComponent implements OnInit {
   @Input() config;
   @Input() url: string;
   @Input() id;
+  @Input() existeFoto = false;
   conjuntoDados;
   traducoes;
 
