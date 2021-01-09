@@ -35,7 +35,18 @@ export class DetailComponent implements OnInit {
   }
 
   mapearDados(obj){
-    console.log(obj);
+    if (obj.data) {
+      this.conjuntoDados = [];
+      obj.data.forEach(elemento => {
+        this.config.cabecalhos.forEach(item => {
+          if (!(item in elemento))
+            throw "Formato incorreto de dados";
+        });
+        this.conjuntoDados.push(elemento);
+      });
+    }
+    else
+      throw "Objeto não possui conjunto de dados!"
   }
 
   traduzir(){

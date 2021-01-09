@@ -1,6 +1,6 @@
 <div class="row">
     <img [hidden]="!existeFoto" class="details" src="" width="200">
-    <div class="details" *ngFor="let item of config.calendario">
+    <div class="details" *ngFor="let item of config.cabecalhos">
         <div *ngFor="let linha of conjuntoDados">
             <p><b>{{ tradutor(item) }}:</b> {{ linha[item] }}</p>
         </div>

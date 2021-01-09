@@ -1,6 +1,11 @@
 {
     "usuario": {},
-    "empresa": {},
+    "empresa": {
+        "dsc_nome": "Nome",
+        "dsc_cnpj": "CNPJ",
+        "dat_fundacao": "Data de Fundação",
+        "qtd_usuario": "Quantidade de Colaboradores"
+    },
     "cliente": {},
     "fornecedor": {},
     "setor": {},
