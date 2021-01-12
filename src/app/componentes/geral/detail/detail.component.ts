@@ -62,4 +62,8 @@ export class DetailComponent implements OnInit {
       return '';
     }
   }
+
+  salvarPDF(){
+    window.print();
+  }
 }

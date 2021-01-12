@@ -1,5 +1,5 @@
 <table class="table">
-    <tr [hidden]="!existeFiltros">
+    <tr [hidden]="!existeFiltros" class="no-print">
         <td [hidden]="!existeBotaoCriar">
             <button class="btn btn-success" type="button" (click)="emiteClicaBotaoCriar()" title="{{ 'geral.table.novo' | translate }}">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
@@ -18,13 +18,13 @@
     <tr>
         <th [hidden]="!existeContagem">#</th>
         <th *ngFor="let item of config.cabecalhos" class="clickable" (click)="ordenarCabecalho(item)">{{ tradutor(item) }}&nbsp;&nbsp;<i id="icone_{{item}}" class="direcao"></i></th>
-        <th [hidden]="!existeDetalhes">{{ 'geral.table.detalhar' | translate }}</th>
+        <th [hidden]="!existeDetalhes" class="no-print">{{ 'geral.table.detalhar' | translate }}</th>
         <th [hidden]="existeDetalhes"></th>
     </tr>
     <tr *ngFor="let linha of conjuntoDados; let i = index" (click)="emiteSelecionaLinha(linha)">
         <td [hidden]="!existeContagem">{{ i+1 + (config.paginacao * (paginaAtual-1)) }}</td>
         <td *ngFor="let item of config.cabecalhos">{{ linha[item] }}</td>
-        <td [hidden]="!existeDetalhes"><i class="fa fa-info-circle last-color clickable info" aria-hidden="true"></i></td>
+        <td [hidden]="!existeDetalhes" class="no-print"><i class="fa fa-info-circle last-color clickable info" aria-hidden="true"></i></td>
         <td [hidden]="existeDetalhes"></td>
     </tr>
 </table>
