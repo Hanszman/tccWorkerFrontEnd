@@ -1,1 +1,4 @@
-<p>form works!</p>
+<div class="row right-end">
+    <a *ngIf="id" [routerLink]="['../../read']" class="btn btn-outline-success" title="Voltar"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+    <a *ngIf="!id" [routerLink]="['../read']" class="btn btn-outline-success" title="Voltar"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+</div>
