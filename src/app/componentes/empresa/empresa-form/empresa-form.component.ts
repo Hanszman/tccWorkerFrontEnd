@@ -20,6 +20,12 @@ export class EmpresaFormComponent implements OnInit {
       'dat_fundacao',
       'arq_foto'
     ],
+    tipos: [
+      'text',
+      'number',
+      'date',
+      'file'
+    ],
     obrigatorios: [
       'dsc_nome'
     ]
