@@ -4,6 +4,7 @@
         "dsc_nome": "Nome",
         "dsc_cnpj": "CNPJ",
         "dat_fundacao": "Data de Fundação",
+        "arq_foto": "Foto",
         "qtd_usuario": "Quantidade de Colaboradores"
     },
     "cliente": {},

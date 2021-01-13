@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-empresa-form',
@@ -10,17 +8,27 @@ import { environment } from '../../../../environments/environment';
 })
 export class EmpresaFormComponent implements OnInit {
 
-  apiURL = environment.apiURL;
   id;
+  url;
   operacao = 'Cadastrar';
   mensagem = 'Cadastre uma nova empresa'
+  @Input() config = {
+    titulo: 'empresa',
+    cabecalhos: [
+      'dsc_nome',
+      'dsc_cnpj',
+      'dat_fundacao',
+      'arq_foto'
+    ]
+  };
 
   constructor(
-    private route: ActivatedRoute,
-    private http: HttpClient
+    private route: ActivatedRoute
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
+    this.url = 'empresa/create';
     if(this.id !== undefined) {
+      this.url = 'empresa/update';
       this.operacao = 'Editar'
       this.mensagem = 'Edite a empresa selecionada'
     }
