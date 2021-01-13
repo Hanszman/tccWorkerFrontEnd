@@ -5,7 +5,7 @@
 
 <form method="POST" action="/" id="idForm" [formGroup]="objetoFormGroup" (ngSubmit)="enviar()">
     <div *ngFor="let item of config.cabecalhos" class="form-group">
-        <label><b>{{item}}:</b></label>
-        <input type="text" class="form-control" placeholder="{{ item }}">
+        <label for="{{item}}"><b>{{ tradutor(item) }}:</b></label>
+        <input id="{{item}}" type="text" class="form-control" placeholder="{{ tradutor(item) }}">
     </div>
 </form>
