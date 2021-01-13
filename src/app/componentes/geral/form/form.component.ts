@@ -1,6 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
 import { FormService } from './form.service';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -14,18 +12,15 @@ export class FormComponent implements OnInit {
   @Input() config;
   @Input() url: string;
   @Input() id;
-  objetoFormGroup: any;
   registro: any = {};
   traducoes;
 
   constructor(
-    private formBuilder: FormBuilder,
     private service: FormService,
     private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
-    this.objetoFormGroup = this.formBuilder.group({});
     this.traduzir().subscribe((traducoes) => {
       this.traducoes = traducoes;
     })
