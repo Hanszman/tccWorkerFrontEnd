@@ -22,9 +22,13 @@ export class EmpresaFormComponent implements OnInit {
     ],
     tipos: [
       'text',
-      'number',
+      'text',
       'date',
       'file'
+    ],
+    mascaras: [
+      '',
+      '00.000.000/0000-00',
     ],
     obrigatorios: [
       'dsc_nome'

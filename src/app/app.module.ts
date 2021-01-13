@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgxMaskModule } from 'ngx-mask';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -77,6 +78,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgxMaskModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
