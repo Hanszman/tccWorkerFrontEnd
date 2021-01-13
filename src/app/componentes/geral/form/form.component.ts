@@ -12,6 +12,7 @@ export class FormComponent implements OnInit {
   @Input() config;
   @Input() url: string;
   @Input() id;
+  @Input() operacao;
   registro: any = {};
   traducoes;
 
@@ -27,7 +28,7 @@ export class FormComponent implements OnInit {
   }
 
   enviar(){
-
+    console.log(this.registro)
   }
 
   traduzir(){
