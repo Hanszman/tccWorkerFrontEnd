@@ -6,7 +6,7 @@
 <form (ngSubmit)="enviar()" #form="ngForm">
     <div *ngFor="let item of config.cabecalhos; let i = index" class="form-group">
         <label for="{{item}}"><b>{{ tradutor(item) }}:</b></label>
-        <input *ngIf="config.tipos[i] !== 'file'" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" mask="{{config.mascaras[i]}}" class="form-control" placeholder="{{ tradutor(item) }}" [(ngModel)]="registro[item]">
+        <input *ngIf="config.tipos[i] !== 'file'" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" class="form-control" placeholder="{{ tradutor(item) }}" [(ngModel)]="registro[item]" mask="{{config.mascaras[i]}}">
         <input *ngIf="config.tipos[i] == 'file'" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" class="form-control" placeholder="{{ tradutor(item) }}" [(ngModel)]="registro[item]">
         <div id="msg_{{item}}"></div>
     </div>
