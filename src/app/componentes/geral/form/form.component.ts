@@ -9,6 +9,8 @@ import { FormBuilder } from '@angular/forms';
 })
 export class FormComponent implements OnInit {
 
+  @Input() config;
+  @Input() url: string;
   @Input() id;
   objetoFormGroup: any
 
