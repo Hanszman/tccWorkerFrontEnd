@@ -7,6 +7,7 @@
     <div *ngFor="let item of config.cabecalhos; let i = index" class="form-group">
         <label for="{{item}}"><b>{{ tradutor(item) }}:</b></label>
         <input id="{{item}}" name="{{item}}" type="text" class="form-control" placeholder="{{ tradutor(item) }}" [(ngModel)]="registro[item]">
+        <div id="msg_{{item}}"></div>
     </div>
     <button class="btn btn-success btn-lg btn-block" type="submit">{{operacao}} <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
 </form>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormService } from './form.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ValidateService } from '../../geral/validate/validate.service';
 
 @Component({
   selector: 'app-form',
@@ -18,7 +19,8 @@ export class FormComponent implements OnInit {
 
   constructor(
     private service: FormService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private validate: ValidateService
   ) { }
 
   ngOnInit(): void {
@@ -28,6 +30,14 @@ export class FormComponent implements OnInit {
   }
 
   enviar(){
+    for (let i = 0; i < this.config.obrigatorios.length; i++)
+      this.validate.validaCampo(this.registro[this.config.obrigatorios[i]], this.config.obrigatorios[i], 'Informe ' + this.tradutor(this.config.obrigatorios[i]) + '!');
+
+    for (let i = 0; i < this.config.obrigatorios.length; i++) {
+      if (this.registro[this.config.obrigatorios[i]] == undefined || this.registro[this.config.obrigatorios[i]] == '')
+        return false;
+    }
+
     console.log(this.registro)
   }
 

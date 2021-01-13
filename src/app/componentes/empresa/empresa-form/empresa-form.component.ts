@@ -19,6 +19,9 @@ export class EmpresaFormComponent implements OnInit {
       'dsc_cnpj',
       'dat_fundacao',
       'arq_foto'
+    ],
+    obrigatorios: [
+      'dsc_nome'
     ]
   };
 
