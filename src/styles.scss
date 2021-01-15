@@ -75,6 +75,9 @@
     text-align: center;
     width: 100%;
 }
+.form-bottom {
+    margin-bottom: 20px;
+}
 @media print {
     button, a, input, .no-print {
         display: none !important;

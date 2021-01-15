@@ -12,6 +12,7 @@ export class EmpresaFormComponent implements OnInit {
   url;
   operacao = 'Cadastrar';
   mensagem = 'Cadastre uma nova empresa'
+  fotoUrl = 'assets/images/user_group_icon.png'
   @Input() config = {
     titulo: 'empresa',
     cabecalhos: [

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormService } from './form.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ValidateService } from '../../geral/validate/validate.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-form',
@@ -14,8 +15,12 @@ export class FormComponent implements OnInit {
   @Input() url: string;
   @Input() id;
   @Input() operacao;
+  @Input() existeFoto = false;
+  @Input() fotoUrl: string;
   registro: any = {};
   traducoes;
+  voltarLink = "../read";
+  apiURL = environment.apiURL;
 
   constructor(
     private service: FormService,
@@ -27,6 +32,8 @@ export class FormComponent implements OnInit {
     this.traduzir().subscribe((traducoes) => {
       this.traducoes = traducoes;
     })
+    if (this.id)
+      this.voltarLink = "../../read";
   }
 
   enviar(){
@@ -39,6 +46,10 @@ export class FormComponent implements OnInit {
     }
 
     console.log(this.registro)
+  }
+
+  deletar(){
+
   }
 
   traduzir(){
