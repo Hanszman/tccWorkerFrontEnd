@@ -48,7 +48,11 @@ export class FormComponent implements OnInit {
         return false;
     }
 
-    console.log(this.registro)
+    if (this.id)
+      console.log('edita');
+    else
+      console.log('cadastra');
+    console.log(this.registro);
   }
 
   deletar(){

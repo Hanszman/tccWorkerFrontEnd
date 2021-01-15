@@ -22,4 +22,8 @@ export class FormService {
     console.log(data);
     return this.http.post(this.apiURL + url, data, {observe: 'response'});
   }
+
+  // postCadastrar(){}
+  // postEditar(){}
+  // postDeletar(){}
 }
