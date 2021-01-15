@@ -5,16 +5,16 @@
 <form (ngSubmit)="enviar()" #form="ngForm" class="form-bottom">
     <div *ngFor="let item of config.cabecalhos; let i = index" class="form-group">
         <label for="{{item}}"><b>{{ tradutor(item) }}:</b></label>
-        <input *ngIf="config.mascaras[i] !== '' && config.mascaras[i] !== undefined" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" class="form-control" placeholder="{{ tradutor(item) }}" [(ngModel)]="registro[item]" mask="{{config.mascaras[i]}}">
-        <input *ngIf="config.mascaras[i] == '' || config.mascaras[i] == undefined" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" class="form-control" placeholder="{{ tradutor(item) }}" [(ngModel)]="registro[item]">
+        <input *ngIf="config.tipos[i] !== 'file'" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" class="form-control" placeholder="{{ tradutor(item) }}" [(ngModel)]="registro[item]" mask="{{config.mascaras[i]}}">
+        <input *ngIf="config.tipos[i] == 'file'" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" class="form-control" placeholder="{{ tradutor(item) }}" [(ngModel)]="registro[item]" (change)="carregarArquivo($event)">
         <div id="msg_{{item}}"></div>
     </div>
     <div [hidden]="!existeFoto" class="form-group">
         <img [src]="fotoUrl" id="imgPrevia" name="imgPrevia" class="img-fluid" alt="Foto" width="200">
     </div>
     <div class="row menu-buttons">
-        <a class="btn btn-danger col-sm-4" (click)="deletar()"><i class="fa fa-trash" aria-hidden="true"></i> Deletar</a>
-        <a class="btn btn-outline-secondary col-sm-4" [routerLink]="voltarLink"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
-        <button class="btn btn-success col-sm-4" type="submit">{{operacao}} <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+        <a class="btn btn-danger {{classeBotoes}}" *ngIf="id" (click)="deletar()"><i class="fa fa-trash" aria-hidden="true"></i> Deletar</a>
+        <a class="btn btn-outline-secondary {{classeBotoes}}" [routerLink]="voltarLink"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar</a>
+        <button class="btn btn-success {{classeBotoes}}" type="submit">{{operacao}} <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
     </div>
 </form>

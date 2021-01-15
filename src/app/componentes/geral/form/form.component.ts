@@ -20,6 +20,7 @@ export class FormComponent implements OnInit {
   registro: any = {};
   traducoes;
   voltarLink = "../read";
+  classeBotoes = "col-sm-6";
   apiURL = environment.apiURL;
 
   constructor(
@@ -32,8 +33,10 @@ export class FormComponent implements OnInit {
     this.traduzir().subscribe((traducoes) => {
       this.traducoes = traducoes;
     })
-    if (this.id)
+    if (this.id) {
       this.voltarLink = "../../read";
+      this.classeBotoes = "col-sm-4"
+    }
   }
 
   enviar(){
@@ -49,6 +52,10 @@ export class FormComponent implements OnInit {
   }
 
   deletar(){
+
+  }
+
+  carregarArquivo(event){
 
   }
 
