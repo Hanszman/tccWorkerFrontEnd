@@ -16,7 +16,7 @@ export class FormComponent implements OnInit {
   @Input() id;
   @Input() operacao;
   @Input() existeFoto = false;
-  @Input() fotoUrl: string;
+  @Input() fotoUrl;
   registro: any = {};
   traducoes;
   voltarLink = "../read";
@@ -56,7 +56,16 @@ export class FormComponent implements OnInit {
   }
 
   carregarArquivo(event){
-
+    if (event.target.files.length > 0) {
+      let campoArquivo = event.target;
+      const leitor = new FileReader();
+      const arquivo = campoArquivo.files[0];
+      leitor.readAsDataURL(arquivo);
+      leitor.onload = () => {
+        const dataUrl = leitor.result;
+        this.fotoUrl = dataUrl;
+      }
+    }
   }
 
   traduzir(){
