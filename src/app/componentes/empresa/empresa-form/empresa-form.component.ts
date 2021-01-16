@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export class EmpresaFormComponent implements OnInit {
 
   id;
-  url;
+  url = 'empresa';
   operacao = 'Cadastrar';
   mensagem = 'Cadastre uma nova empresa'
   fotoUrl = 'assets/images/user_group_icon.png'
@@ -40,9 +40,7 @@ export class EmpresaFormComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
-    this.url = 'empresa/create';
     if(this.id !== undefined) {
-      this.url = 'empresa/update';
       this.operacao = 'Editar'
       this.mensagem = 'Edite a empresa selecionada'
     }

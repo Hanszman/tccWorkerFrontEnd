@@ -51,19 +51,21 @@ export class FormComponent implements OnInit {
     console.log(this.registro);
 
     if (!this.id) {
-      this.service.postCadastrar(this.url, this.registro).subscribe(resp => {
+      this.service.postCadastrar(this.url + '/create', this.registro).subscribe(resp => {
         console.log(resp);
       });
     }
     else {
-      this.service.putEditar(this.url, this.id, this.registro).subscribe(resp => {
+      this.service.putEditar(this.url + '/update', this.id, this.registro).subscribe(resp => {
         console.log(resp);
       });
     }
   }
 
   deletar(){
-
+    // this.service.delete(this.url + '/delete', this.id).subscribe(resp => {
+    //   console.log(resp);
+    // });
   }
 
   carregarArquivo(event){
