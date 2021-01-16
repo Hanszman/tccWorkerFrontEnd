@@ -53,16 +53,10 @@ export class FormComponent implements OnInit {
         return false;
     }
     this.registro['id_usuario_logado'] = this.id_usuario_logado;
-    console.log(this.registro);
+    console.log(this.registro); // apagar depois
     if (!this.id) {
       this.service.postCadastrar(this.url + '/create', this.registro).subscribe(resp => {
-        if (resp.body['data']['sucesso']){
-          alert(resp.body['data']['mensagem']);
-          this.router.navigate([this.url + '/read']);
-        }
-        else {
-          alert(resp.body['data']['mensagem']);
-        }
+        this.verificarResposta(resp);
       });
     }
     else {
@@ -74,14 +68,18 @@ export class FormComponent implements OnInit {
 
   deletar(){
     this.service.delete(this.url + '/delete', this.id).subscribe(resp => {
-      if (resp.body['data']['sucesso']){
-        alert(resp.body['data']['mensagem']);
-        this.router.navigate([this.url + '/read']);
-      }
-      else {
-        alert(resp.body['data']['mensagem']);
-      }
+      this.verificarResposta(resp);
     });
+  }
+
+  verificarResposta(resp){
+    if (resp.body['data']['sucesso']){
+      alert(resp.body['data']['mensagem']);
+      this.router.navigate([this.url + '/read']);
+    }
+    else {
+      alert(resp.body['data']['mensagem']);
+    }
   }
 
   carregarArquivo(event){
