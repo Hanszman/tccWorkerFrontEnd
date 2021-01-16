@@ -68,6 +68,10 @@ export class FormComponent implements OnInit {
       leitor.onload = () => {
         const dataUrl = leitor.result;
         this.fotoUrl = dataUrl;
+        this.registro['dados_arq_foto'] = {
+          nome_arquivo: arquivo.name,
+          imagem_base64: leitor.result.toString().split(',')[1]
+        }
       }
     }
   }
