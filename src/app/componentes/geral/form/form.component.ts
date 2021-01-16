@@ -21,6 +21,7 @@ export class FormComponent implements OnInit {
   traducoes;
   voltarLink = "../read";
   classeBotoes = "col-sm-6";
+  padraoFotoURL;
   apiURL = environment.apiURL;
 
   constructor(
@@ -37,6 +38,7 @@ export class FormComponent implements OnInit {
       this.voltarLink = "../../read";
       this.classeBotoes = "col-sm-4"
     }
+    this.padraoFotoURL = this.fotoUrl;
   }
 
   enviar(){
@@ -82,6 +84,11 @@ export class FormComponent implements OnInit {
           imagem_base64: leitor.result.toString().split(',')[1]
         }
       }
+    }
+    else {
+      this.fotoUrl = this.padraoFotoURL;
+      this.registro['dados_arq_foto'] = undefined;
+      this.registro['arq_foto'] = undefined;
     }
   }
 
