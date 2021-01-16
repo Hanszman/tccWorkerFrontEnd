@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormService } from './form.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ValidateService } from '../../geral/validate/validate.service';
@@ -26,6 +27,7 @@ export class FormComponent implements OnInit {
   apiURL = environment.apiURL;
 
   constructor(
+    private router: Router,
     private service: FormService,
     private translate: TranslateService,
     private validate: ValidateService
@@ -54,7 +56,13 @@ export class FormComponent implements OnInit {
     console.log(this.registro);
     if (!this.id) {
       this.service.postCadastrar(this.url + '/create', this.registro).subscribe(resp => {
-        console.log(resp);
+        if (resp.body['data']['sucesso']){
+          alert(resp.body['data']['mensagem']);
+          this.router.navigate([this.voltarLink]);
+        }
+        else {
+          alert(resp.body['data']['mensagem']);
+        }
       });
     }
     else {
