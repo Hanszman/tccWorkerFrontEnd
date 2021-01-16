@@ -58,7 +58,7 @@ export class FormComponent implements OnInit {
       this.service.postCadastrar(this.url + '/create', this.registro).subscribe(resp => {
         if (resp.body['data']['sucesso']){
           alert(resp.body['data']['mensagem']);
-          this.router.navigate([this.voltarLink]);
+          this.router.navigate([this.url + '/read']);
         }
         else {
           alert(resp.body['data']['mensagem']);
