@@ -73,9 +73,15 @@ export class FormComponent implements OnInit {
   }
 
   deletar(){
-    // this.service.delete(this.url + '/delete', this.id).subscribe(resp => {
-    //   console.log(resp);
-    // });
+    this.service.delete(this.url + '/delete', this.id).subscribe(resp => {
+      if (resp.body['data']['sucesso']){
+        alert(resp.body['data']['mensagem']);
+        this.router.navigate([this.url + '/read']);
+      }
+      else {
+        alert(resp.body['data']['mensagem']);
+      }
+    });
   }
 
   carregarArquivo(event){
