@@ -22,7 +22,7 @@ export class FormComponent implements OnInit {
   voltarLink = "../read";
   classeBotoes = "col-sm-6";
   padraoFotoURL;
-  id_usuario = window.localStorage.getItem('id_usuario');
+  id_usuario_logado = window.localStorage.getItem('id_usuario');
   apiURL = environment.apiURL;
 
   constructor(
@@ -50,7 +50,7 @@ export class FormComponent implements OnInit {
       if (this.registro[this.config.obrigatorios[i]] == undefined || this.registro[this.config.obrigatorios[i]] == '')
         return false;
     }
-    this.registro['id_usuario'] = this.id_usuario;
+    this.registro['id_usuario_logado'] = this.id_usuario_logado;
     console.log(this.registro);
     if (!this.id) {
       this.service.postCadastrar(this.url + '/create', this.registro).subscribe(resp => {
