@@ -68,7 +68,6 @@ export class FormComponent implements OnInit {
         return false;
     }
     this.registro['id_usuario_logado'] = this.id_usuario_logado;
-    console.log(this.registro); // apagar depois
     if (!this.id) {
       this.service.postCadastrar(this.url + '/create', this.registro).subscribe(resp => {
         this.verificarResposta(resp);
