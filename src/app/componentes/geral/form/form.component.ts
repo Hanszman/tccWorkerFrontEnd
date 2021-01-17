@@ -41,8 +41,13 @@ export class FormComponent implements OnInit {
       this.voltarLink = "../../read";
       this.classeBotoes = "col-sm-4"
       this.service.getConsultar(this.url + '/read', this.id).subscribe(resp => {
-        for(let i = 0; i < this.config.cabecalhos.length; i++)
+        for(let i = 0; i < this.config.cabecalhos.length; i++) {
           this.registro[this.config.cabecalhos[i]] = resp.body['data'][0][this.config.cabecalhos[i]];
+          if (this.config.cabecalhos[i] == 'arq_foto' && this.existeFoto) {
+            this.fotoUrl = this.apiURL + this.registro['arq_foto'];
+            this.registro['arq_foto'] = this.registro['arq_foto'].replace('./files/img/', '');
+          }
+        }
       });
     }
     this.padraoFotoURL = this.fotoUrl;
