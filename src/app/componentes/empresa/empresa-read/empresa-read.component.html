@@ -15,9 +15,9 @@
 </form>
 
 <div class="row group-card">
-  <div *ngFor="let item of listaEmpresas" class="col-sm-4">
+  <div *ngFor="let item of listaEmpresas; let i = index" class="col-sm-4">
     <div class="card">
-      <img src="assets/images/user_group_icon.png" class="card-img-top">
+      <img [src]="fotoURL[i]" class="card-img-top">
       <a [routerLink]="['../update/', item.id_empresa]" class="btn btn-light right-top" title="Editar empresa"><i class="fa fa-pencil" aria-hidden="true"></i></a>
       <div class="card-body">
         <h5 class="card-title">

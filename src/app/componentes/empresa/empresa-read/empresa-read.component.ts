@@ -13,6 +13,7 @@ export class EmpresaReadComponent implements OnInit {
 
   apiURL = environment.apiURL;
   listaEmpresas: any;
+  fotoURL = [];
 
   constructor(
     private http: HttpClient,
@@ -35,6 +36,12 @@ export class EmpresaReadComponent implements OnInit {
       observe: 'response'
     }).subscribe(data => {
       this.listaEmpresas = data.body['data'];
+      for(let i = 0; i < this.listaEmpresas.length; i++){
+        if(this.listaEmpresas[i]['arq_foto'] !== null)
+          this.fotoURL[i] = this.apiURL + this.listaEmpresas[i]['arq_foto'];
+        else
+          this.fotoURL[i] = 'assets/images/user_group_icon.png';
+      }
     });
   }
 
