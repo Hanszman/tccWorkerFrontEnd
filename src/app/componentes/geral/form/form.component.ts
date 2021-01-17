@@ -43,14 +43,17 @@ export class FormComponent implements OnInit {
       this.service.getConsultar(this.url + '/read', this.id).subscribe(resp => {
         for(let i = 0; i < this.config.cabecalhos.length; i++) {
           if (this.config.cabecalhos[i] == 'arq_foto' && this.existeFoto) {
-            if (resp.body['data'][0][this.config.cabecalhos[i]] !== null)
+            if (resp.body['data'][0][this.config.cabecalhos[i]] !== null) {
               this.fotoUrl = this.apiURL + resp.body['data'][0][this.config.cabecalhos[i]];
+              this.registro['old_arq_foto'] = resp.body['data'][0][this.config.cabecalhos[i]];
+            }
             else
               this.fotoUrl = this.padraoFotoURL;
           }
           else
             this.registro[this.config.cabecalhos[i]] = resp.body['data'][0][this.config.cabecalhos[i]];
         }
+        console.log(this.registro)
       });
     }
     this.padraoFotoURL = this.fotoUrl;
