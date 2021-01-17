@@ -37,6 +37,7 @@ export class FormComponent implements OnInit {
     this.traduzir().subscribe((traducoes) => {
       this.traducoes = traducoes;
     })
+    this.padraoFotoURL = this.fotoUrl;
     if (this.id) {
       this.voltarLink = "../../read";
       this.classeBotoes = "col-sm-4"
@@ -56,7 +57,6 @@ export class FormComponent implements OnInit {
         console.log(this.registro)
       });
     }
-    this.padraoFotoURL = this.fotoUrl;
   }
 
   enviar(){
@@ -98,6 +98,7 @@ export class FormComponent implements OnInit {
   }
 
   carregarArquivo(event){
+    this.registro['old_arq_foto'] = undefined;
     if (event.target.files.length > 0) {
       let campoArquivo = event.target;
       const leitor = new FileReader();
