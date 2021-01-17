@@ -14,7 +14,7 @@ export class FormService {
 
   getConsultar(url, id): Observable<HttpResponse<any>> {
     return this.http.get<any>(
-      this.apiURL + url + `/${id}`, {observe: 'response'}
+      this.apiURL + url + `/${id}?isForm=1`, {observe: 'response'}
     );
   }
 
