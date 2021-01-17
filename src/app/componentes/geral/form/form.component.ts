@@ -40,6 +40,10 @@ export class FormComponent implements OnInit {
     if (this.id) {
       this.voltarLink = "../../read";
       this.classeBotoes = "col-sm-4"
+      this.service.getConsultar(this.url + '/read', this.id).subscribe(resp => {
+        for(let i = 0; i < this.config.cabecalhos.length; i++)
+          this.registro[this.config.cabecalhos[i]] = resp.body['data'][0][this.config.cabecalhos[i]];
+      });
     }
     this.padraoFotoURL = this.fotoUrl;
   }
@@ -61,7 +65,7 @@ export class FormComponent implements OnInit {
     }
     else {
       this.service.putEditar(this.url + '/update', this.id, this.registro).subscribe(resp => {
-        console.log(resp);
+        this.verificarResposta(resp);
       });
     }
   }

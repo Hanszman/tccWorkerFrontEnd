@@ -12,6 +12,12 @@ export class FormService {
 
   constructor(private http: HttpClient) { }
 
+  getConsultar(url, id): Observable<HttpResponse<any>> {
+    return this.http.get<any>(
+      this.apiURL + url + `/${id}`, {observe: 'response'}
+    );
+  }
+
   postCadastrar(url, dados): Observable<HttpResponse<any>> {
     return this.http.post<any>(
       this.apiURL + url, dados, {observe: 'response'}
