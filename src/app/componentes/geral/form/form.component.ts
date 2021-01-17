@@ -54,7 +54,6 @@ export class FormComponent implements OnInit {
           else
             this.registro[this.config.cabecalhos[i]] = resp.body['data'][0][this.config.cabecalhos[i]];
         }
-        console.log(this.registro)
       });
     }
   }
