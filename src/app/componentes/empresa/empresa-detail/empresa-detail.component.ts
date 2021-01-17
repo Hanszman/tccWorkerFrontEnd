@@ -15,6 +15,7 @@ export class EmpresaDetailComponent implements OnInit {
   urlEndereco;
   urlEmail;
   parametros;
+  fotoUrl = 'assets/images/user_group_icon.png'
   @Input() config = {
     titulo: 'empresa',
     cabecalhos: [

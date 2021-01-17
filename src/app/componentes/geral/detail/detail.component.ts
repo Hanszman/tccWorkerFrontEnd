@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DetailService } from './detail.service';
 import { TranslateService } from '@ngx-translate/core';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-detail',
@@ -13,8 +14,10 @@ export class DetailComponent implements OnInit {
   @Input() url: string;
   @Input() id;
   @Input() existeFoto = false;
+  @Input() fotoUrl;
   conjuntoDados;
   traducoes;
+  apiURL = environment.apiURL;
 
   constructor(
     private service: DetailService,
@@ -44,6 +47,8 @@ export class DetailComponent implements OnInit {
         });
         this.conjuntoDados.push(elemento);
       });
+      if(this.conjuntoDados[0]['arq_foto'] !== null)
+        this.fotoUrl = this.apiURL + this.conjuntoDados[0]['arq_foto'];
     }
     else
       throw "Objeto não possui conjunto de dados!"
