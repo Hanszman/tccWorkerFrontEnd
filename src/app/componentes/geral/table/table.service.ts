@@ -13,7 +13,6 @@ export class TableService {
   constructor(private http: HttpClient) { }
 
   getTable(url, filtro): Observable<HttpResponse<any>> {
-    console.log(this.apiURL + url + `&${filtro}`);
     return this.http.get<any>(
       this.apiURL + url + `&${filtro}`, {observe: 'response'}
     );
