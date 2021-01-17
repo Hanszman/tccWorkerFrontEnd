@@ -6,7 +6,8 @@
     <div *ngFor="let item of config.cabecalhos; let i = index" class="form-group">
         <label for="{{item}}"><b>{{ tradutor(item) }}:</b></label>
         <input *ngIf="config.tipos[i] !== 'file'" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" class="form-control" placeholder="{{ tradutor(item) }}" [(ngModel)]="registro[item]" mask="{{config.mascaras[i]}}">
-        <input *ngIf="config.tipos[i] == 'file'" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" class="form-control" placeholder="{{ tradutor(item) }}" [(ngModel)]="registro[item]" (change)="carregarArquivo($event)">
+        <label for="{{item}}" *ngIf="config.tipos[i] == 'file'">&nbsp;<a class="btn btn-outline-success">Escolher Arquivo</a></label>
+        <input *ngIf="config.tipos[i] == 'file'" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" class="form-control file-type-input" placeholder="{{ tradutor(item) }}" [(ngModel)]="registro[item]" (change)="carregarArquivo($event)">
         <div id="msg_{{item}}"></div>
     </div>
     <div [hidden]="!existeFoto" class="form-group">

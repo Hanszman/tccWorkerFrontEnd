@@ -78,6 +78,9 @@
 .form-bottom {
     margin-bottom: 20px;
 }
+.file-type-input {
+    display: none !important;
+}
 @media print {
     button, a, input, .no-print {
         display: none !important;
