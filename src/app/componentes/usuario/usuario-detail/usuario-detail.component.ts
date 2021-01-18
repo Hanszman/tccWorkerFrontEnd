@@ -19,11 +19,11 @@ export class UsuarioDetailComponent implements OnInit {
     titulo: 'usuario',
     cabecalhos: [
       'dsc_nome_completo',
-      'dsc_cpf',
-      'dsc_rg',
-      'dat_nascimento',
+      'dsc_email',
       'dsc_login',
-      'dsc_email'
+      'dat_nascimento',
+      'dsc_cpf',
+      'dsc_rg'
     ]
   };
   @Input() configTelefone = {
