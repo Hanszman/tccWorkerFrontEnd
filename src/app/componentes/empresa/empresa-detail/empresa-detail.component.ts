@@ -8,7 +8,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EmpresaDetailComponent implements OnInit {
 
-  detalhesEmpresa: any;
   id;
   url;
   urlTelefone;

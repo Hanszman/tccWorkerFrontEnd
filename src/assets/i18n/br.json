@@ -1,5 +1,14 @@
 {
-    "usuario": {},
+    "usuario": {
+        "dsc_nome": "Nome",
+        "dsc_sobrenome": "Sobrenome",
+        "dsc_nome_completo": "Nome Completo",
+        "dsc_cpf": "CPF",
+        "dsc_rg": "RG",
+        "dat_nascimento": "Data de Nascimento",
+        "dsc_login": "Login",
+        "dsc_email": "E-mail"
+    },
     "empresa": {
         "dsc_nome": "Nome",
         "dsc_cnpj": "CNPJ",
