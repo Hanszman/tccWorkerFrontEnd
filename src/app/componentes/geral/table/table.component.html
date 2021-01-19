@@ -21,10 +21,10 @@
         <th [hidden]="!existeDetalhes" class="no-print">{{ 'geral.table.detalhar' | translate }}</th>
         <th [hidden]="existeDetalhes"></th>
     </tr>
-    <tr *ngFor="let linha of conjuntoDados; let i = index" (click)="emiteSelecionaLinha(linha)">
+    <tr *ngFor="let linha of conjuntoDados; let i = index">
         <td [hidden]="!existeContagem">{{ i+1 + (config.paginacao * (paginaAtual-1)) }}</td>
         <td *ngFor="let item of config.cabecalhos">{{ linha[item] }}</td>
-        <td [hidden]="!existeDetalhes" class="no-print"><i class="fa fa-info-circle last-color clickable info" aria-hidden="true"></i></td>
+        <td [hidden]="!existeDetalhes" class="no-print" (click)="emiteSelecionaLinha(linha)"><i class="fa fa-info-circle last-color clickable info" aria-hidden="true"></i></td>
         <td [hidden]="existeDetalhes"></td>
     </tr>
 </table>

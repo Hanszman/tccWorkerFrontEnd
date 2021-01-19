@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-setor-read',
@@ -20,12 +20,20 @@ export class SetorReadComponent implements OnInit {
   };
 
   constructor(
-    private route: ActivatedRoute
+    private router: Router
   ) {
     this.url = 'setor/read';
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
   }
 
   ngOnInit(): void {
+  }
+
+  selecionaLinha(linha){
+    this.router.navigate(['setor/read/', linha.id_setor]);
+  }
+
+  clicaBotaoCriar(){
+    this.router.navigate(['setor/create/']);
   }
 }

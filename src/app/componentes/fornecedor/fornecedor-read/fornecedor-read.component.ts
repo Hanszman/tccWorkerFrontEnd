@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-fornecedor-read',
@@ -21,12 +21,20 @@ export class FornecedorReadComponent implements OnInit {
   };
 
   constructor(
-    private route: ActivatedRoute
+    private router: Router
   ) {
     this.url = 'fornecedor/read';
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
   }
 
   ngOnInit(): void {
+  }
+
+  selecionaLinha(linha){
+    this.router.navigate(['fornecedor/read/', linha.id_fornecedor]);
+  }
+
+  clicaBotaoCriar(){
+    this.router.navigate(['fornecedor/create/']);
   }
 }

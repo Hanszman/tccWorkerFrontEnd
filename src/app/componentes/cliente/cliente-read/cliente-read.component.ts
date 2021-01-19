@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cliente-read',
@@ -21,12 +21,20 @@ export class ClienteReadComponent implements OnInit {
   };
 
   constructor(
-    private route: ActivatedRoute
+    private router: Router
   ) {
     this.url = 'cliente/read';
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
   }
 
   ngOnInit(): void {
+  }
+
+  selecionaLinha(linha){
+    this.router.navigate(['cliente/read/', linha.id_cliente]);
+  }
+
+  clicaBotaoCriar(){
+    this.router.navigate(['cliente/create/']);
   }
 }
