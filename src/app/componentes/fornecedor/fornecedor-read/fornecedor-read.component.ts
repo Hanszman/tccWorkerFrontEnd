@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-fornecedor-read',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FornecedorReadComponent implements OnInit {
 
-  constructor() { }
+  url;
+  parametros;
+  id_empresa = window.localStorage.getItem('id_empresa');
+  @Input() config = {
+    titulo: 'fornecedor',
+    cabecalhos: [
+      'dsc_nome',
+      'dsc_cnpj'
+    ]
+  };
+
+  constructor(
+    private route: ActivatedRoute
+  ) {
+    this.url = 'fornecedor/read';
+    this.parametros = 'id_empresa=' + this.id_empresa + '&';
+  }
 
   ngOnInit(): void {
   }
-
 }
