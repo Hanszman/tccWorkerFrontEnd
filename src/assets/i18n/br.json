@@ -19,9 +19,17 @@
         "arq_foto": "Foto",
         "qtd_usuario": "Quantidade de Colaboradores"
     },
-    "cliente": {},
-    "fornecedor": {},
-    "setor": {},
+    "cliente": {
+        "dsc_nome": "Nome",
+        "dsc_cnpj": "CNPJ"
+    },
+    "fornecedor": {
+        "dsc_nome": "Nome",
+        "dsc_cnpj": "CNPJ"
+    },
+    "setor": {
+        "dsc_setor": "Setor"
+    },
     "controle-ponto": {},
     "projeto": {},
     "quadro": {},
