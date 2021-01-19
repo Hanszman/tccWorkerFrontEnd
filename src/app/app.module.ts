@@ -21,7 +21,11 @@ import { EmpresaReadComponent } from './componentes/empresa/empresa-read/empresa
 import { EmpresaDetailComponent } from './componentes/empresa/empresa-detail/empresa-detail.component';
 import { EmpresaFormComponent } from './componentes/empresa/empresa-form/empresa-form.component';
 import { ClienteReadComponent } from './componentes/cliente/cliente-read/cliente-read.component';
+import { ClienteDetailComponent } from './componentes/cliente/cliente-detail/cliente-detail.component';
+import { ClienteFormComponent } from './componentes/cliente/cliente-form/cliente-form.component';
 import { FornecedorReadComponent } from './componentes/fornecedor/fornecedor-read/fornecedor-read.component';
+import { FornecedorDetailComponent } from './componentes/fornecedor/fornecedor-detail/fornecedor-detail.component';
+import { FornecedorFormComponent } from './componentes/fornecedor/fornecedor-form/fornecedor-form.component';
 import { SetorReadComponent } from './componentes/setor/setor-read/setor-read.component';
 import { ControlePontoReadComponent } from './componentes/controle-ponto/controle-ponto-read/controle-ponto-read.component';
 import { ProjetoReadComponent } from './componentes/projeto/projeto-read/projeto-read.component';
@@ -58,7 +62,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     EmpresaDetailComponent,
     EmpresaFormComponent,
     ClienteReadComponent,
+    ClienteDetailComponent,
+    ClienteFormComponent,
     FornecedorReadComponent,
+    FornecedorDetailComponent,
+    FornecedorFormComponent,
     SetorReadComponent,
     ControlePontoReadComponent,
     ProjetoReadComponent,

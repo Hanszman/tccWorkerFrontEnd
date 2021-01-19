@@ -14,7 +14,11 @@ import { EmpresaReadComponent } from './componentes/empresa/empresa-read/empresa
 import { EmpresaDetailComponent } from './componentes/empresa/empresa-detail/empresa-detail.component';
 import { EmpresaFormComponent } from './componentes/empresa/empresa-form/empresa-form.component';
 import { ClienteReadComponent } from './componentes/cliente/cliente-read/cliente-read.component';
+import { ClienteDetailComponent } from './componentes/cliente/cliente-detail/cliente-detail.component';
+import { ClienteFormComponent } from './componentes/cliente/cliente-form/cliente-form.component';
 import { FornecedorReadComponent } from './componentes/fornecedor/fornecedor-read/fornecedor-read.component';
+import { FornecedorDetailComponent } from './componentes/fornecedor/fornecedor-detail/fornecedor-detail.component';
+import { FornecedorFormComponent } from './componentes/fornecedor/fornecedor-form/fornecedor-form.component';
 import { SetorReadComponent } from './componentes/setor/setor-read/setor-read.component';
 import { ControlePontoReadComponent } from './componentes/controle-ponto/controle-ponto-read/controle-ponto-read.component';
 import { ProjetoReadComponent } from './componentes/projeto/projeto-read/projeto-read.component';
@@ -41,14 +45,14 @@ const routes: Routes = [
   { path: 'empresa/update/:id', component: EmpresaFormComponent, canActivate: [AuthGuard] },
   
   { path: 'cliente/read', component: ClienteReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'cliente/read/:id', component: ClienteDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'cliente/create', component: ClienteCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'cliente/update/:id', component: ClienteUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  { path: 'cliente/read/:id', component: ClienteDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  { path: 'cliente/create', component: ClienteFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  { path: 'cliente/update/:id', component: ClienteFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
 
   { path: 'fornecedor/read', component: FornecedorReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'fornecedor/read/:id', component: FornecedorDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'fornecedor/create', component: FornecedorCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'fornecedor/update/:id', component: FornecedorUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  { path: 'fornecedor/read/:id', component: FornecedorDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  { path: 'fornecedor/create', component: FornecedorFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  { path: 'fornecedor/update/:id', component: FornecedorFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
 
   { path: 'setor/read', component: SetorReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   // { path: 'setor/read/:id', component: SetorDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
