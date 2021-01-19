@@ -26,6 +26,7 @@ export class FormComponent implements OnInit {
   classeBotoes = "col-sm-6";
   padraoFotoURL;
   id_usuario_logado = window.localStorage.getItem('id_usuario');
+  id_empresa_logada = window.localStorage.getItem('id_empresa');
   apiURL = environment.apiURL;
 
   constructor(
@@ -72,6 +73,7 @@ export class FormComponent implements OnInit {
         return false;
     }
     this.registro['id_usuario_logado'] = this.id_usuario_logado;
+    this.registro['id_empresa_logada'] = this.id_empresa_logada;
     if (!this.id) {
       this.service.postCadastrar(this.url + '/create', this.registro).subscribe(resp => {
         this.verificarResposta(resp);
