@@ -16,7 +16,8 @@ export class FornecedorReadComponent implements OnInit {
     cabecalhos: [
       'dsc_nome',
       'dsc_cnpj'
-    ]
+    ],
+    paginacao: 5
   };
 
   constructor(

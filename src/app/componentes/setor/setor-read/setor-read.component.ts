@@ -15,7 +15,8 @@ export class SetorReadComponent implements OnInit {
     titulo: 'setor',
     cabecalhos: [
       'dsc_setor'
-    ]
+    ],
+    paginacao: 5
   };
 
   constructor(
