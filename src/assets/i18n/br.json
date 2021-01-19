@@ -60,13 +60,19 @@
             "novo": "Novo",
             "filtrar": "Filtrar",
             "detalhar": "Detalhar",
-            "registro": "Registro"
+            "registro": "Registro",
+            "sem-registros": "Não existem registros"
         },
         "detail": {
-
+            "voltar": "Voltar",
+            "editar": "Editar",
+            "salvar-pdf": "Salvar como PDF"
         },
         "form": {
-
+            "voltar": "Voltar",
+            "escolher-arquivo": "Escolher Arquivo",
+            "deletar": "Deletar",
+            "cancelar": "Cancelar"
         },
         "chart": {
 
