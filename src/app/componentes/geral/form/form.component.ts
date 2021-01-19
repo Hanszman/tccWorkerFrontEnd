@@ -19,6 +19,7 @@ export class FormComponent implements OnInit {
   @Input() voltaId = false;
   @Input() existeFoto = false;
   @Input() fotoUrl;
+  @Input() deleteClearLocal = false;
   registro: any = {};
   traducoes;
   voltarLink = "../read";
@@ -85,14 +86,19 @@ export class FormComponent implements OnInit {
 
   deletar(){
     this.service.delete(this.url + '/delete', this.id).subscribe(resp => {
-      this.verificarResposta(resp);
+      this.verificarResposta(resp, true);
     });
   }
 
-  verificarResposta(resp){
+  verificarResposta(resp, localClear = false){
     if (resp.body['data']['sucesso']){
       alert(resp.body['data']['mensagem']);
-      this.router.navigate([this.url + '/read']);
+      if (this.deleteClearLocal && localClear) {
+        this.router.navigate(['/login']);
+        window.location.reload();
+      }
+      else
+        this.router.navigate([this.url + '/read']);
     }
     else {
       alert(resp.body['data']['mensagem']);
