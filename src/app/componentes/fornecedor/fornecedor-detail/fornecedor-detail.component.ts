@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-fornecedor-detail',
@@ -7,9 +8,57 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FornecedorDetailComponent implements OnInit {
 
-  constructor() { }
+  id;
+  url;
+  urlTelefone;
+  urlEndereco;
+  urlEmail;
+  parametros;
+  @Input() config = {
+    titulo: 'fornecedor',
+    cabecalhos: [
+      'dsc_nome',
+      'dsc_cnpj'
+    ]
+  };
+  @Input() configTelefone = {
+    titulo: 'telefone',
+    cabecalhos: [
+      'ind_tipo',
+      'dsc_telefone'
+    ],
+    paginacao: 5
+  };
+  @Input() configEndereco = {
+    titulo: 'endereco',
+    cabecalhos: [
+      'dsc_logradouro',
+      'dsc_numero',
+      'dsc_bairro',
+      'dsc_cidade',
+      'dsc_uf'
+    ],
+    paginacao: 5
+  };
+  @Input() configEmail = {
+    titulo: 'email',
+    cabecalhos: [
+      'dsc_email'
+    ],
+    paginacao: 5
+  };
+
+  constructor(
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe(params => this.id = params['id']);
+    this.url = 'fornecedor/read';
+    this.urlTelefone = 'telefone/read';
+    this.urlEndereco = 'endereco/read';
+    this.urlEmail = 'email/read';
+    this.parametros = 'id_fornecedor=' + this.id + '&';
+  }
 
   ngOnInit(): void {
   }
-
 }

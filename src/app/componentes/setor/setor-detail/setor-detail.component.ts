@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-setor-detail',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SetorDetailComponent implements OnInit {
 
-  constructor() { }
+  id;
+  url;
+  urlTelefone;
+  urlEndereco;
+  urlEmail;
+  parametros;
+  @Input() config = {
+    titulo: 'setor',
+    cabecalhos: [
+      'dsc_setor'
+    ]
+  };
+  
+  constructor(
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe(params => this.id = params['id']);
+    this.url = 'setor/read';
+    this.parametros = 'id_setor=' + this.id + '&';
+  }
 
   ngOnInit(): void {
   }
-
 }

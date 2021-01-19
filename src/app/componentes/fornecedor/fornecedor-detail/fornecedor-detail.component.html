@@ -1,1 +1,24 @@
-<p>fornecedor-detail works!</p>
+<div class="row center-div">
+    <h1 class="first-color">Fornecedores <i class="fa fa-truck last-color" aria-hidden="true"></i></h1>
+</div>
+
+<div class="row center-div">
+  <p>Detalhes do fornecedor:</p>
+</div>
+
+<app-detail [config]="config" [url]="url" [id]="id"></app-detail>
+
+<div class="row table-responsive div-table">
+    <h4>Telefones</h4>
+    <app-table [config]="configTelefone" [url]="urlTelefone" [parametros]="parametros" [existeDetalhes]=false></app-table>
+</div>
+
+<div class="row table-responsive div-table">
+    <h4>Endereços</h4>
+    <app-table [config]="configEndereco" [url]="urlEndereco" [parametros]="parametros" [existeDetalhes]=false></app-table>
+</div>
+
+<div class="row table-responsive div-table">
+    <h4>E-mail's</h4>
+    <app-table [config]="configEmail" [url]="urlEmail" [parametros]="parametros" [existeDetalhes]=false></app-table>
+</div>
