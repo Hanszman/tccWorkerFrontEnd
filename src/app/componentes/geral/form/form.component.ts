@@ -16,6 +16,7 @@ export class FormComponent implements OnInit {
   @Input() url: string;
   @Input() id;
   @Input() operacao;
+  @Input() voltaId = false;
   @Input() existeFoto = false;
   @Input() fotoUrl;
   registro: any = {};
@@ -39,7 +40,10 @@ export class FormComponent implements OnInit {
     })
     this.padraoFotoURL = this.fotoUrl;
     if (this.id) {
-      this.voltarLink = "../../read";
+      if (this.voltaId)
+        this.voltarLink = "../../read/" + this.id;
+      else
+        this.voltarLink = "../../read";
       this.classeBotoes = "col-sm-4"
       this.service.getConsultar(this.url + '/read', this.id).subscribe(resp => {
         for(let i = 0; i < this.config.cabecalhos.length; i++) {

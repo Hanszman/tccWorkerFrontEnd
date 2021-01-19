@@ -33,7 +33,8 @@ export class EmpresaFormComponent implements OnInit {
     ],
     obrigatorios: [
       'dsc_nome'
-    ]
+    ],
+    desabilitados: []
   };
 
   constructor(

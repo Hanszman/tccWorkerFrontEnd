@@ -4,7 +4,9 @@
         "dsc_sobrenome": "Sobrenome",
         "dsc_nome_completo": "Nome Completo",
         "dsc_email": "E-mail",
-        "dsc_login": "Login",
+        "dsc_login": "Usuário",
+        "dsc_senha": "Senha",
+        "dsc_confirm_senha": "Confirme Sua Senha",
         "dat_nascimento": "Data de Nascimento",
         "dsc_cpf": "CPF",
         "dsc_rg": "RG"
