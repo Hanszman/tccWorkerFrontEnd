@@ -24,7 +24,8 @@ export class UsuarioUpdateComponent implements OnInit {
       'dsc_confirm_senha',
       'dat_nascimento',
       'dsc_cpf',
-      'dsc_rg'
+      'dsc_rg',
+      'arq_foto'
     ],
     tipos: [
       'text',
@@ -36,6 +37,7 @@ export class UsuarioUpdateComponent implements OnInit {
       'date',
       'text',
       'text',
+      'file',
     ],
     mascaras: [
       '', '', '', '', '', '', '',
