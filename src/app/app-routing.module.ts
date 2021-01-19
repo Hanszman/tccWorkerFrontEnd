@@ -20,6 +20,8 @@ import { FornecedorReadComponent } from './componentes/fornecedor/fornecedor-rea
 import { FornecedorDetailComponent } from './componentes/fornecedor/fornecedor-detail/fornecedor-detail.component';
 import { FornecedorFormComponent } from './componentes/fornecedor/fornecedor-form/fornecedor-form.component';
 import { SetorReadComponent } from './componentes/setor/setor-read/setor-read.component';
+import { SetorDetailComponent } from './componentes/setor/setor-detail/setor-detail.component';
+import { SetorFormComponent } from './componentes/setor/setor-form/setor-form.component';
 import { ControlePontoReadComponent } from './componentes/controle-ponto/controle-ponto-read/controle-ponto-read.component';
 import { ProjetoReadComponent } from './componentes/projeto/projeto-read/projeto-read.component';
 import { QuadroReadComponent } from './componentes/quadro/quadro-read/quadro-read.component';
@@ -55,9 +57,9 @@ const routes: Routes = [
   { path: 'fornecedor/update/:id', component: FornecedorFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
 
   { path: 'setor/read', component: SetorReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'setor/read/:id', component: SetorDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'setor/create', component: SetorCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'setor/update/:id', component: SetorUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  { path: 'setor/read/:id', component: SetorDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  { path: 'setor/create', component: SetorFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  { path: 'setor/update/:id', component: SetorFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
 
   { path: 'controle-ponto/read', component: ControlePontoReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   // { path: 'controle-ponto/read/:id', component: ControlePontoDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },

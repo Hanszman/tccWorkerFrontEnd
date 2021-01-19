@@ -27,6 +27,8 @@ import { FornecedorReadComponent } from './componentes/fornecedor/fornecedor-rea
 import { FornecedorDetailComponent } from './componentes/fornecedor/fornecedor-detail/fornecedor-detail.component';
 import { FornecedorFormComponent } from './componentes/fornecedor/fornecedor-form/fornecedor-form.component';
 import { SetorReadComponent } from './componentes/setor/setor-read/setor-read.component';
+import { SetorDetailComponent } from './componentes/setor/setor-detail/setor-detail.component';
+import { SetorFormComponent } from './componentes/setor/setor-form/setor-form.component';
 import { ControlePontoReadComponent } from './componentes/controle-ponto/controle-ponto-read/controle-ponto-read.component';
 import { ProjetoReadComponent } from './componentes/projeto/projeto-read/projeto-read.component';
 import { QuadroReadComponent } from './componentes/quadro/quadro-read/quadro-read.component';
@@ -68,6 +70,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FornecedorDetailComponent,
     FornecedorFormComponent,
     SetorReadComponent,
+    SetorDetailComponent,
+    SetorFormComponent,
     ControlePontoReadComponent,
     ProjetoReadComponent,
     QuadroReadComponent,
