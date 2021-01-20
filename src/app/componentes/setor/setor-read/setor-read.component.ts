@@ -22,18 +22,10 @@ export class SetorReadComponent implements OnInit {
   constructor(
     private router: Router
   ) {
-    this.url = 'setor/read';
+    this.url = 'setor';
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
   }
 
   ngOnInit(): void {
-  }
-
-  selecionaLinha(linha){
-    this.router.navigate(['setor/read/', linha.id_setor]);
-  }
-
-  clicaBotaoCriar(){
-    this.router.navigate(['setor/create/']);
   }
 }

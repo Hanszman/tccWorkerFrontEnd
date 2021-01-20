@@ -23,18 +23,10 @@ export class FornecedorReadComponent implements OnInit {
   constructor(
     private router: Router
   ) {
-    this.url = 'fornecedor/read';
+    this.url = 'fornecedor';
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
   }
 
   ngOnInit(): void {
-  }
-
-  selecionaLinha(linha){
-    this.router.navigate(['fornecedor/read/', linha.id_fornecedor]);
-  }
-
-  clicaBotaoCriar(){
-    this.router.navigate(['fornecedor/create/']);
   }
 }

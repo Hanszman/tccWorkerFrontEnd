@@ -58,9 +58,9 @@ export class UsuarioDetailComponent implements OnInit {
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
     this.url = 'usuario/read';
-    this.urlTelefone = 'telefone/read';
-    this.urlEndereco = 'endereco/read';
-    this.urlEmail = 'email/read';
+    this.urlTelefone = 'telefone';
+    this.urlEndereco = 'endereco';
+    this.urlEmail = 'email';
     this.parametros = 'id_usuario=' + this.id + '&';
   }
 

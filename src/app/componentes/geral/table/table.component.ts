@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { TableService } from './table.service';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -13,15 +14,15 @@ export class TableComponent implements OnInit {
   @Input() url: string;
   @Input() parametros: string = '';
   @Input() existeFiltros = true;
+  @Input() existeContagem = true;
   @Input() existeBotaoCriar = true;
-  @Input() existeDetalhes = true;
+  @Input() existeBotaoDetalhes = true;
   @Input() existeBotaoEditar = true;
   @Input() existeBotaoExcluir = true;
-  @Input() existeContagem = true;
-  @Output() selecionaLinha = new EventEmitter();
-  @Output() clicaBotaoCriar = new EventEmitter();
-  @Output() clicaBotaoEditar = new EventEmitter();
-  @Output() clicaBotaoExcluir = new EventEmitter();
+  @Output() emiteClicaBotaoCriar = new EventEmitter();
+  @Output() emiteClicaBotaoDetalhes = new EventEmitter();
+  @Output() emiteClicaBotaoEditar = new EventEmitter();
+  @Output() emiteClicaBotaoExcluir = new EventEmitter();
   conjuntoDados;
   traducoes;
   paginador;
@@ -33,6 +34,7 @@ export class TableComponent implements OnInit {
   jsonFiltro = {};
 
   constructor(
+    private router: Router,
     private service: TableService,
     private translate: TranslateService
   ) { }
@@ -45,7 +47,7 @@ export class TableComponent implements OnInit {
   }
 
   consultar(pagina){
-    var url = this.url + '?pagina=' + pagina + '&paginacao=' + this.config.paginacao;
+    var url = this.url + '/read?pagina=' + pagina + '&paginacao=' + this.config.paginacao;
     var filtro = this.parametros + this.ordem + Object.entries(this.jsonFiltro).map(e => e.join('=')).join('&');
     this.service.getTable(url, filtro).subscribe((obj) => {
       this.mapearDados(obj.body);
@@ -92,21 +94,21 @@ export class TableComponent implements OnInit {
     }
   }
 
-  emiteSelecionaLinha(linha) {
-    this.selecionaLinha.emit(linha);
+  clicaBotaoCriar() {
+    this.router.navigate([this.url + '/create/']);
+  }
+  
+  clicaBotaoDetalhes(linha) {
+    this.router.navigate([this.url + '/read/', linha['id_' + this.url]]);
   }
 
-  emiteClicaBotaoCriar() {
-    this.clicaBotaoCriar.emit();
+  clicaBotaoEditar(linha) {
+    this.router.navigate([this.url + '/update/', linha['id_' + this.url]]);
   }
 
-  emiteClicaBotaoEditar(linha) {
-    this.clicaBotaoEditar.emit(linha);
-  }
-
-  emiteClicaBotaoExcluir(linha) {
+  clicaBotaoExcluir(linha) {
     // colocar modal de confirmação
-    this.clicaBotaoExcluir.emit(linha);
+    console.log(linha['id_' + this.url])
   }
 
   ordenarCabecalho(item){

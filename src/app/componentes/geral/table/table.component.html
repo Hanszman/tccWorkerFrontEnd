@@ -1,7 +1,7 @@
 <table class="table">
     <tr [hidden]="!existeFiltros" class="no-print">
         <td [hidden]="!existeBotaoCriar">
-            <button class="btn btn-success" type="button" (click)="emiteClicaBotaoCriar()" title="{{ 'geral.table.novo' | translate }}">
+            <button class="btn btn-success" type="button" (click)="clicaBotaoCriar()" title="{{ 'geral.table.novo' | translate }}">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
             </button>
         </td>
@@ -18,16 +18,16 @@
     <tr>
         <th [hidden]="!existeContagem">#</th>
         <th *ngFor="let item of config.cabecalhos" class="clickable" (click)="ordenarCabecalho(item)">{{ tradutor(item) }}&nbsp;&nbsp;<i id="icone_{{item}}" class="direcao"></i></th>
-        <th [hidden]="!existeDetalhes" class="no-print"></th>
+        <th [hidden]="!existeBotaoDetalhes" class="no-print"></th>
         <th [hidden]="!existeBotaoEditar" class="no-print"></th>
         <th [hidden]="!existeBotaoExcluir" class="no-print"></th>
     </tr>
     <tr *ngFor="let linha of conjuntoDados; let i = index">
         <td [hidden]="!existeContagem">{{ i+1 + (config.paginacao * (paginaAtual-1)) }}</td>
         <td *ngFor="let item of config.cabecalhos">{{ linha[item] }}</td>
-        <td [hidden]="!existeDetalhes" class="no-print"><button class="btn btn-outline-info form-control" (click)="emiteSelecionaLinha(linha)" title="{{ 'geral.table.detalhes' | translate }}"><i class="fa fa-info-circle" aria-hidden="true"></i></button></td>
-        <td [hidden]="!existeBotaoEditar" class="no-print"><button class="btn btn-outline-warning form-control" (click)="emiteClicaBotaoEditar(linha)" title="{{ 'geral.table.editar' | translate }}"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
-        <td [hidden]="!existeBotaoExcluir" class="no-print"><button class="btn btn-outline-danger form-control" (click)="emiteClicaBotaoExcluir(linha)" title="{{ 'geral.table.excluir' | translate }}"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+        <td [hidden]="!existeBotaoDetalhes" class="no-print"><button class="btn btn-outline-info form-control" (click)="clicaBotaoDetalhes(linha)" title="{{ 'geral.table.detalhes' | translate }}"><i class="fa fa-info-circle" aria-hidden="true"></i></button></td>
+        <td [hidden]="!existeBotaoEditar" class="no-print"><button class="btn btn-outline-warning form-control" (click)="clicaBotaoEditar(linha)" title="{{ 'geral.table.editar' | translate }}"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
+        <td [hidden]="!existeBotaoExcluir" class="no-print"><button class="btn btn-outline-danger form-control" (click)="clicaBotaoExcluir(linha)" title="{{ 'geral.table.excluir' | translate }}"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
     </tr>
 </table>
 <table *ngIf="!removePaginacao" [hidden]="!existeContagem" class="paginator">

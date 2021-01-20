@@ -23,18 +23,10 @@ export class ClienteReadComponent implements OnInit {
   constructor(
     private router: Router
   ) {
-    this.url = 'cliente/read';
+    this.url = 'cliente';
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
   }
 
   ngOnInit(): void {
-  }
-
-  selecionaLinha(linha){
-    this.router.navigate(['cliente/read/', linha.id_cliente]);
-  }
-
-  clicaBotaoCriar(){
-    this.router.navigate(['cliente/create/']);
   }
 }
