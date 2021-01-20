@@ -25,7 +25,7 @@ export class SetorDetailComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
-    this.url = 'setor/read';
+    this.url = 'setor';
     this.parametros = 'id_setor=' + this.id + '&';
   }
 

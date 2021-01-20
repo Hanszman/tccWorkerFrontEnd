@@ -52,7 +52,7 @@ export class ClienteDetailComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
-    this.url = 'cliente/read';
+    this.url = 'cliente';
     this.urlTelefone = 'telefone';
     this.urlEndereco = 'endereco';
     this.urlEmail = 'email';

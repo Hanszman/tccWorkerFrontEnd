@@ -32,7 +32,7 @@ export class DetailComponent implements OnInit {
   }
 
   consultar(){
-    this.service.getDetail(this.url, this.id).subscribe((obj) => {
+    this.service.getDetail(this.url + '/read', this.id).subscribe((obj) => {
       this.mapearDados(obj.body);
     });
   }

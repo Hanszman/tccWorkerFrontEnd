@@ -52,7 +52,7 @@ export class FornecedorDetailComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
-    this.url = 'fornecedor/read';
+    this.url = 'fornecedor';
     this.urlTelefone = 'telefone';
     this.urlEndereco = 'endereco';
     this.urlEmail = 'email';
