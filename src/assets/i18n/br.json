@@ -67,8 +67,9 @@
         },
         "detail": {
             "voltar": "Voltar",
+            "salvar-pdf": "Salvar como PDF",
             "editar": "Editar",
-            "salvar-pdf": "Salvar como PDF"
+            "excluir": "Excluir"
         },
         "form": {
             "voltar": "Voltar",

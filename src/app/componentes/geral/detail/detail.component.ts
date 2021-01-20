@@ -71,4 +71,9 @@ export class DetailComponent implements OnInit {
   salvarPDF(){
     window.print();
   }
+
+  deletar(){
+    console.log(this.url)
+    console.log(this.id)
+  }
 }
