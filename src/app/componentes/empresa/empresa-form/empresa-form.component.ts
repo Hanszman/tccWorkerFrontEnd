@@ -11,8 +11,8 @@ export class EmpresaFormComponent implements OnInit {
   id;
   url = 'empresa';
   operacao = 'Cadastrar';
-  mensagem = 'Cadastre uma nova empresa'
-  fotoUrl = 'assets/images/user_group_icon.png'
+  mensagem = 'Cadastre uma nova empresa';
+  fotoUrl = 'assets/images/user_group_icon.png';
   @Input() config = {
     titulo: 'empresa',
     cabecalhos: [
@@ -42,12 +42,11 @@ export class EmpresaFormComponent implements OnInit {
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
     if(this.id !== undefined) {
-      this.operacao = 'Editar'
-      this.mensagem = 'Edite a empresa selecionada'
+      this.operacao = 'Editar';
+      this.mensagem = 'Edite a empresa selecionada';
     }
   }
 
   ngOnInit(): void {
   }
-
 }

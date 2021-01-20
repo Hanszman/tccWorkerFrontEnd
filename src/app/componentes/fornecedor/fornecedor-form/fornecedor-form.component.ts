@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-fornecedor-form',
@@ -7,9 +8,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FornecedorFormComponent implements OnInit {
 
-  constructor() { }
+  id;
+  url = 'fornecedor';
+  operacao = 'Cadastrar';
+  mensagem = 'Cadastre um novo fornecedor';
+  @Input() config = {
+    titulo: 'fornecedor',
+    cabecalhos: [
+      'dsc_nome',
+      'dsc_cnpj'
+    ],
+    tipos: [
+      'text',
+      'text'
+    ],
+    mascaras: [
+      '',
+      '00.000.000/0000-00',
+    ],
+    obrigatorios: [
+      'dsc_nome'
+    ],
+    desabilitados: []
+  };
+
+  constructor(
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe(params => this.id = params['id']);
+    if(this.id !== undefined) {
+      this.operacao = 'Editar';
+      this.mensagem = 'Edite o fornecedor selecionado';
+    }
+  }
 
   ngOnInit(): void {
   }
-
 }
