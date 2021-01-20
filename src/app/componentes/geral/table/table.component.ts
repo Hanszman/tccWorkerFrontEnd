@@ -15,9 +15,13 @@ export class TableComponent implements OnInit {
   @Input() existeFiltros = true;
   @Input() existeBotaoCriar = true;
   @Input() existeDetalhes = true;
+  @Input() existeBotaoEditar = true;
+  @Input() existeBotaoExcluir = true;
   @Input() existeContagem = true;
   @Output() selecionaLinha = new EventEmitter();
   @Output() clicaBotaoCriar = new EventEmitter();
+  @Output() clicaBotaoEditar = new EventEmitter();
+  @Output() clicaBotaoExcluir = new EventEmitter();
   conjuntoDados;
   traducoes;
   paginador;
@@ -94,6 +98,14 @@ export class TableComponent implements OnInit {
 
   emiteClicaBotaoCriar() {
     this.clicaBotaoCriar.emit();
+  }
+
+  emiteClicaBotaoEditar(linha) {
+    this.clicaBotaoEditar.emit(linha);
+  }
+
+  emiteClicaBotaoExcluir(linha) {
+    this.clicaBotaoExcluir.emit(linha);
   }
 
   ordenarCabecalho(item){
