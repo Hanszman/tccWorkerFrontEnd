@@ -105,6 +105,7 @@ export class TableComponent implements OnInit {
   }
 
   emiteClicaBotaoExcluir(linha) {
+    // colocar modal de confirmação
     this.clicaBotaoExcluir.emit(linha);
   }
 
