@@ -47,7 +47,7 @@ export class DetailComponent implements OnInit {
         });
         this.conjuntoDados.push(elemento);
       });
-      if (this.conjuntoDados[0]['arq_foto'] !== null)
+      if (this.existeFoto && this.conjuntoDados[0]['arq_foto'] !== null)
         this.fotoUrl = this.apiURL + this.conjuntoDados[0]['arq_foto'];
     }
     else
