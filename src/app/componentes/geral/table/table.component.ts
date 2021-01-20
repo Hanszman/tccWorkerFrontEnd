@@ -19,6 +19,7 @@ export class TableComponent implements OnInit {
   @Input() existeBotaoDetalhes = true;
   @Input() existeBotaoEditar = true;
   @Input() existeBotaoExcluir = true;
+  @Input() existeModalForm = false;
   @Output() emiteClicaBotaoCriar = new EventEmitter();
   @Output() emiteClicaBotaoDetalhes = new EventEmitter();
   @Output() emiteClicaBotaoEditar = new EventEmitter();
@@ -95,7 +96,11 @@ export class TableComponent implements OnInit {
   }
 
   clicaBotaoCriar() {
-    this.router.navigate([this.url + '/create/']);
+    if (!this.existeModalForm)
+      this.router.navigate([this.url + '/create/']);
+    else {
+      console.log('Criar modal!')
+    }
   }
   
   clicaBotaoDetalhes(linha) {
@@ -103,7 +108,11 @@ export class TableComponent implements OnInit {
   }
 
   clicaBotaoEditar(linha) {
-    this.router.navigate([this.url + '/update/', linha['id_' + this.url]]);
+    if (!this.existeModalForm)
+      this.router.navigate([this.url + '/update/', linha['id_' + this.url]]);
+    else {
+      console.log('Criar modal!')
+    }
   }
 
   clicaBotaoExcluir(linha) {
