@@ -10,7 +10,10 @@
         "dat_nascimento": "Data de Nascimento",
         "dsc_cpf": "CPF",
         "dsc_rg": "RG",
-        "arq_foto": "Foto"
+        "arq_foto": "Foto",
+        "dsc_cargo": "Cargo",
+        "ind_controle_acesso": "Controle de Acesso",
+        "ind_status": "Status"
     },
     "empresa": {
         "dsc_nome": "Nome",
