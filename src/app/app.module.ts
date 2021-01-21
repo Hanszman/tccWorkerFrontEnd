@@ -45,6 +45,7 @@ import { FormComponent } from './componentes/geral/form/form.component';
 import { FormService } from './componentes/geral/form/form.service';
 import { ChartComponent } from './componentes/geral/chart/chart.component';
 import { ChartService } from './componentes/geral/chart/chart.service';
+import { ModalComponent } from './componentes/geral/modal/modal.component';
 import { ValidateService } from './componentes/geral/validate/validate.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -83,7 +84,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     TableComponent,
     DetailComponent,
     FormComponent,
-    ChartComponent
+    ChartComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
