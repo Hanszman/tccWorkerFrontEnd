@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { TableService } from './table.service';
 import { TranslateService } from '@ngx-translate/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-table',
@@ -41,7 +43,8 @@ export class TableComponent implements OnInit {
   constructor(
     private router: Router,
     private service: TableService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private modalService: BsModalService
   ) { }
 
   ngOnInit(): void {
@@ -103,6 +106,8 @@ export class TableComponent implements OnInit {
     if (!this.existeModalForm)
       this.router.navigate([this.url + '/create/']);
     else {
+      const modalRef = this.modalService.show(ModalComponent);
+      modalRef.content.title = 'Título';
       console.log('Criar modal!')
     }
   }
