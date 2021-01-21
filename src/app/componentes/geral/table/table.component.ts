@@ -20,10 +20,14 @@ export class TableComponent implements OnInit {
   @Input() existeBotaoEditar = true;
   @Input() existeBotaoExcluir = true;
   @Input() existeModalForm = false;
-  @Output() emiteClicaBotaoCriar = new EventEmitter();
-  @Output() emiteClicaBotaoDetalhes = new EventEmitter();
-  @Output() emiteClicaBotaoEditar = new EventEmitter();
-  @Output() emiteClicaBotaoExcluir = new EventEmitter();
+  @Input() existeBotaoCriarEspecial = false;
+  @Input() existeBotaoDetalhesEspecial = false;
+  @Input() existeBotaoEditarEspecial = false;
+  @Input() existeBotaoExcluirEspecial = false;
+  @Output() emiteClicaBotaoCriarEspecial = new EventEmitter();
+  @Output() emiteClicaBotaoDetalhesEspecial = new EventEmitter();
+  @Output() emiteClicaBotaoEditarEspecial = new EventEmitter();
+  @Output() emiteClicaBotaoExcluirEspecial = new EventEmitter();
   conjuntoDados;
   traducoes;
   paginador;
@@ -118,6 +122,22 @@ export class TableComponent implements OnInit {
   clicaBotaoExcluir(linha) {
     // colocar modal de confirmação
     console.log(linha['id_' + this.url])
+  }
+
+  clicaBotaoCriarEspecial(){
+    this.emiteClicaBotaoCriarEspecial.emit();
+  }
+
+  clicaBotaoDetalhesEspecial(linha){
+    this.emiteClicaBotaoDetalhesEspecial.emit(linha);
+  }
+
+  clicaBotaoEditarEspecial(linha){
+    this.emiteClicaBotaoEditarEspecial.emit(linha);
+  }
+
+  clicaBotaoExcluirEspecial(linha){
+    this.emiteClicaBotaoExcluirEspecial.emit(linha);
   }
 
   ordenarCabecalho(item){

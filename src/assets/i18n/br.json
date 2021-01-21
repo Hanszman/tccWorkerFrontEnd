@@ -60,11 +60,15 @@
     },
     "geral": {
         "table": {
-            "novo": "Novo",
+            "novo": "Criar Novo",
             "filtrar": "Filtrar",
             "detalhes": "Detalhes",
             "editar": "Editar",
             "excluir": "Excluir",
+            "vincular": "Vincular Novo",
+            "mostrar": "Mostrar",
+            "configurar": "Configurar",
+            "desvincular": "Desvincular",
             "registro": "Registro",
             "sem-registros": "Não existem registros"
         },

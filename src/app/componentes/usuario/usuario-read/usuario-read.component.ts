@@ -32,4 +32,20 @@ export class UsuarioReadComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  emiteClicaBotaoCriarEspecial(){
+    console.log('teste');
+  }
+
+  emiteClicaBotaoDetalhesEspecial(linha){
+    console.log('teste');
+  }
+
+  emiteClicaBotaoEditarEspecial(linha){
+    console.log('teste');
+  }
+
+  emiteClicaBotaoExcluirEspecial(linha){
+    console.log('teste');
+  }
 }

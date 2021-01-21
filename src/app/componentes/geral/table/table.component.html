@@ -5,7 +5,12 @@
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
             </button>
         </td>
-        <td [hidden]="existeBotaoCriar"></td>
+        <td [hidden]="!existeBotaoCriarEspecial">
+            <button class="btn btn-success" type="button" (click)="clicaBotaoCriarEspecial()" title="{{ 'geral.table.vincular' | translate }}">
+                <i class="fa fa-link" aria-hidden="true"></i>
+            </button>
+        </td>
+        <td [hidden]="existeBotaoCriar || existeBotaoCriarEspecial"></td>
         <td *ngFor="let item of config.cabecalhos">
             <input type="text" placeholder="{{ tradutor(item) }}" [(ngModel)]="jsonFiltro[item]" (keydown.enter)="consultar(1)" class="form-control">
         </td>
@@ -21,6 +26,9 @@
         <th [hidden]="!existeBotaoDetalhes" class="no-print"></th>
         <th [hidden]="!existeBotaoEditar" class="no-print"></th>
         <th [hidden]="!existeBotaoExcluir" class="no-print"></th>
+        <th [hidden]="!existeBotaoDetalhesEspecial" class="no-print"></th>
+        <th [hidden]="!existeBotaoEditarEspecial" class="no-print"></th>
+        <th [hidden]="!existeBotaoExcluirEspecial" class="no-print"></th>
     </tr>
     <tr *ngFor="let linha of conjuntoDados; let i = index">
         <td [hidden]="!existeContagem">{{ i+1 + (config.paginacao * (paginaAtual-1)) }}</td>
@@ -28,6 +36,9 @@
         <td [hidden]="!existeBotaoDetalhes" class="no-print"><button class="btn btn-outline-info form-control" (click)="clicaBotaoDetalhes(linha)" title="{{ 'geral.table.detalhes' | translate }}"><i class="fa fa-info-circle" aria-hidden="true"></i></button></td>
         <td [hidden]="!existeBotaoEditar" class="no-print"><button class="btn btn-outline-warning form-control" (click)="clicaBotaoEditar(linha)" title="{{ 'geral.table.editar' | translate }}"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
         <td [hidden]="!existeBotaoExcluir" class="no-print"><button class="btn btn-outline-danger form-control" (click)="clicaBotaoExcluir(linha)" title="{{ 'geral.table.excluir' | translate }}"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+        <td [hidden]="!existeBotaoDetalhesEspecial" class="no-print"><button class="btn btn-outline-info form-control" (click)="clicaBotaoDetalhesEspecial(linha)" title="{{ 'geral.table.mostrar' | translate }}"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
+        <td [hidden]="!existeBotaoEditarEspecial" class="no-print"><button class="btn btn-outline-warning form-control" (click)="clicaBotaoEditarEspecial(linha)" title="{{ 'geral.table.configurar' | translate }}"><i class="fa fa-cogs" aria-hidden="true"></i></button></td>
+        <td [hidden]="!existeBotaoExcluirEspecial" class="no-print"><button class="btn btn-outline-danger form-control" (click)="clicaBotaoExcluirEspecial(linha)" title="{{ 'geral.table.desvincular' | translate }}"><i class="fa fa-times-circle" aria-hidden="true"></i></button></td>
     </tr>
 </table>
 <table *ngIf="!removePaginacao" [hidden]="!existeContagem" class="paginator">
