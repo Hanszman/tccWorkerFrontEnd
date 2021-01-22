@@ -10,6 +10,7 @@ export class ClienteFormComponent implements OnInit {
 
   id;
   url = 'cliente';
+  titulo = 'Cliente';
   operacao = 'Cadastrar';
   mensagem = 'Cadastre um novo cliente';
   @Input() config = {

@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 })
 export class UsuarioReadComponent implements OnInit {
 
-  url;
+  url = 'usuario';
+  titulo = 'Usuário';
   parametros;
   id_empresa = window.localStorage.getItem('id_empresa');
   @Input() config = {
@@ -26,7 +27,6 @@ export class UsuarioReadComponent implements OnInit {
   constructor(
     private router: Router
   ) {
-    this.url = 'usuario';
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
   }
 

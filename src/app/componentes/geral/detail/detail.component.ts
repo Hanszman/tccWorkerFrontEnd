@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DetailService } from './detail.service';
 import { TranslateService } from '@ngx-translate/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { ModalComponent } from '../modal/modal.component';
 import { environment } from '../../../../environments/environment';
 
 @Component({
@@ -10,6 +12,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class DetailComponent implements OnInit {
 
+  @Input() titulo: string;
   @Input() config;
   @Input() url: string;
   @Input() id;
@@ -21,7 +24,8 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private service: DetailService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private modalService: BsModalService
   ) { }
 
   ngOnInit(): void {
@@ -73,6 +77,12 @@ export class DetailComponent implements OnInit {
   }
 
   excluir(){
+    const modalRef = this.modalService.show(ModalComponent);
+    modalRef.content.titulo = 'Excluir ' + this.titulo;
+    modalRef.content.existeBotaoExcluir = true;
+    // modalRef.content.emiteClicaBotaoExcluir = this.confirmaExcluir();
+    modalRef.content.existeMensagem = true;
+    modalRef.content.mensagem = 'Tem certeza que deseja excluir esse registro?';
     console.log(this.url)
     console.log(this.id)
   }

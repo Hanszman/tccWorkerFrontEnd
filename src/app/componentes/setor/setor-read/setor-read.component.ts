@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 })
 export class SetorReadComponent implements OnInit {
 
-  url;
+  url = 'setor';
+  titulo = 'Setor';
   parametros;
   id_empresa = window.localStorage.getItem('id_empresa');
   @Input() config = {
@@ -22,7 +23,6 @@ export class SetorReadComponent implements OnInit {
   constructor(
     private router: Router
   ) {
-    this.url = 'setor';
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
   }
 

@@ -9,10 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 export class SetorDetailComponent implements OnInit {
 
   id;
-  url;
-  urlTelefone;
-  urlEndereco;
-  urlEmail;
+  url = 'setor';
+  titulo = 'Setor';
   parametros;
   @Input() config = {
     titulo: 'setor',
@@ -25,7 +23,6 @@ export class SetorDetailComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
-    this.url = 'setor';
     this.parametros = 'id_setor=' + this.id + '&';
   }
 

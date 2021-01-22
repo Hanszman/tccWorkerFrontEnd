@@ -10,6 +10,7 @@ export class FornecedorFormComponent implements OnInit {
 
   id;
   url = 'fornecedor';
+  titulo = 'Fornecedor';
   operacao = 'Cadastrar';
   mensagem = 'Cadastre um novo fornecedor';
   @Input() config = {

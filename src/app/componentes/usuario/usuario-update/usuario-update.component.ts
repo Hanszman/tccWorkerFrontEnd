@@ -10,6 +10,7 @@ export class UsuarioUpdateComponent implements OnInit {
 
   id;
   url = 'usuario';
+  titulo = 'Usuário';
   operacao = 'Editar';
   mensagem = 'Edite seu usuário'
   fotoUrl = 'assets/images/user_icon.png'

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormService } from './form.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ValidateService } from '../../geral/validate/validate.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { ModalComponent } from '../modal/modal.component';
 import { environment } from '../../../../environments/environment';
 
 @Component({
@@ -12,6 +14,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class FormComponent implements OnInit {
 
+  @Input() titulo: string;
   @Input() config;
   @Input() url: string;
   @Input() id;
@@ -33,7 +36,8 @@ export class FormComponent implements OnInit {
     private router: Router,
     private service: FormService,
     private translate: TranslateService,
-    private validate: ValidateService
+    private validate: ValidateService,
+    private modalService: BsModalService
   ) { }
 
   ngOnInit(): void {
@@ -87,6 +91,12 @@ export class FormComponent implements OnInit {
   }
 
   excluir(){
+    // const modalRef = this.modalService.show(ModalComponent);
+    // modalRef.content.titulo = 'Excluir ' + this.titulo;
+    // modalRef.content.existeBotaoExcluir = true;
+    // // modalRef.content.emiteClicaBotaoExcluir = this.confirmaExcluir();
+    // modalRef.content.existeMensagem = true;
+    // modalRef.content.mensagem = 'Tem certeza que deseja excluir esse registro?';
     this.service.deleteExcluir(this.url + '/delete', this.id).subscribe(resp => {
       this.verificarResposta(resp, true);
     });

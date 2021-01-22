@@ -9,10 +9,14 @@ import { ActivatedRoute } from '@angular/router';
 export class ClienteDetailComponent implements OnInit {
   
   id;
-  url;
-  urlTelefone;
-  urlEndereco;
-  urlEmail;
+  url = 'cliente';
+  urlTelefone = 'telefone';
+  urlEndereco = 'endereco';
+  urlEmail = 'email';
+  titulo = 'Cliente';
+  tituloTelefone = 'Telefone';
+  tituloEndereco = 'Endereço';
+  tituloEmail = 'E-mail';
   parametros;
   @Input() config = {
     titulo: 'cliente',
@@ -52,10 +56,6 @@ export class ClienteDetailComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
-    this.url = 'cliente';
-    this.urlTelefone = 'telefone';
-    this.urlEndereco = 'endereco';
-    this.urlEmail = 'email';
     this.parametros = 'id_cliente=' + this.id + '&';
   }
 

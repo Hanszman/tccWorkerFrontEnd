@@ -6,19 +6,19 @@
   <p>Visualize suas informações abaixo:</p>
 </div>
 
-<app-detail [config]="config" [url]="url" [id]="id" [existeFoto]=true [fotoUrl]="fotoUrl"></app-detail>
+<app-detail [titulo]="titulo" [config]="config" [url]="url" [id]="id" [existeFoto]=true [fotoUrl]="fotoUrl"></app-detail>
 
 <div class="row table-responsive div-table">
   <h4>Telefones</h4>
-  <app-table [config]="configTelefone" [url]="urlTelefone" [parametros]="parametros" [existeBotaoDetalhes]=false [existeModalForm]=true></app-table>
+  <app-table [titulo]="tituloTelefone" [config]="configTelefone" [url]="urlTelefone" [parametros]="parametros" [existeBotaoDetalhes]=false [existeModalForm]=true></app-table>
 </div>
 
 <div class="row table-responsive div-table">
   <h4>Endereços</h4>
-  <app-table [config]="configEndereco" [url]="urlEndereco" [parametros]="parametros" [existeBotaoDetalhes]=false [existeModalForm]=true></app-table>
+  <app-table [titulo]="tituloEndereco" [config]="configEndereco" [url]="urlEndereco" [parametros]="parametros" [existeBotaoDetalhes]=false [existeModalForm]=true></app-table>
 </div>
 
 <div class="row table-responsive div-table">
   <h4>E-mail's</h4>
-  <app-table [config]="configEmail" [url]="urlEmail" [parametros]="parametros" [existeBotaoDetalhes]=false [existeModalForm]=true></app-table>
+  <app-table [titulo]="tituloEmail" [config]="configEmail" [url]="urlEmail" [parametros]="parametros" [existeBotaoDetalhes]=false [existeModalForm]=true></app-table>
 </div>

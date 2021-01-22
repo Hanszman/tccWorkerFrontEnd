@@ -12,10 +12,10 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class TableComponent implements OnInit {
 
+  @Input() titulo: string;
   @Input() config;
   @Input() url: string;
   @Input() parametros: string = '';
-  @Input() titulo: string;
   @Input() existeFiltros = true;
   @Input() existeContagem = true;
   @Input() existeBotaoCriar = true;
@@ -109,6 +109,8 @@ export class TableComponent implements OnInit {
     else {
       const modalRef = this.modalService.show(ModalComponent);
       modalRef.content.titulo = 'Cadastrar ' + this.titulo;
+      modalRef.content.existeBotaoCriar = true;
+      // modalRef.content.emiteClicaBotaoCriar = this.confirmaCriar();
       console.log('Criar modal!')
     }
   }
@@ -123,6 +125,8 @@ export class TableComponent implements OnInit {
     else {
       const modalRef = this.modalService.show(ModalComponent);
       modalRef.content.titulo = 'Editar ' + this.titulo;
+      modalRef.content.existeBotaoEditar = true;
+      // modalRef.content.emiteClicaBotaoEditar = this.confirmaEditar();
       console.log('Criar modal!')
     }
   }
@@ -130,6 +134,8 @@ export class TableComponent implements OnInit {
   clicaBotaoExcluir(linha) {
     const modalRef = this.modalService.show(ModalComponent);
     modalRef.content.titulo = 'Excluir ' + this.titulo;
+    modalRef.content.existeBotaoExcluir = true;
+    // modalRef.content.emiteClicaBotaoExcluir = this.confirmaExcluir();
     modalRef.content.existeMensagem = true;
     modalRef.content.mensagem = 'Tem certeza que deseja excluir esse registro?';
     console.log(linha['id_' + this.url])

@@ -10,6 +10,7 @@ export class EmpresaFormComponent implements OnInit {
 
   id;
   url = 'empresa';
+  titulo = 'Empresa';
   operacao = 'Cadastrar';
   mensagem = 'Cadastre uma nova empresa';
   fotoUrl = 'assets/images/user_group_icon.png';

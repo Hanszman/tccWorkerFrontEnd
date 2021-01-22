@@ -10,6 +10,7 @@ export class SetorFormComponent implements OnInit {
 
   id;
   url = 'setor';
+  titulo = 'Setor';
   operacao = 'Cadastrar';
   mensagem = 'Cadastre um novo setor';
   @Input() config = {

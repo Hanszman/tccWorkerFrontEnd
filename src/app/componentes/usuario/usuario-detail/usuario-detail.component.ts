@@ -9,10 +9,14 @@ import { ActivatedRoute } from '@angular/router';
 export class UsuarioDetailComponent implements OnInit {
 
   id;
-  url;
-  urlTelefone;
-  urlEndereco;
-  urlEmail;
+  url = 'usuario';
+  urlTelefone = 'telefone';
+  urlEndereco = 'endereco';
+  urlEmail = 'email';
+  titulo = 'Usuário';
+  tituloTelefone = 'Telefone';
+  tituloEndereco = 'Endereço';
+  tituloEmail = 'E-mail';
   parametros;
   fotoUrl = 'assets/images/user_icon.png'
   @Input() config = {
@@ -57,10 +61,6 @@ export class UsuarioDetailComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
-    this.url = 'usuario';
-    this.urlTelefone = 'telefone';
-    this.urlEndereco = 'endereco';
-    this.urlEmail = 'email';
     this.parametros = 'id_usuario=' + this.id + '&';
   }
 
