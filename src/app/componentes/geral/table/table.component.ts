@@ -15,6 +15,7 @@ export class TableComponent implements OnInit {
   @Input() config;
   @Input() url: string;
   @Input() parametros: string = '';
+  @Input() titulo: string;
   @Input() existeFiltros = true;
   @Input() existeContagem = true;
   @Input() existeBotaoCriar = true;
@@ -107,7 +108,7 @@ export class TableComponent implements OnInit {
       this.router.navigate([this.url + '/create/']);
     else {
       const modalRef = this.modalService.show(ModalComponent);
-      modalRef.content.title = 'Título';
+      modalRef.content.titulo = 'Cadastrar ' + this.titulo;
       console.log('Criar modal!')
     }
   }
@@ -121,13 +122,16 @@ export class TableComponent implements OnInit {
       this.router.navigate([this.url + '/update/', linha['id_' + this.url]]);
     else {
       const modalRef = this.modalService.show(ModalComponent);
-      modalRef.content.title = 'Título';
+      modalRef.content.titulo = 'Editar ' + this.titulo;
       console.log('Criar modal!')
     }
   }
 
   clicaBotaoExcluir(linha) {
-    // colocar modal de confirmação
+    const modalRef = this.modalService.show(ModalComponent);
+    modalRef.content.titulo = 'Excluir ' + this.titulo;
+    modalRef.content.existeMensagem = true;
+    modalRef.content.mensagem = 'Tem certeza que deseja excluir esse registro?';
     console.log(linha['id_' + this.url])
   }
 

@@ -72,7 +72,7 @@ export class DetailComponent implements OnInit {
     window.print();
   }
 
-  deletar(){
+  excluir(){
     console.log(this.url)
     console.log(this.id)
   }

@@ -30,7 +30,7 @@ export class FormService {
     );
   }
 
-  delete(url, id): Observable<HttpResponse<any>> {
+  deleteExcluir(url, id): Observable<HttpResponse<any>> {
     return this.http.delete<any>(
       this.apiURL + url + `/${id}`, {observe: 'response'}
     );

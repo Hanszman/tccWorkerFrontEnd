@@ -86,8 +86,8 @@ export class FormComponent implements OnInit {
     }
   }
 
-  deletar(){
-    this.service.delete(this.url + '/delete', this.id).subscribe(resp => {
+  excluir(){
+    this.service.deleteExcluir(this.url + '/delete', this.id).subscribe(resp => {
       this.verificarResposta(resp, true);
     });
   }

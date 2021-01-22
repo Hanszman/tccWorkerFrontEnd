@@ -81,14 +81,14 @@
         "form": {
             "voltar": "Voltar",
             "escolher-arquivo": "Escolher Arquivo",
-            "deletar": "Deletar",
+            "excluir": "Excluir",
             "cancelar": "Cancelar"
         },
         "modal": {
             "salvar": "Salvar",
             "cadastrar": "Cadastrar",
             "editar": "Editar",
-            "deletar": "Deletar",
+            "excluir": "Excluir",
             "cancelar": "Cancelar"
         },
         "chart": {

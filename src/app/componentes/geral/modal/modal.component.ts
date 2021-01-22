@@ -8,7 +8,9 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class ModalComponent implements OnInit {
 
-  @Input() title: string;
+  @Input() titulo: string;
+  @Input() existeMensagem = false;
+  @Input() mensagem: string;
 
   constructor(
     public modalRef: BsModalRef

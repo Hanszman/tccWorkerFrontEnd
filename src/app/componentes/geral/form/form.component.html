@@ -14,7 +14,7 @@
         <img [src]="fotoUrl" id="imgPrevia" name="imgPrevia" class="img-fluid" alt="Foto" width="200">
     </div>
     <div class="row menu-buttons">
-        <a class="btn btn-danger {{classeBotoes}}" *ngIf="id" (click)="deletar()"><i class="fa fa-trash" aria-hidden="true"></i> {{ 'geral.form.deletar' | translate }}</a>
+        <a class="btn btn-danger {{classeBotoes}}" *ngIf="id" (click)="excluir()"><i class="fa fa-trash" aria-hidden="true"></i> {{ 'geral.form.excluir' | translate }}</a>
         <a class="btn btn-outline-secondary {{classeBotoes}}" [routerLink]="voltarLink"><i class="fa fa-ban" aria-hidden="true"></i> {{ 'geral.form.cancelar' | translate }}</a>
         <button class="btn btn-success {{classeBotoes}}" type="submit">{{operacao}} <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
     </div>
