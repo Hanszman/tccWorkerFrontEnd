@@ -120,6 +120,8 @@ export class TableComponent implements OnInit {
     if (!this.existeModalForm)
       this.router.navigate([this.url + '/update/', linha['id_' + this.url]]);
     else {
+      const modalRef = this.modalService.show(ModalComponent);
+      modalRef.content.title = 'Título';
       console.log('Criar modal!')
     }
   }

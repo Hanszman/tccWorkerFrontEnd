@@ -86,6 +86,9 @@
         },
         "modal": {
             "salvar": "Salvar",
+            "cadastrar": "Cadastrar",
+            "editar": "Editar",
+            "deletar": "Deletar",
             "cancelar": "Cancelar"
         },
         "chart": {
