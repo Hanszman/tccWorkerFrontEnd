@@ -140,7 +140,15 @@ export class TableComponent implements OnInit {
     modalRef.content.existeMensagem = true;
     modalRef.content.existeBotaoExcluir = true;
     modalRef.content.emiteClicaBotaoExcluir.subscribe(() => {
-      console.log(linha['id_' + this.url]);
+      this.service.deleteExcluir(this.url + '/delete', linha['id_' + this.url]).subscribe(resp => {
+        if (resp.body['data']['sucesso']){
+          alert(resp.body['data']['mensagem']);
+          window.location.reload();
+        }
+        else {
+          alert(resp.body['data']['mensagem']);
+        }
+      });
     });
   }
 

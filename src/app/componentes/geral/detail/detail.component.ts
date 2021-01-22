@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { DetailService } from './detail.service';
 import { TranslateService } from '@ngx-translate/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -25,6 +26,7 @@ export class DetailComponent implements OnInit {
   apiURL = environment.apiURL;
 
   constructor(
+    private router: Router,
     private service: DetailService,
     private translate: TranslateService,
     private modalService: BsModalService
@@ -85,8 +87,15 @@ export class DetailComponent implements OnInit {
     modalRef.content.existeMensagem = true;
     modalRef.content.existeBotaoExcluir = true;
     modalRef.content.emiteClicaBotaoExcluir.subscribe(() => {
-      console.log(this.url)
-      console.log(this.id)
+      this.service.deleteExcluir(this.url + '/delete', this.id).subscribe(resp => {
+        if (resp.body['data']['sucesso']){
+          alert(resp.body['data']['mensagem']);
+          this.router.navigate([this.url + '/read']);
+        }
+        else {
+          alert(resp.body['data']['mensagem']);
+        }
+      });
     });
   }
 }

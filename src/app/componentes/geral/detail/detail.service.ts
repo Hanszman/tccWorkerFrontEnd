@@ -17,4 +17,10 @@ export class DetailService {
       this.apiURL + url + `/${id}`, {observe: 'response'}
     );
   }
+
+  deleteExcluir(url, id): Observable<HttpResponse<any>> {
+    return this.http.delete<any>(
+      this.apiURL + url + `/${id}`, {observe: 'response'}
+    );
+  }
 }
