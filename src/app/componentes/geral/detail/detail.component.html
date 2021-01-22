@@ -2,7 +2,7 @@
     <a [hidden]="!existeBotaoVoltar" [routerLink]="['../']" class="btn btn-outline-success" title="{{ 'geral.detail.voltar' | translate }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
     <a (click)="salvarPDF()" class="btn btn-outline-info" title="{{ 'geral.detail.salvar-pdf' | translate }}"><i class="fa fa-save" aria-hidden="true"></i></a>
     <a [routerLink]="['../../update/', id]" class="btn btn-outline-warning" title="{{ 'geral.detail.editar' | translate }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-    <a (click)="excluir()" class="btn btn-outline-danger" title="{{ 'geral.detail.excluir' | translate }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+    <a [hidden]="!existeBotaoExcluir" (click)="excluir()" class="btn btn-outline-danger" title="{{ 'geral.detail.excluir' | translate }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
 </div>
 <div class="row">
     <img [hidden]="!existeFoto" class="details" [src]="fotoUrl" width="200">
