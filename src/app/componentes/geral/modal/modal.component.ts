@@ -17,11 +17,11 @@ export class ModalComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  confirmar(){
+  salvar(){
 
   }
 
-  fechar(){
+  cancelar(){
     this.modalRef.hide();
   }
 }
