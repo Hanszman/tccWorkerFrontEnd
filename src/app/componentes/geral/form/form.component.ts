@@ -91,14 +91,15 @@ export class FormComponent implements OnInit {
   }
 
   excluir(){
-    // const modalRef = this.modalService.show(ModalComponent);
-    // modalRef.content.titulo = 'Excluir ' + this.titulo;
-    // modalRef.content.existeBotaoExcluir = true;
-    // // modalRef.content.emiteClicaBotaoExcluir = this.confirmaExcluir();
-    // modalRef.content.existeMensagem = true;
-    // modalRef.content.mensagem = 'Tem certeza que deseja excluir esse registro?';
-    this.service.deleteExcluir(this.url + '/delete', this.id).subscribe(resp => {
-      this.verificarResposta(resp, true);
+    const modalRef = this.modalService.show(ModalComponent);
+    modalRef.content.titulo = 'Excluir ' + this.titulo;
+    modalRef.content.mensagem = 'Tem certeza que deseja excluir esse registro?';
+    modalRef.content.existeMensagem = true;
+    modalRef.content.existeBotaoExcluir = true;
+    modalRef.content.emiteClicaBotaoExcluir.subscribe(() => {
+      this.service.deleteExcluir(this.url + '/delete', this.id).subscribe(resp => {
+        this.verificarResposta(resp, true);
+      });
     });
   }
 

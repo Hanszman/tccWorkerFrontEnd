@@ -80,11 +80,12 @@ export class DetailComponent implements OnInit {
   excluir(){
     const modalRef = this.modalService.show(ModalComponent);
     modalRef.content.titulo = 'Excluir ' + this.titulo;
-    modalRef.content.existeBotaoExcluir = true;
-    // modalRef.content.emiteClicaBotaoExcluir = this.confirmaExcluir();
-    modalRef.content.existeMensagem = true;
     modalRef.content.mensagem = 'Tem certeza que deseja excluir esse registro?';
-    console.log(this.url)
-    console.log(this.id)
+    modalRef.content.existeMensagem = true;
+    modalRef.content.existeBotaoExcluir = true;
+    modalRef.content.emiteClicaBotaoExcluir.subscribe(() => {
+      console.log(this.url)
+      console.log(this.id)
+    });
   }
 }

@@ -110,8 +110,9 @@ export class TableComponent implements OnInit {
       const modalRef = this.modalService.show(ModalComponent);
       modalRef.content.titulo = 'Cadastrar ' + this.titulo;
       modalRef.content.existeBotaoCriar = true;
-      // modalRef.content.emiteClicaBotaoCriar = this.confirmaCriar();
-      console.log('Criar modal!')
+      modalRef.content.emiteClicaBotaoCriar.subscribe(() => {
+        console.log('Criar modal!');
+      });
     }
   }
   
@@ -126,19 +127,21 @@ export class TableComponent implements OnInit {
       const modalRef = this.modalService.show(ModalComponent);
       modalRef.content.titulo = 'Editar ' + this.titulo;
       modalRef.content.existeBotaoEditar = true;
-      // modalRef.content.emiteClicaBotaoEditar = this.confirmaEditar();
-      console.log('Criar modal!')
+      modalRef.content.emiteClicaBotaoEditar.subscribe(() => {
+        console.log('Editar modal!');
+      });
     }
   }
 
   clicaBotaoExcluir(linha) {
     const modalRef = this.modalService.show(ModalComponent);
     modalRef.content.titulo = 'Excluir ' + this.titulo;
-    modalRef.content.existeBotaoExcluir = true;
-    // modalRef.content.emiteClicaBotaoExcluir = this.confirmaExcluir();
-    modalRef.content.existeMensagem = true;
     modalRef.content.mensagem = 'Tem certeza que deseja excluir esse registro?';
-    console.log(linha['id_' + this.url])
+    modalRef.content.existeMensagem = true;
+    modalRef.content.existeBotaoExcluir = true;
+    modalRef.content.emiteClicaBotaoExcluir.subscribe(() => {
+      console.log(linha['id_' + this.url]);
+    });
   }
 
   clicaBotaoCriarEspecial(){

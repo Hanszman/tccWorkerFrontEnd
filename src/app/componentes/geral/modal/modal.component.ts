@@ -27,14 +27,17 @@ export class ModalComponent implements OnInit {
 
   clicaBotaoCriar(){
     this.emiteClicaBotaoCriar.emit();
+    this.modalRef.hide();
   }
 
   clicaBotaoEditar(){
     this.emiteClicaBotaoEditar.emit();
+    this.modalRef.hide();
   }
 
   clicaBotaoExcluir(){
     this.emiteClicaBotaoExcluir.emit();
+    this.modalRef.hide();
   }
 
   cancelar(){
