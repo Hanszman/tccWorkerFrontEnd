@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-etapa-detail',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EtapaDetailComponent implements OnInit {
 
-  constructor() { }
+  id;
+  url = 'etapa';
+  titulo = 'Etapa';
+  parametros;
+  @Input() config = {
+    titulo: 'etapa',
+    cabecalhos: [
+      'dsc_etapa',
+      'ind_sequencia'
+    ]
+  };
+
+  constructor(
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe(params => this.id = params['id']);
+    this.parametros = 'id_etapa=' + this.id + '&';
+  }
 
   ngOnInit(): void {
   }
-
 }

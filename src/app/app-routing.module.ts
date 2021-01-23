@@ -27,6 +27,8 @@ import { ProjetoReadComponent } from './componentes/projeto/projeto-read/projeto
 import { QuadroReadComponent } from './componentes/quadro/quadro-read/quadro-read.component';
 import { AtividadeReadComponent } from './componentes/atividade/atividade-read/atividade-read.component';
 import { EtapaReadComponent } from './componentes/etapa/etapa-read/etapa-read.component';
+import { EtapaDetailComponent } from './componentes/etapa/etapa-detail/etapa-detail.component';
+import { EtapaFormComponent } from './componentes/etapa/etapa-form/etapa-form.component';
 import { CalendarioReadComponent } from './componentes/calendario/calendario-read/calendario-read.component';
 import { LembreteReadComponent } from './componentes/lembrete/lembrete-read/lembrete-read.component';
 import { Pagina404Component } from './componentes/pagina404/pagina404.component';
@@ -82,9 +84,9 @@ const routes: Routes = [
   // { path: 'atividade/update/:id', component: AtividadeUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
 
   { path: 'etapa/read', component: EtapaReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'etapa/read/:id', component: EtapaDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'etapa/create', component: EtapaCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'etapa/update/:id', component: EtapaUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  { path: 'etapa/read/:id', component: EtapaDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  { path: 'etapa/create', component: EtapaFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  { path: 'etapa/update/:id', component: EtapaFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
 
   { path: 'calendario/read', component: CalendarioReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   // { path: 'calendario/read/:id', component: CalendarioDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },

@@ -38,7 +38,10 @@
     "quadro": {},
     "atividade": {},
     "subatividade": {},
-    "etapa": {},
+    "etapa": {
+        "dsc_etapa": "Etapa",
+        "ind_sequencia": "Sequência"
+    },
     "calendario": {},
     "lembrete": {},
     "telefone": {

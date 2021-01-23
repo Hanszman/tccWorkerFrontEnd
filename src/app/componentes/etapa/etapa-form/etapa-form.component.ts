@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-etapa-form',
@@ -7,9 +8,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EtapaFormComponent implements OnInit {
 
-  constructor() { }
+  id;
+  url = 'etapa';
+  titulo = 'Etapa';
+  operacao = 'Cadastrar';
+  mensagem = 'Cadastre uma nova etapa';
+  @Input() config = {
+    titulo: 'etapa',
+    cabecalhos: [
+      'dsc_etapa',
+      'ind_sequencia'
+    ],
+    tipos: [
+      'text',
+      'number'
+    ],
+    mascaras: [],
+    obrigatorios: [
+      'dsc_etapa',
+      'ind_sequencia'
+    ],
+    desabilitados: []
+  };
+
+  constructor(
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe(params => this.id = params['id']);
+    if(this.id !== undefined) {
+      this.operacao = 'Editar';
+      this.mensagem = 'Edite a etapa selecionado';
+    }
+  }
 
   ngOnInit(): void {
   }
-
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-etapa-read',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EtapaReadComponent implements OnInit {
 
-  constructor() { }
+  url = 'etapa';
+  titulo = 'Etapa';
+  parametros;
+  id_empresa = window.localStorage.getItem('id_empresa');
+  @Input() config = {
+    titulo: 'etapa',
+    cabecalhos: [
+      'dsc_etapa',
+      'ind_sequencia'
+    ],
+    paginacao: 5
+  };
+
+  constructor(
+    private router: Router
+  ) {
+    this.parametros = 'id_empresa=' + this.id_empresa + '&';
+  }
 
   ngOnInit(): void {
   }
-
 }
