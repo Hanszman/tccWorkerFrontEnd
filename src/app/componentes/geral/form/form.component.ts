@@ -23,6 +23,7 @@ export class FormComponent implements OnInit {
   @Input() existeFoto = false;
   @Input() fotoUrl;
   @Input() deleteClearLocal = false;
+  @Input() exibeBotoesSubmit = true;
   registro: any = {};
   traducoes;
   voltarLink = "../read";

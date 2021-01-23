@@ -7,6 +7,9 @@
     </div>
     <div class="modal-body">
         <p [hidden]="!existeMensagem">{{ mensagem }}</p>
+        <div [hidden]="!existeModalForm">
+            <!-- <app-form [config]="config" [url]="url" [id]="id" [exibeBotoesSubmit]=false></app-form> -->
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" (click)="cancelar()"><i class="fa fa-ban" aria-hidden="true"></i> {{ 'geral.modal.cancelar' | translate }}</button>

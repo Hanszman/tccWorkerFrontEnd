@@ -34,6 +34,16 @@ export class EmpresaDetailComponent implements OnInit {
       'ind_tipo',
       'dsc_telefone'
     ],
+    tipos: [
+      'text',
+      'text'
+    ],
+    mascaras: [],
+    obrigatorios: [
+      'ind_tipo',
+      'dsc_telefone'
+    ],
+    desabilitados: [],
     paginacao: 5
   };
   @Input() configEndereco = {
@@ -45,6 +55,19 @@ export class EmpresaDetailComponent implements OnInit {
       'dsc_cidade',
       'dsc_uf'
     ],
+    tipos: [
+      'text',
+      'number',
+      'text',
+      'text',
+      'text',
+    ],
+    mascaras: [],
+    obrigatorios: [
+      'dsc_logradouro',
+      'dsc_numero'
+    ],
+    desabilitados: [],
     paginacao: 5
   };
   @Input() configEmail = {
@@ -52,6 +75,14 @@ export class EmpresaDetailComponent implements OnInit {
     cabecalhos: [
       'dsc_email'
     ],
+    tipos: [
+      'text'
+    ],
+    mascaras: [],
+    obrigatorios: [
+      'dsc_email'
+    ],
+    desabilitados: [],
     paginacao: 5
   };
 

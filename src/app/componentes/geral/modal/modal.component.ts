@@ -8,7 +8,11 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class ModalComponent implements OnInit {
 
+  @Input() config;
+  @Input() url: string;
+  @Input() id;
   @Input() titulo: string;
+  @Input() existeModalForm = false;
   @Input() existeBotaoCriar = false;
   @Input() existeBotaoEditar = false;
   @Input() existeBotaoExcluir = false;
@@ -23,6 +27,11 @@ export class ModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.config)
+    console.log(this.url)
+    console.log(this.id)
+    console.log(this.existeModalForm)
+    console.log(this.existeBotaoCriar)
   }
 
   clicaBotaoCriar(){
