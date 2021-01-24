@@ -40,7 +40,7 @@ export class ModalComponent implements OnInit {
   }
 
   enviar(){
-
+    console.log(this.registro)
   }
 
   clicaBotaoCriar(){

@@ -10,13 +10,15 @@
         <div *ngIf="existeModalForm">
             <div *ngFor="let item of config.cabecalhos; let i = index" class="form-group">
                 <label for="{{item}}"><b>{{ tradutor(item) }}:</b></label>
+                <input *ngIf="config.tipos[i] !== 'file'" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" class="form-control" placeholder="{{ tradutor(item) }}" [(ngModel)]="registro[item]" mask="{{config.mascaras[i]}}" [attr.disabled]="config.desabilitados[i] == 'true' ? '' : null">
+                <div id="msg_{{item}}"></div>
             </div>
         </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" (click)="cancelar()"><i class="fa fa-ban" aria-hidden="true"></i> {{ 'geral.modal.cancelar' | translate }}</button>
-        <button [hidden]="!existeBotaoCriar" type="button" class="btn btn-success" (click)="clicaBotaoCriar()">{{ 'geral.modal.cadastrar' | translate }} <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
-        <button [hidden]="!existeBotaoEditar" type="button" class="btn btn-warning" (click)="clicaBotaoEditar()">{{ 'geral.modal.editar' | translate }} <i class="fa fa-pencil" aria-hidden="true"></i></button>
+        <button [hidden]="!existeBotaoCriar" type="button" class="btn btn-success" (click)="enviar()">{{ 'geral.modal.cadastrar' | translate }} <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+        <button [hidden]="!existeBotaoEditar" type="button" class="btn btn-warning" (click)="enviar()">{{ 'geral.modal.editar' | translate }} <i class="fa fa-pencil" aria-hidden="true"></i></button>
         <button [hidden]="!existeBotaoExcluir" type="button" class="btn btn-danger" (click)="clicaBotaoExcluir()">{{ 'geral.modal.excluir' | translate }} <i class="fa fa-trash" aria-hidden="true"></i></button>
     </div>
 </div>
