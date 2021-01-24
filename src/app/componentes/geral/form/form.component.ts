@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormService } from './form.service';
+import { HttpService } from '../http/http.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ValidateService } from '../../geral/validate/validate.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -35,7 +35,7 @@ export class FormComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private service: FormService,
+    private service: HttpService,
     private translate: TranslateService,
     private validate: ValidateService,
     private modalService: BsModalService
@@ -52,7 +52,7 @@ export class FormComponent implements OnInit {
       else
         this.voltarLink = "../../read";
       this.classeBotoes = "col-sm-4"
-      this.service.getConsultar(this.url + '/read', this.id).subscribe(resp => {
+      this.service.getConsultarForm(this.url + '/read', this.id).subscribe(resp => {
         for(let i = 0; i < this.config.cabecalhos.length; i++) {
           if (this.config.cabecalhos[i] == 'arq_foto' && this.existeFoto) {
             if (resp.body['data'][0][this.config.cabecalhos[i]] !== null) {

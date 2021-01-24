@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { DetailService } from './detail.service';
+import { HttpService } from '../http/http.service';
 import { TranslateService } from '@ngx-translate/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { ModalComponent } from '../modal/modal.component';
@@ -27,7 +27,7 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private service: DetailService,
+    private service: HttpService,
     private translate: TranslateService,
     private modalService: BsModalService
   ) { }

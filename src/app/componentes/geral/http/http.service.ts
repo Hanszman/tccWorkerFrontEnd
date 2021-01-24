@@ -6,13 +6,25 @@ import { environment } from '../../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class FormService {
+export class HttpService {
 
   private apiURL = environment.apiURL;
 
   constructor(private http: HttpClient) { }
 
-  getConsultar(url, id): Observable<HttpResponse<any>> {
+  getTable(url, filtro): Observable<HttpResponse<any>> {
+    return this.http.get<any>(
+      this.apiURL + url + `&${filtro}`, {observe: 'response'}
+    );
+  }
+
+  getDetail(url, id): Observable<HttpResponse<any>> {
+    return this.http.get<any>(
+      this.apiURL + url + `/${id}`, {observe: 'response'}
+    );
+  }
+
+  getConsultarForm(url, id): Observable<HttpResponse<any>> {
     return this.http.get<any>(
       this.apiURL + url + `/${id}?isForm=1`, {observe: 'response'}
     );

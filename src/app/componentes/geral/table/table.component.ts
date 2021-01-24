@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { TableService } from './table.service';
+import { HttpService } from '../http/http.service';
 import { TranslateService } from '@ngx-translate/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { ModalComponent } from '../modal/modal.component';
@@ -43,7 +43,7 @@ export class TableComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private service: TableService,
+    private service: HttpService,
     private translate: TranslateService,
     private modalService: BsModalService
   ) { }

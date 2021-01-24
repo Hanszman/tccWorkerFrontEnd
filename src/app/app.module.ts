@@ -41,14 +41,11 @@ import { CalendarioReadComponent } from './componentes/calendario/calendario-rea
 import { LembreteReadComponent } from './componentes/lembrete/lembrete-read/lembrete-read.component';
 import { Pagina404Component } from './componentes/pagina404/pagina404.component';
 import { TableComponent } from './componentes/geral/table/table.component';
-import { TableService } from './componentes/geral/table/table.service';
 import { DetailComponent } from './componentes/geral/detail/detail.component';
-import { DetailService } from './componentes/geral/detail/detail.service';
 import { FormComponent } from './componentes/geral/form/form.component';
-import { FormService } from './componentes/geral/form/form.service';
 import { ChartComponent } from './componentes/geral/chart/chart.component';
-import { ChartService } from './componentes/geral/chart/chart.service';
 import { ModalComponent } from './componentes/geral/modal/modal.component';
+import { HttpService } from './componentes/geral/http/http.service';
 import { ValidateService } from './componentes/geral/validate/validate.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -112,10 +109,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AuthGuard,
     EmpresaAuthGuard,
     EmpresaAuthService,
-    TableService,
-    DetailService,
-    FormService,
-    ChartService,
+    HttpService,
     ValidateService
   ],
   bootstrap: [AppComponent]
