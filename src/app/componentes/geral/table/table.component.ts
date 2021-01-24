@@ -16,6 +16,8 @@ export class TableComponent implements OnInit {
   @Input() config;
   @Input() url: string;
   @Input() parametros: string = '';
+  @Input() idRelacao;
+  @Input() relacao;
   @Input() existeFiltros = true;
   @Input() existeContagem = true;
   @Input() existeBotaoCriar = true;
@@ -110,6 +112,8 @@ export class TableComponent implements OnInit {
       const initialState = {
         config: this.config,
         url: this.url,
+        idRelacao: this.idRelacao,
+        relacao: this.relacao,
         traducoes: this.traducoes
       };
       const modalRef = this.modalService.show(ModalComponent, {initialState});
@@ -134,6 +138,8 @@ export class TableComponent implements OnInit {
         config: this.config,
         url: this.url,
         id: linha['id_' + this.url],
+        idRelacao: this.idRelacao,
+        relacao: this.relacao,
         traducoes: this.traducoes
       };
       const modalRef = this.modalService.show(ModalComponent, {initialState});

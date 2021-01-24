@@ -23,6 +23,8 @@ export class ModalComponent implements OnInit {
   config;
   url: string;
   id;
+  idRelacao;
+  relacao;
   traducoes;
   registro: any = {};
 
@@ -57,7 +59,7 @@ export class ModalComponent implements OnInit {
       if (this.registro[this.config.obrigatorios[i]] == undefined || this.registro[this.config.obrigatorios[i]] == '')
         return false;
     }
-
+    this.registro['id_' + this.relacao] = this.idRelacao;
     console.log(this.registro)
     this.modalRef.hide();
   }
