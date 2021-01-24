@@ -10,7 +10,11 @@
         <div *ngIf="existeModalForm">
             <div *ngFor="let item of config.cabecalhos; let i = index" class="form-group">
                 <label for="{{item}}"><b>{{ tradutor(item) }}:</b></label>
-                <input *ngIf="config.tipos[i] !== 'file'" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" class="form-control" placeholder="{{ tradutor(item) }}" [(ngModel)]="registro[item]" mask="{{config.mascaras[i]}}" [attr.disabled]="config.desabilitados[i] == 'true' ? '' : null">
+                <input *ngIf="config.tipos[i] !== 'select'" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" class="form-control" placeholder="{{ tradutor(item) }}" [(ngModel)]="registro[item]" mask="{{config.mascaras[i]}}" [attr.disabled]="config.desabilitados[i] == 'true' ? '' : null">
+                <select *ngIf="config.tipos[i] == 'select'" id="{{item}}" name="{{item}}" class="form-control" [(ngModel)]="registro[item]">
+                    <option disabled selected value> -- Selecione -- </option>
+                    <option *ngFor="let selecao of config.selects[item].values; let j = index" value="{{selecao}}">{{config.selects[item].labels[j]}}</option>
+                </select>
                 <div id="msg_{{item}}"></div>
             </div>
         </div>

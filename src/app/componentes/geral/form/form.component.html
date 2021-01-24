@@ -7,7 +7,7 @@
         <label for="{{item}}"><b>{{ tradutor(item) }}:</b></label>
         <input *ngIf="config.tipos[i] !== 'file'" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" class="form-control" placeholder="{{ tradutor(item) }}" [(ngModel)]="registro[item]" mask="{{config.mascaras[i]}}" [attr.disabled]="config.desabilitados[i] == 'true' ? '' : null">
         <label for="{{item}}" *ngIf="config.tipos[i] == 'file'">&nbsp;<a class="btn btn-outline-success">{{ 'geral.form.escolher-arquivo' | translate }}</a></label>
-        <input *ngIf="config.tipos[i] == 'file'" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" class="form-control file-type-input" placeholder="{{ tradutor(item) }}" [(ngModel)]="registro[item]" (change)="carregarArquivo($event)">
+        <input *ngIf="config.tipos[i] == 'file'" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" class="form-control file-type-input" [(ngModel)]="registro[item]" (change)="carregarArquivo($event)">
         <div id="msg_{{item}}"></div>
     </div>
     <div [hidden]="!existeFoto" class="form-group">
