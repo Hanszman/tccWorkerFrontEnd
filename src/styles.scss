@@ -81,6 +81,9 @@
 .file-type-input {
     display: none !important;
 }
+.select-disabled {
+    color: gray;
+}
 @media print {
     button, a, input, .no-print {
         display: none !important;

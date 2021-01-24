@@ -70,6 +70,7 @@ export class ModalComponent implements OnInit {
     }
     this.registro['id_' + this.relacao] = this.idRelacao;
 
+    console.log(this.registro)
     if (!this.id && this.existeBotaoCriar) {
       this.service.postCadastrar(this.url + '/create', this.registro).subscribe(resp => {
         this.verificarResposta(resp);
