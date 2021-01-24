@@ -7,8 +7,10 @@
     </div>
     <div class="modal-body">
         <p [hidden]="!existeMensagem">{{ mensagem }}</p>
-        <div [hidden]="!existeModalForm">
-            <!-- <app-form [config]="config" [url]="url" [id]="id" [exibeBotoesSubmit]=false></app-form> -->
+        <div *ngIf="existeModalForm">
+            <div *ngFor="let item of config.cabecalhos; let i = index" class="form-group">
+                {{item}}
+            </div>
         </div>
     </div>
     <div class="modal-footer">

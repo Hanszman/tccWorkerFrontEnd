@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-modal',
@@ -8,9 +9,6 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class ModalComponent implements OnInit {
 
-  @Input() config;
-  @Input() url: string;
-  @Input() id;
   @Input() titulo: string;
   @Input() existeModalForm = false;
   @Input() existeBotaoCriar = false;
@@ -21,17 +19,41 @@ export class ModalComponent implements OnInit {
   @Output() emiteClicaBotaoCriar = new EventEmitter();
   @Output() emiteClicaBotaoEditar = new EventEmitter();
   @Output() emiteClicaBotaoExcluir = new EventEmitter();
+  config;
+  url: string;
+  id;
+  registro: any = {};
+  traducoes;
 
   constructor(
-    public modalRef: BsModalRef
+    public modalRef: BsModalRef,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
-    console.log(this.config)
-    console.log(this.url)
-    console.log(this.id)
-    console.log(this.existeModalForm)
-    console.log(this.existeBotaoCriar)
+    if (this.existeModalForm) {
+      this.traduzir().subscribe((traducoes) => {
+        this.traducoes = traducoes;
+      })
+    }
+  }
+
+  traduzir(){
+    let idioma = 'br';
+    this.translate.use(idioma);
+    return this.translate.get(this.config.titulo);
+  }
+
+  tradutor(chave){
+    if (this.traducoes !== undefined){
+      if (chave in this.traducoes)
+        return this.traducoes[chave];
+      return '';
+    }
+  }
+
+  enviar(){
+
   }
 
   clicaBotaoCriar(){

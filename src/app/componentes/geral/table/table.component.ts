@@ -107,14 +107,12 @@ export class TableComponent implements OnInit {
     if (!this.existeModalForm)
       this.router.navigate([this.url + '/create/']);
     else {
-      console.log(this.config)
-      console.log(this.url)
-      var configModal = this.config;
-      var urlModal = this.url;
-      const modalRef = this.modalService.show(ModalComponent);
+      const initialState = {
+        config: this.config,
+        url: this.url
+      };
+      const modalRef = this.modalService.show(ModalComponent, {initialState});
       modalRef.content.titulo = 'Cadastrar ' + this.titulo;
-      modalRef.content.config = configModal;
-      modalRef.content.url = urlModal;
       modalRef.content.existeModalForm = true;
       modalRef.content.existeBotaoCriar = true;
       modalRef.content.emiteClicaBotaoCriar.subscribe(() => {
@@ -131,13 +129,13 @@ export class TableComponent implements OnInit {
     if (!this.existeModalForm)
       this.router.navigate([this.url + '/update/', linha['id_' + this.url]]);
     else {
-      console.log(this.config)
-      console.log(this.url)
-      const modalRef = this.modalService.show(ModalComponent);
+      const initialState = {
+        config: this.config,
+        url: this.url,
+        id: linha['id_' + this.url]
+      };
+      const modalRef = this.modalService.show(ModalComponent, {initialState});
       modalRef.content.titulo = 'Editar ' + this.titulo;
-      modalRef.content.config = this.config;
-      modalRef.content.url = this.url;
-      modalRef.content.id = linha['id_' + this.url];
       modalRef.content.existeModalForm = true;
       modalRef.content.existeBotaoEditar = true;
       modalRef.content.emiteClicaBotaoEditar.subscribe(() => {
