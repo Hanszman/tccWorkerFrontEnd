@@ -109,7 +109,8 @@ export class TableComponent implements OnInit {
     else {
       const initialState = {
         config: this.config,
-        url: this.url
+        url: this.url,
+        traducoes: this.traducoes
       };
       const modalRef = this.modalService.show(ModalComponent, {initialState});
       modalRef.content.titulo = 'Cadastrar ' + this.titulo;
@@ -132,7 +133,8 @@ export class TableComponent implements OnInit {
       const initialState = {
         config: this.config,
         url: this.url,
-        id: linha['id_' + this.url]
+        id: linha['id_' + this.url],
+        traducoes: this.traducoes
       };
       const modalRef = this.modalService.show(ModalComponent, {initialState});
       modalRef.content.titulo = 'Editar ' + this.titulo;

@@ -9,7 +9,7 @@
         <p [hidden]="!existeMensagem">{{ mensagem }}</p>
         <div *ngIf="existeModalForm">
             <div *ngFor="let item of config.cabecalhos; let i = index" class="form-group">
-                {{item}}
+                <label for="{{item}}"><b>{{ tradutor(item) }}:</b></label>
             </div>
         </div>
     </div>

@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-modal',
@@ -26,22 +25,10 @@ export class ModalComponent implements OnInit {
   traducoes;
 
   constructor(
-    public modalRef: BsModalRef,
-    private translate: TranslateService
+    public modalRef: BsModalRef
   ) { }
 
   ngOnInit(): void {
-    if (this.existeModalForm) {
-      this.traduzir().subscribe((traducoes) => {
-        this.traducoes = traducoes;
-      })
-    }
-  }
-
-  traduzir(){
-    let idioma = 'br';
-    this.translate.use(idioma);
-    return this.translate.get(this.config.titulo);
   }
 
   tradutor(chave){
