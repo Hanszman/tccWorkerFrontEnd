@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { HttpService } from '../http/http.service';
 
 @Component({
   selector: 'app-modal',
@@ -25,10 +26,17 @@ export class ModalComponent implements OnInit {
   registro: any = {};
 
   constructor(
-    public modalRef: BsModalRef
+    public modalRef: BsModalRef,
+    private service: HttpService
   ) { }
 
   ngOnInit(): void {
+    if (this.id) {
+      this.service.getConsultarForm(this.url + '/read', this.id).subscribe(resp => {
+        for(let i = 0; i < this.config.cabecalhos.length; i++)
+          this.registro[this.config.cabecalhos[i]] = resp.body['data'][0][this.config.cabecalhos[i]];
+      });
+    }
   }
 
   tradutor(chave){
