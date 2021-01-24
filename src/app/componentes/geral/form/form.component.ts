@@ -79,6 +79,7 @@ export class FormComponent implements OnInit {
     }
     this.registro['id_usuario_logado'] = this.id_usuario_logado;
     this.registro['id_empresa_logada'] = this.id_empresa_logada;
+    
     if (!this.id) {
       this.service.postCadastrar(this.url + '/create', this.registro).subscribe(resp => {
         this.verificarResposta(resp);
@@ -114,9 +115,8 @@ export class FormComponent implements OnInit {
       else
         this.router.navigate([this.url + '/read']);
     }
-    else {
+    else
       alert(resp.body['data']['mensagem']);
-    }
   }
 
   carregarArquivo(event){

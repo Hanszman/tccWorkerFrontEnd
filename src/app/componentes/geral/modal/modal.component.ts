@@ -51,6 +51,15 @@ export class ModalComponent implements OnInit {
     }
   }
 
+  verificarResposta(resp){
+    if (resp.body['data']['sucesso']){
+      alert(resp.body['data']['mensagem']);
+      window.location.reload();
+    }
+    else
+      alert(resp.body['data']['mensagem']);
+  }
+
   enviar(){
     for (let i = 0; i < this.config.obrigatorios.length; i++)
       this.validate.validaCampo(this.registro[this.config.obrigatorios[i]], this.config.obrigatorios[i], 'Informe ' + this.tradutor(this.config.obrigatorios[i]) + '!');
@@ -60,7 +69,17 @@ export class ModalComponent implements OnInit {
         return false;
     }
     this.registro['id_' + this.relacao] = this.idRelacao;
-    console.log(this.registro)
+
+    if (!this.id) {
+      this.service.postCadastrar(this.url + '/create', this.registro).subscribe(resp => {
+        this.verificarResposta(resp);
+      });
+    }
+    else {
+      this.service.putEditar(this.url + '/update', this.id, this.registro).subscribe(resp => {
+        this.verificarResposta(resp);
+      });
+    }
     this.modalRef.hide();
   }
 

@@ -164,9 +164,8 @@ export class TableComponent implements OnInit {
           alert(resp.body['data']['mensagem']);
           window.location.reload();
         }
-        else {
+        else
           alert(resp.body['data']['mensagem']);
-        }
       });
     });
   }
