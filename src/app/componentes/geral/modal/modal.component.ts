@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { HttpService } from '../http/http.service';
+import { ValidateService } from '../../geral/validate/validate.service';
 
 @Component({
   selector: 'app-modal',
@@ -27,7 +28,8 @@ export class ModalComponent implements OnInit {
 
   constructor(
     public modalRef: BsModalRef,
-    private service: HttpService
+    private service: HttpService,
+    private validate: ValidateService
   ) { }
 
   ngOnInit(): void {
@@ -48,7 +50,16 @@ export class ModalComponent implements OnInit {
   }
 
   enviar(){
+    for (let i = 0; i < this.config.obrigatorios.length; i++)
+      this.validate.validaCampo(this.registro[this.config.obrigatorios[i]], this.config.obrigatorios[i], 'Informe ' + this.tradutor(this.config.obrigatorios[i]) + '!');
+    
+    for (let i = 0; i < this.config.obrigatorios.length; i++) {
+      if (this.registro[this.config.obrigatorios[i]] == undefined || this.registro[this.config.obrigatorios[i]] == '')
+        return false;
+    }
+
     console.log(this.registro)
+    this.modalRef.hide();
   }
 
   clicaBotaoCriar(){
