@@ -70,12 +70,12 @@ export class ModalComponent implements OnInit {
     }
     this.registro['id_' + this.relacao] = this.idRelacao;
 
-    if (!this.id) {
+    if (!this.id && this.existeBotaoCriar) {
       this.service.postCadastrar(this.url + '/create', this.registro).subscribe(resp => {
         this.verificarResposta(resp);
       });
     }
-    else {
+    else if (this.id && this.existeBotaoEditar) {
       this.service.putEditar(this.url + '/update', this.id, this.registro).subscribe(resp => {
         this.verificarResposta(resp);
       });

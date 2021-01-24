@@ -120,9 +120,6 @@ export class TableComponent implements OnInit {
       modalRef.content.titulo = 'Cadastrar ' + this.titulo;
       modalRef.content.existeModalForm = true;
       modalRef.content.existeBotaoCriar = true;
-      modalRef.content.emiteClicaBotaoCriar.subscribe(() => {
-        console.log('Criar modal!');
-      });
     }
   }
   
@@ -146,9 +143,6 @@ export class TableComponent implements OnInit {
       modalRef.content.titulo = 'Editar ' + this.titulo;
       modalRef.content.existeModalForm = true;
       modalRef.content.existeBotaoEditar = true;
-      modalRef.content.emiteClicaBotaoEditar.subscribe(() => {
-        console.log('Editar modal!');
-      });
     }
   }
 
