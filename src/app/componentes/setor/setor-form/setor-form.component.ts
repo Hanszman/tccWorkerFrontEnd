@@ -21,6 +21,7 @@ export class SetorFormComponent implements OnInit {
     tipos: [
       'text'
     ],
+    selects: {},
     mascaras: [],
     obrigatorios: [
       'dsc_setor'

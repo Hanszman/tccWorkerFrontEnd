@@ -28,6 +28,7 @@ export class EmpresaFormComponent implements OnInit {
       'date',
       'file'
     ],
+    selects: {},
     mascaras: [
       '',
       '00.000.000/0000-00',

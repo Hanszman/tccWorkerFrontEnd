@@ -23,6 +23,7 @@ export class EtapaFormComponent implements OnInit {
       'text',
       'number'
     ],
+    selects: {},
     mascaras: [],
     obrigatorios: [
       'dsc_etapa',

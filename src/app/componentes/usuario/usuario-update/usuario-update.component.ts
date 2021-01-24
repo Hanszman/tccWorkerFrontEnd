@@ -40,6 +40,7 @@ export class UsuarioUpdateComponent implements OnInit {
       'text',
       'file',
     ],
+    selects: {},
     mascaras: [
       '', '', '', '', '', '', '',
       '000.000.000-00'

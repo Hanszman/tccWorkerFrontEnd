@@ -23,6 +23,7 @@ export class FornecedorFormComponent implements OnInit {
       'text',
       'text'
     ],
+    selects: {},
     mascaras: [
       '',
       '00.000.000/0000-00',

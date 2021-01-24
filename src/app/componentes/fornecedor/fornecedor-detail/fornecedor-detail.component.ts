@@ -32,9 +32,15 @@ export class FornecedorDetailComponent implements OnInit {
       'dsc_telefone'
     ],
     tipos: [
-      'text',
+      'select',
       'text'
     ],
+    selects: {
+      ind_tipo: {
+        values: ['F', 'M', 'C', 'T', 'O'],
+        labels: ['Fixo', 'Celular', 'Casa', 'Trabalho', 'Outro']
+      }
+    },
     mascaras: [],
     obrigatorios: [
       'ind_tipo',
@@ -57,8 +63,14 @@ export class FornecedorDetailComponent implements OnInit {
       'number',
       'text',
       'text',
-      'text',
+      'select',
     ],
+    selects: {
+      dsc_uf: {
+        values: ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO'],
+        labels: ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO']
+      }
+    },
     mascaras: [],
     obrigatorios: [
       'dsc_logradouro',
