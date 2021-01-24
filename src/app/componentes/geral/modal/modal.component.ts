@@ -21,8 +21,8 @@ export class ModalComponent implements OnInit {
   config;
   url: string;
   id;
-  registro: any = {};
   traducoes;
+  registro: any = {};
 
   constructor(
     public modalRef: BsModalRef
