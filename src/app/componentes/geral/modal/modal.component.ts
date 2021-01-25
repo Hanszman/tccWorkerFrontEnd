@@ -69,19 +69,18 @@ export class ModalComponent implements OnInit {
         return false;
     }
     this.registro['id_' + this.relacao] = this.idRelacao;
-    console.log(this.registro)
 
-    // if (!this.id && this.existeBotaoCriar) {
-    //   this.service.postCadastrar(this.url + '/create', this.registro).subscribe(resp => {
-    //     this.verificarResposta(resp);
-    //   });
-    // }
-    // else if (this.id && this.existeBotaoEditar) {
-    //   this.service.putEditar(this.url + '/update', this.id, this.registro).subscribe(resp => {
-    //     this.verificarResposta(resp);
-    //   });
-    // }
-    // this.modalRef.hide();
+    if (!this.id && this.existeBotaoCriar) {
+      this.service.postCadastrar(this.url + '/create', this.registro).subscribe(resp => {
+        this.verificarResposta(resp);
+      });
+    }
+    else if (this.id && this.existeBotaoEditar) {
+      this.service.putEditar(this.url + '/update', this.id, this.registro).subscribe(resp => {
+        this.verificarResposta(resp);
+      });
+    }
+    this.modalRef.hide();
   }
 
   clicaBotaoCriar(){

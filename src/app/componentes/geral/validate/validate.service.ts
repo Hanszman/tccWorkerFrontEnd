@@ -11,7 +11,7 @@ export class ValidateService {
     var id_campo = <HTMLElement>document.getElementById(id);
     var msg_campo = <HTMLElement>document.getElementById('msg_' + id);
     
-    if (campo == undefined || campo == '') {  
+    if (campo == undefined || campo == '' || campo == 'undefined') {  
       id_campo.classList.add('is-invalid');
       msg_campo.classList.add('invalid-feedback');
       msg_campo.innerHTML = msg;
