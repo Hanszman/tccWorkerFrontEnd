@@ -39,7 +39,8 @@
         "dsc_descricao": "Descrição",
         "dat_inicio": "Data de Início",
         "dat_fim": "Data de Fim",
-        "id_setor": "Setor Responsável"
+        "id_setor": "Setor Responsável",
+        "dsc_setor": "Setor Responsável"
     },
     "quadro": {},
     "atividade": {},
