@@ -34,7 +34,13 @@
         "dsc_setor": "Setor"
     },
     "controle-ponto": {},
-    "projeto": {},
+    "projeto": {
+        "dsc_nome": "Nome",
+        "dsc_descricao": "Descrição",
+        "dat_inicio": "Data de Início",
+        "dat_fim": "Data de Fim",
+        "id_setor": "Setor Responsável"
+    },
     "quadro": {},
     "atividade": {},
     "subatividade": {},
