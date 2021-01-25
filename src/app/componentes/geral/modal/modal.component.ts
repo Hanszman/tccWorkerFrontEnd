@@ -61,15 +61,15 @@ export class ModalComponent implements OnInit {
   }
 
   enviar(){
-    console.log(this.registro)
-    // for (let i = 0; i < this.config.obrigatorios.length; i++)
-    //   this.validate.validaCampo(this.registro[this.config.obrigatorios[i]], this.config.obrigatorios[i], 'Informe ' + this.tradutor(this.config.obrigatorios[i]) + '!');
+    for (let i = 0; i < this.config.obrigatorios.length; i++)
+      this.validate.validaCampo(this.registro[this.config.obrigatorios[i]], this.config.obrigatorios[i], 'Informe ' + this.tradutor(this.config.obrigatorios[i]) + '!');
     
-    // for (let i = 0; i < this.config.obrigatorios.length; i++) {
-    //   if (this.registro[this.config.obrigatorios[i]] == undefined || this.registro[this.config.obrigatorios[i]] == '')
-    //     return false;
-    // }
-    // this.registro['id_' + this.relacao] = this.idRelacao;
+    for (let i = 0; i < this.config.obrigatorios.length; i++) {
+      if (this.registro[this.config.obrigatorios[i]] == undefined || this.registro[this.config.obrigatorios[i]] == '')
+        return false;
+    }
+    this.registro['id_' + this.relacao] = this.idRelacao;
+    console.log(this.registro)
 
     // if (!this.id && this.existeBotaoCriar) {
     //   this.service.postCadastrar(this.url + '/create', this.registro).subscribe(resp => {
