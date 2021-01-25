@@ -37,8 +37,8 @@ export class ClienteDetailComponent implements OnInit {
     ],
     selects: {
       ind_tipo: {
-        values: ['F', 'M', 'C', 'T', 'O'],
-        labels: ['Fixo', 'Celular', 'Casa', 'Trabalho', 'Outro']
+        values: ['F', 'C', 'R', 'T', 'O'],
+        labels: ['Fixo', 'Celular', 'Residencial', 'Trabalho', 'Outro']
       }
     },
     mascaras: [],
