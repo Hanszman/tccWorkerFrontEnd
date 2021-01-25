@@ -68,6 +68,11 @@ export class ModalComponent implements OnInit {
       if (this.registro[this.config.obrigatorios[i]] == undefined || this.registro[this.config.obrigatorios[i]] == '' || this.registro[this.config.obrigatorios[i]] == 'undefined')
         return false;
     }
+
+    for (var i in this.registro){
+      if (this.registro[i] == undefined || this.registro[i] == '' || this.registro[i] == 'undefined')
+        this.registro[i] = null;
+    }
     this.registro['id_' + this.relacao] = this.idRelacao;
 
     if (!this.id && this.existeBotaoCriar) {

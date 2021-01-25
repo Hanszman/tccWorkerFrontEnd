@@ -77,6 +77,11 @@ export class FormComponent implements OnInit {
       if (this.registro[this.config.obrigatorios[i]] == undefined || this.registro[this.config.obrigatorios[i]] == '' || this.registro[this.config.obrigatorios[i]] == 'undefined')
         return false;
     }
+
+    for (var i in this.registro){
+      if (this.registro[i] == undefined || this.registro[i] == '' || this.registro[i] == 'undefined')
+        this.registro[i] = null;
+    }
     this.registro['id_usuario_logado'] = this.id_usuario_logado;
     this.registro['id_empresa_logada'] = this.id_empresa_logada;
     
