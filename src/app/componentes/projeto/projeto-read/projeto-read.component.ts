@@ -19,7 +19,6 @@ export class ProjetoReadComponent implements OnInit {
       'dsc_descricao',
       'dat_inicio',
       'dat_fim',
-      'id_setor',
       'dsc_setor'
     ],
     paginacao: 5
