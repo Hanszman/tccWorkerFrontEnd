@@ -65,7 +65,7 @@ export class ModalComponent implements OnInit {
       this.validate.validaCampo(this.registro[this.config.obrigatorios[i]], this.config.obrigatorios[i], 'Informe ' + this.tradutor(this.config.obrigatorios[i]) + '!');
     
     for (let i = 0; i < this.config.obrigatorios.length; i++) {
-      if (this.registro[this.config.obrigatorios[i]] == undefined || this.registro[this.config.obrigatorios[i]] == '')
+      if (this.registro[this.config.obrigatorios[i]] == undefined || this.registro[this.config.obrigatorios[i]] == '' || this.registro[this.config.obrigatorios[i]] == 'undefined')
         return false;
     }
     this.registro['id_' + this.relacao] = this.idRelacao;
