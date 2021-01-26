@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cliente-read',
@@ -21,9 +20,7 @@ export class ClienteReadComponent implements OnInit {
     paginacao: 5
   };
 
-  constructor(
-    private router: Router
-  ) {
+  constructor() {
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
   }
 

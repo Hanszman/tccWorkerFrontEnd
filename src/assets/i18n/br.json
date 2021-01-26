@@ -42,7 +42,13 @@
         "id_setor": "Setor Responsável",
         "dsc_setor": "Setor Responsável"
     },
-    "quadro": {},
+    "quadro": {
+        "dsc_nome": "Nome",
+        "dsc_descricao": "Descrição",
+        "dat_inicio": "Data de Início",
+        "dat_fim": "Data de Fim",
+        "dsc_projeto": "Projeto"
+    },
     "atividade": {},
     "subatividade": {},
     "etapa": {

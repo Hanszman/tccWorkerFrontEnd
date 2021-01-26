@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-setor-read',
@@ -20,9 +19,7 @@ export class SetorReadComponent implements OnInit {
     paginacao: 5
   };
 
-  constructor(
-    private router: Router
-  ) {
+  constructor() {
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
   }
 
