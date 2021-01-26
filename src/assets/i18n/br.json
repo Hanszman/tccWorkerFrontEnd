@@ -47,6 +47,7 @@
         "dsc_descricao": "Descrição",
         "dat_inicio": "Data de Início",
         "dat_fim": "Data de Fim",
+        "id_projeto": "Projeto",
         "dsc_projeto": "Projeto"
     },
     "atividade": {},
