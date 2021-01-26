@@ -85,7 +85,7 @@ export class TableComponent implements OnInit {
         });
       }
       else
-        throw "Conjunto de dados não está corretamente definido!"  
+        throw "Conjunto de dados não está corretamente definido!"
     }
     else
       throw "Objeto não possui conjunto de dados!"
