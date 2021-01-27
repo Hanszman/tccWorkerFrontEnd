@@ -42,8 +42,11 @@ export class QuadroDetailComponent implements OnInit {
         this.etapaList[i]['atividade_list'] = [];
         this.service.getConsultar('atividade', 'id_etapa=' + conjunto[i]['id_etapa'] + '&id_quadro=' + this.id).subscribe((innerObj) => {
           let innerConjunto = innerObj.body.data.dados;
-          for (let j = 0; j < innerConjunto.length; j++)
-            this.etapaList[i]['atividade_list'].push(innerConjunto[j]['dsc_nome']);
+          for (let j = 0; j < innerConjunto.length; j++) {
+            this.etapaList[i]['atividade_list'][j] = new Object();
+            this.etapaList[i]['atividade_list'][j]['atividade_id'] = innerConjunto[j]['id_atividade'];
+            this.etapaList[i]['atividade_list'][j]['atividade_nome'] = innerConjunto[j]['dsc_nome'];
+          }
         });
       }
     });
@@ -55,7 +58,10 @@ export class QuadroDetailComponent implements OnInit {
   drop(event: CdkDragDrop<string[]>){
     if (event.previousContainer === event.container)
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    else
+    else {
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+      console.log(event.item.element.nativeElement.id); // id da atividade
+      console.log(event.container.id); // id da etapa
+    }
   }
 }
