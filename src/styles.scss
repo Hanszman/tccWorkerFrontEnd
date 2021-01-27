@@ -126,21 +126,21 @@
                     text-transform: uppercase;
                     margin-bottom: 20px;
                 }
-                .tasks-container {
-                    flex-grow: 1;
-                    .task {
-                        display: flex;
-                        padding: 15px 12px;
-                        background: white;
-                        border-bottom: solid 1px #ddd;
-                        border-radius: 4px;
-                        margin-bottom: 15px;
-                        box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05);
-                    }
-                }
             }
         }
     }
+}
+.tasks-container {
+    flex-grow: 1;
+}
+.task {
+    display: flex;
+    padding: 15px 12px;
+    background: white;
+    border-bottom: solid 1px #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05);
 }
 @media print {
     button, a, input, .no-print {
