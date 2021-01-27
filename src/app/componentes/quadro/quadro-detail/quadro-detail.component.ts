@@ -40,7 +40,7 @@ export class QuadroDetailComponent implements OnInit {
         this.etapaList[i]['id_etapa'] = conjunto[i]['id_etapa'];
         this.etapaList[i]['dsc_etapa'] = conjunto[i]['dsc_etapa'];
         this.etapaList[i]['atividade_list'] = [];
-        this.service.getConsultar('atividade', 'id_etapa=' + conjunto[i]['id_etapa']).subscribe((innerObj) => {
+        this.service.getConsultar('atividade', 'id_etapa=' + conjunto[i]['id_etapa'] + '&id_quadro=' + this.id).subscribe((innerObj) => {
           let innerConjunto = innerObj.body.data.dados;
           for (let j = 0; j < innerConjunto.length; j++)
             this.etapaList[i]['atividade_list'].push(innerConjunto[j]['dsc_nome']);
