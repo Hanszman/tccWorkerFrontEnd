@@ -10,7 +10,9 @@ export class ProjetoDetailComponent implements OnInit {
 
   id;
   url = 'projeto';
+  urlQuadro = 'quadro';
   titulo = 'Projeto';
+  tituloQuadro = 'Quadro';
   parametros;
   @Input() config = {
     titulo: 'projeto',
@@ -21,6 +23,17 @@ export class ProjetoDetailComponent implements OnInit {
       'dat_fim',
       'dsc_setor'
     ]
+  };
+  @Input() configQuadro = {
+    titulo: 'quadro',
+    cabecalhos: [
+      'dsc_nome',
+      'dsc_descricao',
+      'dat_inicio',
+      'dat_fim',
+      'dsc_projeto'
+    ],
+    paginacao: 5
   };
 
   constructor(
