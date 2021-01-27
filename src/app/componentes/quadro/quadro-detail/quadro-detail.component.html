@@ -14,7 +14,7 @@
     <div *ngIf="etapaList.length != 0 " class="board" cdkDropListGroup>
         <div class="board-column" *ngFor="let etapa of etapaList">
             <div class="column-title">{{etapa.dsc_etapa}}</div>
-            <div class="tasks-container" cdkDropList [cdkDropListData]="todo" (cdkDropListDropped)="drop($event)">
+            <div class="tasks-container" cdkDropList [cdkDropListData]="etapa.atividade_list" (cdkDropListDropped)="drop($event)">
                 <div class="task" *ngFor="let atividade of etapa.atividade_list" cdkDrag>
                     {{atividade}}
                 </div>
