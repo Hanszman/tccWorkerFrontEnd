@@ -48,7 +48,7 @@ export class QuadroFormComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private service: HttpService,
+    private service: HttpService
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
     if(this.id !== undefined) {
