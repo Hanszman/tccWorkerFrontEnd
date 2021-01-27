@@ -8,7 +8,7 @@
 
 <app-detail [titulo]="titulo" [config]="config" [url]="url" [id]="id"></app-detail>
 
-<div class="row table-responsive div-table">
+<div class="row table-responsive">
     <h4>Quadro de Atividades por Etapas</h4>
     <div *ngIf="etapaList.length == 0 ">Não existem etapas nesta empresa</div>
     <div *ngIf="etapaList.length != 0 " class="board" cdkDropListGroup>

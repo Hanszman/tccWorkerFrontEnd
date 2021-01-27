@@ -60,8 +60,24 @@ export class QuadroDetailComponent implements OnInit {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     else {
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-      console.log(event.item.element.nativeElement.id); // id da atividade
-      console.log(event.container.id); // id da etapa
+      this.atualizaAtividade(event.item.element.nativeElement.id, event.container.id);
     }
+  }
+
+  atualizaAtividade(id_atividade, id_etapa){
+    this.service.getConsultarForm('atividade/read', id_atividade).subscribe((obj) => {
+      let conjunto = obj.body.data[0];
+      let dados = new Object();
+      dados['dsc_nome'] = conjunto['dsc_nome'];
+      dados['dsc_descricao'] = conjunto['dsc_descricao'];
+      dados['dat_inicio'] = conjunto['dat_inicio'];
+      dados['dat_fim'] = conjunto['dat_fim'];
+      dados['id_quadro'] = this.id;
+      dados['id_etapa'] = id_etapa;
+      this.service.putEditar('atividade/update', id_atividade, dados).subscribe((resp) => {
+        if (!resp.body['data']['sucesso'])
+          alert(resp.body['data']['mensagem']);
+      });
+    });
   }
 }
