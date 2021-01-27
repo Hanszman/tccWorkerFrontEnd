@@ -26,11 +26,13 @@ export class QuadroDetailComponent implements OnInit {
   todo = [
     'Get to work',
     'Pick up groceries',
+  ];
+  doing = [
     'Go home',
-    'Fall asleep'
+    'Fall asleep',
+    'Get up'
   ];
   done = [
-    'Get up',
     'Brush teeth',
     'Take a shower',
     'Check e-mail',
