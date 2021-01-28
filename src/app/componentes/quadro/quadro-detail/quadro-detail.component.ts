@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpService } from '../../geral/http/http.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { ModalComponent } from '../../geral/modal/modal.component';
 
 @Component({
   selector: 'app-quadro-detail',
@@ -29,7 +31,8 @@ export class QuadroDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private service: HttpService
+    private service: HttpService,
+    private modalService: BsModalService
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
     this.parametros = 'id_empresa=' + this.id_empresa + '&ordenarPor=ind_sequencia&direcao=asc&';
@@ -60,11 +63,11 @@ export class QuadroDetailComponent implements OnInit {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     else {
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-      this.atualizaAtividade(event.item.element.nativeElement.id, event.container.id);
+      this.atualizarAtividadeDrop(event.item.element.nativeElement.id, event.container.id);
     }
   }
 
-  atualizaAtividade(id_atividade, id_etapa){
+  atualizarAtividadeDrop(id_atividade, id_etapa){
     this.service.getConsultarForm('atividade/read', id_atividade).subscribe((obj) => {
       let conjunto = obj.body.data[0];
       let dados = new Object();
@@ -79,5 +82,19 @@ export class QuadroDetailComponent implements OnInit {
           alert(resp.body['data']['mensagem']);
       });
     });
+  }
+
+  criarAtividadeModal(id_etapa){
+    console.log(id_etapa);
+  }
+
+  editarAtividadeModal(id_atividade, id_etapa){
+    console.log(id_atividade);
+    console.log(id_etapa);
+  }
+
+  detalhesAtividadeModal(id_atividade, id_etapa){
+    console.log(id_atividade);
+    console.log(id_etapa);
   }
 }

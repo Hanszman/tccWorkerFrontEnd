@@ -15,15 +15,15 @@
         <div class="board-column" *ngFor="let etapa of etapaList">
             <div class="column-title">{{etapa.dsc_etapa}}</div>
             <div class="column-subtitle">
-                <a class="btn btn-outline-success" title="Criar Atividade Nesta Etapa"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>&nbsp;
+                <a class="btn btn-outline-success" (click)="criarAtividadeModal(etapa.id_etapa)" title="Criar Atividade Nesta Etapa"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>&nbsp;
                 <span>Atividades</span>
             </div>
             <div [id]="etapa.id_etapa" class="tasks-container" cdkDropList [cdkDropListData]="etapa.atividade_list" (cdkDropListDropped)="drop($event)">
                 <div [id]="atividade.atividade_id" class="task" *ngFor="let atividade of etapa.atividade_list" cdkDrag>
                     <span>{{atividade.atividade_nome}}</span>
                     <div class="right-end">
-                        <a class="btn btn-outline-info" title="Detalhes"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                        <a class="btn btn-outline-warning" title="Editar"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a class="btn btn-outline-info" (click)="detalhesAtividadeModal(atividade.atividade_id, etapa.id_etapa)" title="Detalhes"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                        <a class="btn btn-outline-warning" (click)="editarAtividadeModal(atividade.atividade_id, etapa.id_etapa)" title="Editar"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
