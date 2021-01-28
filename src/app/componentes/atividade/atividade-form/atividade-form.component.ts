@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HttpService } from '../../geral/http/http.service';
 
 @Component({
   selector: 'app-atividade-form',
@@ -7,9 +9,76 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AtividadeFormComponent implements OnInit {
 
-  constructor() { }
+  id;
+  url = 'atividade';
+  titulo = 'Atividade';
+  operacao = 'Cadastrar';
+  mensagem = 'Cadastre uma nova atividade';
+  parametros;
+  id_empresa = window.localStorage.getItem('id_empresa');
+  @Input() config = {
+    titulo: 'atividade',
+    cabecalhos: [
+      'dsc_nome',
+      'dsc_descricao',
+      'dat_inicio',
+      'dat_fim',
+      'id_etapa',
+      'id_quadro'
+    ],
+    tipos: [
+      'text',
+      'text',
+      'date',
+      'date',
+      'select',
+      'select'
+    ],
+    selects: {
+      id_etapa: {
+        values: [],
+        labels: []
+      },
+      id_quadro: {
+        values: [],
+        labels: []
+      }
+    },
+    mascaras: [],
+    obrigatorios: [
+      'dsc_nome',
+      'id_etapa',
+      'id_quadro'
+    ],
+    desabilitados: []
+  };
+
+  constructor(
+    private route: ActivatedRoute,
+    private service: HttpService
+  ) {
+    this.route.params.subscribe(params => this.id = params['id']);
+    if(this.id !== undefined) {
+      this.operacao = 'Editar';
+      this.mensagem = 'Edite a atividade selecionada';
+    }
+    this.parametros = 'id_empresa=' + this.id_empresa + '&';
+    this.service.getConsultar('etapa', this.parametros).subscribe((obj) => {
+      let conjunto = obj.body.data.dados;
+      for (let i = 0; i < conjunto.length; i++) {
+        this.config.selects.id_etapa.values.push(conjunto[i]['id_etapa'])
+        this.config.selects.id_etapa.labels.push(conjunto[i]['dsc_etapa'])
+      }
+    });
+    this.service.getConsultar('quadro', this.parametros).subscribe((obj) => {
+      let conjunto = obj.body.data.dados;
+      for (let i = 0; i < conjunto.length; i++) {
+        this.config.selects.id_quadro.values.push(conjunto[i]['id_quadro'])
+        this.config.selects.id_quadro.labels.push(conjunto[i]['dsc_nome'])
+      }
+    });
+  }
 
   ngOnInit(): void {
   }
-
 }
