@@ -22,7 +22,6 @@ import { FornecedorFormComponent } from './componentes/fornecedor/fornecedor-for
 import { SetorReadComponent } from './componentes/setor/setor-read/setor-read.component';
 import { SetorDetailComponent } from './componentes/setor/setor-detail/setor-detail.component';
 import { SetorFormComponent } from './componentes/setor/setor-form/setor-form.component';
-import { ControlePontoReadComponent } from './componentes/controle-ponto/controle-ponto-read/controle-ponto-read.component';
 import { ProjetoReadComponent } from './componentes/projeto/projeto-read/projeto-read.component';
 import { ProjetoDetailComponent } from './componentes/projeto/projeto-detail/projeto-detail.component';
 import { ProjetoFormComponent } from './componentes/projeto/projeto-form/projeto-form.component';
@@ -35,8 +34,6 @@ import { AtividadeFormComponent } from './componentes/atividade/atividade-form/a
 import { EtapaReadComponent } from './componentes/etapa/etapa-read/etapa-read.component';
 import { EtapaDetailComponent } from './componentes/etapa/etapa-detail/etapa-detail.component';
 import { EtapaFormComponent } from './componentes/etapa/etapa-form/etapa-form.component';
-import { CalendarioReadComponent } from './componentes/calendario/calendario-read/calendario-read.component';
-import { LembreteReadComponent } from './componentes/lembrete/lembrete-read/lembrete-read.component';
 import { Pagina404Component } from './componentes/pagina404/pagina404.component';
 
 // Definindo Rotas
@@ -69,11 +66,6 @@ const routes: Routes = [
   { path: 'setor/create', component: SetorFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   { path: 'setor/update/:id', component: SetorFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
 
-  { path: 'controle-ponto/read', component: ControlePontoReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'controle-ponto/read/:id', component: ControlePontoDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'controle-ponto/create', component: ControlePontoCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'controle-ponto/update/:id', component: ControlePontoUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-
   { path: 'projeto/read', component: ProjetoReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   { path: 'projeto/read/:id', component: ProjetoDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   { path: 'projeto/create', component: ProjetoFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
@@ -93,16 +85,6 @@ const routes: Routes = [
   { path: 'etapa/read/:id', component: EtapaDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   { path: 'etapa/create', component: EtapaFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   { path: 'etapa/update/:id', component: EtapaFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-
-  { path: 'calendario/read', component: CalendarioReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'calendario/read/:id', component: CalendarioDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'calendario/create', component: CalendarioCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'calendario/update/:id', component: CalendarioUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-
-  { path: 'lembrete/read', component: LembreteReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'lembrete/read/:id', component: LembreteDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'lembrete/create', component: LembreteCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'lembrete/update/:id', component: LembreteUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   
   { path: '**', component: Pagina404Component }
 ];

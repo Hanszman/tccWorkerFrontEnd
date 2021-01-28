@@ -31,7 +31,6 @@ import { FornecedorFormComponent } from './componentes/fornecedor/fornecedor-for
 import { SetorReadComponent } from './componentes/setor/setor-read/setor-read.component';
 import { SetorDetailComponent } from './componentes/setor/setor-detail/setor-detail.component';
 import { SetorFormComponent } from './componentes/setor/setor-form/setor-form.component';
-import { ControlePontoReadComponent } from './componentes/controle-ponto/controle-ponto-read/controle-ponto-read.component';
 import { ProjetoReadComponent } from './componentes/projeto/projeto-read/projeto-read.component';
 import { ProjetoDetailComponent } from './componentes/projeto/projeto-detail/projeto-detail.component';
 import { ProjetoFormComponent } from './componentes/projeto/projeto-form/projeto-form.component';
@@ -44,8 +43,6 @@ import { AtividadeFormComponent } from './componentes/atividade/atividade-form/a
 import { EtapaReadComponent } from './componentes/etapa/etapa-read/etapa-read.component';
 import { EtapaDetailComponent } from './componentes/etapa/etapa-detail/etapa-detail.component';
 import { EtapaFormComponent } from './componentes/etapa/etapa-form/etapa-form.component';
-import { CalendarioReadComponent } from './componentes/calendario/calendario-read/calendario-read.component';
-import { LembreteReadComponent } from './componentes/lembrete/lembrete-read/lembrete-read.component';
 import { Pagina404Component } from './componentes/pagina404/pagina404.component';
 import { TableComponent } from './componentes/geral/table/table.component';
 import { DetailComponent } from './componentes/geral/detail/detail.component';
@@ -80,7 +77,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     SetorReadComponent,
     SetorDetailComponent,
     SetorFormComponent,
-    ControlePontoReadComponent,
     ProjetoReadComponent,
     ProjetoDetailComponent,
     ProjetoFormComponent,
@@ -93,8 +89,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     EtapaReadComponent,
     EtapaDetailComponent,
     EtapaFormComponent,
-    CalendarioReadComponent,
-    LembreteReadComponent,
     Pagina404Component,
     TableComponent,
     DetailComponent,
