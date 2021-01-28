@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpService } from '../../geral/http/http.service';
+import { TranslateService } from '@ngx-translate/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { ModalComponent } from '../../geral/modal/modal.component';
@@ -14,8 +15,11 @@ export class QuadroDetailComponent implements OnInit {
 
   id;
   url = 'quadro';
+  urlAtividade = 'atividade';
   titulo = 'Quadro';
+  tituloAtividade = 'Atividade';
   parametros;
+  traducoes;
   id_empresa = window.localStorage.getItem('id_empresa');
   etapaList = [];
   @Input() config = {
@@ -28,10 +32,32 @@ export class QuadroDetailComponent implements OnInit {
       'dsc_projeto'
     ]
   };
+  @Input() configAtividade = {
+    titulo: 'atividade',
+    cabecalhos: [
+      'dsc_nome',
+      'dsc_descricao',
+      'dat_inicio',
+      'dat_fim'
+    ],
+    tipos: [
+      'text',
+      'text',
+      'date',
+      'date'
+    ],
+    selects: {},
+    mascaras: [],
+    obrigatorios: [
+      'dsc_nome'
+    ],
+    desabilitados: []
+  };
 
   constructor(
     private route: ActivatedRoute,
     private service: HttpService,
+    private translate: TranslateService,
     private modalService: BsModalService
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
@@ -56,6 +82,9 @@ export class QuadroDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.traduzir().subscribe((traducoes) => {
+      this.traducoes = traducoes;
+    })
   }
 
   drop(event: CdkDragDrop<string[]>){
@@ -85,16 +114,48 @@ export class QuadroDetailComponent implements OnInit {
   }
 
   criarAtividadeModal(id_etapa){
-    console.log(id_etapa);
+    var relacoes = {
+      id_etapa: id_etapa,
+      id_quadro: this.id
+    }
+    const initialState = {
+      config: this.configAtividade,
+      url: this.urlAtividade,
+      dadosRelacao: relacoes,
+      traducoes: this.traducoes
+    };
+    const modalRef = this.modalService.show(ModalComponent, {initialState});
+    modalRef.content.titulo = 'Cadastrar ' + this.tituloAtividade;
+    modalRef.content.existeModalForm = true;
+    modalRef.content.existeBotaoCriar = true;
   }
 
   editarAtividadeModal(id_atividade, id_etapa){
-    console.log(id_atividade);
-    console.log(id_etapa);
+    var relacoes = {
+      id_etapa: id_etapa,
+      id_quadro: this.id
+    }
+    const initialState = {
+      config: this.configAtividade,
+      url: this.urlAtividade,
+      id: id_atividade,
+      dadosRelacao: relacoes,
+      traducoes: this.traducoes
+    };
+    const modalRef = this.modalService.show(ModalComponent, {initialState});
+    modalRef.content.titulo = 'Editar ' + this.tituloAtividade;
+    modalRef.content.existeModalForm = true;
+    modalRef.content.existeBotaoEditar = true;
   }
 
   detalhesAtividadeModal(id_atividade, id_etapa){
     console.log(id_atividade);
     console.log(id_etapa);
+  }
+
+  traduzir(){
+    let idioma = 'br';
+    this.translate.use(idioma);
+    return this.translate.get(this.configAtividade.titulo);
   }
 }

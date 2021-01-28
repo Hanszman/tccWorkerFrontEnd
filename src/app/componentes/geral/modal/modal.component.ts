@@ -25,6 +25,7 @@ export class ModalComponent implements OnInit {
   id;
   idRelacao;
   relacao;
+  dadosRelacao;
   traducoes;
   registro: any = {};
 
@@ -73,7 +74,13 @@ export class ModalComponent implements OnInit {
       if (this.registro[i] == undefined || this.registro[i] == '' || this.registro[i] == 'undefined')
         this.registro[i] = null;
     }
-    this.registro['id_' + this.relacao] = this.idRelacao;
+    
+    if (this.relacao && this.idRelacao)
+      this.registro['id_' + this.relacao] = this.idRelacao;
+    if (this.dadosRelacao) {
+      for (var i in this.dadosRelacao)
+        this.registro[i] = this.dadosRelacao[i];
+    }
 
     if (!this.id && this.existeBotaoCriar) {
       this.service.postCadastrar(this.url + '/create', this.registro).subscribe(resp => {
