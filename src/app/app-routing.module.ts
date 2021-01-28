@@ -30,6 +30,8 @@ import { QuadroReadComponent } from './componentes/quadro/quadro-read/quadro-rea
 import { QuadroDetailComponent } from './componentes/quadro/quadro-detail/quadro-detail.component';
 import { QuadroFormComponent } from './componentes/quadro/quadro-form/quadro-form.component';
 import { AtividadeReadComponent } from './componentes/atividade/atividade-read/atividade-read.component';
+import { AtividadeDetailComponent } from './componentes/atividade/atividade-detail/atividade-detail.component';
+import { AtividadeFormComponent } from './componentes/atividade/atividade-form/atividade-form.component';
 import { EtapaReadComponent } from './componentes/etapa/etapa-read/etapa-read.component';
 import { EtapaDetailComponent } from './componentes/etapa/etapa-detail/etapa-detail.component';
 import { EtapaFormComponent } from './componentes/etapa/etapa-form/etapa-form.component';
@@ -83,9 +85,9 @@ const routes: Routes = [
   { path: 'quadro/update/:id', component: QuadroFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
 
   { path: 'atividade/read', component: AtividadeReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'atividade/read/:id', component: AtividadeDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'atividade/create', component: AtividadeCreateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
-  // { path: 'atividade/update/:id', component: AtividadeUpdateComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  { path: 'atividade/read/:id', component: AtividadeDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  { path: 'atividade/create', component: AtividadeFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+  { path: 'atividade/update/:id', component: AtividadeFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
 
   { path: 'etapa/read', component: EtapaReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   { path: 'etapa/read/:id', component: EtapaDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },

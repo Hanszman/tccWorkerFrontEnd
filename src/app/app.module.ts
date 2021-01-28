@@ -39,6 +39,8 @@ import { QuadroReadComponent } from './componentes/quadro/quadro-read/quadro-rea
 import { QuadroDetailComponent } from './componentes/quadro/quadro-detail/quadro-detail.component';
 import { QuadroFormComponent } from './componentes/quadro/quadro-form/quadro-form.component';
 import { AtividadeReadComponent } from './componentes/atividade/atividade-read/atividade-read.component';
+import { AtividadeDetailComponent } from './componentes/atividade/atividade-detail/atividade-detail.component';
+import { AtividadeFormComponent } from './componentes/atividade/atividade-form/atividade-form.component';
 import { EtapaReadComponent } from './componentes/etapa/etapa-read/etapa-read.component';
 import { EtapaDetailComponent } from './componentes/etapa/etapa-detail/etapa-detail.component';
 import { EtapaFormComponent } from './componentes/etapa/etapa-form/etapa-form.component';
@@ -86,6 +88,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     QuadroDetailComponent,
     QuadroFormComponent,
     AtividadeReadComponent,
+    AtividadeDetailComponent,
+    AtividadeFormComponent,
     EtapaReadComponent,
     EtapaDetailComponent,
     EtapaFormComponent,
