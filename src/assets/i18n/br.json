@@ -50,7 +50,16 @@
         "id_projeto": "Projeto",
         "dsc_projeto": "Projeto"
     },
-    "atividade": {},
+    "atividade": {
+        "dsc_nome": "Nome",
+        "dsc_descricao": "Descrição",
+        "dat_inicio": "Data de Início",
+        "dat_fim": "Data de Fim",
+        "id_quadro": "Quadro",
+        "dsc_quadro": "Quadro",
+        "id_etapa": "Etapa",
+        "dsc_etapa": "Etapa"
+    },
     "subatividade": {},
     "etapa": {
         "dsc_etapa": "Etapa",

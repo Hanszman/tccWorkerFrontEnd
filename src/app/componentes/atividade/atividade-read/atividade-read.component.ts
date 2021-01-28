@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-atividade-read',
@@ -7,9 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AtividadeReadComponent implements OnInit {
 
-  constructor() { }
+  url = 'atividade';
+  titulo = 'Atividade';
+  parametros;
+  id_empresa = window.localStorage.getItem('id_empresa');
+  @Input() config = {
+    titulo: 'atividade',
+    cabecalhos: [
+      'dsc_nome',
+      'dsc_descricao',
+      'dat_inicio',
+      'dat_fim',
+      'dsc_quadro',
+      'dsc_etapa'
+    ],
+    paginacao: 5
+  };
+
+  constructor() {
+    this.parametros = 'id_empresa=' + this.id_empresa + '&';
+  }
 
   ngOnInit(): void {
   }
-
 }
