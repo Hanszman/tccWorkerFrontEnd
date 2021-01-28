@@ -93,7 +93,7 @@
         flex-basis: 0;
         min-width: 300px;
         margin: 15px 30px;
-        padding: 25px;
+        padding: 10px 25px;
         border-radius: 7px;
         background: rgba(#28A745, 0.3);
         &:not(:first-child){
@@ -103,7 +103,14 @@
             color: #348A43;
             font-size: 20px;
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            align-self: center;
+        }
+        .column-subtitle {
+            margin: 0 5px 15px;
+            color: #28A745;
+            font-size: 16px;
+            font-weight: 600;
         }
     }
 }

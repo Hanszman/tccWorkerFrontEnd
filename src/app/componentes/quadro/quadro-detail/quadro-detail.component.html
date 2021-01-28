@@ -14,6 +14,10 @@
     <div *ngIf="etapaList.length != 0 " class="board" cdkDropListGroup>
         <div class="board-column" *ngFor="let etapa of etapaList">
             <div class="column-title">{{etapa.dsc_etapa}}</div>
+            <div class="column-subtitle">
+                <a class="btn btn-outline-success" title="Criar Atividade Nesta Etapa"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>&nbsp;
+                <span>Atividades</span>
+            </div>
             <div [id]="etapa.id_etapa" class="tasks-container" cdkDropList [cdkDropListData]="etapa.atividade_list" (cdkDropListDropped)="drop($event)">
                 <div [id]="atividade.atividade_id" class="task" *ngFor="let atividade of etapa.atividade_list" cdkDrag>
                     {{atividade.atividade_nome}}
