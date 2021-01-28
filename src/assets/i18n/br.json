@@ -55,10 +55,12 @@
         "dsc_descricao": "Descrição",
         "dat_inicio": "Data de Início",
         "dat_fim": "Data de Fim",
+        "id_etapa": "Etapa",
+        "dsc_etapa": "Etapa",
         "id_quadro": "Quadro",
         "dsc_quadro": "Quadro",
-        "id_etapa": "Etapa",
-        "dsc_etapa": "Etapa"
+        "id_projeto": "Projeto",
+        "dsc_projeto": "Projeto"
     },
     "subatividade": {},
     "etapa": {
