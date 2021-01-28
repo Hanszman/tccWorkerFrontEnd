@@ -149,8 +149,17 @@ export class QuadroDetailComponent implements OnInit {
   }
 
   detalhesAtividadeModal(id_atividade, id_etapa){
-    console.log(id_atividade);
-    console.log(id_etapa);
+    const initialState = {
+      config: this.configAtividade,
+      url: this.urlAtividade,
+      id: id_atividade,
+      traducoes: this.traducoes
+    };
+    const modalRef = this.modalService.show(ModalComponent, {initialState});
+    modalRef.content.titulo = 'Detalhes da ' + this.tituloAtividade;
+    modalRef.content.existeModalDetalhes = true;
+    modalRef.content.existeBotaoDetalhes = true;
+    modalRef.content.existeBotaoCancelar = false;
   }
 
   traduzir(){

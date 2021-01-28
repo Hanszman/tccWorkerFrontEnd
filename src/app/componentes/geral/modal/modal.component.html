@@ -18,9 +18,15 @@
                 <div id="msg_{{item}}"></div>
             </div>
         </div>
+        <div *ngIf="existeModalDetalhes">
+            <div *ngFor="let item of config.cabecalhos">
+                <div><b>{{ tradutor(item) }}:</b> {{ conjuntoDados[item] }}</div>
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" (click)="cancelar()"><i class="fa fa-ban" aria-hidden="true"></i> {{ 'geral.modal.cancelar' | translate }}</button>
+        <button [hidden]="!existeBotaoCancelar" type="button" class="btn btn-outline-secondary" data-dismiss="modal" (click)="cancelar()"><i class="fa fa-ban" aria-hidden="true"></i> {{ 'geral.modal.cancelar' | translate }}</button>
+        <button [hidden]="!existeBotaoDetalhes" type="button" class="btn btn-info" (click)="detalhes()">{{ 'geral.modal.verMais' | translate }} <i class="fa fa-info-circle" aria-hidden="true"></i></button>
         <button [hidden]="!existeBotaoCriar" type="button" class="btn btn-success" (click)="enviar()">{{ 'geral.modal.cadastrar' | translate }} <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
         <button [hidden]="!existeBotaoEditar" type="button" class="btn btn-warning" (click)="enviar()">{{ 'geral.modal.editar' | translate }} <i class="fa fa-pencil" aria-hidden="true"></i></button>
         <button [hidden]="!existeBotaoExcluir" type="button" class="btn btn-danger" (click)="clicaBotaoExcluir()">{{ 'geral.modal.excluir' | translate }} <i class="fa fa-trash" aria-hidden="true"></i></button>

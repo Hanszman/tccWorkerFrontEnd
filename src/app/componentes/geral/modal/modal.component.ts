@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { HttpService } from '../http/http.service';
 import { ValidateService } from '../../geral/validate/validate.service';
@@ -12,9 +13,12 @@ export class ModalComponent implements OnInit {
 
   @Input() titulo: string;
   @Input() existeModalForm = false;
+  @Input() existeModalDetalhes = false;
+  @Input() existeBotaoDetalhes = false;
   @Input() existeBotaoCriar = false;
   @Input() existeBotaoEditar = false;
   @Input() existeBotaoExcluir = false;
+  @Input() existeBotaoCancelar = true;
   @Input() existeMensagem = false;
   @Input() mensagem: string;
   @Output() emiteClicaBotaoCriar = new EventEmitter();
@@ -28,8 +32,10 @@ export class ModalComponent implements OnInit {
   dadosRelacao;
   traducoes;
   registro: any = {};
+  conjuntoDados: any = {};
 
   constructor(
+    private router: Router,
     public modalRef: BsModalRef,
     private service: HttpService,
     private validate: ValidateService
@@ -40,6 +46,10 @@ export class ModalComponent implements OnInit {
       this.service.getConsultarForm(this.url + '/read', this.id).subscribe(resp => {
         for(let i = 0; i < this.config.cabecalhos.length; i++)
           this.registro[this.config.cabecalhos[i]] = resp.body['data'][0][this.config.cabecalhos[i]];
+      });
+      this.service.getDetail(this.url + '/read', this.id).subscribe(resp => {
+        for(let i = 0; i < this.config.cabecalhos.length; i++)
+          this.conjuntoDados[this.config.cabecalhos[i]] = resp.body['data'][0][this.config.cabecalhos[i]];
       });
     }
   }
@@ -92,6 +102,11 @@ export class ModalComponent implements OnInit {
         this.verificarResposta(resp);
       });
     }
+    this.modalRef.hide();
+  }
+
+  detalhes(){
+    this.router.navigate([this.url + '/read/' + this.id]);
     this.modalRef.hide();
   }
 
