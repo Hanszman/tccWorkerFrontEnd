@@ -30,8 +30,7 @@ export class ProjetoDetailComponent implements OnInit {
       'dsc_nome',
       'dsc_descricao',
       'dat_inicio',
-      'dat_fim',
-      'dsc_projeto'
+      'dat_fim'
     ],
     paginacao: 5
   };
