@@ -20,6 +20,7 @@ export class TableComponent implements OnInit {
   @Input() relacao;
   @Input() existeFiltros = true;
   @Input() existeContagem = true;
+  @Input() existeBotaoSalvar = true;
   @Input() existeBotaoCriar = true;
   @Input() existeBotaoDetalhes = true;
   @Input() existeBotaoEditar = true;
@@ -103,6 +104,10 @@ export class TableComponent implements OnInit {
         return this.traducoes[chave];
       return '';
     }
+  }
+
+  salvarPDF(){
+    window.print();
   }
 
   clicaBotaoCriar() {

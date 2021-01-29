@@ -15,9 +15,12 @@
             <input type="text" placeholder="{{ tradutor(item) }}" [(ngModel)]="jsonFiltro[item]" (keydown.enter)="consultar(1)" class="form-control">
         </td>
         <td>
-            <button class="btn btn-outline-success" type="button" (click)="consultar(1)" title="{{ 'geral.table.filtrar' | translate }}">
+            <button class="btn btn-outline-success form-control" type="button" (click)="consultar(1)" title="{{ 'geral.table.filtrar' | translate }}">
                 <i class="fa fa-search" aria-hidden="search"></i>
             </button>
+        </td>
+        <td [hidden]="!existeBotaoSalvar">
+            <a (click)="salvarPDF()" class="btn btn-outline-info form-control" title="{{ 'geral.table.salvar-pdf' | translate }}"><i class="fa fa-save" aria-hidden="true"></i></a>
         </td>
     </tr>
     <tr>

@@ -93,6 +93,7 @@
         "table": {
             "novo": "Criar Novo",
             "filtrar": "Filtrar",
+            "salvar-pdf": "Salvar como PDF",
             "detalhes": "Detalhes",
             "editar": "Editar",
             "excluir": "Excluir",
