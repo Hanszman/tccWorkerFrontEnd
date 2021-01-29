@@ -27,11 +27,11 @@
   ></app-table>
 </div>
 
-<div id="usuario-detail-field">
+<div *ngIf="usuarioDetailField">
   <div class="row right-end">
-    <a class="btn btn-outline-secondary" title="Fechar"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+    <a class="btn btn-outline-secondary" (click)="ocultar()" title="Ocultar"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
   </div>
   <div class="row">
-    
+
   </div>
 </div>

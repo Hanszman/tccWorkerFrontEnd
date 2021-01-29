@@ -11,6 +11,7 @@ export class UsuarioReadComponent implements OnInit {
   titulo = 'Usuário';
   parametros;
   listaDetalhes;
+  usuarioDetailField = false;
   id_empresa = window.localStorage.getItem('id_empresa');
   @Input() config = {
     titulo: 'usuario',
@@ -36,6 +37,7 @@ export class UsuarioReadComponent implements OnInit {
   }
 
   emiteClicaBotaoDetalhesEspecial(linha){
+    this.usuarioDetailField = true;
     console.log(linha);
   }
 
@@ -45,5 +47,9 @@ export class UsuarioReadComponent implements OnInit {
 
   emiteClicaBotaoExcluirEspecial(linha){
     console.log('teste');
+  }
+
+  ocultar(){
+    this.usuarioDetailField = false;
   }
 }
