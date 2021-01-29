@@ -17,6 +17,8 @@ export class DetailComponent implements OnInit {
   @Input() config;
   @Input() url: string;
   @Input() id;
+  @Input() parametros;
+  @Input() existemBotoes = true;
   @Input() existeBotaoVoltar = true;
   @Input() existeBotaoExcluir = true;
   @Input() existeFoto = false;
@@ -40,7 +42,7 @@ export class DetailComponent implements OnInit {
   }
 
   consultar(){
-    this.service.getDetail(this.url + '/read', this.id).subscribe((obj) => {
+    this.service.getDetail(this.url + '/read', this.id, this.parametros).subscribe((obj) => {
       this.mapearDados(obj.body);
     });
   }

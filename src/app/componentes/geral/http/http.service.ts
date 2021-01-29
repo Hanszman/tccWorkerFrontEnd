@@ -18,9 +18,9 @@ export class HttpService {
     );
   }
 
-  getDetail(url, id): Observable<HttpResponse<any>> {
+  getDetail(url, id, parametros = ''): Observable<HttpResponse<any>> {
     return this.http.get<any>(
-      this.apiURL + url + `/${id}`, {observe: 'response'}
+      this.apiURL + url + `/${id}?` + parametros, {observe: 'response'}
     );
   }
 

@@ -12,6 +12,9 @@
         "dsc_rg": "RG",
         "arq_foto": "Foto",
         "dsc_cargo": "Cargo",
+        "id_setor": "Setor",
+        "dsc_setor": "Setor",
+        "ind_contratacao": "Contratação",
         "ind_controle_acesso": "Controle de Acesso",
         "ind_status": "Status"
     },

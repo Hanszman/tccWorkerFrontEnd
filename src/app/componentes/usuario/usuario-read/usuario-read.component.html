@@ -31,7 +31,21 @@
   <div class="row right-end">
     <a class="btn btn-outline-secondary" (click)="ocultar()" title="Ocultar"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
   </div>
-  <div class="row">
+  
+  <app-detail [titulo]="titulo" [config]="configDetail" [url]="url" [id]="id" [parametros]="parametros" [existemBotoes]=false [existeFoto]=true [fotoUrl]="fotoUrl"></app-detail>
 
+  <div class="row table-responsive div-table">
+    <h4>Telefones</h4>
+    <app-table [titulo]="tituloTelefone" [config]="configTelefone" [url]="urlTelefone" [parametros]="parametrosRelacionados" [existeBotaoCriar]=false [existeBotaoDetalhes]=false [existeBotaoEditar]=false [existeBotaoExcluir]=false></app-table>
+  </div>
+  
+  <div class="row table-responsive div-table">
+    <h4>Endereços</h4>
+    <app-table [titulo]="tituloEndereco" [config]="configEndereco" [url]="urlEndereco" [parametros]="parametrosRelacionados" [existeBotaoCriar]=false [existeBotaoDetalhes]=false [existeBotaoEditar]=false [existeBotaoExcluir]=false></app-table>
+  </div>
+  
+  <div class="row table-responsive div-table">
+    <h4>E-mail's</h4>
+    <app-table [titulo]="tituloEmail" [config]="configEmail" [url]="urlEmail" [parametros]="parametrosRelacionados" [existeBotaoCriar]=false [existeBotaoDetalhes]=false [existeBotaoEditar]=false [existeBotaoExcluir]=false></app-table>
   </div>
 </div>
