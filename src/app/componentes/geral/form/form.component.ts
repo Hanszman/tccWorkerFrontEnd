@@ -110,15 +110,19 @@ export class FormComponent implements OnInit {
     });
   }
 
-  verificarResposta(resp, localClear = false){
+  verificarResposta(resp, deleteBool = false){
     if (resp.body['data']['sucesso']){
       alert(resp.body['data']['mensagem']);
-      if (this.deleteClearLocal && localClear) {
+      if (this.deleteClearLocal && deleteBool) {
         this.router.navigate(['/login']);
         window.location.reload();
       }
-      else
-        this.router.navigate([this.url + '/read']);
+      else {
+        if (!deleteBool && this.id)
+          this.router.navigate([this.url + '/read/' + this.id]);
+        else
+          this.router.navigate([this.url + '/read']);
+      }
     }
     else
       alert(resp.body['data']['mensagem']);

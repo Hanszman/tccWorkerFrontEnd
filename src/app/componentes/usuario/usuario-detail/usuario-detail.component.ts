@@ -109,5 +109,4 @@ export class UsuarioDetailComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
