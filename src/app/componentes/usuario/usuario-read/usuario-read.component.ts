@@ -90,9 +90,13 @@ export class UsuarioReadComponent implements OnInit {
   }
 
   emiteClicaBotaoDetalhesEspecial(linha){
-    this.id = linha.id_usuario;
-    this.parametrosRelacionados = 'id_usuario=' + this.id + '&';
-    this.usuarioDetailField = true;
+    if (this.id == undefined) {
+      this.id = linha.id_usuario;
+      this.parametrosRelacionados = 'id_usuario=' + this.id + '&';
+      this.usuarioDetailField = true;
+    }
+    else
+      this.ocultar();
   }
 
   emiteClicaBotaoEditarEspecial(linha){
@@ -105,5 +109,7 @@ export class UsuarioReadComponent implements OnInit {
 
   ocultar(){
     this.usuarioDetailField = false;
+    this.id = undefined;
+    this.parametrosRelacionados = undefined;
   }
 }
