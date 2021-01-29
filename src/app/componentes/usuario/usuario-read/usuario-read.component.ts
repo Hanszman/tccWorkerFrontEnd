@@ -86,7 +86,7 @@ export class UsuarioReadComponent implements OnInit {
   }
 
   emiteClicaBotaoCriarEspecial(){
-    console.log('teste');
+    console.log('linha');
   }
 
   emiteClicaBotaoDetalhesEspecial(linha){
@@ -100,11 +100,11 @@ export class UsuarioReadComponent implements OnInit {
   }
 
   emiteClicaBotaoEditarEspecial(linha){
-    console.log('teste');
+    console.log(linha);
   }
 
   emiteClicaBotaoExcluirEspecial(linha){
-    console.log('teste');
+    console.log(linha);
   }
 
   ocultar(){
