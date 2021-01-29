@@ -10,6 +10,7 @@ export class UsuarioReadComponent implements OnInit {
   url = 'usuario';
   titulo = 'Usuário';
   parametros;
+  listaDetalhes;
   id_empresa = window.localStorage.getItem('id_empresa');
   @Input() config = {
     titulo: 'usuario',
@@ -35,7 +36,7 @@ export class UsuarioReadComponent implements OnInit {
   }
 
   emiteClicaBotaoDetalhesEspecial(linha){
-    console.log('teste');
+    console.log(linha);
   }
 
   emiteClicaBotaoEditarEspecial(linha){
