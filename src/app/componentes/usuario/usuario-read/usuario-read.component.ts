@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { HttpService } from '../../geral/http/http.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { ModalComponent } from '../../geral/modal/modal.component';
 
 @Component({
   selector: 'app-usuario-read',
@@ -9,6 +12,7 @@ export class UsuarioReadComponent implements OnInit {
 
   id;
   url = 'usuario';
+  urlFuncionario = 'usuario_empresa';
   urlTelefone = 'telefone';
   urlEndereco = 'endereco';
   urlEmail = 'email';
@@ -34,7 +38,7 @@ export class UsuarioReadComponent implements OnInit {
     ],
     paginacao: 5
   };
-  @Input() configDetail = {
+  @Input() configFuncionario = {
     titulo: 'usuario',
     cabecalhos: [
       'dsc_nome_completo',
@@ -78,7 +82,10 @@ export class UsuarioReadComponent implements OnInit {
     paginacao: 5
   };
 
-  constructor() {
+  constructor(
+    private service: HttpService,
+    private modalService: BsModalService
+  ) {
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
   }
 
@@ -104,7 +111,21 @@ export class UsuarioReadComponent implements OnInit {
   }
 
   emiteClicaBotaoExcluirEspecial(linha){
-    console.log(linha);
+    const modalRef = this.modalService.show(ModalComponent);
+    modalRef.content.titulo = 'Desvincular Funcionário';
+    modalRef.content.mensagem = 'Tem certeza que deseja desvincular esse funcionário da empresa?';
+    modalRef.content.existeMensagem = true;
+    modalRef.content.existeBotaoExcluir = true;
+    modalRef.content.emiteClicaBotaoExcluir.subscribe(() => {
+      this.service.deleteExcluir(this.urlFuncionario + '/delete', linha['id_' + this.urlFuncionario]).subscribe(resp => {
+        if (resp.body['data']['sucesso']){
+          alert(resp.body['data']['mensagem']);
+          window.location.reload();
+        }
+        else
+          alert(resp.body['data']['mensagem']);
+      });
+    });
   }
 
   ocultar(){
