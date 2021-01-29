@@ -5,7 +5,7 @@
     <a [hidden]="!existeBotaoExcluir" (click)="excluir()" class="btn btn-outline-danger" title="{{ 'geral.detail.excluir' | translate }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
 </div>
 <div class="row">
-    <img [hidden]="!existeFoto" class="details" [src]="fotoUrl" width="200">
+    <img [hidden]="!existeFoto" class="details" [src]="fotoUrl" height="200">
     <div class="details">
         <div *ngFor="let item of config.cabecalhos">
             <div *ngFor="let linha of conjuntoDados">
