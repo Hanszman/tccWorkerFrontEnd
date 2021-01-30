@@ -27,6 +27,30 @@ export class UsuarioReadComponent implements OnInit {
   usuarioDetailField = false;
   fotoUrl = 'assets/images/user_icon.png'
   id_empresa = window.localStorage.getItem('id_empresa');
+  cabecalhosCriaFuncionario = ['id_usuario', 'ind_controle_acesso', 'dsc_cargo', 'id_setor', 'ind_contratacao', 'dat_contratacao', 'ind_status'];
+  cabecalhosEditaFuncionario = ['ind_controle_acesso', 'dsc_cargo', 'id_setor', 'ind_contratacao', 'dat_contratacao', 'ind_status'];
+  tiposCriaFuncionario = ['number', 'select', 'text', 'select', 'select', 'date', 'select'];
+  tiposEditaFuncionario = ['select', 'text', 'select', 'select', 'date', 'select'];
+  obrigatoriosCriaFuncionario = ['id_usuario', 'ind_controle_acesso', 'dsc_cargo', 'ind_contratacao', 'ind_status']
+  obrigatoriosEditaFuncionario = ['ind_controle_acesso', 'dsc_cargo', 'ind_contratacao', 'ind_status']
+  selectsFuncionario = {
+    ind_controle_acesso: {
+      values: ['C', 'A', 'G'],
+      labels: ['Comum', 'Administrador', 'Gerente']
+    },
+    id_setor: {
+      values: [],
+      labels: []
+    },
+    ind_contratacao: {
+      values: ['C', 'E', 'M'],
+      labels: ['Carteira Assinada', 'Estágio', 'MEI']
+    },
+    ind_status: {
+      values: ['A', 'D'],
+      labels: ['Ativo', 'Desativado']
+    },
+  };
   @Input() config = {
     titulo: 'usuario',
     cabecalhos: [
@@ -58,49 +82,22 @@ export class UsuarioReadComponent implements OnInit {
     ],
     paginacao: 5
   };
-  @Input() configFuncionario = {
+  @Input() configCriaFuncionario = {
     titulo: 'usuario_empresa',
-    cabecalhos: [
-      'ind_controle_acesso',
-      'dsc_cargo',
-      'id_setor',
-      'ind_contratacao',
-      'dat_contratacao',
-      'ind_status'
-    ],
-    tipos: [
-      'select',
-      'text',
-      'select',
-      'select',
-      'date',
-      'select'
-    ],
-    selects: {
-      ind_controle_acesso: {
-        values: ['C', 'A', 'G'],
-        labels: ['Comum', 'Administrador', 'Gerente']
-      },
-      id_setor: {
-        values: [],
-        labels: []
-      },
-      ind_contratacao: {
-        values: ['C', 'E', 'M'],
-        labels: ['Carteira Assinada', 'Estágio', 'MEI']
-      },
-      ind_status: {
-        values: ['A', 'D'],
-        labels: ['Ativo', 'Desativado']
-      },
-    },
+    cabecalhos: this.cabecalhosCriaFuncionario,
+    tipos: this.tiposCriaFuncionario,
+    selects: this.selectsFuncionario,
     mascaras: [],
-    obrigatorios: [
-      'ind_controle_acesso',
-      'dsc_cargo',
-      'ind_contratacao',
-      'ind_status'
-    ],
+    obrigatorios: this.obrigatoriosCriaFuncionario,
+    desabilitados: []
+  };
+  @Input() configEditaFuncionario = {
+    titulo: 'usuario_empresa',
+    cabecalhos: this.cabecalhosEditaFuncionario,
+    tipos: this.tiposEditaFuncionario,
+    selects: this.selectsFuncionario,
+    mascaras: [],
+    obrigatorios: this.obrigatoriosEditaFuncionario,
     desabilitados: []
   };
   @Input() configTelefone = {
@@ -139,8 +136,8 @@ export class UsuarioReadComponent implements OnInit {
     this.service.getConsultar('setor', this.parametros).subscribe((obj) => {
       let conjunto = obj.body.data.dados;
       for (let i = 0; i < conjunto.length; i++) {
-        this.configFuncionario.selects.id_setor.values.push(conjunto[i]['id_setor']);
-        this.configFuncionario.selects.id_setor.labels.push(conjunto[i]['dsc_setor']);
+        this.selectsFuncionario.id_setor.values.push(conjunto[i]['id_setor']);
+        this.selectsFuncionario.id_setor.labels.push(conjunto[i]['dsc_setor']);
       }
     });
   }
@@ -152,7 +149,19 @@ export class UsuarioReadComponent implements OnInit {
   }
 
   emiteClicaBotaoCriarEspecial(){
-    console.log('linha');
+    var relacoes = {
+      id_empresa: this.id_empresa
+    }
+    const initialState = {
+      config: this.configCriaFuncionario,
+      url: this.urlFuncionario,
+      dadosRelacao: relacoes,
+      traducoes: this.traducoes
+    };
+    const modalRef = this.modalService.show(ModalComponent, {initialState});
+    modalRef.content.titulo = 'Vincular Novo Funcionário'
+    modalRef.content.existeModalForm = true;
+    modalRef.content.existeBotaoCriar = true;
   }
 
   emiteClicaBotaoDetalhesEspecial(linha){
@@ -171,7 +180,7 @@ export class UsuarioReadComponent implements OnInit {
       id_usuario: linha.id_usuario
     }
     const initialState = {
-      config: this.configFuncionario,
+      config: this.configEditaFuncionario,
       url: this.urlFuncionario,
       idConsulta: linha['id_' + this.url],
       id: linha['id_' + this.urlFuncionario],
