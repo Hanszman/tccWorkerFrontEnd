@@ -1,5 +1,6 @@
 {
     "usuario": {
+        "id_usuario": "Código de Usuário",
         "dsc_nome": "Nome",
         "dsc_sobrenome": "Sobrenome",
         "dsc_nome_completo": "Nome Completo",
@@ -15,6 +16,7 @@
         "id_setor": "Setor",
         "dsc_setor": "Setor",
         "ind_contratacao": "Contratação",
+        "dat_contratacao": "Data da Contratação",
         "ind_controle_acesso": "Controle de Acesso",
         "ind_status": "Status"
     },

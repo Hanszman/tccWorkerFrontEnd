@@ -59,8 +59,8 @@ export class QuadroFormComponent implements OnInit {
     this.service.getConsultar('projeto', this.parametros).subscribe((obj) => {
       let conjunto = obj.body.data.dados;
       for (let i = 0; i < conjunto.length; i++) {
-        this.config.selects.id_projeto.values.push(conjunto[i]['id_projeto'])
-        this.config.selects.id_projeto.labels.push(conjunto[i]['dsc_nome'])
+        this.config.selects.id_projeto.values.push(conjunto[i]['id_projeto']);
+        this.config.selects.id_projeto.labels.push(conjunto[i]['dsc_nome']);
       }
     });
   }

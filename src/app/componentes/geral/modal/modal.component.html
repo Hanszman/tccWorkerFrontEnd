@@ -6,7 +6,10 @@
         </button>
     </div>
     <div class="modal-body">
-        <p [hidden]="!existeMensagem">{{ mensagem }}</p>
+        <p>
+            <span [hidden]="!existeSubtitulo"><b>{{ subtitulo }}</b>&nbsp;&nbsp;</span>
+            <span [hidden]="!existeMensagem">{{ mensagem }}</span>
+        </p>
         <div *ngIf="existeModalForm">
             <div *ngFor="let item of config.cabecalhos; let i = index" class="form-group">
                 <label for="{{item}}"><b>{{ tradutor(item) }}:</b></label>

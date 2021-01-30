@@ -58,8 +58,8 @@ export class ProjetoFormComponent implements OnInit {
     this.service.getConsultar('setor', this.parametros).subscribe((obj) => {
       let conjunto = obj.body.data.dados;
       for (let i = 0; i < conjunto.length; i++) {
-        this.config.selects.id_setor.values.push(conjunto[i]['id_setor'])
-        this.config.selects.id_setor.labels.push(conjunto[i]['dsc_setor'])
+        this.config.selects.id_setor.values.push(conjunto[i]['id_setor']);
+        this.config.selects.id_setor.labels.push(conjunto[i]['dsc_setor']);
       }
     });
   }

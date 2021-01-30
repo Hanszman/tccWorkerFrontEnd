@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpService } from '../../geral/http/http.service';
+import { TranslateService } from '@ngx-translate/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { ModalComponent } from '../../geral/modal/modal.component';
 
@@ -22,7 +23,7 @@ export class UsuarioReadComponent implements OnInit {
   tituloEmail = 'E-mail';
   parametros;
   parametrosRelacionados;
-  listaDetalhes;
+  traducoes;
   usuarioDetailField = false;
   fotoUrl = 'assets/images/user_icon.png'
   id_empresa = window.localStorage.getItem('id_empresa');
@@ -38,9 +39,10 @@ export class UsuarioReadComponent implements OnInit {
     ],
     paginacao: 5
   };
-  @Input() configFuncionario = {
+  @Input() configDetail = {
     titulo: 'usuario',
     cabecalhos: [
+      'id_usuario',
       'dsc_nome_completo',
       'dsc_email',
       'dsc_login',
@@ -54,6 +56,51 @@ export class UsuarioReadComponent implements OnInit {
       'ind_status'
     ],
     paginacao: 5
+  };
+  @Input() configFuncionario = {
+    titulo: 'usuario_empresa',
+    cabecalhos: [
+      'ind_controle_acesso',
+      'dsc_cargo',
+      'id_setor',
+      'ind_contratacao',
+      'dat_contratacao',
+      'ind_status'
+    ],
+    tipos: [
+      'select',
+      'text',
+      'select',
+      'select',
+      'date',
+      'select'
+    ],
+    selects: {
+      ind_controle_acesso: {
+        values: ['C', 'A', 'G'],
+        labels: ['Comum', 'Administrador', 'Gerente']
+      },
+      id_setor: {
+        values: [],
+        labels: []
+      },
+      ind_contratacao: {
+        values: ['C', 'E', 'M'],
+        labels: ['Carteira Assinada', 'Estágio', 'MEI']
+      },
+      ind_status: {
+        values: ['A', 'D'],
+        labels: ['Ativo', 'Desativado']
+      },
+    },
+    mascaras: [],
+    obrigatorios: [
+      'ind_controle_acesso',
+      'dsc_cargo',
+      'ind_contratacao',
+      'ind_status'
+    ],
+    desabilitados: []
   };
   @Input() configTelefone = {
     titulo: 'telefone',
@@ -84,12 +131,23 @@ export class UsuarioReadComponent implements OnInit {
 
   constructor(
     private service: HttpService,
+    private translate: TranslateService,
     private modalService: BsModalService
   ) {
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
+    this.service.getConsultar('setor', this.parametros).subscribe((obj) => {
+      let conjunto = obj.body.data.dados;
+      for (let i = 0; i < conjunto.length; i++) {
+        this.configFuncionario.selects.id_setor.values.push(conjunto[i]['id_setor']);
+        this.configFuncionario.selects.id_setor.labels.push(conjunto[i]['dsc_setor']);
+      }
+    });
   }
 
   ngOnInit(): void {
+    this.traduzir().subscribe((traducoes) => {
+      this.traducoes = traducoes;
+    })
   }
 
   emiteClicaBotaoCriarEspecial(){
@@ -107,7 +165,25 @@ export class UsuarioReadComponent implements OnInit {
   }
 
   emiteClicaBotaoEditarEspecial(linha){
-    console.log(linha);
+    var relacoes = {
+      id_empresa: linha.id_empresa,
+      id_usuario: linha.id_usuario
+    }
+    const initialState = {
+      config: this.configFuncionario,
+      url: this.urlFuncionario,
+      id: linha['id_' + this.urlFuncionario],
+      dadosRelacao: relacoes,
+      traducoes: this.traducoes
+    };
+    const modalRef = this.modalService.show(ModalComponent, {initialState});
+    modalRef.content.titulo = 'Configurar Funcionário'
+    modalRef.content.subtitulo = 'Nome Completo (Código):';
+    modalRef.content.mensagem = linha.dsc_nome_completo + ' (' + linha.id_usuario + ')';
+    modalRef.content.existeSubtitulo = true;
+    modalRef.content.existeMensagem = true;
+    modalRef.content.existeModalForm = true;
+    modalRef.content.existeBotaoEditar = true;
   }
 
   emiteClicaBotaoExcluirEspecial(linha){
@@ -132,5 +208,11 @@ export class UsuarioReadComponent implements OnInit {
     this.usuarioDetailField = false;
     this.id = undefined;
     this.parametrosRelacionados = undefined;
+  }
+
+  traduzir(){
+    let idioma = 'br';
+    this.translate.use(idioma);
+    return this.translate.get(this.config.titulo);
   }
 }

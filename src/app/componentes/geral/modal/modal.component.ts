@@ -19,6 +19,8 @@ export class ModalComponent implements OnInit {
   @Input() existeBotaoEditar = false;
   @Input() existeBotaoExcluir = false;
   @Input() existeBotaoCancelar = true;
+  @Input() existeSubtitulo = false;
+  @Input() subtitulo: string;
   @Input() existeMensagem = false;
   @Input() mensagem: string;
   @Output() emiteClicaBotaoCriar = new EventEmitter();

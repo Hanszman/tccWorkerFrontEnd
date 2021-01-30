@@ -66,15 +66,15 @@ export class AtividadeFormComponent implements OnInit {
     this.service.getConsultar('etapa', this.parametros).subscribe((obj) => {
       let conjunto = obj.body.data.dados;
       for (let i = 0; i < conjunto.length; i++) {
-        this.config.selects.id_etapa.values.push(conjunto[i]['id_etapa'])
-        this.config.selects.id_etapa.labels.push(conjunto[i]['dsc_etapa'])
+        this.config.selects.id_etapa.values.push(conjunto[i]['id_etapa']);
+        this.config.selects.id_etapa.labels.push(conjunto[i]['dsc_etapa']);
       }
     });
     this.service.getConsultar('quadro', this.parametros).subscribe((obj) => {
       let conjunto = obj.body.data.dados;
       for (let i = 0; i < conjunto.length; i++) {
-        this.config.selects.id_quadro.values.push(conjunto[i]['id_quadro'])
-        this.config.selects.id_quadro.labels.push(conjunto[i]['dsc_nome'])
+        this.config.selects.id_quadro.values.push(conjunto[i]['id_quadro']);
+        this.config.selects.id_quadro.labels.push(conjunto[i]['dsc_nome']);
       }
     });
   }
