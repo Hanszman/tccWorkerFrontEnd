@@ -29,9 +29,11 @@ export class ModalComponent implements OnInit {
   config;
   url: string;
   id;
+  idConsulta;
   idRelacao;
   relacao;
   dadosRelacao;
+  parametros;
   traducoes;
   registro: any = {};
   conjuntoDados: any = {};
@@ -44,16 +46,21 @@ export class ModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.id) {
-      this.service.getConsultarForm(this.url + '/read', this.id).subscribe(resp => {
-        for(let i = 0; i < this.config.cabecalhos.length; i++)
-          this.registro[this.config.cabecalhos[i]] = resp.body['data'][0][this.config.cabecalhos[i]];
-      });
-      this.service.getDetail(this.url + '/read', this.id).subscribe(resp => {
-        for(let i = 0; i < this.config.cabecalhos.length; i++)
-          this.conjuntoDados[this.config.cabecalhos[i]] = resp.body['data'][0][this.config.cabecalhos[i]];
-      });
-    }
+    if (this.idConsulta)
+      this.consultasID(this.idConsulta);
+    else if (this.id)
+      this.consultasID(this.id);
+  }
+
+  consultasID(id){
+    this.service.getConsultarForm(this.url + '/read', id, this.parametros).subscribe(resp => {
+      for(let i = 0; i < this.config.cabecalhos.length; i++)
+        this.registro[this.config.cabecalhos[i]] = resp.body['data'][0][this.config.cabecalhos[i]];
+    });
+    this.service.getDetail(this.url + '/read', id).subscribe(resp => {
+      for(let i = 0; i < this.config.cabecalhos.length; i++)
+        this.conjuntoDados[this.config.cabecalhos[i]] = resp.body['data'][0][this.config.cabecalhos[i]];
+    });
   }
 
   tradutor(chave){

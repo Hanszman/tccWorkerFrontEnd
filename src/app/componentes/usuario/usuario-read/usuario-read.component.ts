@@ -49,10 +49,11 @@ export class UsuarioReadComponent implements OnInit {
       'dat_nascimento',
       'dsc_cpf',
       'dsc_rg',
+      'ind_controle_acesso',
       'dsc_cargo',
       'dsc_setor',
       'ind_contratacao',
-      'ind_controle_acesso',
+      'dat_contratacao',
       'ind_status'
     ],
     paginacao: 5
@@ -172,7 +173,9 @@ export class UsuarioReadComponent implements OnInit {
     const initialState = {
       config: this.configFuncionario,
       url: this.urlFuncionario,
+      idConsulta: linha['id_' + this.url],
       id: linha['id_' + this.urlFuncionario],
+      parametros: this.parametros,
       dadosRelacao: relacoes,
       traducoes: this.traducoes
     };

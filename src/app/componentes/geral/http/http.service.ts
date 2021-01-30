@@ -30,9 +30,9 @@ export class HttpService {
     );
   }
 
-  getConsultarForm(url, id): Observable<HttpResponse<any>> {
+  getConsultarForm(url, id, parametros = ''): Observable<HttpResponse<any>> {
     return this.http.get<any>(
-      this.apiURL + url + `/${id}?isForm=1`, {observe: 'response'}
+      this.apiURL + url + `/${id}?isForm=1&` + parametros, {observe: 'response'}
     );
   }
 

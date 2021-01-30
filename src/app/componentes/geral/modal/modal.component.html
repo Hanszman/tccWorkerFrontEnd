@@ -6,7 +6,7 @@
         </button>
     </div>
     <div class="modal-body">
-        <p>
+        <p [hidden]="!existeSubtitulo && !existeMensagem">
             <span [hidden]="!existeSubtitulo"><b>{{ subtitulo }}</b>&nbsp;&nbsp;</span>
             <span [hidden]="!existeMensagem">{{ mensagem }}</span>
         </p>
