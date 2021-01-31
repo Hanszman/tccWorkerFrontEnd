@@ -11,8 +11,10 @@ export class ProjetoDetailComponent implements OnInit {
   id;
   url = 'projeto';
   urlQuadro = 'quadro';
+  // urlCliente = 'cliente';
   titulo = 'Projeto';
   tituloQuadro = 'Quadro';
+  // tituloCliente = 'Cliente';
   parametros;
   @Input() config = {
     titulo: 'projeto',
@@ -34,6 +36,24 @@ export class ProjetoDetailComponent implements OnInit {
     ],
     paginacao: 5
   };
+  // @Input() configCliente = {
+  //   titulo: 'cliente',
+  //   cabecalhos: [
+  //     'dsc_nome',
+  //     'dsc_cnpj'
+  //   ],
+  //   tipos: [
+  //     'text',
+  //     'text'
+  //   ],
+  //   selects: {},
+  //   mascaras: [],
+  //   obrigatorios: [
+  //     'dsc_nome'
+  //   ],
+  //   desabilitados: [],
+  //   paginacao: 5
+  // };
 
   constructor(
     private route: ActivatedRoute
