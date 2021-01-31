@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpService } from '../http/http.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ValidateService } from '../../geral/validate/validate.service';
@@ -29,17 +29,23 @@ export class FormComponent implements OnInit {
   voltarLink = "../read";
   classeBotoes = "col-sm-6";
   padraoFotoURL;
+  idAgregacao;
+  agregacao;
   id_usuario_logado = window.localStorage.getItem('id_usuario');
   id_empresa_logada = window.localStorage.getItem('id_empresa');
   apiURL = environment.apiURL;
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private service: HttpService,
     private translate: TranslateService,
     private validate: ValidateService,
     private modalService: BsModalService
-  ) { }
+  ) {
+    this.route.queryParams.subscribe(params => this.idAgregacao = params['idAgregacao']);
+    this.route.queryParams.subscribe(params => this.agregacao = params['agregacao']);
+  }
 
   ngOnInit(): void {
     this.traduzir().subscribe((traducoes) => {
@@ -67,6 +73,8 @@ export class FormComponent implements OnInit {
         }
       });
     }
+    if (this.agregacao && this.idAgregacao)
+      this.registro['id_' + this.agregacao] = this.idAgregacao;
   }
 
   enviar(){

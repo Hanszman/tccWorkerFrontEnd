@@ -18,6 +18,8 @@ export class TableComponent implements OnInit {
   @Input() parametros: string = '';
   @Input() idRelacao;
   @Input() relacao;
+  @Input() idAgregacao;
+  @Input() agregacao;
   @Input() existeFiltros = true;
   @Input() existeContagem = true;
   @Input() existeBotaoSalvar = true;
@@ -111,8 +113,12 @@ export class TableComponent implements OnInit {
   }
 
   clicaBotaoCriar() {
-    if (!this.existeModalForm)
-      this.router.navigate([this.url + '/create/']);
+    if (!this.existeModalForm) {
+      if (this.agregacao && this.idAgregacao)
+        this.router.navigate([this.url + '/create/'], {queryParams: { agregacao: this.agregacao, idAgregacao: this.idAgregacao}});
+      else
+        this.router.navigate([this.url + '/create/']);
+    }
     else {
       const initialState = {
         config: this.config,
