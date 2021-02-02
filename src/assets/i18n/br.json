@@ -38,7 +38,6 @@
     "setor": {
         "dsc_setor": "Setor"
     },
-    "controle-ponto": {},
     "projeto": {
         "dsc_nome": "Nome",
         "dsc_descricao": "Descrição",
@@ -67,13 +66,10 @@
         "id_projeto": "Projeto",
         "dsc_projeto": "Projeto"
     },
-    "subatividade": {},
     "etapa": {
         "dsc_etapa": "Etapa",
         "ind_sequencia": "Sequência"
     },
-    "calendario": {},
-    "lembrete": {},
     "telefone": {
         "telefones": "Telefones",
         "ind_tipo": "Tipo",
@@ -91,6 +87,10 @@
         "emails": "E-mail's",
         "dsc_email": "E-mail"
     },
+    "atividade_usuario_empresa": {},
+    "projeto_usuario_empresa": {},
+    "projeto_cliente": {},
+    "projeto_fornecedor": {},
     "geral": {
         "table": {
             "novo": "Criar Novo",
