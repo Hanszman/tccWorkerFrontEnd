@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ConsoleReporter } from 'jasmine';
 
 @Component({
   selector: 'app-projeto-detail',
@@ -11,10 +12,10 @@ export class ProjetoDetailComponent implements OnInit {
   id;
   url = 'projeto';
   urlQuadro = 'quadro';
-  // urlCliente = 'projeto_cliente';
+  urlCliente = 'projeto_cliente';
   titulo = 'Projeto';
   tituloQuadro = 'Quadro';
-  // tituloCliente = 'Cliente';
+  tituloCliente = 'Cliente';
   parametros;
   @Input() config = {
     titulo: 'projeto',
@@ -36,24 +37,24 @@ export class ProjetoDetailComponent implements OnInit {
     ],
     paginacao: 5
   };
-  // @Input() configCliente = {
-  //   titulo: 'projeto_cliente',
-  //   cabecalhos: [
-  //     'dsc_nome',
-  //     'dsc_cnpj'
-  //   ],
-  //   tipos: [
-  //     'text',
-  //     'text'
-  //   ],
-  //   selects: {},
-  //   mascaras: [],
-  //   obrigatorios: [
-  //     'dsc_nome'
-  //   ],
-  //   desabilitados: [],
-  //   paginacao: 5
-  // };
+  @Input() configCliente = {
+    titulo: 'projeto_cliente',
+    cabecalhos: [
+      'dsc_nome_cliente',
+      'dsc_cnpj_cliente'
+    ],
+    tipos: [
+      'text',
+      'text'
+    ],
+    selects: {},
+    mascaras: [],
+    obrigatorios: [
+      'dsc_nome_cliente'
+    ],
+    desabilitados: [],
+    paginacao: 5
+  };
 
   constructor(
     private route: ActivatedRoute
@@ -63,5 +64,21 @@ export class ProjetoDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  emiteClicaBotaoCriarEspecial(){
+    console.log('teste');
+  }
+
+  emiteClicaBotaoDetalhesEspecial(linha){
+    console.log('teste');
+  }
+
+  emiteClicaBotaoEditarEspecial(linha){
+    console.log('teste');
+  }
+
+  emiteClicaBotaoExcluirEspecial(linha){
+    console.log('teste');
   }
 }

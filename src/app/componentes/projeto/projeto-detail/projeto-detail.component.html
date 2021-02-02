@@ -15,7 +15,25 @@
 
 <!-- Incluir as tabelas (botão de vincular passando id_projeto): -->
 <!-- TODO: Clientes, Fornecedores, Funcionários -->
-<!-- <div class="row table-responsive div-table">
+<div class="row table-responsive div-table">
     <h4>Clientes</h4>
-    <app-table [titulo]="tituloCliente" [config]="configCliente" [url]="urlCliente" [parametros]="parametros" [existeBotaoSalvar]=false></app-table>
-</div> -->
+    <app-table 
+        [titulo]="tituloCliente"
+        [config]="configCliente"
+        [url]="urlCliente"
+        [parametros]="parametros"
+        [existeBotaoSalvar]=false
+        [existeBotaoCriar]=false
+        [existeBotaoDetalhes]=false
+        [existeBotaoEditar]=false
+        [existeBotaoExcluir]=false
+        [existeBotaoCriarEspecial]=true
+        [existeBotaoDetalhesEspecial]=true
+        [existeBotaoEditarEspecial]=true
+        [existeBotaoExcluirEspecial]=true
+        (emiteClicaBotaoCriarEspecial)="emiteClicaBotaoCriarEspecial()"
+        (emiteClicaBotaoDetalhesEspecial)="emiteClicaBotaoDetalhesEspecial($event)"
+        (emiteClicaBotaoEditarEspecial)="emiteClicaBotaoEditarEspecial($event)"
+        (emiteClicaBotaoExcluirEspecial)="emiteClicaBotaoExcluirEspecial($event)"
+    ></app-table>
+</div>

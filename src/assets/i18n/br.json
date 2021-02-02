@@ -89,7 +89,18 @@
     },
     "atividade_usuario_empresa": {},
     "projeto_usuario_empresa": {},
-    "projeto_cliente": {},
+    "projeto_cliente": {
+        "id_projeto": "Projeto",
+        "id_cliente": "Cliente",
+        "dsc_nome_projeto": "Projeto",
+        "dsc_descricao_projeto": "Descrição",
+        "dat_inicio_projeto": "Data de Início",
+        "dat_fim_projeto": "Data de Fim",
+        "id_setor_projeto": "Setor Responsável",
+        "dsc_setor_projeto": "Setor Responsável",
+        "dsc_nome_cliente": "Cliente",
+        "dsc_cnpj_cliente": "CNPJ"
+    },
     "projeto_fornecedor": {},
     "geral": {
         "table": {
