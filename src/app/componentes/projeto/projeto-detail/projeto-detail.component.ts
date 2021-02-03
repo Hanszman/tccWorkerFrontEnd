@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-projeto-detail',
@@ -56,7 +56,8 @@ export class ProjetoDetailComponent implements OnInit {
   };
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
     this.parametros = 'id_projeto=' + this.id + '&';
@@ -70,7 +71,7 @@ export class ProjetoDetailComponent implements OnInit {
   }
 
   emiteClicaBotaoDetalhesEspecial(linha){
-    console.log('teste');
+    this.router.navigate(['cliente/read/' + linha.id_cliente]);
   }
 
   emiteClicaBotaoExcluirEspecial(linha){
