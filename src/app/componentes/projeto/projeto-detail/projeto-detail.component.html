@@ -14,7 +14,7 @@
 </div>
 
 <!-- Incluir as tabelas (botão de vincular passando id_projeto): -->
-<!-- TODO: Clientes, Fornecedores, Funcionários -->
+<!-- TODO: Fornecedores, Funcionários -->
 <div class="row table-responsive div-table">
     <h4>Clientes</h4>
     <app-table 
@@ -30,8 +30,8 @@
         [existeBotaoCriarEspecial]=true
         [existeBotaoDetalhesEspecial]=true
         [existeBotaoExcluirEspecial]=true
-        (emiteClicaBotaoCriarEspecial)="emiteClicaBotaoCriarEspecial()"
-        (emiteClicaBotaoDetalhesEspecial)="emiteClicaBotaoDetalhesEspecial($event)"
-        (emiteClicaBotaoExcluirEspecial)="emiteClicaBotaoExcluirEspecial($event)"
+        (emiteClicaBotaoCriarEspecial)="emiteClicaBotaoCriarEspecialCliente()"
+        (emiteClicaBotaoDetalhesEspecial)="emiteClicaBotaoDetalhesEspecialCliente($event)"
+        (emiteClicaBotaoExcluirEspecial)="emiteClicaBotaoExcluirEspecialCliente($event)"
     ></app-table>
 </div>

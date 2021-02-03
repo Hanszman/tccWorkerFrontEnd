@@ -1,5 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { HttpService } from '../../geral/http/http.service';
+import { TranslateService } from '@ngx-translate/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { ModalComponent } from '../../geral/modal/modal.component';
 
 @Component({
   selector: 'app-projeto-detail',
@@ -16,6 +20,9 @@ export class ProjetoDetailComponent implements OnInit {
   tituloQuadro = 'Quadro';
   tituloCliente = 'Cliente';
   parametros;
+  parametrosConsulta;
+  traducoes;
+  id_empresa = window.localStorage.getItem('id_empresa');
   @Input() config = {
     titulo: 'projeto',
     cabecalhos: [
@@ -44,27 +51,79 @@ export class ProjetoDetailComponent implements OnInit {
     ],
     paginacao: 5
   };
+  @Input() configProjetoCliente = {
+    titulo: 'projeto_cliente',
+    cabecalhos: [
+      'id_cliente'
+    ],
+    tipos: [
+      'select'
+    ],
+    selects: {
+      id_cliente: {
+        values: [],
+        labels: []
+      }
+    },
+    mascaras: [],
+    obrigatorios: [
+      'id_cliente'
+    ],
+    desabilitados: []
+  }
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private service: HttpService,
+    private translate: TranslateService,
+    private modalService: BsModalService
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
     this.parametros = 'id_projeto=' + this.id + '&';
+    this.parametrosConsulta = 'id_empresa=' + this.id_empresa + '&';
+    this.service.getConsultar('cliente', this.parametrosConsulta).subscribe((obj) => {
+      let conjunto = obj.body.data.dados;
+      for (let i = 0; i < conjunto.length; i++) {
+        this.configProjetoCliente.selects.id_cliente.values.push(conjunto[i]['id_cliente']);
+        this.configProjetoCliente.selects.id_cliente.labels.push(conjunto[i]['dsc_nome']);
+      }
+    });
   }
 
   ngOnInit(): void {
+    this.traduzir().subscribe((traducoes) => {
+      this.traducoes = traducoes;
+    })
   }
 
-  emiteClicaBotaoCriarEspecial(){
-    console.log('teste');
+  emiteClicaBotaoCriarEspecialCliente(){
+    var relacoes = {
+      id_projeto: this.id
+    }
+    const initialState = {
+      config: this.configProjetoCliente,
+      url: this.urlCliente,
+      dadosRelacao: relacoes,
+      traducoes: this.traducoes
+    };
+    const modalRef = this.modalService.show(ModalComponent, {initialState});
+    modalRef.content.titulo = 'Vincular Cliente ao Projeto'
+    modalRef.content.existeModalForm = true;
+    modalRef.content.existeBotaoCriar = true;
   }
 
-  emiteClicaBotaoDetalhesEspecial(linha){
+  emiteClicaBotaoDetalhesEspecialCliente(linha){
     this.router.navigate(['cliente/read/' + linha.id_cliente]);
   }
 
-  emiteClicaBotaoExcluirEspecial(linha){
+  emiteClicaBotaoExcluirEspecialCliente(linha){
     console.log('teste');
+  }
+
+  traduzir(){ // colocar parametro para tradução das outras relações e criar outras variáveis "this.traducoes"
+    let idioma = 'br';
+    this.translate.use(idioma);
+    return this.translate.get(this.configProjetoCliente.titulo);
   }
 }
