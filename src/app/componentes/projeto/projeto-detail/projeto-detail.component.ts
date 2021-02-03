@@ -73,10 +73,6 @@ export class ProjetoDetailComponent implements OnInit {
     console.log('teste');
   }
 
-  emiteClicaBotaoEditarEspecial(linha){
-    console.log('teste');
-  }
-
   emiteClicaBotaoExcluirEspecial(linha){
     console.log('teste');
   }
