@@ -118,7 +118,25 @@ export class ProjetoDetailComponent implements OnInit {
   }
 
   emiteClicaBotaoExcluirEspecialCliente(linha){
-    console.log('teste');
+    const modalRef = this.modalService.show(ModalComponent);
+    modalRef.content.titulo = 'Desvincular Cliente do Projeto';
+    modalRef.content.mensagem = 'Tem certeza que deseja desvincular esse cliente do projeto?';
+    modalRef.content.existeMensagem = true;
+    modalRef.content.existeBotaoExcluir = true;
+    modalRef.content.emiteClicaBotaoExcluir.subscribe(() => {
+      this.service.deleteExcluir(this.urlCliente + '/delete', linha['id_' + this.urlCliente]).subscribe(resp => {
+        this.verificarResposta(resp);
+      });
+    });
+  }
+
+  verificarResposta(resp){
+    if (resp.body['data']['sucesso']){
+      alert(resp.body['data']['mensagem']);
+      window.location.reload();
+    }
+    else
+      alert(resp.body['data']['mensagem']);
   }
 
   traduzir(){ // colocar parametro para tradução das outras relações e criar outras variáveis "this.traducoes"
