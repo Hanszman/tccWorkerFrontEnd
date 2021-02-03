@@ -13,8 +13,7 @@
     <app-table [titulo]="tituloQuadro" [config]="configQuadro" [url]="urlQuadro" [parametros]="parametros" [agregacao]="url" [idAgregacao]="id" [existeBotaoSalvar]=false></app-table>
 </div>
 
-<!-- Incluir as tabelas (botão de vincular passando id_projeto): -->
-<!-- TODO: Fornecedores, Funcionários -->
+<!-- TODO: Funcionários -->
 <div class="row table-responsive div-table">
     <h4>Clientes</h4>
     <app-table 
@@ -33,5 +32,26 @@
         (emiteClicaBotaoCriarEspecial)="emiteClicaBotaoCriarEspecialCliente()"
         (emiteClicaBotaoDetalhesEspecial)="emiteClicaBotaoDetalhesEspecialCliente($event)"
         (emiteClicaBotaoExcluirEspecial)="emiteClicaBotaoExcluirEspecialCliente($event)"
+    ></app-table>
+</div>
+
+<div class="row table-responsive div-table">
+    <h4>Fornecedores</h4>
+    <app-table 
+        [titulo]="tituloFornecedor"
+        [config]="configFornecedor"
+        [url]="urlFornecedor"
+        [parametros]="parametros"
+        [existeBotaoSalvar]=false
+        [existeBotaoCriar]=false
+        [existeBotaoDetalhes]=false
+        [existeBotaoEditar]=false
+        [existeBotaoExcluir]=false
+        [existeBotaoCriarEspecial]=true
+        [existeBotaoDetalhesEspecial]=true
+        [existeBotaoExcluirEspecial]=true
+        (emiteClicaBotaoCriarEspecial)="emiteClicaBotaoCriarEspecialFornecedor()"
+        (emiteClicaBotaoDetalhesEspecial)="emiteClicaBotaoDetalhesEspecialFornecedor($event)"
+        (emiteClicaBotaoExcluirEspecial)="emiteClicaBotaoExcluirEspecialFornecedor($event)"
     ></app-table>
 </div>

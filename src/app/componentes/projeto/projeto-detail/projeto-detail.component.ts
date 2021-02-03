@@ -16,12 +16,15 @@ export class ProjetoDetailComponent implements OnInit {
   url = 'projeto';
   urlQuadro = 'quadro';
   urlCliente = 'projeto_cliente';
+  urlFornecedor = 'projeto_fornecedor';
   titulo = 'Projeto';
   tituloQuadro = 'Quadro';
   tituloCliente = 'Cliente';
+  tituloFornecedor = 'Fornecedor';
   parametros;
   parametrosConsulta;
-  traducoes;
+  traducoesCliente;
+  traducoesFornecedor;
   id_empresa = window.localStorage.getItem('id_empresa');
   @Input() config = {
     titulo: 'projeto',
@@ -71,6 +74,34 @@ export class ProjetoDetailComponent implements OnInit {
     ],
     desabilitados: []
   }
+  @Input() configFornecedor = {
+    titulo: 'projeto_fornecedor',
+    cabecalhos: [
+      'dsc_nome_fornecedor',
+      'dsc_cnpj_fornecedor'
+    ],
+    paginacao: 5
+  };
+  @Input() configProjetoFornecedor = {
+    titulo: 'projeto_fornecedor',
+    cabecalhos: [
+      'id_fornecedor'
+    ],
+    tipos: [
+      'select'
+    ],
+    selects: {
+      id_fornecedor: {
+        values: [],
+        labels: []
+      }
+    },
+    mascaras: [],
+    obrigatorios: [
+      'id_fornecedor'
+    ],
+    desabilitados: []
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -89,11 +120,21 @@ export class ProjetoDetailComponent implements OnInit {
         this.configProjetoCliente.selects.id_cliente.labels.push(conjunto[i]['dsc_nome']);
       }
     });
+    this.service.getConsultar('fornecedor', this.parametrosConsulta).subscribe((obj) => {
+      let conjunto = obj.body.data.dados;
+      for (let i = 0; i < conjunto.length; i++) {
+        this.configProjetoFornecedor.selects.id_fornecedor.values.push(conjunto[i]['id_fornecedor']);
+        this.configProjetoFornecedor.selects.id_fornecedor.labels.push(conjunto[i]['dsc_nome']);
+      }
+    });
   }
 
   ngOnInit(): void {
-    this.traduzir().subscribe((traducoes) => {
-      this.traducoes = traducoes;
+    this.traduzir('cliente').subscribe((traducoesCliente) => {
+      this.traducoesCliente = traducoesCliente;
+    })
+    this.traduzir('fornecedor').subscribe((traducoesFornecedor) => {
+      this.traducoesFornecedor = traducoesFornecedor;
     })
   }
 
@@ -105,7 +146,7 @@ export class ProjetoDetailComponent implements OnInit {
       config: this.configProjetoCliente,
       url: this.urlCliente,
       dadosRelacao: relacoes,
-      traducoes: this.traducoes
+      traducoes: this.traducoesCliente
     };
     const modalRef = this.modalService.show(ModalComponent, {initialState});
     modalRef.content.titulo = 'Vincular Cliente ao Projeto'
@@ -130,6 +171,39 @@ export class ProjetoDetailComponent implements OnInit {
     });
   }
 
+  emiteClicaBotaoCriarEspecialFornecedor(){
+    var relacoes = {
+      id_projeto: this.id
+    }
+    const initialState = {
+      config: this.configProjetoFornecedor,
+      url: this.urlFornecedor,
+      dadosRelacao: relacoes,
+      traducoes: this.traducoesFornecedor
+    };
+    const modalRef = this.modalService.show(ModalComponent, {initialState});
+    modalRef.content.titulo = 'Vincular Fornecedor ao Projeto'
+    modalRef.content.existeModalForm = true;
+    modalRef.content.existeBotaoCriar = true;
+  }
+
+  emiteClicaBotaoDetalhesEspecialFornecedor(linha){
+    this.router.navigate(['fornecedor/read/' + linha.id_fornecedor]);
+  }
+
+  emiteClicaBotaoExcluirEspecialFornecedor(linha){
+    const modalRef = this.modalService.show(ModalComponent);
+    modalRef.content.titulo = 'Desvincular Fornecedor do Projeto';
+    modalRef.content.mensagem = 'Tem certeza que deseja desvincular esse fornecedor do projeto?';
+    modalRef.content.existeMensagem = true;
+    modalRef.content.existeBotaoExcluir = true;
+    modalRef.content.emiteClicaBotaoExcluir.subscribe(() => {
+      this.service.deleteExcluir(this.urlFornecedor + '/delete', linha['id_' + this.urlFornecedor]).subscribe(resp => {
+        this.verificarResposta(resp);
+      });
+    });
+  }
+
   verificarResposta(resp){
     if (resp.body['data']['sucesso']){
       alert(resp.body['data']['mensagem']);
@@ -139,9 +213,18 @@ export class ProjetoDetailComponent implements OnInit {
       alert(resp.body['data']['mensagem']);
   }
 
-  traduzir(){ // colocar parametro para tradução das outras relações e criar outras variáveis "this.traducoes"
+  traduzir(rotulo){
     let idioma = 'br';
+    let tituloConfig;
     this.translate.use(idioma);
-    return this.translate.get(this.configProjetoCliente.titulo);
+    switch (rotulo) {
+      case 'cliente':
+        tituloConfig = this.configProjetoCliente.titulo;
+        break;
+      case 'fornecedor':
+        tituloConfig = this.configProjetoFornecedor.titulo;
+        break;
+    }
+    return this.translate.get(tituloConfig);
   }
 }

@@ -101,7 +101,18 @@
         "dsc_nome_cliente": "Cliente",
         "dsc_cnpj_cliente": "CNPJ"
     },
-    "projeto_fornecedor": {},
+    "projeto_fornecedor": {
+        "id_projeto": "Projeto",
+        "id_fornecedor": "Fornecedor",
+        "dsc_nome_projeto": "Projeto",
+        "dsc_descricao_projeto": "Descrição",
+        "dat_inicio_projeto": "Data de Início",
+        "dat_fim_projeto": "Data de Fim",
+        "id_setor_projeto": "Setor Responsável",
+        "dsc_setor_projeto": "Setor Responsável",
+        "dsc_nome_fornecedor": "Fornecedor",
+        "dsc_cnpj_fornecedor": "CNPJ"
+    },
     "geral": {
         "table": {
             "novo": "Criar Novo",
