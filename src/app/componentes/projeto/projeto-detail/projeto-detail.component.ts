@@ -42,16 +42,6 @@ export class ProjetoDetailComponent implements OnInit {
       'dsc_nome_cliente',
       'dsc_cnpj_cliente'
     ],
-    tipos: [
-      'text',
-      'text'
-    ],
-    selects: {},
-    mascaras: [],
-    obrigatorios: [
-      'dsc_nome_cliente'
-    ],
-    desabilitados: [],
     paginacao: 5
   };
 
