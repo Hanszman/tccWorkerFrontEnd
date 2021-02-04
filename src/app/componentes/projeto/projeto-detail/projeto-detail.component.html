@@ -13,7 +13,6 @@
     <app-table [titulo]="tituloQuadro" [config]="configQuadro" [url]="urlQuadro" [parametros]="parametros" [agregacao]="url" [idAgregacao]="id" [existeBotaoSalvar]=false></app-table>
 </div>
 
-<!-- TODO: Funcionários -->
 <div class="row table-responsive div-table">
     <h4>Clientes</h4>
     <app-table 
@@ -53,5 +52,26 @@
         (emiteClicaBotaoCriarEspecial)="emiteClicaBotaoCriarEspecialFornecedor()"
         (emiteClicaBotaoDetalhesEspecial)="emiteClicaBotaoDetalhesEspecialFornecedor($event)"
         (emiteClicaBotaoExcluirEspecial)="emiteClicaBotaoExcluirEspecialFornecedor($event)"
+    ></app-table>
+</div>
+
+<div class="row table-responsive div-table">
+    <h4>Funcionários</h4>
+    <app-table 
+        [titulo]="tituloFuncionario"
+        [config]="configFuncionario"
+        [url]="urlFuncionario"
+        [parametros]="parametros"
+        [existeBotaoSalvar]=false
+        [existeBotaoCriar]=false
+        [existeBotaoDetalhes]=false
+        [existeBotaoEditar]=false
+        [existeBotaoExcluir]=false
+        [existeBotaoCriarEspecial]=true
+        [existeBotaoDetalhesEspecial]=true
+        [existeBotaoExcluirEspecial]=true
+        (emiteClicaBotaoCriarEspecial)="emiteClicaBotaoCriarEspecialFuncionario()"
+        (emiteClicaBotaoDetalhesEspecial)="emiteClicaBotaoDetalhesEspecialFuncionario($event)"
+        (emiteClicaBotaoExcluirEspecial)="emiteClicaBotaoExcluirEspecialFuncionario($event)"
     ></app-table>
 </div>

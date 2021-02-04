@@ -17,14 +17,18 @@ export class ProjetoDetailComponent implements OnInit {
   urlQuadro = 'quadro';
   urlCliente = 'projeto_cliente';
   urlFornecedor = 'projeto_fornecedor';
+  urlFuncionario = 'projeto_usuario_empresa';
   titulo = 'Projeto';
   tituloQuadro = 'Quadro';
   tituloCliente = 'Cliente';
   tituloFornecedor = 'Fornecedor';
+  tituloFuncionario = 'Funcionário';
+  relacoes;
   parametros;
   parametrosConsulta;
   traducoesCliente;
   traducoesFornecedor;
+  traducoesFuncionario;
   id_empresa = window.localStorage.getItem('id_empresa');
   @Input() config = {
     titulo: 'projeto',
@@ -102,6 +106,35 @@ export class ProjetoDetailComponent implements OnInit {
     ],
     desabilitados: []
   }
+  @Input() configFuncionario = {
+    titulo: 'projeto_usuario_empresa',
+    cabecalhos: [
+      'dsc_nome_completo_usuario_empresa',
+      'dsc_login_usuario_empresa',
+      'dsc_cargo_usuario_empresa'
+    ],
+    paginacao: 5
+  };
+  @Input() configProjetoFuncionario = {
+    titulo: 'projeto_usuario_empresa',
+    cabecalhos: [
+      'id_usuario_empresa'
+    ],
+    tipos: [
+      'select'
+    ],
+    selects: {
+      id_usuario_empresa: {
+        values: [],
+        labels: []
+      }
+    },
+    mascaras: [],
+    obrigatorios: [
+      'id_usuario_empresa'
+    ],
+    desabilitados: []
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -111,6 +144,7 @@ export class ProjetoDetailComponent implements OnInit {
     private modalService: BsModalService
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
+    this.relacoes = {id_projeto: this.id}
     this.parametros = 'id_projeto=' + this.id + '&';
     this.parametrosConsulta = 'id_empresa=' + this.id_empresa + '&';
     this.service.getConsultar('cliente', this.parametrosConsulta).subscribe((obj) => {
@@ -127,6 +161,13 @@ export class ProjetoDetailComponent implements OnInit {
         this.configProjetoFornecedor.selects.id_fornecedor.labels.push(conjunto[i]['dsc_nome']);
       }
     });
+    this.service.getConsultar('usuario', this.parametrosConsulta).subscribe((obj) => {
+      let conjunto = obj.body.data.dados;
+      for (let i = 0; i < conjunto.length; i++) {
+        this.configProjetoFuncionario.selects.id_usuario_empresa.values.push(conjunto[i]['id_usuario_empresa']);
+        this.configProjetoFuncionario.selects.id_usuario_empresa.labels.push(conjunto[i]['dsc_nome_completo']);
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -136,16 +177,16 @@ export class ProjetoDetailComponent implements OnInit {
     this.traduzir('fornecedor').subscribe((traducoesFornecedor) => {
       this.traducoesFornecedor = traducoesFornecedor;
     })
+    this.traduzir('funcionario').subscribe((traducoesFuncionario) => {
+      this.traducoesFuncionario = traducoesFuncionario;
+    })
   }
 
   emiteClicaBotaoCriarEspecialCliente(){
-    var relacoes = {
-      id_projeto: this.id
-    }
     const initialState = {
       config: this.configProjetoCliente,
       url: this.urlCliente,
-      dadosRelacao: relacoes,
+      dadosRelacao: this.relacoes,
       traducoes: this.traducoesCliente
     };
     const modalRef = this.modalService.show(ModalComponent, {initialState});
@@ -172,13 +213,10 @@ export class ProjetoDetailComponent implements OnInit {
   }
 
   emiteClicaBotaoCriarEspecialFornecedor(){
-    var relacoes = {
-      id_projeto: this.id
-    }
     const initialState = {
       config: this.configProjetoFornecedor,
       url: this.urlFornecedor,
-      dadosRelacao: relacoes,
+      dadosRelacao: this.relacoes,
       traducoes: this.traducoesFornecedor
     };
     const modalRef = this.modalService.show(ModalComponent, {initialState});
@@ -204,6 +242,36 @@ export class ProjetoDetailComponent implements OnInit {
     });
   }
 
+  emiteClicaBotaoCriarEspecialFuncionario(){
+    const initialState = {
+      config: this.configProjetoFuncionario,
+      url: this.urlFuncionario,
+      dadosRelacao: this.relacoes,
+      traducoes: this.traducoesFuncionario
+    };
+    const modalRef = this.modalService.show(ModalComponent, {initialState});
+    modalRef.content.titulo = 'Vincular Funcionário ao Projeto'
+    modalRef.content.existeModalForm = true;
+    modalRef.content.existeBotaoCriar = true;
+  }
+
+  emiteClicaBotaoDetalhesEspecialFuncionario(linha){
+    this.router.navigate(['usuario/read/']);
+  }
+
+  emiteClicaBotaoExcluirEspecialFuncionario(linha){
+    const modalRef = this.modalService.show(ModalComponent);
+    modalRef.content.titulo = 'Desvincular Funcionário do Projeto';
+    modalRef.content.mensagem = 'Tem certeza que deseja desvincular esse funcionário do projeto?';
+    modalRef.content.existeMensagem = true;
+    modalRef.content.existeBotaoExcluir = true;
+    modalRef.content.emiteClicaBotaoExcluir.subscribe(() => {
+      this.service.deleteExcluir(this.urlFuncionario + '/delete', linha['id_' + this.urlFuncionario]).subscribe(resp => {
+        this.verificarResposta(resp);
+      });
+    });
+  }
+
   verificarResposta(resp){
     if (resp.body['data']['sucesso']){
       alert(resp.body['data']['mensagem']);
@@ -223,6 +291,9 @@ export class ProjetoDetailComponent implements OnInit {
         break;
       case 'fornecedor':
         tituloConfig = this.configProjetoFornecedor.titulo;
+        break;
+      case 'funcionario':
+        tituloConfig = this.configProjetoFuncionario.titulo;
         break;
     }
     return this.translate.get(tituloConfig);

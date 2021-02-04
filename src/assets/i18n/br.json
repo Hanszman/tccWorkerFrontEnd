@@ -88,7 +88,19 @@
         "dsc_email": "E-mail"
     },
     "atividade_usuario_empresa": {},
-    "projeto_usuario_empresa": {},
+    "projeto_usuario_empresa": {
+        "id_projeto": "Projeto",
+        "id_usuario_empresa": "Funcionário",
+        "dsc_nome_projeto": "Projeto",
+        "dsc_descricao_projeto": "Descrição",
+        "dat_inicio_projeto": "Data de Início",
+        "dat_fim_projeto": "Data de Fim",
+        "id_setor_projeto": "Setor Responsável",
+        "dsc_setor_projeto": "Setor Responsável",
+        "dsc_nome_completo_usuario_empresa": "Funcionário",
+        "dsc_login_usuario_empresa": "Usuário",
+        "dsc_cargo_usuario_empresa": "Cargo"
+    },
     "projeto_cliente": {
         "id_projeto": "Projeto",
         "id_cliente": "Cliente",
