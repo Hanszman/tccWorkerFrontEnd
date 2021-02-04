@@ -196,6 +196,7 @@ export class ProjetoDetailComponent implements OnInit {
   }
 
   emiteClicaBotaoDetalhesEspecialCliente(linha){
+    window.scrollTo(0,0);
     this.router.navigate(['cliente/read/' + linha.id_cliente]);
   }
 
@@ -226,6 +227,7 @@ export class ProjetoDetailComponent implements OnInit {
   }
 
   emiteClicaBotaoDetalhesEspecialFornecedor(linha){
+    window.scrollTo(0,0);
     this.router.navigate(['fornecedor/read/' + linha.id_fornecedor]);
   }
 
@@ -256,6 +258,7 @@ export class ProjetoDetailComponent implements OnInit {
   }
 
   emiteClicaBotaoDetalhesEspecialFuncionario(linha){
+    window.scrollTo(0,0);
     this.router.navigate(['usuario/read/'], {queryParams: {id_funcionario_parametro: linha.id_usuario}});
   }
 
