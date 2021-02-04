@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { HttpService } from '../../geral/http/http.service';
 import { TranslateService } from '@ngx-translate/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -12,6 +13,7 @@ import { ModalComponent } from '../../geral/modal/modal.component';
 export class UsuarioReadComponent implements OnInit {
 
   id;
+  id_funcionario_parametro;
   url = 'usuario';
   urlFuncionario = 'usuario_empresa';
   urlTelefone = 'telefone';
@@ -128,6 +130,7 @@ export class UsuarioReadComponent implements OnInit {
   };
 
   constructor(
+    private route: ActivatedRoute,
     private service: HttpService,
     private translate: TranslateService,
     private modalService: BsModalService
@@ -140,12 +143,15 @@ export class UsuarioReadComponent implements OnInit {
         this.selectsFuncionario.id_setor.labels.push(conjunto[i]['dsc_setor']);
       }
     });
+    this.route.queryParams.subscribe(params => this.id_funcionario_parametro = params['id_funcionario_parametro']);
   }
 
   ngOnInit(): void {
     this.traduzir().subscribe((traducoes) => {
       this.traducoes = traducoes;
     })
+    if (this.id_funcionario_parametro)
+      this.mostrar();
   }
 
   emiteClicaBotaoCriarEspecial(){
@@ -220,6 +226,12 @@ export class UsuarioReadComponent implements OnInit {
     this.usuarioDetailField = false;
     this.id = undefined;
     this.parametrosRelacionados = undefined;
+  }
+
+  mostrar(){
+    this.usuarioDetailField = true;
+    this.id = this.id_funcionario_parametro;
+    this.parametrosRelacionados = 'id_usuario=' + this.id + '&';
   }
 
   traduzir(){

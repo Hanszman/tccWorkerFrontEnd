@@ -256,7 +256,7 @@ export class ProjetoDetailComponent implements OnInit {
   }
 
   emiteClicaBotaoDetalhesEspecialFuncionario(linha){
-    this.router.navigate(['usuario/read/']);
+    this.router.navigate(['usuario/read/'], {queryParams: {id_funcionario_parametro: linha.id_usuario}});
   }
 
   emiteClicaBotaoExcluirEspecialFuncionario(linha){
