@@ -144,7 +144,7 @@ export class ProjetoDetailComponent implements OnInit {
     private modalService: BsModalService
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
-    this.relacoes = {id_projeto: this.id}
+    this.relacoes = {id_projeto: this.id};
     this.parametros = 'id_projeto=' + this.id + '&';
     this.parametrosConsulta = 'id_empresa=' + this.id_empresa + '&';
     this.service.getConsultar('cliente', this.parametrosConsulta).subscribe((obj) => {

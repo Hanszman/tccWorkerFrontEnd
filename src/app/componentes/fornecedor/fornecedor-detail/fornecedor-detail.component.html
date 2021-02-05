@@ -25,3 +25,23 @@
 
 <!-- Incluir a tabela (botão de vincular passando id_fornecedor): -->
 <!-- TODO: Projetos -->
+<div class="row table-responsive div-table">
+    <h4>Projetos</h4>
+    <app-table 
+        [titulo]="tituloProjeto"
+        [config]="configProjeto"
+        [url]="urlProjeto"
+        [parametros]="parametros"
+        [existeBotaoSalvar]=false
+        [existeBotaoCriar]=false
+        [existeBotaoDetalhes]=false
+        [existeBotaoEditar]=false
+        [existeBotaoExcluir]=false
+        [existeBotaoCriarEspecial]=true
+        [existeBotaoDetalhesEspecial]=true
+        [existeBotaoExcluirEspecial]=true
+        (emiteClicaBotaoCriarEspecial)="emiteClicaBotaoCriarEspecialProjeto()"
+        (emiteClicaBotaoDetalhesEspecial)="emiteClicaBotaoDetalhesEspecialProjeto($event)"
+        (emiteClicaBotaoExcluirEspecial)="emiteClicaBotaoExcluirEspecialProjeto($event)"
+    ></app-table>
+</div>
