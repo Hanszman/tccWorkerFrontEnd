@@ -87,7 +87,24 @@
         "emails": "E-mail's",
         "dsc_email": "E-mail"
     },
-    "atividade_usuario_empresa": {},
+    "atividade_usuario_empresa": {
+        "id_atividade": "Atividade",
+        "id_usuario_empresa": "Funcionário",
+        "dsc_nome_atividade": "Nome",
+        "dsc_descricao_atividade": "Descrição",
+        "dat_inicio_atividade": "Data de Início",
+        "dat_fim_atividade": "Data de Fim",
+        "id_etapa_atividade": "Etapa",
+        "dsc_etapa_atividade": "Etapa",
+        "ind_sequencia_etapa_atividade": "Sequência Etapa",
+        "id_quadro_atividade": "Quadro",
+        "dsc_quadro_atividade": "Quadro",
+        "id_projeto_atividade": "Projeto",
+        "dsc_projeto_atividade": "Projeto",
+        "dsc_nome_completo_usuario_empresa": "Funcionário",
+        "dsc_login_usuario_empresa": "Usuário",
+        "dsc_cargo_usuario_empresa": "Cargo"
+    },
     "projeto_usuario_empresa": {
         "id_projeto": "Projeto",
         "id_usuario_empresa": "Funcionário",
