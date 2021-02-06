@@ -20,10 +20,11 @@
             </div>
             <div [id]="etapa.id_etapa" class="tasks-container" cdkDropList [cdkDropListData]="etapa.atividade_list" (cdkDropListDropped)="drop($event)">
                 <div [id]="atividade.atividade_id" class="task" *ngFor="let atividade of etapa.atividade_list" cdkDrag>
-                    <span>{{atividade.atividade_nome}}</span>
-                    <div class="right-end">
-                        <a class="btn btn-outline-info" (click)="detalhesAtividadeModal(atividade.atividade_id, etapa.id_etapa)" title="Detalhes"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                        <a class="btn btn-outline-warning" (click)="editarAtividadeModal(atividade.atividade_id, etapa.id_etapa)" title="Editar"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <div>
+                        <span class="task-title">{{atividade.atividade_nome}}</span>
+                        <a class="btn btn-outline-info" (click)="detalhesAtividadeModal(atividade.atividade_id, etapa.id_etapa)" title="Detalhes Atividade"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                        <a class="btn btn-outline-success" title="Vincular Funcionário"><i class="fa fa-user" aria-hidden="true"></i></a>
+                        <a class="btn btn-outline-warning" (click)="editarAtividadeModal(atividade.atividade_id, etapa.id_etapa)" title="Editar Atividade"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
