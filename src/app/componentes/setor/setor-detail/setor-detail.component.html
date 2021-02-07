@@ -8,5 +8,12 @@
 
 <app-detail [titulo]="titulo" [config]="config" [url]="url" [id]="id"></app-detail>
 
-<!-- Incluir as tabelas (botão de vincular passando id_setor apenas na tabela de projetos): -->
-<!-- TODO: Funcionários, Projetos -->
+<div class="row table-responsive div-table">
+  <h4>Projetos</h4>
+  <app-table [titulo]="tituloProjeto" [config]="configProjeto" [url]="urlProjeto" [parametros]="parametros" [agregacao]="url" [idAgregacao]="id" [existeBotaoSalvar]=false [existeBotaoCriar]=false [existeBotaoEditar]=false [existeBotaoExcluir]=false></app-table>
+</div>
+
+<div class="row table-responsive div-table">
+  <h4>Funcionários</h4>
+  <app-table [titulo]="tituloFuncionario" [config]="configFuncionario" [url]="urlFuncionario" [parametros]="parametros" [agregacao]="url" [idAgregacao]="id" [existeBotaoSalvar]=false [existeBotaoCriar]=false [existeBotaoEditar]=false [existeBotaoExcluir]=false [existeBotaoDetalhes]=false></app-table>
+</div>

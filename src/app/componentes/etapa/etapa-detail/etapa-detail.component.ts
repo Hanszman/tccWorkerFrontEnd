@@ -14,6 +14,7 @@ export class EtapaDetailComponent implements OnInit {
   titulo = 'Etapa';
   tituloAtividade = 'Atividade';
   parametros;
+  id_empresa = window.localStorage.getItem('id_empresa');
   @Input() config = {
     titulo: 'etapa',
     cabecalhos: [
@@ -36,7 +37,7 @@ export class EtapaDetailComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
-    this.parametros = 'id_etapa=' + this.id + '&';
+    this.parametros = 'id_etapa=' + this.id + '&id_empresa=' + this.id_empresa + '&';
   }
 
   ngOnInit(): void {
