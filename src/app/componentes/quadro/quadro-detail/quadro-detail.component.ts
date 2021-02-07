@@ -16,10 +16,13 @@ export class QuadroDetailComponent implements OnInit {
   id;
   url = 'quadro';
   urlAtividade = 'atividade';
+  urlFuncionario = 'atividade_usuario_empresa';
   titulo = 'Quadro';
   tituloAtividade = 'Atividade';
   parametros;
+  parametrosConsulta;
   traducoes;
+  traducoesFuncionario;
   id_empresa = window.localStorage.getItem('id_empresa');
   etapaList = [];
   @Input() config = {
@@ -53,6 +56,26 @@ export class QuadroDetailComponent implements OnInit {
     ],
     desabilitados: []
   };
+  @Input() configAtividadeFuncionario = {
+    titulo: 'atividade_usuario_empresa',
+    cabecalhos: [
+      'id_usuario_empresa'
+    ],
+    tipos: [
+      'select'
+    ],
+    selects: {
+      id_usuario_empresa: {
+        values: [],
+        labels: []
+      }
+    },
+    mascaras: [],
+    obrigatorios: [
+      'id_usuario_empresa'
+    ],
+    desabilitados: []
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -62,6 +85,7 @@ export class QuadroDetailComponent implements OnInit {
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
     this.parametros = 'id_empresa=' + this.id_empresa + '&ordenarPor=ind_sequencia&direcao=asc&';
+    this.parametrosConsulta = 'id_empresa=' + this.id_empresa + '&';
     this.service.getConsultar('etapa', this.parametros).subscribe((obj) => {
       let conjunto = obj.body.data.dados;
       for (let i = 0; i < conjunto.length; i++) {
@@ -79,11 +103,21 @@ export class QuadroDetailComponent implements OnInit {
         });
       }
     });
+    this.service.getConsultar('usuario', this.parametrosConsulta).subscribe((obj) => {
+      let conjunto = obj.body.data.dados;
+      for (let i = 0; i < conjunto.length; i++) {
+        this.configAtividadeFuncionario.selects.id_usuario_empresa.values.push(conjunto[i]['id_usuario_empresa']);
+        this.configAtividadeFuncionario.selects.id_usuario_empresa.labels.push(conjunto[i]['dsc_nome_completo']);
+      }
+    });
   }
 
   ngOnInit(): void {
-    this.traduzir().subscribe((traducoes) => {
+    this.traduzir('quadro').subscribe((traducoes) => {
       this.traducoes = traducoes;
+    })
+    this.traduzir('funcionario').subscribe((traducoesFuncionario) => {
+      this.traducoesFuncionario = traducoesFuncionario;
     })
   }
 
@@ -162,9 +196,32 @@ export class QuadroDetailComponent implements OnInit {
     modalRef.content.existeBotaoCancelar = false;
   }
 
-  traduzir(){
+  atividadeVinculaFuncionario(id_atividade){
+    let relacoes = {id_atividade: id_atividade};
+    const initialState = {
+      config: this.configAtividadeFuncionario,
+      url: this.urlFuncionario,
+      dadosRelacao: relacoes,
+      traducoes: this.traducoesFuncionario
+    };
+    const modalRef = this.modalService.show(ModalComponent, {initialState});
+    modalRef.content.titulo = 'Vincular Funcionário à Atividade'
+    modalRef.content.existeModalForm = true;
+    modalRef.content.existeBotaoCriar = true;
+  }
+
+  traduzir(rotulo){
     let idioma = 'br';
+    let tituloConfig;
     this.translate.use(idioma);
-    return this.translate.get(this.configAtividade.titulo);
+    switch (rotulo) {
+      case 'quadro':
+        tituloConfig = this.configAtividade.titulo;
+        break;
+      case 'funcionario':
+        tituloConfig = this.configAtividadeFuncionario.titulo;
+        break;
+    }
+    return this.translate.get(tituloConfig);
   }
 }
