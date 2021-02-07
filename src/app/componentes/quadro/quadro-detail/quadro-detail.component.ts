@@ -76,6 +76,14 @@ export class QuadroDetailComponent implements OnInit {
     ],
     desabilitados: []
   }
+  @Input() configFuncionario = {
+    titulo: 'atividade_usuario_empresa',
+    cabecalhos: [
+      'dsc_nome_completo_usuario_empresa',
+      'dsc_login_usuario_empresa',
+      'dsc_cargo_usuario_empresa'
+    ]
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -182,18 +190,26 @@ export class QuadroDetailComponent implements OnInit {
     modalRef.content.existeBotaoEditar = true;
   }
 
-  detalhesAtividadeModal(id_atividade, id_etapa){
-    const initialState = {
-      config: this.configAtividade,
-      url: this.urlAtividade,
-      id: id_atividade,
-      traducoes: this.traducoes
-    };
-    const modalRef = this.modalService.show(ModalComponent, {initialState});
-    modalRef.content.titulo = 'Detalhes da ' + this.tituloAtividade;
-    modalRef.content.existeModalDetalhes = true;
-    modalRef.content.existeBotaoDetalhes = true;
-    modalRef.content.existeBotaoCancelar = false;
+  detalhesAtividadeModal(id_atividade){
+    let conjuntoDadosTable;
+    this.service.getConsultar('atividade_usuario_empresa', this.parametrosConsulta + 'id_atividade=' + id_atividade + '&').subscribe((obj) => {
+      conjuntoDadosTable = obj.body.data.dados;
+      const initialState = {
+        config: this.configAtividade,
+        url: this.urlAtividade,
+        id: id_atividade,
+        traducoes: this.traducoes,
+        configTable: this.configFuncionario,
+        traducoesTable: this.traducoesFuncionario,
+        conjuntoDadosTable: conjuntoDadosTable
+      };
+      const modalRef = this.modalService.show(ModalComponent, {initialState});
+      modalRef.content.titulo = 'Detalhes da ' + this.tituloAtividade;
+      modalRef.content.existeModalDetalhes = true;
+      modalRef.content.existeBotaoDetalhes = true;
+      modalRef.content.existeBotaoCancelar = false;
+      modalRef.content.existeModalTable = true;
+    });
   }
 
   atividadeVinculaFuncionario(id_atividade){

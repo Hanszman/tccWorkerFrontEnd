@@ -22,7 +22,7 @@
                 <div [id]="atividade.atividade_id" class="task" *ngFor="let atividade of etapa.atividade_list" cdkDrag>
                     <div>
                         <span class="task-title">{{atividade.atividade_nome}}</span>
-                        <a class="btn btn-outline-info" (click)="detalhesAtividadeModal(atividade.atividade_id, etapa.id_etapa)" title="Detalhes Atividade"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                        <a class="btn btn-outline-info" (click)="detalhesAtividadeModal(atividade.atividade_id)" title="Detalhes Atividade"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                         <a class="btn btn-outline-success" (click)="atividadeVinculaFuncionario(atividade.atividade_id)" title="Vincular Funcionário"><i class="fa fa-user" aria-hidden="true"></i></a>
                         <a class="btn btn-outline-warning" (click)="editarAtividadeModal(atividade.atividade_id, etapa.id_etapa)" title="Editar Atividade"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </div>
@@ -31,5 +31,3 @@
         </div>
     </div>
 </div>
-
-<!-- TODO: Incluir lista de funcionários no modal de detalhes da atividade -->

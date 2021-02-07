@@ -26,6 +26,19 @@
                 <div><b>{{ tradutor(item) }}:</b> {{ conjuntoDados[item] }}</div>
             </div>
         </div>
+        <div *ngIf="existeModalTable"><br>
+            <table class="table">
+                <tr>
+                    <th>#</th>
+                    <th *ngFor="let itemTable of configTable.cabecalhos">{{ tradutor(itemTable, true) }}</th>
+                </tr>
+                <tr *ngFor="let linhaTable of conjuntoDadosTable; let i = index">
+                    <td>{{ i+1 }}</td>
+                    <td *ngFor="let itemTable of configTable.cabecalhos">{{ linhaTable[itemTable] }}</td>
+                </tr>
+            </table>
+            <div class="register-number"><p><span *ngIf="conjuntoDadosTable.length == 0 ">{{ 'geral.modal.sem-registros' | translate }}</span></p></div>
+        </div>
     </div>
     <div class="modal-footer">
         <button [hidden]="!existeBotaoCancelar" type="button" class="btn btn-outline-secondary" data-dismiss="modal" (click)="cancelar()"><i class="fa fa-ban" aria-hidden="true"></i> {{ 'geral.modal.cancelar' | translate }}</button>

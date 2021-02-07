@@ -13,6 +13,7 @@ export class ModalComponent implements OnInit {
 
   @Input() titulo: string;
   @Input() existeModalForm = false;
+  @Input() existeModalTable = false;
   @Input() existeModalDetalhes = false;
   @Input() existeBotaoDetalhes = false;
   @Input() existeBotaoCriar = false;
@@ -23,6 +24,7 @@ export class ModalComponent implements OnInit {
   @Input() subtitulo: string;
   @Input() existeMensagem = false;
   @Input() mensagem: string;
+  @Input() configTable;
   @Output() emiteClicaBotaoCriar = new EventEmitter();
   @Output() emiteClicaBotaoEditar = new EventEmitter();
   @Output() emiteClicaBotaoExcluir = new EventEmitter();
@@ -35,8 +37,10 @@ export class ModalComponent implements OnInit {
   dadosRelacao;
   parametros;
   traducoes;
+  traducoesTable;
   registro: any = {};
   conjuntoDados: any = {};
+  conjuntoDadosTable;
 
   constructor(
     private router: Router,
@@ -63,11 +67,20 @@ export class ModalComponent implements OnInit {
     });
   }
 
-  tradutor(chave){
-    if (this.traducoes !== undefined){
-      if (chave in this.traducoes)
-        return this.traducoes[chave];
-      return '';
+  tradutor(chave, table = false){
+    if (!table) {
+      if (this.traducoes !== undefined){
+        if (chave in this.traducoes)
+          return this.traducoes[chave];
+        return '';
+      }
+    }
+    else {
+      if (this.traducoesTable !== undefined){
+        if (chave in this.traducoesTable)
+          return this.traducoesTable[chave];
+        return '';
+      }
     }
   }
 

@@ -174,7 +174,8 @@
             "cadastrar": "Cadastrar",
             "editar": "Editar",
             "excluir": "Excluir",
-            "cancelar": "Cancelar"
+            "cancelar": "Cancelar",
+            "sem-registros": "Não existem registros"
         },
         "chart": {
 
