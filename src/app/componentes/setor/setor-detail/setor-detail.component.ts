@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-setor-detail',
@@ -44,12 +44,18 @@ export class SetorDetailComponent implements OnInit {
   };
   
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
     this.parametros = 'id_setor=' + this.id + '&id_empresa=' + this.id_empresa + '&';
   }
 
   ngOnInit(): void {
+  }
+
+  emiteClicaBotaoDetalhesEspecialFuncionario(linha) {
+    window.scrollTo(0,0);
+    this.router.navigate(['usuario/read/'], {queryParams: {id_funcionario_parametro: linha.id_usuario}});
   }
 }
