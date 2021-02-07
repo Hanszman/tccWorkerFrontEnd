@@ -8,5 +8,7 @@
 
 <app-detail [titulo]="titulo" [config]="config" [url]="url" [id]="id"></app-detail>
 
-<!-- Incluir a tabela (não colocar botão de vincular): -->
-<!-- TODO: Atividades -->
+<div class="row table-responsive div-table">
+  <h4>Atividades</h4>
+  <app-table [titulo]="tituloAtividade" [config]="configAtividade" [url]="urlAtividade" [parametros]="parametros" [agregacao]="url" [idAgregacao]="id" [existeBotaoSalvar]=false [existeBotaoCriar]=false [existeBotaoEditar]=false [existeBotaoExcluir]=false></app-table>
+</div>
