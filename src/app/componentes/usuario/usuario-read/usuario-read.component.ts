@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpService } from '../../geral/http/http.service';
 import { TranslateService } from '@ngx-translate/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -19,12 +19,17 @@ export class UsuarioReadComponent implements OnInit {
   urlTelefone = 'telefone';
   urlEndereco = 'endereco';
   urlEmail = 'email';
+  urlProjeto = 'projeto_usuario_empresa';
+  urlAtividade = 'atividade_usuario_empresa';
   titulo = 'Usuário';
   tituloTelefone = 'Telefone';
   tituloEndereco = 'Endereço';
   tituloEmail = 'E-mail';
+  tituloProjeto = 'Projeto';
+  tituloAtividade = 'Atividade';
   parametros;
   parametrosRelacionados;
+  parametrosAssociados;
   traducoes;
   usuarioDetailField = false;
   fotoUrl = 'assets/images/user_icon.png'
@@ -128,9 +133,34 @@ export class UsuarioReadComponent implements OnInit {
     ],
     paginacao: 5
   };
+  @Input() configProjeto = {
+    titulo: 'projeto_usuario_empresa',
+    cabecalhos: [
+      'dsc_nome_projeto',
+      'dsc_descricao_projeto',
+      'dat_inicio_projeto',
+      'dat_fim_projeto',
+      'dsc_setor_projeto'
+    ],
+    paginacao: 5
+  };
+  @Input() configAtividade = {
+    titulo: 'atividade_usuario_empresa',
+    cabecalhos: [
+      'dsc_nome_atividade',
+      'dsc_descricao_atividade',
+      'dat_inicio_atividade',
+      'dat_fim_atividade',
+      'dsc_etapa_atividade',
+      'dsc_quadro_atividade',
+      'dsc_projeto_atividade'
+    ],
+    paginacao: 5
+  };
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private service: HttpService,
     private translate: TranslateService,
     private modalService: BsModalService
@@ -150,8 +180,13 @@ export class UsuarioReadComponent implements OnInit {
     this.traduzir().subscribe((traducoes) => {
       this.traducoes = traducoes;
     })
-    if (this.id_funcionario_parametro)
-      this.mostrar();
+    if (this.id_funcionario_parametro) {
+      this.service.getConsultar('usuario', this.parametros + 'id_usuario=' + this.id_funcionario_parametro + '&').subscribe((obj) => {
+        let conjunto = obj.body.data.dados;
+        this.parametrosAssociados = 'id_usuario_empresa=' + conjunto[0]['id_usuario_empresa'] + '&';
+        this.mostrar();
+      });
+    }
   }
 
   emiteClicaBotaoCriarEspecial(){
@@ -174,6 +209,7 @@ export class UsuarioReadComponent implements OnInit {
     if (this.id == undefined) {
       this.id = linha.id_usuario;
       this.parametrosRelacionados = 'id_usuario=' + this.id + '&';
+      this.parametrosAssociados = 'id_usuario_empresa=' + linha.id_usuario_empresa + '&';
       this.usuarioDetailField = true;
     }
     else
@@ -226,12 +262,23 @@ export class UsuarioReadComponent implements OnInit {
     this.usuarioDetailField = false;
     this.id = undefined;
     this.parametrosRelacionados = undefined;
+    this.parametrosAssociados = undefined;
   }
 
   mostrar(){
     this.usuarioDetailField = true;
     this.id = this.id_funcionario_parametro;
     this.parametrosRelacionados = 'id_usuario=' + this.id + '&';
+  }
+
+  emiteClicaBotaoDetalhesEspecialProjeto(linha){
+    window.scrollTo(0,0);
+    this.router.navigate(['projeto/read/' + linha.id_projeto]);
+  }
+
+  emiteClicaBotaoDetalhesEspecialAtividade(linha){
+    window.scrollTo(0,0);
+    this.router.navigate(['atividade/read/' + linha.id_atividade]);
   }
 
   traduzir(){
