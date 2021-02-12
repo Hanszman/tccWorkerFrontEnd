@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Chart } from 'chart.js';
+import { ChartComponent } from '../../geral/chart/chart.component';
+import { HttpService } from '../../geral/http/http.service';
 
 @Component({
   selector: 'app-setor-read',
@@ -11,6 +14,8 @@ export class SetorReadComponent implements OnInit {
   titulo = 'Setor';
   parametros;
   id_empresa = window.localStorage.getItem('id_empresa');
+  chartTeste;
+  private componenteChart = new ChartComponent();
   @Input() config = {
     titulo: 'setor',
     cabecalhos: [
@@ -19,10 +24,32 @@ export class SetorReadComponent implements OnInit {
     paginacao: 5
   };
 
-  constructor() {
+  constructor(
+    private servico: HttpService
+  ) {
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
   }
 
   ngOnInit(): void {
+    Chart.defaults.scale.ticks.beginAtZero = true;
+    this.testeChart();
+  }
+
+  testeChart(){
+    var url = '';
+    this.servico.getChart(url).subscribe(resp => {
+      var resposta = resp.body.data;
+      if (typeof(this.chartTeste) != "undefined")
+        this.chartTeste.destroy();
+      this.chartTeste = this.componenteChart.configuraChart(
+        'chartTeste',
+        'bar',
+        ['bar','bar','bar'],
+        ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
+        ['Projeto 1', 'Projeto 2', 'Projeto 3'],
+        [[5,4,2,9,1],[0,2,9,8,7],[6,9,9,10,11]],
+        this.componenteChart.selecionaCores(3)
+      );
+    });
   }
 }
