@@ -12,6 +12,12 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
+  getChart(url): Observable<HttpResponse<any>> {
+    return this.http.get<any>(
+      this.apiURL + url, {observe: 'response'}
+    );
+  }
+
   getTable(url, filtro): Observable<HttpResponse<any>> {
     return this.http.get<any>(
       this.apiURL + url + `&${filtro}`, {observe: 'response'}
