@@ -14,7 +14,7 @@ export class SetorReadComponent implements OnInit {
   titulo = 'Setor';
   parametros;
   id_empresa = window.localStorage.getItem('id_empresa');
-  chartTeste;
+  chartAtividadeSetorEtapa;
   private componenteChart = new ChartComponent();
   @Input() config = {
     titulo: 'setor',
@@ -32,10 +32,10 @@ export class SetorReadComponent implements OnInit {
 
   ngOnInit(): void {
     Chart.defaults.scale.ticks.beginAtZero = true;
-    this.testeChart();
+    this.atividadeSetorEtapaChart();
   }
 
-  testeChart(){
+  atividadeSetorEtapaChart(){
     var url = 'atividade_setor_etapa';
     this.servico.getChart(url).subscribe(resp => {
       var resposta = resp.body.data;
@@ -49,10 +49,10 @@ export class SetorReadComponent implements OnInit {
           }]
         }
       }
-      if (typeof(this.chartTeste) != "undefined")
-        this.chartTeste.destroy();
-      this.chartTeste = this.componenteChart.configuraChart(
-        'chartTeste',
+      if (typeof(this.chartAtividadeSetorEtapa) != "undefined")
+        this.chartAtividadeSetorEtapa.destroy();
+      this.chartAtividadeSetorEtapa = this.componenteChart.configuraChart(
+        'chartAtividadeSetorEtapa',
         'bar',
         ['bar','bar','bar'],
         ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
