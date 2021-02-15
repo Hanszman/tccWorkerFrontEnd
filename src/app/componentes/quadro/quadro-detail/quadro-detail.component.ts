@@ -115,6 +115,7 @@ export class QuadroDetailComponent implements OnInit {
             this.etapaList[i]['atividade_list'][j] = new Object();
             this.etapaList[i]['atividade_list'][j]['atividade_id'] = innerConjunto[j]['id_atividade'];
             this.etapaList[i]['atividade_list'][j]['atividade_nome'] = innerConjunto[j]['dsc_nome'];
+            this.etapaList[i]['atividade_list'][j]['atividade_prioridade'] = innerConjunto[j]['ind_prioridade'];
           }
         });
       }

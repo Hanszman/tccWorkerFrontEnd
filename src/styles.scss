@@ -132,6 +132,9 @@
     padding: 10px;
     word-break: break-word;
 }
+.task-buttons {
+    white-space: nowrap;
+};
 .cdk-drag-preview {
     box-sizing: border-box;
     border-radius: 4px;

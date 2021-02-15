@@ -20,11 +20,17 @@
             </div>
             <div [id]="etapa.id_etapa" class="tasks-container" cdkDropList [cdkDropListData]="etapa.atividade_list" (cdkDropListDropped)="drop($event)">
                 <div [id]="atividade.atividade_id" class="task" *ngFor="let atividade of etapa.atividade_list" cdkDrag>
+                    <div *ngIf="atividade.atividade_prioridade == 'Urgente'" title="Prioridade: Urgente"><i class="fa fa-bell text-danger" aria-hidden="true"></i></div>
+                    <div *ngIf="atividade.atividade_prioridade == 'Alta'" title="Prioridade: Alta"><i class="fa fa-exclamation-triangle text-danger" aria-hidden="true"></i></div>
+                    <div *ngIf="atividade.atividade_prioridade == 'Normal'" title="Prioridade: Normal"><i class="fa fa-minus" aria-hidden="true"></i></div>
+                    <div *ngIf="atividade.atividade_prioridade == 'Baixa'" title="Prioridade: Baixa"><i class="fa fa-arrow-down text-info" aria-hidden="true"></i></div>
                     <div>
                         <span class="task-title">{{atividade.atividade_nome}}</span>
-                        <a class="btn btn-outline-info" (click)="detalhesAtividadeModal(atividade.atividade_id)" title="Detalhes Atividade"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                        <a class="btn btn-outline-success" (click)="atividadeVinculaFuncionario(atividade.atividade_id)" title="Vincular Funcionário"><i class="fa fa-user" aria-hidden="true"></i></a>
-                        <a class="btn btn-outline-warning" (click)="editarAtividadeModal(atividade.atividade_id, etapa.id_etapa)" title="Editar Atividade"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <span class="task-buttons">
+                            <a class="btn btn-outline-info" (click)="detalhesAtividadeModal(atividade.atividade_id)" title="Detalhes Atividade"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                            <a class="btn btn-outline-success" (click)="atividadeVinculaFuncionario(atividade.atividade_id)" title="Vincular Funcionário"><i class="fa fa-user" aria-hidden="true"></i></a>
+                            <a class="btn btn-outline-warning" (click)="editarAtividadeModal(atividade.atividade_id, etapa.id_etapa)" title="Editar Atividade"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        </span>
                     </div>
                 </div>
             </div>
