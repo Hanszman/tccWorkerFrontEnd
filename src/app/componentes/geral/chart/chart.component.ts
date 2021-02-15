@@ -21,7 +21,8 @@ export class ChartComponent implements OnInit {
     return result;
   }
 
-  configuraChart(id, tipo, tipos, eixoX, legendas, eixoY, cores, opcoes = {}, preencher = false){
+  configuraChart(id, tipo, tipos, eixoX, legendas, eixoY, cores, title = '', stacked = false, preencher = false, beginAtZero = true, opcoes = {}){
+    Chart.defaults.scale.ticks.beginAtZero = beginAtZero;
     var objetoDados = [];
     for(let i = 0; i < legendas.length; i++){
       objetoDados[i] = new Object();
@@ -33,6 +34,22 @@ export class ChartComponent implements OnInit {
       objetoDados[i]['fill'] = preencher;
     }
     opcoes['responsive'] = true;
+    if (title != '' && title != undefined) {
+      opcoes['title'] = {
+        display: true,
+        text: title
+      };
+    }
+    if (stacked) {
+      opcoes['scales'] = {
+        xAxes: [{
+          stacked: true,
+        }],
+        yAxes: [{
+          stacked: true
+        }]
+      };
+    }
     var chart = new Chart(id, {
       type: tipo,
       data: {
