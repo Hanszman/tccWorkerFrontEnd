@@ -14,7 +14,7 @@ export class HttpService {
 
   getChart(url): Observable<HttpResponse<any>> {
     return this.http.get<any>(
-      this.apiURL + url, {observe: 'response'}
+      this.apiURL + 'chart/' + url, {observe: 'response'}
     );
   }
 

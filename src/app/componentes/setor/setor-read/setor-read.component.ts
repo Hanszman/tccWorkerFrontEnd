@@ -36,9 +36,19 @@ export class SetorReadComponent implements OnInit {
   }
 
   testeChart(){
-    var url = '';
+    var url = 'atividade_setor_etapa';
     this.servico.getChart(url).subscribe(resp => {
       var resposta = resp.body.data;
+      var opcoes = {
+        scales: {
+          xAxes: [{
+            stacked: true,
+          }],
+          yAxes: [{
+            stacked: true
+          }]
+        }
+      }
       if (typeof(this.chartTeste) != "undefined")
         this.chartTeste.destroy();
       this.chartTeste = this.componenteChart.configuraChart(
@@ -48,7 +58,8 @@ export class SetorReadComponent implements OnInit {
         ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
         ['Projeto 1', 'Projeto 2', 'Projeto 3'],
         [[5,4,2,9,1],[0,2,9,8,7],[6,9,9,10,11]],
-        this.componenteChart.selecionaCores(3)
+        this.componenteChart.selecionaCores(3),
+        opcoes
       );
     });
   }
