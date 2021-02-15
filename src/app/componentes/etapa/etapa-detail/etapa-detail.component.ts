@@ -28,7 +28,8 @@ export class EtapaDetailComponent implements OnInit {
       'dsc_nome',
       'dsc_descricao',
       'dat_inicio',
-      'dat_fim'
+      'dat_fim',
+      'ind_prioridade'
     ],
     paginacao: 5
   };

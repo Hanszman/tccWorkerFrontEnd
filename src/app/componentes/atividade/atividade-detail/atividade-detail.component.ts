@@ -29,6 +29,7 @@ export class AtividadeDetailComponent implements OnInit {
       'dsc_descricao',
       'dat_inicio',
       'dat_fim',
+      'ind_prioridade',
       'dsc_etapa',
       'dsc_quadro',
       'dsc_projeto'

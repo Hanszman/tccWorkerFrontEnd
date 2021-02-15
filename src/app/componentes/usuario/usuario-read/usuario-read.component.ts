@@ -151,6 +151,7 @@ export class UsuarioReadComponent implements OnInit {
       'dsc_descricao_atividade',
       'dat_inicio_atividade',
       'dat_fim_atividade',
+      'ind_prioridade_atividade',
       'dsc_etapa_atividade',
       'dsc_quadro_atividade',
       'dsc_projeto_atividade'

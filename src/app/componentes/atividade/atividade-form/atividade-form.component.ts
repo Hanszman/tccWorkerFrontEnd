@@ -23,6 +23,7 @@ export class AtividadeFormComponent implements OnInit {
       'dsc_descricao',
       'dat_inicio',
       'dat_fim',
+      'ind_prioridade',
       'id_etapa',
       'id_quadro'
     ],
@@ -32,9 +33,14 @@ export class AtividadeFormComponent implements OnInit {
       'date',
       'date',
       'select',
+      'select',
       'select'
     ],
     selects: {
+      ind_prioridade: {
+        values: ['B','N','A','U'],
+        labels: ['Baixa','Normal','Alta','Urgente']
+      },
       id_etapa: {
         values: [],
         labels: []
@@ -47,6 +53,7 @@ export class AtividadeFormComponent implements OnInit {
     mascaras: [],
     obrigatorios: [
       'dsc_nome',
+      'ind_prioridade',
       'id_etapa',
       'id_quadro'
     ],

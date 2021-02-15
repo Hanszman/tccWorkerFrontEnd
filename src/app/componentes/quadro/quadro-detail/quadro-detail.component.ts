@@ -41,18 +41,26 @@ export class QuadroDetailComponent implements OnInit {
       'dsc_nome',
       'dsc_descricao',
       'dat_inicio',
-      'dat_fim'
+      'dat_fim',
+      'ind_prioridade'
     ],
     tipos: [
       'text',
       'text',
       'date',
-      'date'
+      'date',
+      'select'
     ],
-    selects: {},
+    selects: {
+      ind_prioridade: {
+        values: ['B','N','A','U'],
+        labels: ['Baixa','Normal','Alta','Urgente']
+      }
+    },
     mascaras: [],
     obrigatorios: [
-      'dsc_nome'
+      'dsc_nome',
+      'ind_prioridade'
     ],
     desabilitados: []
   };
