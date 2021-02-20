@@ -34,7 +34,7 @@ export class SetorReadComponent implements OnInit {
   }
 
   atividadeSetorEtapaChart(){
-    var url = 'atividade_setor_etapa';
+    var url = 'atividade_setor_etapa?id_empresa=' + this.id_empresa;
     this.servico.getChart(url).subscribe(resp => {
       var resposta = resp.body.data;
       if (typeof(this.chartAtividadeSetorEtapa) != "undefined")
@@ -42,12 +42,12 @@ export class SetorReadComponent implements OnInit {
       this.chartAtividadeSetorEtapa = this.componenteChart.configuraChart(
         'chartAtividadeSetorEtapa',
         'bar',
-        ['bar','bar','bar'],
-        ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
-        ['Projeto 1', 'Projeto 2', 'Projeto 3'],
-        [[5,4,2,9,1],[0,2,9,8,7],[6,9,9,10,11]],
-        this.componenteChart.selecionaCores(3),
-        'Qtd. de Atividades por Setor e por Etapa',
+        resposta['tipos'],
+        resposta['eixoX'],
+        resposta['legendas'],
+        resposta['eixoY'],
+        this.componenteChart.selecionaCores(resposta['tipos'].length),
+        'Rendimento de Atividades por Setor e por Etapa',
         true
       );
     });
