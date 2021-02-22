@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ChartComponent } from '../../geral/chart/chart.component';
 import { HttpService } from '../../geral/http/http.service';
 import { TranslateService } from '@ngx-translate/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -34,6 +35,8 @@ export class UsuarioReadComponent implements OnInit {
   usuarioDetailField = false;
   fotoUrl = 'assets/images/user_icon.png'
   id_empresa = window.localStorage.getItem('id_empresa');
+  chartAtividadeFuncionarioEtapa;
+  private componenteChart = new ChartComponent();
   cabecalhosCriaFuncionario = ['id_usuario', 'ind_controle_acesso', 'dsc_cargo', 'id_setor', 'ind_contratacao', 'dat_contratacao', 'ind_status'];
   cabecalhosEditaFuncionario = ['ind_controle_acesso', 'dsc_cargo', 'id_setor', 'ind_contratacao', 'dat_contratacao', 'ind_status'];
   tiposCriaFuncionario = ['number', 'select', 'text', 'select', 'select', 'date', 'select'];
@@ -188,6 +191,7 @@ export class UsuarioReadComponent implements OnInit {
         this.mostrar();
       });
     }
+    this.atividadeFuncionarioEtapaChart();
   }
 
   emiteClicaBotaoCriarEspecial(){
@@ -286,5 +290,25 @@ export class UsuarioReadComponent implements OnInit {
     let idioma = 'br';
     this.translate.use(idioma);
     return this.translate.get(this.config.titulo);
+  }
+
+  atividadeFuncionarioEtapaChart(){
+    var url = 'atividade_funcionario_etapa?id_empresa=' + this.id_empresa;
+    this.service.getChart(url).subscribe(resp => {
+      var resposta = resp.body.data;
+      if (typeof(this.chartAtividadeFuncionarioEtapa) != "undefined")
+        this.chartAtividadeFuncionarioEtapa.destroy();
+      this.chartAtividadeFuncionarioEtapa = this.componenteChart.configuraChart(
+        'chartAtividadeFuncionarioEtapa',
+        'horizontalBar',
+        resposta['tipos'],
+        resposta['eixoX'],
+        resposta['legendas'],
+        resposta['eixoY'],
+        this.componenteChart.selecionaCores(resposta['tipos'].length),
+        'Rendimento de Atividades por Funcionário e por Etapa',
+        true
+      );
+    });
   }
 }

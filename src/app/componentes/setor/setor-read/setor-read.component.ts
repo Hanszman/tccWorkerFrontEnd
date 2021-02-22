@@ -24,7 +24,7 @@ export class SetorReadComponent implements OnInit {
   };
 
   constructor(
-    private servico: HttpService
+    private service: HttpService
   ) {
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
   }
@@ -35,7 +35,7 @@ export class SetorReadComponent implements OnInit {
 
   atividadeSetorEtapaChart(){
     var url = 'atividade_setor_etapa?id_empresa=' + this.id_empresa;
-    this.servico.getChart(url).subscribe(resp => {
+    this.service.getChart(url).subscribe(resp => {
       var resposta = resp.body.data;
       if (typeof(this.chartAtividadeSetorEtapa) != "undefined")
         this.chartAtividadeSetorEtapa.destroy();
