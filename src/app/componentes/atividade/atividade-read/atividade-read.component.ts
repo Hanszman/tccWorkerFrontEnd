@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ChartComponent } from '../../geral/chart/chart.component';
+import { HttpService } from '../../geral/http/http.service';
 
 @Component({
   selector: 'app-atividade-read',
@@ -11,6 +13,8 @@ export class AtividadeReadComponent implements OnInit {
   titulo = 'Atividade';
   parametros;
   id_empresa = window.localStorage.getItem('id_empresa');
+  chartAtividadePrioridadeEtapa;
+  private componenteChart = new ChartComponent();
   @Input() config = {
     titulo: 'atividade',
     cabecalhos: [
@@ -26,10 +30,33 @@ export class AtividadeReadComponent implements OnInit {
     paginacao: 5
   };
 
-  constructor() {
+  constructor(
+    private service: HttpService
+  ) {
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
   }
 
   ngOnInit(): void {
+    this.atividadeSetorPrioridadeChart();
+  }
+
+  atividadeSetorPrioridadeChart(){
+    var url = 'atividade_prioridade_etapa?id_empresa=' + this.id_empresa;
+    this.service.getChart(url).subscribe(resp => {
+      var resposta = resp.body.data;
+      if (typeof(this.chartAtividadePrioridadeEtapa) != "undefined")
+        this.chartAtividadePrioridadeEtapa.destroy();
+      this.chartAtividadePrioridadeEtapa = this.componenteChart.configuraChart(
+        'chartAtividadePrioridadeEtapa',
+        'bar',
+        resposta['tipos'],
+        resposta['eixoX'],
+        resposta['legendas'],
+        resposta['eixoY'],
+        this.componenteChart.selecionaCores(resposta['tipos'].length),
+        'Quantidade de Atividades por Prioridade e por Etapa',
+        true
+      );
+    });
   }
 }
