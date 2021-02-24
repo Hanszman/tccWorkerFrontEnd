@@ -13,6 +13,7 @@ export class AtividadeReadComponent implements OnInit {
   titulo = 'Atividade';
   parametros;
   id_empresa = window.localStorage.getItem('id_empresa');
+  chartAtividadeEtapa;
   chartAtividadePrioridadeEtapa;
   private componenteChart = new ChartComponent();
   @Input() config = {
@@ -37,10 +38,30 @@ export class AtividadeReadComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.atividadeSetorPrioridadeChart();
+    this.atividadeEtapaChart();
+    this.atividadePrioridadeEtapaChart();
   }
 
-  atividadeSetorPrioridadeChart(){
+  atividadeEtapaChart(){
+    var url = 'atividade_etapa?id_empresa=' + this.id_empresa;
+    this.service.getChart(url).subscribe(resp => {
+      var resposta = resp.body.data;
+      if (typeof(this.chartAtividadeEtapa) != "undefined")
+        this.chartAtividadeEtapa.destroy();
+      this.chartAtividadeEtapa = this.componenteChart.configuraChart(
+        'chartAtividadeEtapa',
+        'doughnut',
+        resposta['tipos'],
+        resposta['eixoX'],
+        resposta['legendas'],
+        [resposta['eixoY']],
+        [this.componenteChart.selecionaCores(resposta['eixoY'].length)],
+        'Quantidade de Atividades por Etapa'
+      );
+    });
+  }
+
+  atividadePrioridadeEtapaChart(){
     var url = 'atividade_prioridade_etapa?id_empresa=' + this.id_empresa;
     this.service.getChart(url).subscribe(resp => {
       var resposta = resp.body.data;
