@@ -15,7 +15,7 @@ export class ChartComponent implements OnInit {
 
   selecionaCores(length){
     var result = [];
-    var cores = ['#0C8CBF','#FD7D1B','#03AF56','#8A51C4','#FDD41B','#54EBCF','#D42333','#EB5493','#5E6566','#0A7078'];
+    var cores = ['#0C8CBF','#FD7D1B','#03AF56','#FDD41B','#32d3b6','#8A51C4','#D42333','#EB5493','#5E6566','#0A7078'];
     for(let i = 0; i < length; i++)
       result.push(cores[i%10])
     return result;
