@@ -13,6 +13,7 @@ export class SetorReadComponent implements OnInit {
   titulo = 'Setor';
   parametros;
   id_empresa = window.localStorage.getItem('id_empresa');
+  chartProjetoSetor;
   chartAtividadeSetorEtapa;
   private componenteChart = new ChartComponent();
   @Input() config = {
@@ -30,7 +31,27 @@ export class SetorReadComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.projetoSetorChart();
     this.atividadeSetorEtapaChart();
+  }
+
+  projetoSetorChart(){
+    var url = 'projeto_setor?id_empresa=' + this.id_empresa;
+    this.service.getChart(url).subscribe(resp => {
+      var resposta = resp.body.data;
+      if (typeof(this.chartProjetoSetor) != "undefined")
+        this.chartProjetoSetor.destroy();
+      this.chartProjetoSetor = this.componenteChart.configuraChart(
+        'chartProjetoSetor',
+        'doughnut',
+        resposta['tipos'],
+        resposta['eixoX'],
+        resposta['legendas'],
+        [resposta['eixoY']],
+        [this.componenteChart.selecionaCores(resposta['eixoY'].length)],
+        'Quantidade de Projetos por Setor'
+      );
+    });
   }
 
   atividadeSetorEtapaChart(){

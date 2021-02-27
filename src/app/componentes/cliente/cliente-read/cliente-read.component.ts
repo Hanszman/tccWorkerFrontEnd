@@ -13,6 +13,7 @@ export class ClienteReadComponent implements OnInit {
   titulo = 'Cliente';
   parametros;
   id_empresa = window.localStorage.getItem('id_empresa');
+  chartProjetoCliente;
   chartAtividadeClienteEtapa;
   private componenteChart = new ChartComponent();
   @Input() config = {
@@ -31,7 +32,27 @@ export class ClienteReadComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.projetoClienteChart();
     this.atividadeClienteEtapaChart();
+  }
+
+  projetoClienteChart(){
+    var url = 'projeto_cliente?id_empresa=' + this.id_empresa;
+    this.service.getChart(url).subscribe(resp => {
+      var resposta = resp.body.data;
+      if (typeof(this.chartProjetoCliente) != "undefined")
+        this.chartProjetoCliente.destroy();
+      this.chartProjetoCliente = this.componenteChart.configuraChart(
+        'chartProjetoCliente',
+        'doughnut',
+        resposta['tipos'],
+        resposta['eixoX'],
+        resposta['legendas'],
+        [resposta['eixoY']],
+        [this.componenteChart.selecionaCores(resposta['eixoY'].length)],
+        'Quantidade de Projetos por Cliente'
+      );
+    });
   }
 
   atividadeClienteEtapaChart(){

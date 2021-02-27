@@ -35,6 +35,7 @@ export class UsuarioReadComponent implements OnInit {
   usuarioDetailField = false;
   fotoUrl = 'assets/images/user_icon.png'
   id_empresa = window.localStorage.getItem('id_empresa');
+  chartProjetoFuncionario;
   chartAtividadeFuncionarioEtapa;
   private componenteChart = new ChartComponent();
   cabecalhosCriaFuncionario = ['id_usuario', 'ind_controle_acesso', 'dsc_cargo', 'id_setor', 'ind_contratacao', 'dat_contratacao', 'ind_status'];
@@ -191,6 +192,7 @@ export class UsuarioReadComponent implements OnInit {
         this.mostrar();
       });
     }
+    this.projetoFuncionarioChart();
     this.atividadeFuncionarioEtapaChart();
   }
 
@@ -290,6 +292,25 @@ export class UsuarioReadComponent implements OnInit {
     let idioma = 'br';
     this.translate.use(idioma);
     return this.translate.get(this.config.titulo);
+  }
+
+  projetoFuncionarioChart(){
+    var url = 'projeto_funcionario?id_empresa=' + this.id_empresa;
+    this.service.getChart(url).subscribe(resp => {
+      var resposta = resp.body.data;
+      if (typeof(this.chartProjetoFuncionario) != "undefined")
+        this.chartProjetoFuncionario.destroy();
+      this.chartProjetoFuncionario = this.componenteChart.configuraChart(
+        'chartProjetoFuncionario',
+        'doughnut',
+        resposta['tipos'],
+        resposta['eixoX'],
+        resposta['legendas'],
+        [resposta['eixoY']],
+        [this.componenteChart.selecionaCores(resposta['eixoY'].length)],
+        'Quantidade de Projetos por Funcionário'
+      );
+    });
   }
 
   atividadeFuncionarioEtapaChart(){
