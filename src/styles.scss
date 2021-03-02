@@ -41,12 +41,24 @@
         flex: 1 1 auto;
     }
 }
+@media (max-width: 991px) {
+    .card-horizontal {
+        align-self: center;
+        text-align: center;
+    }
+}
+.card-horizontal {
+    width: auto !important;
+}
 .card-horizontal-text {
     display: flex;
     flex-wrap: wrap;
 }
 .card-horizontal-title {
     padding: 15px;
+}
+.img-horizontal {
+    align-self: center;
 }
 .space-margin-sm {
     margin-bottom: 20px;
