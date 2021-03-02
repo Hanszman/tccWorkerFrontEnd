@@ -35,9 +35,11 @@
 .group-card {
     justify-content: center;
 }
-.card-horizontal {
-    display: flex;
-    flex: 1 1 auto;
+@media (min-width: 992px) {
+    .card-horizontal {
+        display: flex;
+        flex: 1 1 auto;
+    }
 }
 .card-horizontal-text {
     display: flex;
