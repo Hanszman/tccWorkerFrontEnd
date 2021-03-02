@@ -27,7 +27,7 @@
   ></app-table>
 </div>
 
-<div *ngIf="usuarioDetailField">
+<div *ngIf="usuarioDetailField" class="space-margin-sm">
   <div class="row right-end">
     <a class="btn btn-outline-secondary" (click)="ocultar()" title="Ocultar"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
   </div>
@@ -59,8 +59,6 @@
     <app-table [titulo]="tituloAtividade" [config]="configAtividade" [url]="urlAtividade" [parametros]="parametrosAssociados" [existeBotaoSalvar]=false [existeBotaoCriar]=false [existeBotaoEditar]=false [existeBotaoExcluir]=false [existeBotaoDetalhes]=false [existeBotaoDetalhesEspecial]=true (emiteClicaBotaoDetalhesEspecial)="emiteClicaBotaoDetalhesEspecialAtividade($event)"></app-table>
   </div>
 </div>
-
-<br><br><br>
 
 <div class="row">
   <h4>Análises e Estatísticas</h4>

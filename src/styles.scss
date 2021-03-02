@@ -39,6 +39,19 @@
     display: flex;
     flex: 1 1 auto;
 }
+.card-horizontal-text {
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-horizontal-title {
+    padding: 15px;
+}
+.space-margin-sm {
+    margin-bottom: 20px;
+}
+.space-margin-lg {
+    margin-bottom: 40px;
+}
 .right-top {
     position: absolute;
     right: 5px;
