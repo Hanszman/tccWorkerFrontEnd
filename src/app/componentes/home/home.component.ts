@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartComponent } from '../geral/chart/chart.component';
 import { HttpService } from '../geral/http/http.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +10,15 @@ import { HttpService } from '../geral/http/http.service';
 })
 export class HomeComponent implements OnInit {
 
+  apiURL = environment.apiURL;
   id_usuario = window.localStorage.getItem('id_usuario');
   dsc_nome = window.localStorage.getItem('dsc_nome');
   id_empresa = window.localStorage.getItem('id_empresa');
   dsc_empresa = window.localStorage.getItem('dsc_empresa');
+  objUsuario;
+  objEmpresa;
+  fotoUsuario;
+  fotoEmpresa;
   chartAtividadeEtapa;
   chartAtividadePrioridadeEtapa;
   chartAtividadeFuncionarioEtapa;
@@ -24,10 +30,32 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.detalhesUsuario();
+    this.detalhesEmpresa();
     this.atividadeEtapaChart();
     this.atividadePrioridadeEtapaChart();
     this.atividadeFuncionarioEtapaChart();
     this.atividadeSetorEtapaChart();
+  }
+
+  detalhesUsuario(){
+    this.service.getDetail('usuario/read', this.id_usuario, 'id_empresa=' + this.id_empresa).subscribe(resp => {
+      this.objUsuario = resp.body.data;
+      if (this.objUsuario[0]['arq_foto'] !== null)
+        this.fotoUsuario = this.apiURL + this.objUsuario[0]['arq_foto'];
+      else
+        this.fotoUsuario = 'assets/images/user_icon.png';
+    });
+  }
+
+  detalhesEmpresa(){
+    this.service.getDetail('empresa/read', this.id_empresa).subscribe(resp => {
+      this.objEmpresa = resp.body.data;
+      if (this.objEmpresa[0]['arq_foto'] !== null)
+        this.fotoEmpresa = this.apiURL + this.objEmpresa[0]['arq_foto'];
+      else
+        this.fotoEmpresa = 'assets/images/user_group_icon.png';
+    });
   }
 
   atividadeEtapaChart(){

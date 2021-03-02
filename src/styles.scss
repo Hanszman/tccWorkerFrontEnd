@@ -35,6 +35,10 @@
 .group-card {
     justify-content: center;
 }
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
 .right-top {
     position: absolute;
     right: 5px;

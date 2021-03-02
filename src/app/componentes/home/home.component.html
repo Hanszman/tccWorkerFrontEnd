@@ -6,7 +6,54 @@
   <p>Olá {{dsc_nome}}, bem-vindo à empresa {{ dsc_empresa }}!</p>
 </div>
 
-<!-- TODO: Colocar Cards do Funcionário e da Empresa -->
+<div class="row group-card">
+  <div *ngFor="let item of objUsuario; let i = index" class="col-md-12 col-lg-6">
+    <div class="card">
+      <div class="card-horizontal">
+        <div class="img-square-wrapper">
+          <img [src]="fotoUsuario" width="200">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ item.dsc_nome }}</h5>
+          <p class="card-text">
+            <strong>Código de Usuário:</strong> {{ item.id_usuario }}<br>
+            <strong>Nome Completo:</strong> {{ item.dsc_nome_completo }}<br>
+            <strong>E-mail:</strong> {{ item.dsc_email }}<br>
+            <strong>Usuário:</strong> {{ item.dsc_login }}<br>
+            <strong>Data de Nascimento:</strong> {{ item.dat_nascimento }}<br>
+            <strong>CPF:</strong> {{ item.dsc_cpf }}<br>
+            <strong>RG:</strong> {{ item.dsc_rg }}<br>
+            <strong>Cargo:</strong> {{ item.dsc_cargo }}<br>
+            <strong>Setor:</strong> {{ item.dsc_setor }}<br>
+            <strong>Situação:</strong> {{ item.ind_status }}<br>
+            <strong>Tipo de Contrato:</strong> {{ item.ind_contratacao }}<br>
+            <strong>Data do Contrato:</strong> {{ item.dat_contratacao }}<br>
+            <strong>Tipo de Usuário:</strong> {{ item.ind_controle_acesso }}<br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngFor="let item of objEmpresa; let i = index" class="col-md-12 col-lg-6">
+    <div class="card">
+      <div class="card-horizontal">
+        <div class="img-square-wrapper">
+          <img [src]="fotoEmpresa" width="200">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ item.dsc_nome }}</h5>
+          <p class="card-text">
+            <strong>CNPJ:</strong> {{ item.dsc_cnpj }}<br>
+            <strong>Data de Fundação:</strong> {{ item.dat_fundacao }}<br>
+            <strong>Quantidade de Colaboradores:</strong> {{ item.qtd_usuario }}<br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br>
 
 <div class="row">
   <h4>Análises e Estatísticas</h4>
