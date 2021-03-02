@@ -10,8 +10,14 @@
     <app-table [titulo]="titulo" [config]="config" [url]="url" [parametros]="parametros"></app-table>
 </div>
 
-<div class="row">
-    <h4>Análises e Estatísticas</h4>
-    <canvas id="chartProjetoSetor"></canvas>
-    <canvas id="chartAtividadeSetorEtapa"></canvas>
+<div>
+  <h4>Análises e Estatísticas</h4>
+  <div class="row">
+    <div class="space-margin-sm col-lg-6 col-md-12">
+        <canvas id="chartProjetoSetor"></canvas>
+    </div>
+    <div class="space-margin-sm col-lg-6 col-md-12">
+        <canvas id="chartAtividadeSetorEtapa"></canvas>
+    </div>
+  </div>
 </div>
