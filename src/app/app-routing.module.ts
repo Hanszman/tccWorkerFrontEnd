@@ -22,6 +22,7 @@ import { FornecedorFormComponent } from './componentes/fornecedor/fornecedor-for
 import { SetorReadComponent } from './componentes/setor/setor-read/setor-read.component';
 import { SetorDetailComponent } from './componentes/setor/setor-detail/setor-detail.component';
 import { SetorFormComponent } from './componentes/setor/setor-form/setor-form.component';
+import { CalendarioReadComponent } from './componentes/calendario/calendario-read/calendario-read.component';
 import { ProjetoReadComponent } from './componentes/projeto/projeto-read/projeto-read.component';
 import { ProjetoDetailComponent } from './componentes/projeto/projeto-detail/projeto-detail.component';
 import { ProjetoFormComponent } from './componentes/projeto/projeto-form/projeto-form.component';
@@ -65,6 +66,8 @@ const routes: Routes = [
   { path: 'setor/read/:id', component: SetorDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   { path: 'setor/create', component: SetorFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   { path: 'setor/update/:id', component: SetorFormComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
+
+  { path: 'calendario/read', component: CalendarioReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
 
   { path: 'projeto/read', component: ProjetoReadComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
   { path: 'projeto/read/:id', component: ProjetoDetailComponent, canActivate: [AuthGuard, EmpresaAuthGuard] },
