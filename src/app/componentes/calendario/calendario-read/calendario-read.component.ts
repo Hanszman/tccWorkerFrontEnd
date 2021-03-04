@@ -18,10 +18,9 @@ export class CalendarioReadComponent implements OnInit {
     initialView: 'dayGridMonth',
     locales: [ ptBrLocale ],
     locale: 'pt-br',
-    themeSystem: 'bootstrap',
     dateClick: this.handleDateClick.bind(this),
     events: [
-      { title: 'event 1', date: '2021-03-01' },
+      { title: 'event 1', color: '#348A43', date: '2021-03-01' },
       { title: 'event 2', date: '2021-03-02' }
     ]
   };
