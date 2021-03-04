@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
+import ptBrLocale from '@fullcalendar/core/locales/pt-br';
 
 @Component({
   selector: 'app-calendario-read',
@@ -15,6 +16,9 @@ export class CalendarioReadComponent implements OnInit {
 
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
+    locales: [ ptBrLocale ],
+    locale: 'pt-br',
+    themeSystem: 'bootstrap',
     dateClick: this.handleDateClick.bind(this),
     events: [
       { title: 'event 1', date: '2021-03-01' },
