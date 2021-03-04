@@ -19,8 +19,8 @@ export class CalendarioReadComponent implements OnInit {
     locales: [ ptBrLocale ],
     dateClick: this.handleDateClick.bind(this),
     events: [
-      { title: 'event 1', color: '#348A43', date: '2021-03-01' },
-      { title: 'event 2', date: '2021-03-02' }
+      { title: 'Event 1', color: '#348A43', date: '2021-03-01' },
+      { title: 'Event 2', date: '2021-03-02' }
     ]
   };
 
