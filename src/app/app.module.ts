@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgxMaskModule } from 'ngx-mask';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -58,8 +59,9 @@ import { ValidateService } from './componentes/geral/validate/validate.service';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
-FullCalendarModule.registerPlugins([ // register FullCalendar plugins
-  dayGridPlugin
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  interactionPlugin
 ]);
 
 @NgModule({
