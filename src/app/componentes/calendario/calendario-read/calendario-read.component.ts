@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CalendarOptions } from '@fullcalendar/angular';
 
 @Component({
   selector: 'app-calendario-read',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calendario-read.component.css']
 })
 export class CalendarioReadComponent implements OnInit {
+
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridMonth'
+  };
 
   constructor() { }
 
