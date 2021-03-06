@@ -61,7 +61,7 @@ export class CalendarioReadComponent implements OnInit {
     eventClick: this.eventClick.bind(this),
     events: [
       { title: 'Event 1', color: '#348A43', date: '2021-03-01' },
-      { title: 'Event 2', start: '2021-03-02', end: '2021-03-05' }
+      { title: 'Event 2', start: '2021-03-01', end: '2021-03-05' }
     ]
   };
 
