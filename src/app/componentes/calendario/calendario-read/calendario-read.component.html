@@ -6,8 +6,12 @@
     <p>Agenda de atividades:</p>
 </div>
 
-<div class="space-margin-sm">
-    <full-calendar [options]="calendarOptions"></full-calendar>
+<div><full-calendar [options]="calendarOptions"></full-calendar></div>
+
+<div class="row div-table space-margin-sm">
+    <div *ngFor="let item of listaEtapas; let i = index">
+        <i class="fa fa-square" aria-hidden="true" style="color: {{ item.dsc_cor }}"></i>&nbsp;{{ item.dsc_etapa }}&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
 </div>
 
 <div class="row table-responsive div-table space-margin-sm">
