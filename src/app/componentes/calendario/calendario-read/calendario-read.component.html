@@ -3,7 +3,13 @@
 </div>
 
 <div class="row center-div">
-    <p>Agenda de atividades, quadros e projetos:</p>
+    <p>Agenda de atividades:</p>
 </div>
 
-<full-calendar [options]="calendarOptions"></full-calendar>
+<div class="space-margin-sm">
+    <full-calendar [options]="calendarOptions"></full-calendar>
+</div>
+
+<div class="row table-responsive div-table space-margin-sm">
+    <app-table [titulo]="titulo" [config]="config" [url]="url" [parametros]="parametros"></app-table>
+</div>

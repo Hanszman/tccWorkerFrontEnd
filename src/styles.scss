@@ -29,6 +29,13 @@
 .nav-title {
     font-size: 30px !important;
 }
+.table {
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+    -webkit-hyphens: auto !important;
+    -ms-hyphens: auto !important;
+    hyphens: auto !important;
+}
 .menu-buttons, .div-table {
     padding: 15px;
 }
@@ -161,7 +168,11 @@
 }
 .task-title {
     padding: 10px;
-    word-break: break-word;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+    -webkit-hyphens: auto !important;
+    -ms-hyphens: auto !important;
+    hyphens: auto !important;
 }
 .task-buttons {
     white-space: nowrap;

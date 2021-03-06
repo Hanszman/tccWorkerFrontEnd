@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
 import ptBrLocale from '@fullcalendar/core/locales/pt-br';
 
@@ -9,7 +9,28 @@ import ptBrLocale from '@fullcalendar/core/locales/pt-br';
 })
 export class CalendarioReadComponent implements OnInit {
 
-  constructor() { }
+  url = 'atividade';
+  titulo = 'Atividade';
+  parametros;
+  id_empresa = window.localStorage.getItem('id_empresa');
+  @Input() config = {
+    titulo: 'atividade',
+    cabecalhos: [
+      'dsc_nome',
+      'dsc_descricao',
+      'dat_inicio',
+      'dat_fim',
+      'ind_prioridade',
+      'dsc_etapa',
+      'dsc_quadro',
+      'dsc_projeto'
+    ],
+    paginacao: 5
+  };
+
+  constructor() {
+    this.parametros = 'id_empresa=' + this.id_empresa + '&';
+  }
 
   ngOnInit(): void {
   }
