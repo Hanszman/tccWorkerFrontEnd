@@ -185,3 +185,13 @@
         display: none !important;
     }
 }
+.fc-toolbar-title:first-letter, .fc-col-header-cell-cushion:first-letter {
+    text-transform: uppercase !important;
+}
+.fc-button {
+    background-color: #348A43 !important;
+    border-color: #348A43 !important;
+}
+.fc-daygrid-day-number, .fc-col-header-cell-cushion {
+    color: #28A745 !important;
+}
