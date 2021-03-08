@@ -10,7 +10,7 @@
 
 <div class="row div-table space-margin-sm">
     <div *ngFor="let item of listaEtapas; let i = index">
-        <i class="fa fa-square" aria-hidden="true" style="color: {{ item.dsc_cor }}"></i>&nbsp;{{ item.dsc_etapa }}&nbsp;&nbsp;&nbsp;&nbsp;
+        <i class="fa fa-square" aria-hidden="true" [ngStyle]="{color: item.dsc_cor}"></i>&nbsp;{{ item.dsc_etapa }}&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
 </div>
 
