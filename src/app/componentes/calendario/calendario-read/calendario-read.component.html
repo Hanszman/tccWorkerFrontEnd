@@ -6,7 +6,7 @@
     <p>Agenda de atividades:</p>
 </div>
 
-<div><full-calendar [options]="calendarOptions"></full-calendar></div>
+<div><full-calendar deepChangeDetection="true" [options]="calendarOptions"></full-calendar></div>
 
 <div class="row div-table space-margin-sm">
     <div *ngFor="let item of listaEtapas; let i = index">

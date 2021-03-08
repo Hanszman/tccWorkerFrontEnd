@@ -38,12 +38,7 @@ export class CalendarioReadComponent implements OnInit {
     locales: [ ptBrLocale ],
     dateClick: this.handleDateClick.bind(this),
     eventClick: this.eventClick.bind(this),
-    events: [
-      {
-        title: 'teste',
-        date: '2021-03-03'
-      }
-    ]
+    events: []
   };
 
   constructor(
@@ -64,17 +59,23 @@ export class CalendarioReadComponent implements OnInit {
     this.service.getConsultar('atividade', this.parametros + 'isForm=1&').subscribe((obj) => {
       let conjunto = obj.body.data.dados;
       for (let i = 0; i < conjunto.length; i++) {
-        if (conjunto[i]['dat_inicio'] != null && conjunto[i]['dat_fim'] != null) {
-          this.listaAtividades[i] = new Object();
-          this.listaAtividades[i]['id'] = conjunto[i]['id_atividade'];
-          this.listaAtividades[i]['title'] = conjunto[i]['dsc_nome'];
-          this.listaAtividades[i]['start'] = conjunto[i]['dat_inicio'];
-          this.listaAtividades[i]['end'] = conjunto[i]['dat_fim'];
-          for (let j = 0; j < this.listaEtapas.length; j++) {
-            if (this.listaEtapas[j]['id_etapa'] == conjunto[i]['id_etapa'])
-              this.listaAtividades[i]['color'] = this.listaEtapas[j]['dsc_cor'];
-          }
+        this.listaAtividades[i] = new Object();
+        this.listaAtividades[i]['id'] = conjunto[i]['id_atividade'];
+        this.listaAtividades[i]['title'] = conjunto[i]['dsc_nome'];
+        this.listaAtividades[i]['start'] = conjunto[i]['dat_inicio'];
+        this.listaAtividades[i]['end'] = conjunto[i]['dat_fim'];
+        for (let j = 0; j < this.listaEtapas.length; j++) {
+          if (this.listaEtapas[j]['id_etapa'] == conjunto[i]['id_etapa'])
+            this.listaAtividades[i]['color'] = this.listaEtapas[j]['dsc_cor'];
         }
+        let teste = {
+          id: this.listaAtividades[i]['id'],
+          title: this.listaAtividades[i]['title'],
+          color: this.listaAtividades[i]['color'],
+          start: this.listaAtividades[i]['start'],
+          end: this.listaAtividades[i]['end']
+        }
+        this.calendarOptions.events[i] = teste;
       }
     });
   }
