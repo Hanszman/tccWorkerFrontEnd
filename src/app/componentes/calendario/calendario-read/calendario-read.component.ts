@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
 import ptBrLocale from '@fullcalendar/core/locales/pt-br';
-import { ChartComponent } from '../../geral/chart/chart.component';
+import { Router } from '@angular/router';
 import { HttpService } from '../../geral/http/http.service';
+import { ChartComponent } from '../../geral/chart/chart.component';
 
 @Component({
   selector: 'app-calendario-read',
@@ -35,12 +36,12 @@ export class CalendarioReadComponent implements OnInit {
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     locales: [ ptBrLocale ],
-    dateClick: this.handleDateClick.bind(this),
     eventClick: this.eventClick.bind(this),
     events: []
   };
 
   constructor(
+    private router: Router,
     private service: HttpService
   ) {
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
@@ -78,11 +79,7 @@ export class CalendarioReadComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  handleDateClick(arg) {
-    alert('date click! ' + arg.dateStr)
-  }
-
   eventClick(arg) {
-    console.log(arg.event.id)
+    this.router.navigate(['atividade/read/' + arg.event.id]);
   }
 }
