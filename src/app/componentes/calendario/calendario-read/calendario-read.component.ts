@@ -68,14 +68,14 @@ export class CalendarioReadComponent implements OnInit {
           if (this.listaEtapas[j]['id_etapa'] == conjunto[i]['id_etapa'])
             this.listaAtividades[i]['color'] = this.listaEtapas[j]['dsc_cor'];
         }
-        let teste = {
+        let eventosAtividades = {
           id: this.listaAtividades[i]['id'],
           title: this.listaAtividades[i]['title'],
           color: this.listaAtividades[i]['color'],
           start: this.listaAtividades[i]['start'],
           end: this.listaAtividades[i]['end']
         }
-        this.calendarOptions.events[i] = teste;
+        this.calendarOptions.events[i] = eventosAtividades;
       }
     });
   }
