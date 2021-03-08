@@ -12,8 +12,6 @@ import { HttpService } from '../../geral/http/http.service';
 export class CalendarioReadComponent implements OnInit {
 
   listaEtapas = [];
-  listaAtividades = [];
-  listaEventos = [];
   url = 'atividade';
   titulo = 'Atividade';
   parametros;
