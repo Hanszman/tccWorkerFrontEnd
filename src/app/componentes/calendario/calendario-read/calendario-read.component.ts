@@ -17,6 +17,7 @@ export class CalendarioReadComponent implements OnInit {
   url = 'atividade';
   titulo = 'Atividade';
   parametros;
+  parametrosAtividades;
   id_empresa = window.localStorage.getItem('id_empresa');
   private componenteChart = new ChartComponent();
   @Input() config = {
@@ -45,6 +46,7 @@ export class CalendarioReadComponent implements OnInit {
     private service: HttpService
   ) {
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
+    this.parametrosAtividades = this.parametros + 'isForm=1&';
     this.service.getConsultar('etapa', this.parametros).subscribe((obj) => {
       let conjunto = obj.body.data.dados;
       let cores = this.componenteChart.selecionaCores(conjunto.length);
@@ -56,7 +58,7 @@ export class CalendarioReadComponent implements OnInit {
         this.listaEtapas[i]['dsc_cor'] = cores[i];
       }
     });
-    this.service.getConsultar('atividade', this.parametros + 'isForm=1&').subscribe((obj) => {
+    this.service.getConsultar('atividade', this.parametrosAtividades).subscribe((obj) => {
       let conjunto = obj.body.data.dados;
       for (let i = 0; i < conjunto.length; i++) {
         this.listaAtividades[i] = new Object();
@@ -88,6 +90,6 @@ export class CalendarioReadComponent implements OnInit {
   }
 
   eventClick(arg) {
-    console.log(arg.event)
+    console.log(arg.event.id)
   }
 }
