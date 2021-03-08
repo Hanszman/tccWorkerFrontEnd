@@ -57,28 +57,23 @@ export class CalendarioReadComponent implements OnInit {
         this.listaEtapas[i]['ind_sequencia'] = conjunto[i]['ind_sequencia'];
         this.listaEtapas[i]['dsc_cor'] = cores[i];
       }
-    });
-    this.service.getConsultar('atividade', this.parametrosAtividades).subscribe((obj) => {
-      let conjunto = obj.body.data.dados;
-      for (let i = 0; i < conjunto.length; i++) {
-        this.listaAtividades[i] = new Object();
-        this.listaAtividades[i]['id'] = conjunto[i]['id_atividade'];
-        this.listaAtividades[i]['title'] = conjunto[i]['dsc_nome'];
-        this.listaAtividades[i]['start'] = conjunto[i]['dat_inicio'];
-        this.listaAtividades[i]['end'] = conjunto[i]['dat_fim'];
-        for (let j = 0; j < this.listaEtapas.length; j++) {
-          if (this.listaEtapas[j]['id_etapa'] == conjunto[i]['id_etapa'])
-            this.listaAtividades[i]['color'] = this.listaEtapas[j]['dsc_cor'];
+      this.service.getConsultar('atividade', this.parametrosAtividades).subscribe((obj) => {
+        let conjunto = obj.body.data.dados;
+        for (let i = 0; i < conjunto.length; i++) {
+          for (let j = 0; j < this.listaEtapas.length; j++) {
+            if (this.listaEtapas[j]['id_etapa'] == conjunto[i]['id_etapa']) {
+              let eventosAtividades = {
+                id: conjunto[i]['id_atividade'],
+                title: conjunto[i]['dsc_nome'],
+                start: conjunto[i]['dat_inicio'],
+                end: conjunto[i]['dat_fim'],
+                color: this.listaEtapas[j]['dsc_cor']
+              }
+              this.calendarOptions.events[i] = eventosAtividades;
+            }
+          }
         }
-        let eventosAtividades = {
-          id: this.listaAtividades[i]['id'],
-          title: this.listaAtividades[i]['title'],
-          color: this.listaAtividades[i]['color'],
-          start: this.listaAtividades[i]['start'],
-          end: this.listaAtividades[i]['end']
-        }
-        this.calendarOptions.events[i] = eventosAtividades;
-      }
+      });
     });
   }
 
