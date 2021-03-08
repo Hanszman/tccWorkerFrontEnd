@@ -13,6 +13,7 @@ export class CalendarioReadComponent implements OnInit {
 
   listaEtapas = [];
   listaAtividades = [];
+  listaEventos = [];
   url = 'atividade';
   titulo = 'Atividade';
   parametros;
@@ -48,10 +49,28 @@ export class CalendarioReadComponent implements OnInit {
         this.listaEtapas[i]['dsc_cor'] = cores[i];
       }
     });
+    this.service.getConsultar('atividade', this.parametros + 'isForm=1&').subscribe((obj) => {
+      let conjunto = obj.body.data.dados;
+      for (let i = 0; i < conjunto.length; i++) {
+        if (conjunto[i]['dat_inicio'] != null && conjunto[i]['dat_fim'] != null) {
+          this.listaAtividades[i] = new Object();
+          this.listaAtividades[i]['id'] = conjunto[i]['id_atividade'];
+          this.listaAtividades[i]['title'] = conjunto[i]['dsc_nome'];
+          this.listaAtividades[i]['start'] = conjunto[i]['dat_inicio'];
+          this.listaAtividades[i]['end'] = conjunto[i]['dat_fim'];
+          for (let j = 0; j < this.listaEtapas.length; j++) {
+            if (this.listaEtapas[j]['id_etapa'] == conjunto[i]['id_etapa'])
+              this.listaAtividades[i]['color'] = this.listaEtapas[j]['dsc_cor'];
+          }
+        }
+      }
+    });
   }
 
   ngOnInit(): void {
     console.log(this.listaEtapas)
+    console.log(this.listaAtividades)
+    console.log(this.listaEventos)
   }
 
   calendarOptions: CalendarOptions = {
@@ -59,10 +78,7 @@ export class CalendarioReadComponent implements OnInit {
     locales: [ ptBrLocale ],
     dateClick: this.handleDateClick.bind(this),
     eventClick: this.eventClick.bind(this),
-    events: [
-      { title: 'Event 1', color: '#348A43', date: '2021-03-01' },
-      { title: 'Event 2', start: '2021-03-01', end: '2021-03-05' }
-    ]
+    events: this.listaEventos
   };
 
   handleDateClick(arg) {
@@ -70,6 +86,6 @@ export class CalendarioReadComponent implements OnInit {
   }
 
   eventClick(arg) {
-    console.log(arg.event.title)
+    console.log(arg.event)
   }
 }
