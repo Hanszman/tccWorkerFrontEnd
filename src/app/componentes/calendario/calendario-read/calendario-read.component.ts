@@ -33,6 +33,18 @@ export class CalendarioReadComponent implements OnInit {
     ],
     paginacao: 5
   };
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridMonth',
+    locales: [ ptBrLocale ],
+    dateClick: this.handleDateClick.bind(this),
+    eventClick: this.eventClick.bind(this),
+    events: [
+      {
+        title: 'teste',
+        date: '2021-03-03'
+      }
+    ]
+  };
 
   constructor(
     private service: HttpService
@@ -68,18 +80,7 @@ export class CalendarioReadComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.listaEtapas)
-    console.log(this.listaAtividades)
-    console.log(this.listaEventos)
   }
-
-  calendarOptions: CalendarOptions = {
-    initialView: 'dayGridMonth',
-    locales: [ ptBrLocale ],
-    dateClick: this.handleDateClick.bind(this),
-    eventClick: this.eventClick.bind(this),
-    events: this.listaEventos
-  };
 
   handleDateClick(arg) {
     alert('date click! ' + arg.dateStr)
