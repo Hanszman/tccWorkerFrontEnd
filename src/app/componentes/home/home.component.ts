@@ -136,4 +136,8 @@ export class HomeComponent implements OnInit {
       );
     });
   }
+
+  salvarPDF(){
+    window.print();
+  }
 }

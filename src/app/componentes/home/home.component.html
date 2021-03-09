@@ -2,11 +2,16 @@
     <h1 class="first-color">Início <i class="fa fa-home last-color" aria-hidden="true"></i></h1>
 </div>
 
-<div class="row center-div">
+<div class="row center-div space-margin-sm">
   <p>Olá {{dsc_nome}}, bem-vindo à empresa {{ dsc_empresa }}!</p>
 </div>
 
-<div class="row group-card space-margin-sm">
+<div class="row right-end space-margin-sm">
+  <a (click)="salvarPDF()" class="btn btn-outline-info" title="{{ 'geral.detail.salvar-pdf' | translate }}"><i class="fa fa-save" aria-hidden="true"></i></a>
+  <a [routerLink]="['/calendario/read/']" class="btn btn-outline-success" title="{{ 'geral.detail.calendario' | translate }}"><i class="fa fa-calendar" aria-hidden="true"></i></a>
+</div>
+
+<div class="row group-card space-margin-lg">
   <div *ngFor="let item of objUsuario; let i = index" class="col-12 space-margin-sm">
     <div class="card">
       <div class="card-horizontal">
