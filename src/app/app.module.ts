@@ -12,6 +12,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgxMaskModule } from 'ngx-mask';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { FacebookModule } from '@greg-md/ng-facebook';
 import { AuthService } from './componentes/login/auth.service';
 import { AuthGuard } from './componentes/login/auth.guard';
 import { EmpresaAuthGuard } from './componentes/empresa/empresa-servicos/empresa-auth.guard';
@@ -112,6 +113,7 @@ FullCalendarModule.registerPlugins([
     FormsModule,
     DragDropModule,
     FullCalendarModule,
+    FacebookModule,
     ModalModule.forRoot(),
     NgxMaskModule.forRoot(),
     TranslateModule.forRoot({

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
 import { ValidateService } from '../geral/validate/validate.service';
+import { FacebookService } from '@greg-md/ng-facebook';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +11,15 @@ import { ValidateService } from '../geral/validate/validate.service';
 export class LoginComponent implements OnInit {
 
   usuario: any = {};
+  settings = {
+    appId : '867540823809372',
+    version: 'v9.0',
+  };
 
   constructor(
     private authService: AuthService,
-    private validate: ValidateService
+    private validate: ValidateService,
+    public facebookService: FacebookService
   ) { }
 
   ngOnInit(): void {
@@ -28,5 +34,13 @@ export class LoginComponent implements OnInit {
         this.usuario.dsc_senha !== undefined && this.usuario.dsc_senha !== ''){
       this.authService.fazerAuth(this.usuario);
     }
+  }
+
+  fazerLoginFB(){
+    this.facebookService.init(this.settings).subscribe();
+    this.facebookService.login({scope: 'email'}).subscribe(auth => {
+      var bodyToken = {accessToken: auth.accessToken};
+      this.authService.fazerAuthFB(bodyToken);
+    });
   }
 }

@@ -27,6 +27,7 @@
     "@fullcalendar/angular": "^5.5.0",
     "@fullcalendar/daygrid": "^5.5.0",
     "@fullcalendar/interaction": "^5.5.0",
+    "@greg-md/ng-facebook": "^1.2.5",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "bootstrap": "^4.5.3",
