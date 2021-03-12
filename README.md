@@ -6,7 +6,7 @@
 
 -Para rodar o projeto local, é necessário executar o seguinte comando no terminal:
 
-  "ng serve"
+  "ng serve --ssl"
 
 -A aplicação poderá ser acessada na seguinte url em qualquer navegador: 
   
