@@ -6,7 +6,8 @@
 
 -Para rodar o projeto local, é necessário executar o seguinte comando no terminal:
 
-  "ng serve --ssl"
+  "ng serve --ssl" ---> https:// (Necessário para Login com FB)
+  "ng serve" ---> http:// (Padrão)
 
 -A aplicação poderá ser acessada na seguinte url em qualquer navegador: 
   
