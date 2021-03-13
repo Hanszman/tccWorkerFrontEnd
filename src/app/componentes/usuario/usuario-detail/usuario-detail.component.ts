@@ -26,6 +26,7 @@ export class UsuarioDetailComponent implements OnInit {
       'dsc_nome_completo',
       'dsc_email',
       'dsc_login',
+      'ind_login_fb',
       'dat_nascimento',
       'dsc_cpf',
       'dsc_rg'

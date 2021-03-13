@@ -8,6 +8,7 @@
         "dsc_login": "Usuário",
         "dsc_senha": "Senha",
         "dsc_confirm_senha": "Confirmação da Senha",
+        "ind_login_fb": "Login com Facebook",
         "dat_nascimento": "Data de Nascimento",
         "dsc_cpf": "CPF",
         "dsc_rg": "RG",

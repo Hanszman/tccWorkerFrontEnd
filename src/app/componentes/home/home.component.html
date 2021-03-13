@@ -2,7 +2,7 @@
     <h1 class="first-color">Início <i class="fa fa-home last-color" aria-hidden="true"></i></h1>
 </div>
 
-<div class="row center-div space-margin-sm">
+<div class="row center-div">
   <p>Olá {{dsc_nome}}, bem-vindo à empresa {{ dsc_empresa }}!</p>
 </div>
 
@@ -26,6 +26,7 @@
               <strong>Nome Completo:</strong> {{ item.dsc_nome_completo }}<br>
               <strong>E-mail:</strong> {{ item.dsc_email }}<br>
               <strong>Usuário:</strong> {{ item.dsc_login }}<br>
+              <strong>Login com Facebook:</strong> {{ item.ind_login_fb }}<br>
               <strong>Data de Nascimento:</strong> {{ item.dat_nascimento }}<br>
               <strong>CPF:</strong> {{ item.dsc_cpf }}<br>
               <strong>RG:</strong> {{ item.dsc_rg }}<br>
