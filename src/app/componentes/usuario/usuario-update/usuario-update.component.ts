@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HttpService } from '../../geral/http/http.service';
 
 @Component({
   selector: 'app-usuario-update',
@@ -59,12 +60,16 @@ export class UsuarioUpdateComponent implements OnInit {
   };
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private service: HttpService
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
+    this.service.getConsultarForm('usuario/read', this.id).subscribe((obj) => {
+      let conjunto = obj.body.data[0];
+      console.log(conjunto)
+    });
   }
 
   ngOnInit(): void {
   }
-
 }
