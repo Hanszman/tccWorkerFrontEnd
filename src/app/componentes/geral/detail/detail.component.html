@@ -7,9 +7,18 @@
 <div class="row">
     <img [hidden]="!existeFoto" class="details" [src]="fotoUrl" height="200">
     <div class="details">
-        <div *ngFor="let item of config.cabecalhos">
-            <div *ngFor="let linha of conjuntoDados">
-                <div><b>{{ tradutor(item) }}:</b> {{ linha[item] }}</div>
+        <div *ngFor="let item of config.cabecalhos; let j = index">
+            <div *ngFor="let linha of conjuntoDados; let i = index">
+                <div><b>{{ tradutor(item) }}:</b>
+                    <span *ngIf="conjuntoLinks[j] !== undefined">
+                        <a class="link-color" [routerLink]="[backLink+conjuntoLinks[j]['rota']+'/read', conjuntoDados[i][conjuntoLinks[j]['id']]]">
+                            {{ linha[item] }}
+                        </a>
+                    </span>
+                    <span *ngIf="conjuntoLinks[j] == undefined">
+                        {{ linha[item] }}
+                    </span>
+                </div>
             </div>
         </div>
     </div>

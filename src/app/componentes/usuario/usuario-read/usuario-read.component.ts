@@ -98,6 +98,12 @@ export class UsuarioReadComponent implements OnInit {
       'dat_contratacao',
       'ind_status'
     ],
+    links: {
+      dsc_setor: {
+        id: 'id_setor',
+        rota: 'setor'
+      }
+    },
     paginacao: 5
   };
   @Input() configCriaFuncionario = {

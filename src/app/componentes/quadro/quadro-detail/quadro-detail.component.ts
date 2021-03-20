@@ -33,7 +33,14 @@ export class QuadroDetailComponent implements OnInit {
       'dat_inicio',
       'dat_fim',
       'dsc_projeto'
-    ]
+    ],
+    links: {
+      detail: true,
+      dsc_projeto: {
+        id: 'id_projeto',
+        rota: 'projeto'
+      }
+    }
   };
   @Input() configAtividade = {
     titulo: 'atividade',

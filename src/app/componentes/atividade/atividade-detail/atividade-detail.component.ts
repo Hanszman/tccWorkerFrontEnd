@@ -33,7 +33,22 @@ export class AtividadeDetailComponent implements OnInit {
       'dsc_etapa',
       'dsc_quadro',
       'dsc_projeto'
-    ]
+    ],
+    links: {
+      detail: true,
+      dsc_etapa: {
+        id: 'id_etapa',
+        rota: 'etapa'
+      },
+      dsc_quadro: {
+        id: 'id_quadro',
+        rota: 'quadro'
+      },
+      dsc_projeto: {
+        id: 'id_projeto',
+        rota: 'projeto'
+      }
+    },
   };
   @Input() configFuncionario = {
     titulo: 'atividade_usuario_empresa',

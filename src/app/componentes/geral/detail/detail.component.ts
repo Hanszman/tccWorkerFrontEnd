@@ -24,6 +24,8 @@ export class DetailComponent implements OnInit {
   @Input() existeFoto = false;
   @Input() fotoUrl;
   conjuntoDados;
+  conjuntoLinks = [];
+  backLink = '../../';
   traducoes;
   apiURL = environment.apiURL;
 
@@ -59,6 +61,22 @@ export class DetailComponent implements OnInit {
       });
       if (this.existeFoto && this.conjuntoDados[0]['arq_foto'] !== null)
         this.fotoUrl = this.apiURL + this.conjuntoDados[0]['arq_foto'];
+      if (this.config.hasOwnProperty('links')){
+        if (this.config.links.hasOwnProperty('detail')) {
+          if (this.config.links.detail)
+            this.backLink = '../../../';
+        }
+        for (let i = 0; i < this.config.cabecalhos.length; i++) {
+          if(this.config.links.hasOwnProperty(this.config.cabecalhos[i]))
+            this.conjuntoLinks.push(this.config.links[this.config.cabecalhos[i]])
+          else
+            this.conjuntoLinks.push(undefined);
+        }
+      }
+      else {
+        for (let i = 0; i < this.config.cabecalhos.length; i++)
+          this.conjuntoLinks.push(undefined);
+      }
     }
     else
       throw "Objeto não possui conjunto de dados!"

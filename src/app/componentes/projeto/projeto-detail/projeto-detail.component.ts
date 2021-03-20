@@ -38,7 +38,14 @@ export class ProjetoDetailComponent implements OnInit {
       'dat_inicio',
       'dat_fim',
       'dsc_setor'
-    ]
+    ],
+    links: {
+      detail: true,
+      dsc_setor: {
+        id: 'id_setor',
+        rota: 'setor'
+      }
+    }
   };
   @Input() configQuadro = {
     titulo: 'quadro',
