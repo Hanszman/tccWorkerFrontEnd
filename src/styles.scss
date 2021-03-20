@@ -207,6 +207,14 @@
         color: #212529 !important;
         text-decoration: none !important;
     }
+    .board, .board-column, .column-title, .column-subtitle {
+        color: #212529 !important;
+    }
+    .board, .board-column, .task {
+        display: block !important;
+        margin: 15px !important;
+        padding: 15px !important;
+    }
 }
 .fc-toolbar-title {
     color: #348A43 !important;

@@ -16,7 +16,7 @@
             <div class="column-title">{{etapa.dsc_etapa}}</div>
             <div class="column-subtitle">
                 <button class="btn btn-outline-success" (click)="criarAtividadeModal(etapa.id_etapa)" title="Criar Atividade Nesta Etapa"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>&nbsp;
-                <span>Atividades</span>
+                <span>Atividades:</span>
             </div>
             <div [id]="etapa.id_etapa" class="tasks-container" cdkDropList [cdkDropListData]="etapa.atividade_list" (cdkDropListDropped)="drop($event)">
                 <div [id]="atividade.atividade_id" class="task" *ngFor="let atividade of etapa.atividade_list" cdkDrag>
