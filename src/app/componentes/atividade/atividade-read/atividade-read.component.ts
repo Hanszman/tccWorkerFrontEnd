@@ -20,7 +20,6 @@ export class AtividadeReadComponent implements OnInit {
     titulo: 'atividade',
     cabecalhos: [
       'dsc_nome',
-      'dsc_descricao',
       'dat_inicio',
       'dat_fim',
       'ind_prioridade',

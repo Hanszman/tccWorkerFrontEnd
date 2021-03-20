@@ -108,7 +108,6 @@ export class FornecedorDetailComponent implements OnInit {
     titulo: 'projeto_fornecedor',
     cabecalhos: [
       'dsc_nome_projeto',
-      'dsc_descricao_projeto',
       'dat_inicio_projeto',
       'dat_fim_projeto',
       'dsc_setor_projeto'

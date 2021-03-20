@@ -44,7 +44,6 @@ export class ProjetoDetailComponent implements OnInit {
     titulo: 'quadro',
     cabecalhos: [
       'dsc_nome',
-      'dsc_descricao',
       'dat_inicio',
       'dat_fim'
     ],

@@ -26,10 +26,11 @@ export class EtapaDetailComponent implements OnInit {
     titulo: 'atividade',
     cabecalhos: [
       'dsc_nome',
-      'dsc_descricao',
       'dat_inicio',
       'dat_fim',
-      'ind_prioridade'
+      'ind_prioridade',
+      'dsc_quadro',
+      'dsc_projeto'
     ],
     paginacao: 5
   };

@@ -27,7 +27,6 @@ export class SetorDetailComponent implements OnInit {
     titulo: 'projeto',
     cabecalhos: [
       'dsc_nome',
-      'dsc_descricao',
       'dat_inicio',
       'dat_fim'
     ],

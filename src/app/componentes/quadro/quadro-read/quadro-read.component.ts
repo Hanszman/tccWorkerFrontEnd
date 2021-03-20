@@ -15,7 +15,6 @@ export class QuadroReadComponent implements OnInit {
     titulo: 'quadro',
     cabecalhos: [
       'dsc_nome',
-      'dsc_descricao',
       'dat_inicio',
       'dat_fim',
       'dsc_projeto'

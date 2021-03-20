@@ -142,7 +142,6 @@ export class UsuarioReadComponent implements OnInit {
     titulo: 'projeto_usuario_empresa',
     cabecalhos: [
       'dsc_nome_projeto',
-      'dsc_descricao_projeto',
       'dat_inicio_projeto',
       'dat_fim_projeto',
       'dsc_setor_projeto'
@@ -153,7 +152,6 @@ export class UsuarioReadComponent implements OnInit {
     titulo: 'atividade_usuario_empresa',
     cabecalhos: [
       'dsc_nome_atividade',
-      'dsc_descricao_atividade',
       'dat_inicio_atividade',
       'dat_fim_atividade',
       'ind_prioridade_atividade',
