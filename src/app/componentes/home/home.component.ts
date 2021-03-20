@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartComponent } from '../geral/chart/chart.component';
+import { Router } from '@angular/router';
 import { HttpService } from '../geral/http/http.service';
 import { environment } from '../../../environments/environment';
 
@@ -26,6 +27,7 @@ export class HomeComponent implements OnInit {
   private componenteChart = new ChartComponent();
 
   constructor(
+    private router: Router,
     private service: HttpService
   ) { }
 
@@ -135,6 +137,11 @@ export class HomeComponent implements OnInit {
         true
       );
     });
+  }
+
+  rotaDetalhesFuncionario(id_funcionario){
+    window.scrollTo(0,0);
+    this.router.navigate(['usuario/read/'], {queryParams: {id_funcionario_parametro: id_funcionario}});
   }
 
   salvarPDF(){

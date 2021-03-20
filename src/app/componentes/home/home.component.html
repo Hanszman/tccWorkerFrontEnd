@@ -19,9 +19,11 @@
           <img [src]="fotoUsuario" height="290">
         </div>
         <div class="card-body">
-          <h2 class="card-title card-horizontal-title">
-            <a class="link-color" [routerLink]="['usuario/read', item.id_usuario]">{{ item.dsc_nome }}</a>
-          </h2>
+          <h3 class="card-title card-horizontal-title">
+            <a class="link-color" [routerLink]="['usuario/read', item.id_usuario]" title="Detalhes do Usuário">
+              {{ item.dsc_nome }}
+            </a> <i class="fa fa-info-circle last-color no-print" aria-hidden="true"></i>
+          </h3>
           <div class="card-text card-horizontal-text">
             <p class="col-md-12 col-lg-6">
               <strong>Código de Usuário:</strong> {{ item.id_usuario }}<br>
@@ -40,6 +42,7 @@
               <strong>Tipo de Contrato:</strong> {{ item.ind_contratacao }}<br>
               <strong>Data do Contrato:</strong> {{ item.dat_contratacao }}<br>
               <strong>Tipo de Usuário:</strong> {{ item.ind_controle_acesso }}<br>
+              <button class="btn btn-outline-success space-margin-top" (click)="rotaDetalhesFuncionario(item.id_usuario)">Detalhes do Funcionário</button>
             </p>
           </div>
         </div>
@@ -53,9 +56,11 @@
           <img [src]="fotoEmpresa" height="290">
         </div>
         <div class="card-body">
-          <h2 class="card-title card-horizontal-title">
-            <a class="link-color" [routerLink]="['empresa/read', item.id_empresa]">{{ item.dsc_nome }}</a>
-          </h2>
+          <h3 class="card-title card-horizontal-title">
+            <a class="link-color" [routerLink]="['empresa/read', item.id_empresa]" title="Detalhes da Empresa">
+              {{ item.dsc_nome }}
+            </a> <i class="fa fa-info-circle last-color no-print" aria-hidden="true"></i>
+          </h3>
           <div class="card-text card-horizontal-text">
             <p class="col-md-12 col-lg-6">
               <strong>CNPJ:</strong> {{ item.dsc_cnpj }}<br>
