@@ -37,6 +37,7 @@ export class TableComponent implements OnInit {
   @Output() emiteClicaBotaoEditarEspecial = new EventEmitter();
   @Output() emiteClicaBotaoExcluirEspecial = new EventEmitter();
   conjuntoDados;
+  conjuntoLinks = [];
   traducoes;
   paginador;
   paginaAtual;
@@ -86,6 +87,18 @@ export class TableComponent implements OnInit {
           });
           this.conjuntoDados.push(elemento);
         });
+        if (this.config.hasOwnProperty('links')){
+          for (let i = 0; i < this.config.cabecalhos.length; i++) {
+            if(this.config.links.hasOwnProperty(this.config.cabecalhos[i]))
+              this.conjuntoLinks.push(this.config.links[this.config.cabecalhos[i]])
+            else
+              this.conjuntoLinks.push(undefined);
+          }
+        }
+        else {
+          for (let i = 0; i < this.config.cabecalhos.length; i++)
+            this.conjuntoLinks.push(undefined);
+        }
       }
       else
         throw "Conjunto de dados não está corretamente definido!"

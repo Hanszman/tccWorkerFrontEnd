@@ -23,6 +23,12 @@ export class ProjetoReadComponent implements OnInit {
       'dat_fim',
       'dsc_setor'
     ],
+    links: {
+      dsc_setor: {
+        id: 'id_setor',
+        rota: 'setor'
+      }
+    },
     paginacao: 5
   };
 
