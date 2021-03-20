@@ -15,7 +15,7 @@
         <div class="board-column" *ngFor="let etapa of etapaList">
             <div class="column-title">{{etapa.dsc_etapa}}</div>
             <div class="column-subtitle">
-                <a class="btn btn-outline-success" (click)="criarAtividadeModal(etapa.id_etapa)" title="Criar Atividade Nesta Etapa"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>&nbsp;
+                <button class="btn btn-outline-success" (click)="criarAtividadeModal(etapa.id_etapa)" title="Criar Atividade Nesta Etapa"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>&nbsp;
                 <span>Atividades</span>
             </div>
             <div [id]="etapa.id_etapa" class="tasks-container" cdkDropList [cdkDropListData]="etapa.atividade_list" (cdkDropListDropped)="drop($event)">
@@ -27,9 +27,9 @@
                     <div>
                         <span class="task-title">{{atividade.atividade_nome}}</span>
                         <span class="task-buttons">
-                            <a class="btn btn-outline-info" (click)="detalhesAtividadeModal(atividade.atividade_id)" title="Detalhes Atividade"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                            <a class="btn btn-outline-success" (click)="atividadeVinculaFuncionario(atividade.atividade_id)" title="Vincular Funcionário"><i class="fa fa-user" aria-hidden="true"></i></a>
-                            <a class="btn btn-outline-warning" (click)="editarAtividadeModal(atividade.atividade_id, etapa.id_etapa)" title="Editar Atividade"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <button class="btn btn-outline-info" (click)="detalhesAtividadeModal(atividade.atividade_id)" title="Detalhes Atividade"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+                            <button class="btn btn-outline-success" (click)="atividadeVinculaFuncionario(atividade.atividade_id)" title="Vincular Funcionário"><i class="fa fa-user" aria-hidden="true"></i></button>
+                            <button class="btn btn-outline-warning" (click)="editarAtividadeModal(atividade.atividade_id, etapa.id_etapa)" title="Editar Atividade"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                         </span>
                     </div>
                 </div>

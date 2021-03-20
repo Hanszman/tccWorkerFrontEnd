@@ -29,7 +29,7 @@
 
 <div *ngIf="usuarioDetailField" class="space-margin-sm">
   <div class="row right-end">
-    <a class="btn btn-outline-secondary" (click)="ocultar()" title="Ocultar"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+    <button class="btn btn-outline-secondary" (click)="ocultar()" title="Ocultar"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
   </div>
   
   <app-detail [titulo]="titulo" [config]="configDetail" [url]="url" [id]="id" [parametros]="parametros" [existemBotoes]=false [existeFoto]=true [fotoUrl]="fotoUrl"></app-detail>

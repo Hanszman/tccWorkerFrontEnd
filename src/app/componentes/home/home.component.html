@@ -7,8 +7,8 @@
 </div>
 
 <div class="row right-end space-margin-sm">
-  <a (click)="salvarPDF()" class="btn btn-outline-info" title="{{ 'geral.detail.salvar-pdf' | translate }}"><i class="fa fa-save" aria-hidden="true"></i></a>
-  <a [routerLink]="['/calendario/read/']" class="btn btn-outline-success" title="{{ 'geral.detail.calendario' | translate }}"><i class="fa fa-calendar" aria-hidden="true"></i></a>
+  <button (click)="salvarPDF()" class="btn btn-outline-info" title="{{ 'geral.detail.salvar-pdf' | translate }}"><i class="fa fa-save" aria-hidden="true"></i></button>
+  <button [routerLink]="['/calendario/read/']" class="btn btn-outline-success" title="{{ 'geral.detail.calendario' | translate }}"><i class="fa fa-calendar" aria-hidden="true"></i></button>
 </div>
 
 <div class="row group-card space-margin-lg">
@@ -19,7 +19,9 @@
           <img [src]="fotoUsuario" height="290">
         </div>
         <div class="card-body">
-          <h5 class="card-title card-horizontal-title">{{ item.dsc_nome }}</h5>
+          <h5 class="card-title card-horizontal-title">
+            <a class="link-color" [routerLink]="['usuario/read', item.id_usuario]">{{ item.dsc_nome }}</a>
+          </h5>
           <div class="card-text card-horizontal-text">
             <p class="col-md-12 col-lg-6">
               <strong>Código de Usuário:</strong> {{ item.id_usuario }}<br>
@@ -33,7 +35,7 @@
             </p>
             <p class="col-md-12 col-lg-6">
               <strong>Cargo:</strong> {{ item.dsc_cargo }}<br>
-              <strong>Setor:</strong> {{ item.dsc_setor }}<br>
+              <strong>Setor:</strong> <a class="link-color" [routerLink]="['setor/read', item.id_setor]"> {{ item.dsc_setor }}</a><br>
               <strong>Situação:</strong> {{ item.ind_status }}<br>
               <strong>Tipo de Contrato:</strong> {{ item.ind_contratacao }}<br>
               <strong>Data do Contrato:</strong> {{ item.dat_contratacao }}<br>
@@ -51,7 +53,9 @@
           <img [src]="fotoEmpresa" height="290">
         </div>
         <div class="card-body">
-          <h5 class="card-title card-horizontal-title">{{ item.dsc_nome }}</h5>
+          <h5 class="card-title card-horizontal-title">
+            <a class="link-color" [routerLink]="['empresa/read', item.id_empresa]">{{ item.dsc_nome }}</a>
+          </h5>
           <div class="card-text card-horizontal-text">
             <p class="col-md-12 col-lg-6">
               <strong>CNPJ:</strong> {{ item.dsc_cnpj }}<br>
