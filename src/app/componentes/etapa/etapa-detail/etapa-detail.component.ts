@@ -32,6 +32,17 @@ export class EtapaDetailComponent implements OnInit {
       'dsc_quadro',
       'dsc_projeto'
     ],
+    links: {
+      detail: true,
+      dsc_quadro: {
+        id: 'id_quadro',
+        rota: 'quadro'
+      },
+      dsc_projeto: {
+        id: 'id_projeto',
+        rota: 'projeto'
+      }
+    },
     paginacao: 5
   };
 

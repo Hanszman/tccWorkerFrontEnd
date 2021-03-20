@@ -67,11 +67,17 @@ export class UsuarioReadComponent implements OnInit {
     cabecalhos: [
       'dsc_nome_completo',
       'dsc_login',
-      'dsc_cargo',
-      'dsc_setor',
       'ind_controle_acesso',
-      'ind_status'
+      'ind_status',
+      'dsc_cargo',
+      'dsc_setor'
     ],
+    links: {
+      dsc_setor: {
+        id: 'id_setor',
+        rota: 'setor'
+      }
+    },
     paginacao: 5
   };
   @Input() configDetail = {
@@ -146,6 +152,12 @@ export class UsuarioReadComponent implements OnInit {
       'dat_fim_projeto',
       'dsc_setor_projeto'
     ],
+    links: {
+      dsc_setor_projeto: {
+        id: 'id_setor_projeto',
+        rota: 'setor'
+      }
+    },
     paginacao: 5
   };
   @Input() configAtividade = {
@@ -159,6 +171,20 @@ export class UsuarioReadComponent implements OnInit {
       'dsc_quadro_atividade',
       'dsc_projeto_atividade'
     ],
+    links: {
+      dsc_etapa_atividade: {
+        id: 'id_etapa_atividade',
+        rota: 'etapa'
+      },
+      dsc_quadro_atividade: {
+        id: 'id_quadro_atividade',
+        rota: 'quadro'
+      },
+      dsc_projeto_atividade: {
+        id: 'id_projeto_atividade',
+        rota: 'projeto'
+      }
+    },
     paginacao: 5
   };
 

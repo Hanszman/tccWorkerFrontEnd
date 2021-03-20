@@ -19,6 +19,12 @@ export class QuadroReadComponent implements OnInit {
       'dat_fim',
       'dsc_projeto'
     ],
+    links: {
+      dsc_projeto: {
+        id: 'id_projeto',
+        rota: 'projeto'
+      }
+    },
     paginacao: 5
   };
 

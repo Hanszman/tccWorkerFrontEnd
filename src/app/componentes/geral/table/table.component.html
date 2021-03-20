@@ -37,7 +37,7 @@
         <td [hidden]="!existeContagem">{{ i+1 + (config.paginacao * (paginaAtual-1)) }}</td>
         <td *ngFor="let item of config.cabecalhos; let j = index">
             <span *ngIf="conjuntoLinks[j] !== undefined">
-                <a class="link-color" [routerLink]="['../../'+conjuntoLinks[j]['rota']+'/read', conjuntoDados[i][conjuntoLinks[j]['id']]]">
+                <a class="link-color" [routerLink]="[backLink+conjuntoLinks[j]['rota']+'/read', conjuntoDados[i][conjuntoLinks[j]['id']]]">
                     {{ linha[item] }}
                 </a>
             </span>

@@ -38,6 +38,7 @@ export class TableComponent implements OnInit {
   @Output() emiteClicaBotaoExcluirEspecial = new EventEmitter();
   conjuntoDados;
   conjuntoLinks = [];
+  backLink = '../../';
   traducoes;
   paginador;
   paginaAtual;
@@ -88,6 +89,10 @@ export class TableComponent implements OnInit {
           this.conjuntoDados.push(elemento);
         });
         if (this.config.hasOwnProperty('links')){
+          if (this.config.links.hasOwnProperty('detail')) {
+            if (this.config.links.detail)
+              this.backLink = '../../../';
+          }
           for (let i = 0; i < this.config.cabecalhos.length; i++) {
             if(this.config.links.hasOwnProperty(this.config.cabecalhos[i]))
               this.conjuntoLinks.push(this.config.links[this.config.cabecalhos[i]])

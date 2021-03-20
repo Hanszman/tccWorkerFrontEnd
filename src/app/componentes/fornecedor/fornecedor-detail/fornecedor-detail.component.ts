@@ -112,6 +112,13 @@ export class FornecedorDetailComponent implements OnInit {
       'dat_fim_projeto',
       'dsc_setor_projeto'
     ],
+    links: {
+      detail: true,
+      dsc_setor_projeto: {
+        id: 'id_setor_projeto',
+        rota: 'setor'
+      }
+    },
     paginacao: 5
   };
   @Input() configProjetoFornecedor = {

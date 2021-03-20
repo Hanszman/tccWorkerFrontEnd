@@ -30,6 +30,20 @@ export class CalendarioReadComponent implements OnInit {
       'dsc_quadro',
       'dsc_projeto'
     ],
+    links: {
+      dsc_etapa: {
+        id: 'id_etapa',
+        rota: 'etapa'
+      },
+      dsc_quadro: {
+        id: 'id_quadro',
+        rota: 'quadro'
+      },
+      dsc_projeto: {
+        id: 'id_projeto',
+        rota: 'projeto'
+      }
+    },
     paginacao: 5
   };
   calendarOptions: CalendarOptions = {
