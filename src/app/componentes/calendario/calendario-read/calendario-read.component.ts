@@ -95,4 +95,8 @@ export class CalendarioReadComponent implements OnInit {
   eventClick(arg) {
     this.router.navigate(['atividade/read/' + arg.event.id]);
   }
+
+  salvarPDF(){
+    window.print();
+  }
 }

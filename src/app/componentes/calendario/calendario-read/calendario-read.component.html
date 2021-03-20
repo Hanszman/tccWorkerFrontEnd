@@ -6,15 +6,20 @@
     <p>Agenda de atividades:</p>
 </div>
 
+<div class="row right-end space-margin-sm">
+    <button [routerLink]="['../../']" class="btn btn-outline-success" title="{{ 'geral.detail.voltar' | translate }}"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+    <button (click)="salvarPDF()" class="btn btn-outline-info" title="{{ 'geral.detail.salvar-pdf' | translate }}"><i class="fa fa-save" aria-hidden="true"></i></button>
+</div>
+
 <div><full-calendar deepChangeDetection="true" [options]="calendarOptions"></full-calendar></div>
 
-<div class="row div-table space-margin-sm">
+<div class="row div-table">
     <div *ngFor="let item of listaEtapas; let i = index">
         <i class="fa fa-square" aria-hidden="true" [ngStyle]="{color: item.dsc_cor}"></i>&nbsp;{{ item.dsc_etapa }}&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
 </div>
 
-<div class="row table-responsive div-table space-margin-sm">
+<div class="row table-responsive div-table">
     <h4>Atividades</h4>
     <app-table [titulo]="titulo" [config]="config" [url]="url" [parametros]="parametros" [existeBotaoSalvar]=false [existeBotaoCriar]=false [existeBotaoEditar]=false [existeBotaoExcluir]=false></app-table>
 </div>
