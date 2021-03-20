@@ -29,12 +29,14 @@
 .nav-title {
     font-size: 30px !important;
 }
-.table {
-    overflow-wrap: break-word !important;
-    word-wrap: break-word !important;
-    -webkit-hyphens: auto !important;
-    -ms-hyphens: auto !important;
-    hyphens: auto !important;
+@media (min-width: 992px) {
+    .table {
+        overflow-wrap: break-word !important;
+        word-wrap: break-word !important;
+        -webkit-hyphens: auto !important;
+        -ms-hyphens: auto !important;
+        hyphens: auto !important;
+    }
 }
 .menu-buttons, .div-table {
     padding: 15px;
@@ -72,6 +74,9 @@
 }
 .space-margin-lg {
     margin-bottom: 50px;
+}
+.space-side {
+    padding: 0 15px;
 }
 .right-top {
     position: absolute;
