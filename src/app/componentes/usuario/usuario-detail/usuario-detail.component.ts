@@ -22,8 +22,8 @@ export class UsuarioDetailComponent implements OnInit {
   @Input() config = {
     titulo: 'usuario',
     cabecalhos: [
-      'id_usuario',
       'dsc_nome_completo',
+      'id_usuario',
       'dsc_email',
       'dsc_login',
       'ind_login_fb',

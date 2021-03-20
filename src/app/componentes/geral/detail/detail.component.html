@@ -9,7 +9,9 @@
     <div class="details">
         <div *ngFor="let item of config.cabecalhos; let j = index">
             <div *ngFor="let linha of conjuntoDados; let i = index">
-                <div><b>{{ tradutor(item) }}:</b>
+                <h2 *ngIf="j == 0" class="last-color">{{ linha[item] }}</h2>
+                <div *ngIf="j !== 0">
+                    <b>{{ tradutor(item) }}:</b>
                     <span *ngIf="conjuntoLinks[j] !== undefined">
                         <a class="link-color" [routerLink]="[backLink+conjuntoLinks[j]['rota']+'/read', conjuntoDados[i][conjuntoLinks[j]['id']]]">
                             {{ linha[item] }}
