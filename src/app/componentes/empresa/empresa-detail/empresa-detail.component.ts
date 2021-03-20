@@ -17,7 +17,9 @@ export class EmpresaDetailComponent implements OnInit {
   tituloTelefone = 'Telefone';
   tituloEndereco = 'Endereço';
   tituloEmail = 'E-mail';
+  botaoVoltar = true;
   parametros;
+  id_empresa = window.localStorage.getItem('id_empresa');
   fotoUrl = 'assets/images/user_group_icon.png'
   @Input() config = {
     titulo: 'empresa',
@@ -103,6 +105,8 @@ export class EmpresaDetailComponent implements OnInit {
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
     this.parametros = 'id_empresa=' + this.id + '&';
+    if (this.id_empresa)
+      this.botaoVoltar = false;
   }
 
   ngOnInit(): void {
