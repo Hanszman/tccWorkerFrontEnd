@@ -31,6 +31,7 @@ export class HttpService {
   }
 
   getConsultar(url, parametros): Observable<HttpResponse<any>> {
+    console.log(this.apiURL + url + '/read?' + parametros);
     return this.http.get<any>(
       this.apiURL + url + '/read?' + parametros, {observe: 'response'}
     );

@@ -17,7 +17,10 @@ export class CalendarioReadComponent implements OnInit {
   titulo = 'Atividade';
   parametros;
   parametrosAtividades;
+  id_usuario = window.localStorage.getItem('id_usuario');
   id_empresa = window.localStorage.getItem('id_empresa');
+  id_usuario_empresa = window.localStorage.getItem('id_usuario_empresa');
+  listaUsuarios = [];
   private componenteChart = new ChartComponent();
   @Input() config = {
     titulo: 'atividade',
@@ -90,6 +93,7 @@ export class CalendarioReadComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.criaFiltroUsuarios();
   }
 
   eventClick(arg) {
@@ -98,5 +102,31 @@ export class CalendarioReadComponent implements OnInit {
 
   salvarPDF(){
     window.print();
+  }
+
+  criaFiltroUsuarios(){
+    this.service.getConsultar('usuario', 'id_empresa=' + this.id_empresa).subscribe(resp => {
+      let usuarioResp = resp.body.data.dados;
+      for (let i = 0; i < usuarioResp.length; i++) {
+        let usuarioObj = new Object();
+        usuarioObj['id_usuario_empresa'] = usuarioResp[i]['id_usuario_empresa'];
+        usuarioObj['dsc_nome_completo'] = usuarioResp[i]['dsc_nome_completo'];
+        if (this.id_usuario == usuarioResp[i]['id_usuario'])
+          usuarioObj['selected'] = true;
+        else
+          usuarioObj['selected'] = false;
+        this.listaUsuarios.push(usuarioObj);
+      }
+    });
+  }
+
+  alteraFiltroUsuarios(event){
+    let id_usuario_evento = event.target.value;
+    if (id_usuario_evento == 0) {
+      console.log('teste1');
+    }
+    else {
+      console.log('teste2');
+    }
   }
 }
