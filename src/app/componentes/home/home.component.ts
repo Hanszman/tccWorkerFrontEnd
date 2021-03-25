@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   objEmpresa;
   fotoUsuario;
   fotoEmpresa;
+  listaUsuarios = [];
   chartAtividadeEtapa;
   chartAtividadePrioridadeEtapa;
   chartAtividadeFuncionarioEtapa;
@@ -34,6 +35,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.detalhesUsuario();
     this.detalhesEmpresa();
+    this.criaFiltroUsuarios();
     this.atividadeEtapaChart();
     this.atividadePrioridadeEtapaChart();
     this.atividadeFuncionarioEtapaChart();
@@ -57,6 +59,18 @@ export class HomeComponent implements OnInit {
         this.fotoEmpresa = this.apiURL + this.objEmpresa[0]['arq_foto'];
       else
         this.fotoEmpresa = 'assets/images/user_group_icon.png';
+    });
+  }
+
+  criaFiltroUsuarios(){
+    this.service.getConsultar('usuario', 'id_empresa=' + this.id_empresa).subscribe(resp => {
+      let usuarioResp = resp.body.data.dados;
+      for (let i = 0; i < usuarioResp.length; i++) {
+        let usuarioObj = new Object();
+        usuarioObj['id_usuario'] = usuarioResp[i]['id_usuario'];
+        usuarioObj['dsc_nome_completo'] = usuarioResp[i]['dsc_nome_completo'];
+        this.listaUsuarios.push(usuarioObj);
+      }
     });
   }
 
