@@ -84,10 +84,14 @@ export class HomeComponent implements OnInit {
     if (id_usuario_evento == 0) {
       this.atividadeEtapaChart();
       this.atividadePrioridadeEtapaChart();
+      (document.getElementById('chartAtividadeFuncionarioEtapa')).classList.remove("hide");
+      (document.getElementById('chartAtividadeSetorEtapa')).classList.remove("hide");
     }
     else {
       this.atividadeEtapaChart(id_usuario_evento);
       this.atividadePrioridadeEtapaChart(id_usuario_evento);
+      (document.getElementById('chartAtividadeFuncionarioEtapa')).classList.add("hide");
+      (document.getElementById('chartAtividadeSetorEtapa')).classList.add("hide");
     }
   }
 
