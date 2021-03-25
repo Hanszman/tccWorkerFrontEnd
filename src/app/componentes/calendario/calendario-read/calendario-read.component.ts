@@ -62,14 +62,39 @@ export class CalendarioReadComponent implements OnInit {
   ) {
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
     this.parametrosAtividades = this.parametros + 'isForm=1&';
-    this.criaCalendarioAtividades();
   }
 
   ngOnInit(): void {
     this.criaFiltroUsuarios();
+    this.criaCalendarioAtividades(this.id_usuario_empresa);
   }
 
-  criaCalendarioAtividades(){
+  criaFiltroUsuarios(){
+    this.service.getConsultar('usuario', 'id_empresa=' + this.id_empresa).subscribe(resp => {
+      let usuarioResp = resp.body.data.dados;
+      for (let i = 0; i < usuarioResp.length; i++) {
+        let usuarioObj = new Object();
+        usuarioObj['id_usuario_empresa'] = usuarioResp[i]['id_usuario_empresa'];
+        usuarioObj['dsc_nome_completo'] = usuarioResp[i]['dsc_nome_completo'];
+        if (this.id_usuario == usuarioResp[i]['id_usuario'])
+          usuarioObj['selected'] = true;
+        else
+          usuarioObj['selected'] = false;
+        this.listaUsuarios.push(usuarioObj);
+      }
+    });
+  }
+
+  alteraFiltroUsuarios(event){
+    let id_usuario_evento = event.target.value;
+    if (id_usuario_evento == 0)
+      this.criaCalendarioAtividades();
+    else
+      this.criaCalendarioAtividades(id_usuario_evento);
+  }
+
+  criaCalendarioAtividades(id_usuario_filtro = undefined){
+    console.log(id_usuario_filtro);
     this.service.getConsultar('etapa', this.parametros).subscribe((obj) => {
       let conjunto = obj.body.data.dados;
       let cores = this.componenteChart.selecionaCores(conjunto.length);
@@ -102,32 +127,6 @@ export class CalendarioReadComponent implements OnInit {
 
   clicaEvento(arg) {
     this.router.navigate(['atividade/read/' + arg.event.id]);
-  }
-
-  criaFiltroUsuarios(){
-    this.service.getConsultar('usuario', 'id_empresa=' + this.id_empresa).subscribe(resp => {
-      let usuarioResp = resp.body.data.dados;
-      for (let i = 0; i < usuarioResp.length; i++) {
-        let usuarioObj = new Object();
-        usuarioObj['id_usuario_empresa'] = usuarioResp[i]['id_usuario_empresa'];
-        usuarioObj['dsc_nome_completo'] = usuarioResp[i]['dsc_nome_completo'];
-        if (this.id_usuario == usuarioResp[i]['id_usuario'])
-          usuarioObj['selected'] = true;
-        else
-          usuarioObj['selected'] = false;
-        this.listaUsuarios.push(usuarioObj);
-      }
-    });
-  }
-
-  alteraFiltroUsuarios(event){
-    let id_usuario_evento = event.target.value;
-    if (id_usuario_evento == 0) {
-      console.log('teste1');
-    }
-    else {
-      console.log('teste2');
-    }
   }
 
   salvarPDF(){
