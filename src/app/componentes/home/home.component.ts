@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   dsc_nome = window.localStorage.getItem('dsc_nome');
   id_empresa = window.localStorage.getItem('id_empresa');
   dsc_empresa = window.localStorage.getItem('dsc_empresa');
+  id_usuario_empresa = window.localStorage.getItem('id_usuario_empresa');
   objUsuario;
   objEmpresa;
   fotoUsuario;
@@ -36,8 +37,8 @@ export class HomeComponent implements OnInit {
     this.detalhesUsuario();
     this.detalhesEmpresa();
     this.criaFiltroUsuarios();
-    this.atividadeEtapaChart(this.id_usuario);
-    this.atividadePrioridadeEtapaChart(this.id_usuario);
+    this.atividadeEtapaChart(this.id_usuario_empresa);
+    this.atividadePrioridadeEtapaChart(this.id_usuario_empresa);
     this.atividadeFuncionarioEtapaChart();
     this.atividadeSetorEtapaChart();
   }
@@ -67,7 +68,7 @@ export class HomeComponent implements OnInit {
       let usuarioResp = resp.body.data.dados;
       for (let i = 0; i < usuarioResp.length; i++) {
         let usuarioObj = new Object();
-        usuarioObj['id_usuario'] = usuarioResp[i]['id_usuario'];
+        usuarioObj['id_usuario_empresa'] = usuarioResp[i]['id_usuario_empresa'];
         usuarioObj['dsc_nome_completo'] = usuarioResp[i]['dsc_nome_completo'];
         if (this.id_usuario == usuarioResp[i]['id_usuario'])
           usuarioObj['selected'] = true;
@@ -93,7 +94,7 @@ export class HomeComponent implements OnInit {
   atividadeEtapaChart(id_usuario_filtro = undefined){
     var url = 'atividade_etapa?id_empresa=' + this.id_empresa;
     if (id_usuario_filtro)
-      url += '&id_usuario=' + id_usuario_filtro;
+      url += '&id_usuario_empresa=' + id_usuario_filtro;
     this.service.getChart(url).subscribe(resp => {
       var resposta = resp.body.data;
       if (typeof(this.chartAtividadeEtapa) != "undefined")
@@ -114,7 +115,7 @@ export class HomeComponent implements OnInit {
   atividadePrioridadeEtapaChart(id_usuario_filtro = undefined){
     var url = 'atividade_prioridade_etapa?id_empresa=' + this.id_empresa;
     if (id_usuario_filtro)
-      url += '&id_usuario=' + id_usuario_filtro;
+      url += '&id_usuario_empresa=' + id_usuario_filtro;
     this.service.getChart(url).subscribe(resp => {
       var resposta = resp.body.data;
       if (typeof(this.chartAtividadePrioridadeEtapa) != "undefined")

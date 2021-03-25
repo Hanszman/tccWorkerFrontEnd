@@ -36,7 +36,7 @@
           <strong>Data do Contrato:</strong> {{ item.dat_contratacao }}<br>
           <strong>Tipo de Usuário:</strong> {{ item.ind_controle_acesso }}<br>
         </p>
-        <button title="Selecionar empresa" (click)="selecionarEmpresa(item.id_empresa, item.dsc_nome)" class="btn btn-success btn-block">Selecionar <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+        <button title="Selecionar empresa" (click)="selecionarEmpresa(item.id_empresa, item.dsc_nome, item.id_usuario_empresa)" class="btn btn-success btn-block">Selecionar <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
       </div>
     </div>
   </div>
