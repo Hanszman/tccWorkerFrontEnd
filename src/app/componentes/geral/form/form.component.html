@@ -7,7 +7,7 @@
         <label for="{{item}}"><b>{{ tradutor(item) }}:</b></label>
         <input *ngIf="config.tipos[i] !== 'file' && config.tipos[i] !== 'select'" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" class="form-control" placeholder="{{ tradutor(item) }}" [(ngModel)]="registro[item]" mask="{{config.mascaras[i]}}" [attr.disabled]="config.desabilitados[i] == 'true' ? '' : null">
         <label for="{{item}}" *ngIf="config.tipos[i] == 'file'">&nbsp;<a class="btn btn-outline-success no-print">{{ 'geral.form.escolher-arquivo' | translate }}</a></label>
-        <input *ngIf="config.tipos[i] == 'file'" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" class="form-control file-type-input" [(ngModel)]="registro[item]" (change)="carregarArquivo($event)">
+        <input *ngIf="config.tipos[i] == 'file'" id="{{item}}" name="{{item}}" type="{{config.tipos[i]}}" class="form-control hide" [(ngModel)]="registro[item]" (change)="carregarArquivo($event)">
         <select *ngIf="config.tipos[i] == 'select'" id="{{item}}" name="{{item}}" class="form-control" [(ngModel)]="registro[item]">
             <option [value]="undefined" class="select-disabled">Selecione...</option>
             <option *ngFor="let selecao of config.selects[item].values; let j = index" value="{{selecao}}">{{config.selects[item].labels[j]}}</option>
