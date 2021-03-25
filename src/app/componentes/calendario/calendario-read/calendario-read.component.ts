@@ -94,7 +94,20 @@ export class CalendarioReadComponent implements OnInit {
   }
 
   criaCalendarioAtividades(id_usuario_filtro = undefined){
-    console.log(id_usuario_filtro);
+    let urlAtividade;
+    let parametrosAdicionais;
+    let nomenclatura;
+    this.calendarOptions.events = [];
+    if (id_usuario_filtro) {
+      urlAtividade = 'atividade_usuario_empresa';
+      parametrosAdicionais = 'id_usuario_empresa=' + id_usuario_filtro + '&';
+      nomenclatura = '_atividade';
+    }
+    else {
+      urlAtividade = 'atividade';
+      parametrosAdicionais = '';
+      nomenclatura = '';
+    }
     this.service.getConsultar('etapa', this.parametros).subscribe((obj) => {
       let conjunto = obj.body.data.dados;
       let cores = this.componenteChart.selecionaCores(conjunto.length);
@@ -105,16 +118,16 @@ export class CalendarioReadComponent implements OnInit {
         this.listaEtapas[i]['ind_sequencia'] = conjunto[i]['ind_sequencia'];
         this.listaEtapas[i]['dsc_cor'] = cores[i];
       }
-      this.service.getConsultar('atividade', this.parametrosAtividades).subscribe((obj) => {
+      this.service.getConsultar(urlAtividade, parametrosAdicionais + this.parametrosAtividades).subscribe((obj) => {
         let conjunto = obj.body.data.dados;
         for (let i = 0; i < conjunto.length; i++) {
           for (let j = 0; j < this.listaEtapas.length; j++) {
-            if (this.listaEtapas[j]['id_etapa'] == conjunto[i]['id_etapa']) {
+            if (this.listaEtapas[j]['id_etapa'] == conjunto[i]['id_etapa' + nomenclatura]) {
               let eventosAtividades = {
                 id: conjunto[i]['id_atividade'],
-                title: conjunto[i]['dsc_nome'],
-                start: conjunto[i]['dat_inicio'],
-                end: conjunto[i]['dat_fim'],
+                title: conjunto[i]['dsc_nome' + nomenclatura],
+                start: conjunto[i]['dat_inicio' + nomenclatura],
+                end: conjunto[i]['dat_fim' + nomenclatura],
                 color: this.listaEtapas[j]['dsc_cor']
               }
               this.calendarOptions.events[i] = eventosAtividades;
