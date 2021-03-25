@@ -36,8 +36,8 @@ export class HomeComponent implements OnInit {
     this.detalhesUsuario();
     this.detalhesEmpresa();
     this.criaFiltroUsuarios();
-    this.atividadeEtapaChart();
-    this.atividadePrioridadeEtapaChart();
+    this.atividadeEtapaChart(this.id_usuario);
+    this.atividadePrioridadeEtapaChart(this.id_usuario);
     this.atividadeFuncionarioEtapaChart();
     this.atividadeSetorEtapaChart();
   }
@@ -78,8 +78,22 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  atividadeEtapaChart(){
+  alteraFiltroUsuarios(event){
+    let id_usuario_evento = event.target.value;
+    if (id_usuario_evento == 0) {
+      this.atividadeEtapaChart();
+      this.atividadePrioridadeEtapaChart();
+    }
+    else {
+      this.atividadeEtapaChart(id_usuario_evento);
+      this.atividadePrioridadeEtapaChart(id_usuario_evento);
+    }
+  }
+
+  atividadeEtapaChart(id_usuario_filtro = undefined){
     var url = 'atividade_etapa?id_empresa=' + this.id_empresa;
+    if (id_usuario_filtro)
+      url += '&id_usuario=' + id_usuario_filtro;
     this.service.getChart(url).subscribe(resp => {
       var resposta = resp.body.data;
       if (typeof(this.chartAtividadeEtapa) != "undefined")
@@ -97,8 +111,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  atividadePrioridadeEtapaChart(){
+  atividadePrioridadeEtapaChart(id_usuario_filtro = undefined){
     var url = 'atividade_prioridade_etapa?id_empresa=' + this.id_empresa;
+    if (id_usuario_filtro)
+      url += '&id_usuario=' + id_usuario_filtro;
     this.service.getChart(url).subscribe(resp => {
       var resposta = resp.body.data;
       if (typeof(this.chartAtividadePrioridadeEtapa) != "undefined")
