@@ -69,6 +69,10 @@ export class HomeComponent implements OnInit {
         let usuarioObj = new Object();
         usuarioObj['id_usuario'] = usuarioResp[i]['id_usuario'];
         usuarioObj['dsc_nome_completo'] = usuarioResp[i]['dsc_nome_completo'];
+        if (this.id_usuario == usuarioResp[i]['id_usuario'])
+          usuarioObj['selected'] = true;
+        else
+          usuarioObj['selected'] = false;
         this.listaUsuarios.push(usuarioObj);
       }
     });
