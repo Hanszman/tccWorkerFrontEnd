@@ -52,7 +52,7 @@ export class CalendarioReadComponent implements OnInit {
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     locales: [ ptBrLocale ],
-    eventClick: this.eventClick.bind(this),
+    eventClick: this.clicaEvento.bind(this),
     events: []
   };
 
@@ -62,6 +62,14 @@ export class CalendarioReadComponent implements OnInit {
   ) {
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
     this.parametrosAtividades = this.parametros + 'isForm=1&';
+    this.criaCalendarioAtividades();
+  }
+
+  ngOnInit(): void {
+    this.criaFiltroUsuarios();
+  }
+
+  criaCalendarioAtividades(){
     this.service.getConsultar('etapa', this.parametros).subscribe((obj) => {
       let conjunto = obj.body.data.dados;
       let cores = this.componenteChart.selecionaCores(conjunto.length);
@@ -92,16 +100,8 @@ export class CalendarioReadComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.criaFiltroUsuarios();
-  }
-
-  eventClick(arg) {
+  clicaEvento(arg) {
     this.router.navigate(['atividade/read/' + arg.event.id]);
-  }
-
-  salvarPDF(){
-    window.print();
   }
 
   criaFiltroUsuarios(){
@@ -128,5 +128,9 @@ export class CalendarioReadComponent implements OnInit {
     else {
       console.log('teste2');
     }
+  }
+
+  salvarPDF(){
+    window.print();
   }
 }
