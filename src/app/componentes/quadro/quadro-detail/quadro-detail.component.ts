@@ -23,7 +23,10 @@ export class QuadroDetailComponent implements OnInit {
   parametrosConsulta;
   traducoes;
   traducoesFuncionario;
+  id_usuario = window.localStorage.getItem('id_usuario');
   id_empresa = window.localStorage.getItem('id_empresa');
+  id_usuario_empresa = window.localStorage.getItem('id_usuario_empresa');
+  listaUsuarios = [];
   etapaList = [];
   @Input() config = {
     titulo: 'quadro',
@@ -109,6 +112,45 @@ export class QuadroDetailComponent implements OnInit {
     this.route.params.subscribe(params => this.id = params['id']);
     this.parametros = 'id_empresa=' + this.id_empresa + '&ordenarPor=ind_sequencia&direcao=asc&';
     this.parametrosConsulta = 'id_empresa=' + this.id_empresa + '&';
+  }
+
+  ngOnInit(): void {
+    this.criaFiltroUsuarios();
+    this.criaQuadroEtapaAtividades();
+    this.completaConfigUsuarios();
+    this.traduzir('quadro').subscribe((traducoes) => {
+      this.traducoes = traducoes;
+    })
+    this.traduzir('funcionario').subscribe((traducoesFuncionario) => {
+      this.traducoesFuncionario = traducoesFuncionario;
+    })
+  }
+
+  criaFiltroUsuarios(){
+    this.service.getConsultar('usuario', 'id_empresa=' + this.id_empresa).subscribe(resp => {
+      let usuarioResp = resp.body.data.dados;
+      for (let i = 0; i < usuarioResp.length; i++) {
+        let usuarioObj = new Object();
+        usuarioObj['id_usuario_empresa'] = usuarioResp[i]['id_usuario_empresa'];
+        usuarioObj['dsc_nome_completo'] = usuarioResp[i]['dsc_nome_completo'];
+        if (this.id_usuario == usuarioResp[i]['id_usuario'])
+          usuarioObj['selected'] = true;
+        else
+          usuarioObj['selected'] = false;
+        this.listaUsuarios.push(usuarioObj);
+      }
+    });
+  }
+
+  alteraFiltroUsuarios(event){
+    let id_usuario_evento = event.target.value;
+    if (id_usuario_evento == 0)
+      console.log('teste1')
+    else
+      console.log('teste2')
+  }
+
+  criaQuadroEtapaAtividades(){
     this.service.getConsultar('etapa', this.parametros).subscribe((obj) => {
       let conjunto = obj.body.data.dados;
       for (let i = 0; i < conjunto.length; i++) {
@@ -127,6 +169,9 @@ export class QuadroDetailComponent implements OnInit {
         });
       }
     });
+  }
+
+  completaConfigUsuarios(){
     this.service.getConsultar('usuario', this.parametrosConsulta).subscribe((obj) => {
       let conjunto = obj.body.data.dados;
       for (let i = 0; i < conjunto.length; i++) {
@@ -134,15 +179,6 @@ export class QuadroDetailComponent implements OnInit {
         this.configAtividadeFuncionario.selects.id_usuario_empresa.labels.push(conjunto[i]['dsc_nome_completo']);
       }
     });
-  }
-
-  ngOnInit(): void {
-    this.traduzir('quadro').subscribe((traducoes) => {
-      this.traducoes = traducoes;
-    })
-    this.traduzir('funcionario').subscribe((traducoesFuncionario) => {
-      this.traducoesFuncionario = traducoesFuncionario;
-    })
   }
 
   drop(event: CdkDragDrop<string[]>){
