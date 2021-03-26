@@ -12,7 +12,10 @@ export class AtividadeReadComponent implements OnInit {
   url = 'atividade';
   titulo = 'Atividade';
   parametros;
+  id_usuario = window.localStorage.getItem('id_usuario');
   id_empresa = window.localStorage.getItem('id_empresa');
+  id_usuario_empresa = window.localStorage.getItem('id_usuario_empresa');
+  listaUsuarios = [];
   chartAtividadeEtapa;
   chartAtividadePrioridadeEtapa;
   private componenteChart = new ChartComponent();
@@ -51,12 +54,43 @@ export class AtividadeReadComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.atividadeEtapaChart();
-    this.atividadePrioridadeEtapaChart();
+    this.criaFiltroUsuarios();
+    this.atividadeEtapaChart(this.id_usuario_empresa);
+    this.atividadePrioridadeEtapaChart(this.id_usuario_empresa);
   }
 
-  atividadeEtapaChart(){
+  criaFiltroUsuarios(){
+    this.service.getConsultar('usuario', 'id_empresa=' + this.id_empresa).subscribe(resp => {
+      let usuarioResp = resp.body.data.dados;
+      for (let i = 0; i < usuarioResp.length; i++) {
+        let usuarioObj = new Object();
+        usuarioObj['id_usuario_empresa'] = usuarioResp[i]['id_usuario_empresa'];
+        usuarioObj['dsc_nome_completo'] = usuarioResp[i]['dsc_nome_completo'];
+        if (this.id_usuario == usuarioResp[i]['id_usuario'])
+          usuarioObj['selected'] = true;
+        else
+          usuarioObj['selected'] = false;
+        this.listaUsuarios.push(usuarioObj);
+      }
+    });
+  }
+
+  alteraFiltroUsuarios(event){
+    let id_usuario_evento = event.target.value;
+    if (id_usuario_evento == 0){
+      this.atividadeEtapaChart();
+      this.atividadePrioridadeEtapaChart();
+    }
+    else {
+      this.atividadeEtapaChart(id_usuario_evento);
+      this.atividadePrioridadeEtapaChart(id_usuario_evento);
+    }
+  }
+
+  atividadeEtapaChart(id_usuario_filtro = undefined){
     var url = 'atividade_etapa?id_empresa=' + this.id_empresa;
+    if (id_usuario_filtro)
+      url += '&id_usuario_empresa=' + id_usuario_filtro;
     this.service.getChart(url).subscribe(resp => {
       var resposta = resp.body.data;
       if (typeof(this.chartAtividadeEtapa) != "undefined")
@@ -74,8 +108,10 @@ export class AtividadeReadComponent implements OnInit {
     });
   }
 
-  atividadePrioridadeEtapaChart(){
+  atividadePrioridadeEtapaChart(id_usuario_filtro = undefined){
     var url = 'atividade_prioridade_etapa?id_empresa=' + this.id_empresa;
+    if (id_usuario_filtro)
+      url += '&id_usuario_empresa=' + id_usuario_filtro;
     this.service.getChart(url).subscribe(resp => {
       var resposta = resp.body.data;
       if (typeof(this.chartAtividadePrioridadeEtapa) != "undefined")
