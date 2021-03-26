@@ -14,9 +14,13 @@ export class CalendarioReadComponent implements OnInit {
 
   listaEtapas = [];
   url = 'atividade';
+  urlAtividadeFuncionario = 'atividade_usuario_empresa';
   titulo = 'Atividade';
   parametros;
   parametrosAtividades;
+  parametrosAtividadeFuncionario;
+  tabelaAtividadeFuncionario = true;
+  mostraTabela = true;
   id_usuario = window.localStorage.getItem('id_usuario');
   id_empresa = window.localStorage.getItem('id_empresa');
   id_usuario_empresa = window.localStorage.getItem('id_usuario_empresa');
@@ -44,6 +48,33 @@ export class CalendarioReadComponent implements OnInit {
       },
       dsc_projeto: {
         id: 'id_projeto',
+        rota: 'projeto'
+      }
+    },
+    paginacao: 5
+  };
+  @Input() configAtividadeFuncionario = {
+    titulo: 'atividade_usuario_empresa',
+    cabecalhos: [
+      'dsc_nome_atividade',
+      'dat_inicio_atividade',
+      'dat_fim_atividade',
+      'ind_prioridade_atividade',
+      'dsc_etapa_atividade',
+      'dsc_quadro_atividade',
+      'dsc_projeto_atividade'
+    ],
+    links: {
+      dsc_etapa_atividade: {
+        id: 'id_etapa_atividade',
+        rota: 'etapa'
+      },
+      dsc_quadro_atividade: {
+        id: 'id_quadro_atividade',
+        rota: 'quadro'
+      },
+      dsc_projeto_atividade: {
+        id: 'id_projeto_atividade',
         rota: 'projeto'
       }
     },
@@ -86,6 +117,7 @@ export class CalendarioReadComponent implements OnInit {
   }
 
   alteraFiltroUsuarios(event){
+    this.mostraTabela = false;
     let id_usuario_evento = event.target.value;
     if (id_usuario_evento == 0)
       this.criaCalendarioAtividades();
@@ -99,15 +131,18 @@ export class CalendarioReadComponent implements OnInit {
     let nomenclatura;
     this.calendarOptions.events = [];
     if (id_usuario_filtro) {
+      this.tabelaAtividadeFuncionario = true;
       urlAtividade = 'atividade_usuario_empresa';
       parametrosAdicionais = 'id_usuario_empresa=' + id_usuario_filtro + '&';
       nomenclatura = '_atividade';
     }
     else {
+      this.tabelaAtividadeFuncionario = false;
       urlAtividade = 'atividade';
       parametrosAdicionais = '';
       nomenclatura = '';
     }
+    this.parametrosAtividadeFuncionario = parametrosAdicionais + this.parametrosAtividades;
     this.service.getConsultar('etapa', this.parametros).subscribe((obj) => {
       let conjunto = obj.body.data.dados;
       let cores = this.componenteChart.selecionaCores(conjunto.length);
@@ -118,7 +153,7 @@ export class CalendarioReadComponent implements OnInit {
         this.listaEtapas[i]['ind_sequencia'] = conjunto[i]['ind_sequencia'];
         this.listaEtapas[i]['dsc_cor'] = cores[i];
       }
-      this.service.getConsultar(urlAtividade, parametrosAdicionais + this.parametrosAtividades).subscribe((obj) => {
+      this.service.getConsultar(urlAtividade, this.parametrosAtividadeFuncionario).subscribe((obj) => {
         let conjunto = obj.body.data.dados;
         for (let i = 0; i < conjunto.length; i++) {
           for (let j = 0; j < this.listaEtapas.length; j++) {
@@ -134,6 +169,7 @@ export class CalendarioReadComponent implements OnInit {
             }
           }
         }
+        this.mostraTabela = true;
       });
     });
   }

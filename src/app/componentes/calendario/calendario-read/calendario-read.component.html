@@ -28,7 +28,6 @@
 
 <div class="row table-responsive div-table">
     <h4>Atividades</h4>
-    <app-table [titulo]="titulo" [config]="config" [url]="url" [parametros]="parametros" [existeBotaoSalvar]=false [existeBotaoCriar]=false [existeBotaoEditar]=false [existeBotaoExcluir]=false></app-table>
-    <!-- <app-table [titulo]="titulo" [config]="config" [url]="url" [parametros]="parametros" [existeBotaoSalvar]=false [existeBotaoCriar]=false [existeBotaoEditar]=false [existeBotaoExcluir]=false></app-table> -->
-    <!-- *ngIf -->
+    <app-table *ngIf="!tabelaAtividadeFuncionario && mostraTabela" [titulo]="titulo" [config]="config" [url]="url" [parametros]="parametros" [existeBotaoSalvar]=false [existeBotaoCriar]=false [existeBotaoEditar]=false [existeBotaoExcluir]=false></app-table>
+    <app-table *ngIf="tabelaAtividadeFuncionario && mostraTabela" [titulo]="titulo" [config]="configAtividadeFuncionario" [url]="urlAtividadeFuncionario" [urlEspecial]="url" [parametros]="parametrosAtividadeFuncionario" [existeBotaoSalvar]=false [existeBotaoCriar]=false [existeBotaoEditar]=false [existeBotaoExcluir]=false></app-table>
 </div>

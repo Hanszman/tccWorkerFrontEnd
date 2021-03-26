@@ -15,6 +15,7 @@ export class TableComponent implements OnInit {
   @Input() titulo: string;
   @Input() config;
   @Input() url: string;
+  @Input() urlEspecial: string = '';
   @Input() parametros: string = '';
   @Input() idRelacao;
   @Input() relacao;
@@ -153,7 +154,10 @@ export class TableComponent implements OnInit {
   }
   
   clicaBotaoDetalhes(linha) {
-    this.router.navigate([this.url + '/read/', linha['id_' + this.url]]);
+    if (this.urlEspecial !== '' && this.urlEspecial !== undefined)
+      this.router.navigate([this.urlEspecial + '/read/', linha['id_' + this.urlEspecial]]);
+    else
+      this.router.navigate([this.url + '/read/', linha['id_' + this.url]]);
   }
 
   clicaBotaoEditar(linha) {
