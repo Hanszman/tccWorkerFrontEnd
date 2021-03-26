@@ -132,16 +132,19 @@ export class TableComponent implements OnInit {
   }
 
   clicaBotaoCriar() {
+    let urlAtual = this.url;
+    if (this.urlEspecial !== '' && this.urlEspecial !== undefined)
+      urlAtual = this.urlEspecial
     if (!this.existeModalForm) {
       if (this.agregacao && this.idAgregacao)
-        this.router.navigate([this.url + '/create/'], {queryParams: { agregacao: this.agregacao, idAgregacao: this.idAgregacao}});
+        this.router.navigate([urlAtual + '/create/'], {queryParams: { agregacao: this.agregacao, idAgregacao: this.idAgregacao}});
       else
-        this.router.navigate([this.url + '/create/']);
+        this.router.navigate([urlAtual + '/create/']);
     }
     else {
       const initialState = {
         config: this.config,
-        url: this.url,
+        url: urlAtual,
         idRelacao: this.idRelacao,
         relacao: this.relacao,
         traducoes: this.traducoes
@@ -154,20 +157,23 @@ export class TableComponent implements OnInit {
   }
   
   clicaBotaoDetalhes(linha) {
+    let urlAtual = this.url;
     if (this.urlEspecial !== '' && this.urlEspecial !== undefined)
-      this.router.navigate([this.urlEspecial + '/read/', linha['id_' + this.urlEspecial]]);
-    else
-      this.router.navigate([this.url + '/read/', linha['id_' + this.url]]);
+      urlAtual = this.urlEspecial
+    this.router.navigate([urlAtual + '/read/', linha['id_' + urlAtual]]);
   }
 
   clicaBotaoEditar(linha) {
+    let urlAtual = this.url;
+    if (this.urlEspecial !== '' && this.urlEspecial !== undefined)
+      urlAtual = this.urlEspecial
     if (!this.existeModalForm)
-      this.router.navigate([this.url + '/update/', linha['id_' + this.url]]);
+      this.router.navigate([urlAtual + '/update/', linha['id_' + urlAtual]]);
     else {
       const initialState = {
         config: this.config,
-        url: this.url,
-        id: linha['id_' + this.url],
+        url: urlAtual,
+        id: linha['id_' + urlAtual],
         idRelacao: this.idRelacao,
         relacao: this.relacao,
         traducoes: this.traducoes
@@ -180,13 +186,16 @@ export class TableComponent implements OnInit {
   }
 
   clicaBotaoExcluir(linha) {
+    let urlAtual = this.url;
+    if (this.urlEspecial !== '' && this.urlEspecial !== undefined)
+      urlAtual = this.urlEspecial
     const modalRef = this.modalService.show(ModalComponent);
     modalRef.content.titulo = 'Excluir ' + this.titulo;
     modalRef.content.mensagem = 'Tem certeza que deseja excluir esse registro?';
     modalRef.content.existeMensagem = true;
     modalRef.content.existeBotaoExcluir = true;
     modalRef.content.emiteClicaBotaoExcluir.subscribe(() => {
-      this.service.deleteExcluir(this.url + '/delete', linha['id_' + this.url]).subscribe(resp => {
+      this.service.deleteExcluir(urlAtual + '/delete', linha['id_' + urlAtual]).subscribe(resp => {
         if (resp.body['data']['sucesso']){
           alert(resp.body['data']['mensagem']);
           window.location.reload();

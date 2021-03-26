@@ -11,7 +11,11 @@ export class AtividadeReadComponent implements OnInit {
 
   url = 'atividade';
   titulo = 'Atividade';
+  urlAtividadeFuncionario = 'atividade_usuario_empresa';
   parametros;
+  parametrosAtividadeFuncionario;
+  tabelaAtividadeFuncionario = true;
+  mostraTabela = true;
   id_usuario = window.localStorage.getItem('id_usuario');
   id_empresa = window.localStorage.getItem('id_empresa');
   id_usuario_empresa = window.localStorage.getItem('id_usuario_empresa');
@@ -46,6 +50,33 @@ export class AtividadeReadComponent implements OnInit {
     },
     paginacao: 5
   };
+  @Input() configAtividadeFuncionario = {
+    titulo: 'atividade_usuario_empresa',
+    cabecalhos: [
+      'dsc_nome_atividade',
+      'dat_inicio_atividade',
+      'dat_fim_atividade',
+      'ind_prioridade_atividade',
+      'dsc_etapa_atividade',
+      'dsc_quadro_atividade',
+      'dsc_projeto_atividade'
+    ],
+    links: {
+      dsc_etapa_atividade: {
+        id: 'id_etapa_atividade',
+        rota: 'etapa'
+      },
+      dsc_quadro_atividade: {
+        id: 'id_quadro_atividade',
+        rota: 'quadro'
+      },
+      dsc_projeto_atividade: {
+        id: 'id_projeto_atividade',
+        rota: 'projeto'
+      }
+    },
+    paginacao: 5
+  };
 
   constructor(
     private service: HttpService
@@ -55,6 +86,7 @@ export class AtividadeReadComponent implements OnInit {
 
   ngOnInit(): void {
     this.criaFiltroUsuarios();
+    this.criaTabelaAtividades(this.id_usuario_empresa);
     this.atividadeEtapaChart(this.id_usuario_empresa);
     this.atividadePrioridadeEtapaChart(this.id_usuario_empresa);
   }
@@ -76,15 +108,32 @@ export class AtividadeReadComponent implements OnInit {
   }
 
   alteraFiltroUsuarios(event){
+    this.mostraTabela = false;
     let id_usuario_evento = event.target.value;
     if (id_usuario_evento == 0){
+      this.criaTabelaAtividades();
       this.atividadeEtapaChart();
       this.atividadePrioridadeEtapaChart();
     }
     else {
+      this.criaTabelaAtividades(id_usuario_evento);
       this.atividadeEtapaChart(id_usuario_evento);
       this.atividadePrioridadeEtapaChart(id_usuario_evento);
     }
+  }
+
+  criaTabelaAtividades(id_usuario_filtro = undefined){
+    if (id_usuario_filtro) {
+      this.parametrosAtividadeFuncionario = 'id_usuario_empresa=' + id_usuario_filtro + '&' + this.parametros;
+      this.tabelaAtividadeFuncionario = true;
+    }
+    else {
+      this.parametrosAtividadeFuncionario = this.parametros;
+      this.tabelaAtividadeFuncionario = false;
+    }
+    this.service.getConsultar('atividade', this.parametros).subscribe(() => {
+      this.mostraTabela = true;
+    });
   }
 
   atividadeEtapaChart(id_usuario_filtro = undefined){
