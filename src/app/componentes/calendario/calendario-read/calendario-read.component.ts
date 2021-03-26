@@ -142,7 +142,7 @@ export class CalendarioReadComponent implements OnInit {
       parametrosAdicionais = '';
       nomenclatura = '';
     }
-    this.parametrosAtividadeFuncionario = parametrosAdicionais + this.parametrosAtividades;
+    this.parametrosAtividadeFuncionario = parametrosAdicionais + this.parametros;
     this.service.getConsultar('etapa', this.parametros).subscribe((obj) => {
       let conjunto = obj.body.data.dados;
       let cores = this.componenteChart.selecionaCores(conjunto.length);
@@ -153,7 +153,7 @@ export class CalendarioReadComponent implements OnInit {
         this.listaEtapas[i]['ind_sequencia'] = conjunto[i]['ind_sequencia'];
         this.listaEtapas[i]['dsc_cor'] = cores[i];
       }
-      this.service.getConsultar(urlAtividade, this.parametrosAtividadeFuncionario).subscribe((obj) => {
+      this.service.getConsultar(urlAtividade, parametrosAdicionais + this.parametrosAtividades).subscribe((obj) => {
         let conjunto = obj.body.data.dados;
         for (let i = 0; i < conjunto.length; i++) {
           for (let j = 0; j < this.listaEtapas.length; j++) {
