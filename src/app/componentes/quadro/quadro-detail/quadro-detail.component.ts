@@ -116,7 +116,7 @@ export class QuadroDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.criaFiltroUsuarios();
-    this.criaQuadroEtapaAtividades();
+    this.criaQuadroEtapaAtividades(this.id_usuario_empresa);
     this.completaConfigUsuarios();
     this.traduzir('quadro').subscribe((traducoes) => {
       this.traducoes = traducoes;
@@ -145,12 +145,25 @@ export class QuadroDetailComponent implements OnInit {
   alteraFiltroUsuarios(event){
     let id_usuario_evento = event.target.value;
     if (id_usuario_evento == 0)
-      console.log('teste1')
+      this.criaQuadroEtapaAtividades();
     else
-      console.log('teste2')
+      this.criaQuadroEtapaAtividades(id_usuario_evento);
   }
 
-  criaQuadroEtapaAtividades(){
+  criaQuadroEtapaAtividades(id_usuario_filtro = undefined){
+    let urlAtividade;
+    let parametrosAlternativos;
+    let nomenclatura;
+    if (id_usuario_filtro) {
+      urlAtividade = 'atividade_usuario_empresa';
+      parametrosAlternativos = 'id_usuario_empresa=' + id_usuario_filtro + '&id_quadro_atividade=' + this.id + '&id_etapa_atividade=';
+      nomenclatura = '_atividade';
+    }
+    else {
+      urlAtividade = 'atividade';
+      parametrosAlternativos = 'id_quadro=' + this.id + '&id_etapa=';
+      nomenclatura = '';
+    }
     this.service.getConsultar('etapa', this.parametros).subscribe((obj) => {
       let conjunto = obj.body.data.dados;
       for (let i = 0; i < conjunto.length; i++) {
@@ -158,13 +171,13 @@ export class QuadroDetailComponent implements OnInit {
         this.etapaList[i]['id_etapa'] = conjunto[i]['id_etapa'];
         this.etapaList[i]['dsc_etapa'] = conjunto[i]['dsc_etapa'];
         this.etapaList[i]['atividade_list'] = [];
-        this.service.getConsultar('atividade', 'id_etapa=' + conjunto[i]['id_etapa'] + '&id_quadro=' + this.id).subscribe((innerObj) => {
+        this.service.getConsultar(urlAtividade, parametrosAlternativos + conjunto[i]['id_etapa']).subscribe((innerObj) => {
           let innerConjunto = innerObj.body.data.dados;
           for (let j = 0; j < innerConjunto.length; j++) {
             this.etapaList[i]['atividade_list'][j] = new Object();
             this.etapaList[i]['atividade_list'][j]['atividade_id'] = innerConjunto[j]['id_atividade'];
-            this.etapaList[i]['atividade_list'][j]['atividade_nome'] = innerConjunto[j]['dsc_nome'];
-            this.etapaList[i]['atividade_list'][j]['atividade_prioridade'] = innerConjunto[j]['ind_prioridade'];
+            this.etapaList[i]['atividade_list'][j]['atividade_nome'] = innerConjunto[j]['dsc_nome' + nomenclatura];
+            this.etapaList[i]['atividade_list'][j]['atividade_prioridade'] = innerConjunto[j]['ind_prioridade' + nomenclatura];
           }
         });
       }
