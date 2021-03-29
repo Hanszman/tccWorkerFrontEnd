@@ -18,13 +18,16 @@
   <div *ngFor="let item of listaEmpresas; let i = index" class="col-sm-4">
     <div class="card">
       <img [src]="fotoURL[i]" class="card-img-top">
-      <button [routerLink]="['../update/', item.id_empresa]" class="btn btn-light right-top" title="Editar empresa"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+      <button *ngIf="item.ind_status_bruto != 'D'" [routerLink]="['../update/', item.id_empresa]" class="btn btn-light right-top" title="Editar empresa"><i class="fa fa-pencil" aria-hidden="true"></i></button>
       <div class="card-body">
         <h5 class="card-title">
-          <a class="link-color" title="Detalhes da empresa" [routerLink]="['../read/', item.id_empresa]">
+          <a *ngIf="item.ind_status_bruto != 'D'" class="link-color" title="Detalhes da empresa" [routerLink]="['../read/', item.id_empresa]">
             {{ item.dsc_nome }}
             <i class="fa fa-info-circle last-color" aria-hidden="true"></i>
           </a>
+          <span *ngIf="item.ind_status_bruto == 'D'" class="link-color-no-hover" title="Nome da empresa">
+            {{ item.dsc_nome }}
+          </span>
         </h5>
         <p class="card-text">
           <strong>CNPJ:</strong> {{ item.dsc_cnpj }}<br>
@@ -36,8 +39,8 @@
           <strong>Data do Contrato:</strong> {{ item.dat_contratacao }}<br>
           <strong>Tipo de Usuário:</strong> {{ item.ind_controle_acesso }}<br>
         </p>
-        <button *ngIf="item.ind_status != 'Desativado'" title="Selecionar empresa" (click)="selecionarEmpresa(item.id_empresa, item.dsc_nome, item.id_usuario_empresa, item.ind_controle_acesso)" class="btn btn-success btn-block">Selecionar <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-        <button *ngIf="item.ind_status == 'Desativado'" title="Selecionar empresa" class="btn btn-success btn-block disabled button-disabled">Selecionar <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+        <button *ngIf="item.ind_status_bruto != 'D'" title="Selecionar empresa" (click)="selecionarEmpresa(item.id_empresa, item.dsc_nome, item.id_usuario_empresa, item.ind_controle_acesso_bruto)" class="btn btn-success btn-block">Selecionar <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+        <button *ngIf="item.ind_status_bruto == 'D'" title="Selecionar empresa" class="btn btn-success btn-block disabled button-disabled">Selecionar <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
       </div>
     </div>
   </div>
