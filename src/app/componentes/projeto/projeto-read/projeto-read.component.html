@@ -10,7 +10,7 @@
     <app-table [titulo]="titulo" [config]="config" [url]="url" [parametros]="parametros"></app-table>
 </div>
 
-<div>
+<div *ngIf="ind_controle_acesso != 'C'">
   <h4>Análises e Estatísticas</h4>
   <div class="row">
     <div class="space-margin-sm col-lg-6 col-md-12">

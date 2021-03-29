@@ -13,6 +13,7 @@ export class ClienteReadComponent implements OnInit {
   titulo = 'Cliente';
   parametros;
   id_empresa = window.localStorage.getItem('id_empresa');
+  ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
   chartProjetoCliente;
   chartAtividadeClienteEtapa;
   private componenteChart = new ChartComponent();

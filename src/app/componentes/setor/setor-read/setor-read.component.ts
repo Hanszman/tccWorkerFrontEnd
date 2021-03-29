@@ -13,6 +13,7 @@ export class SetorReadComponent implements OnInit {
   titulo = 'Setor';
   parametros;
   id_empresa = window.localStorage.getItem('id_empresa');
+  ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
   chartProjetoSetor;
   chartAtividadeSetorEtapa;
   private componenteChart = new ChartComponent();

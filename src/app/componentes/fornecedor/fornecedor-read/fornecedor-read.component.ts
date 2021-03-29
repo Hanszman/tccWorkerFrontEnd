@@ -13,6 +13,7 @@ export class FornecedorReadComponent implements OnInit {
   titulo = 'Fornecedor';
   parametros;
   id_empresa = window.localStorage.getItem('id_empresa');
+  ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
   chartProjetoFornecedor;
   chartAtividadeFornecedorEtapa;
   private componenteChart = new ChartComponent();

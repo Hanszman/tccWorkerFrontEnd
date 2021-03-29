@@ -13,6 +13,7 @@ export class ProjetoReadComponent implements OnInit {
   titulo = 'Projeto';
   parametros;
   id_empresa = window.localStorage.getItem('id_empresa');
+  ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
   chartAtividadeProjetoEtapa;
   private componenteChart = new ChartComponent();
   @Input() config = {
