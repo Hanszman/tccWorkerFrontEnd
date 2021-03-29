@@ -45,11 +45,12 @@ export class EmpresaReadComponent implements OnInit {
     });
   }
 
-  selecionarEmpresa(id_empresa, dsc_empresa, id_usuario_empresa){
+  selecionarEmpresa(id_empresa, dsc_empresa, id_usuario_empresa, ind_controle_acesso){
     window.localStorage.setItem('token_empresa', 'true');
     window.localStorage.setItem('id_empresa', id_empresa);
     window.localStorage.setItem('dsc_empresa', dsc_empresa);
     window.localStorage.setItem('id_usuario_empresa', id_usuario_empresa);
+    window.localStorage.setItem('ind_controle_acesso', ind_controle_acesso);
     this.empresaAuthService.verificaEmpresaAuth(true);
     this.router.navigate(['']);
   }
