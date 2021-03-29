@@ -19,6 +19,8 @@ export class UsuarioDetailComponent implements OnInit {
   tituloEmail = 'E-mail';
   parametros;
   fotoUrl = 'assets/images/user_icon.png'
+  permissaoUsuario;
+  id_usuario = window.localStorage.getItem('id_usuario');
   @Input() config = {
     titulo: 'usuario',
     cabecalhos: [
@@ -107,6 +109,10 @@ export class UsuarioDetailComponent implements OnInit {
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
     this.parametros = 'id_usuario=' + this.id + '&';
+    if (this.id !== this.id_usuario)
+      this.permissaoUsuario = false;
+    else
+      this.permissaoUsuario = true;
   }
 
   ngOnInit(): void {

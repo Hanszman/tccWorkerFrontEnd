@@ -1,24 +1,32 @@
-<div class="row center-div">
+<div *ngIf="permissaoUsuario">
+  <div class="row center-div">
     <h1 class="first-color">Perfil de Usuário <i class="fa fa-user last-color" aria-hidden="true"></i></h1>
+  </div>
+
+  <div class="row center-div">
+    <p>Visualize suas informações abaixo:</p>
+  </div>
+
+  <app-detail [titulo]="titulo" [config]="config" [url]="url" [id]="id" [existeBotaoVoltar]=false [existeBotaoExcluir]=false [existeFoto]=true [fotoUrl]="fotoUrl"></app-detail>
+
+  <div class="row table-responsive div-table">
+    <h4>Telefones</h4>
+    <app-table [titulo]="tituloTelefone" [config]="configTelefone" [url]="urlTelefone" [parametros]="parametros" [relacao]="url" [idRelacao]="id" [existeBotaoSalvar]=false [existeBotaoDetalhes]=false [existeModalForm]=true></app-table>
+  </div>
+
+  <div class="row table-responsive div-table">
+    <h4>Endereços</h4>
+    <app-table [titulo]="tituloEndereco" [config]="configEndereco" [url]="urlEndereco" [parametros]="parametros" [relacao]="url" [idRelacao]="id" [existeBotaoSalvar]=false [existeBotaoDetalhes]=false [existeModalForm]=true></app-table>
+  </div>
+
+  <div class="row table-responsive div-table">
+    <h4>E-mail's</h4>
+    <app-table [titulo]="tituloEmail" [config]="configEmail" [url]="urlEmail" [parametros]="parametros" [relacao]="url" [idRelacao]="id" [existeBotaoSalvar]=false [existeBotaoDetalhes]=false [existeModalForm]=true></app-table>
+  </div>
 </div>
-
-<div class="row center-div">
-  <p>Visualize suas informações abaixo:</p>
-</div>
-
-<app-detail [titulo]="titulo" [config]="config" [url]="url" [id]="id" [existeBotaoVoltar]=false [existeBotaoExcluir]=false [existeFoto]=true [fotoUrl]="fotoUrl"></app-detail>
-
-<div class="row table-responsive div-table">
-  <h4>Telefones</h4>
-  <app-table [titulo]="tituloTelefone" [config]="configTelefone" [url]="urlTelefone" [parametros]="parametros" [relacao]="url" [idRelacao]="id" [existeBotaoSalvar]=false [existeBotaoDetalhes]=false [existeModalForm]=true></app-table>
-</div>
-
-<div class="row table-responsive div-table">
-  <h4>Endereços</h4>
-  <app-table [titulo]="tituloEndereco" [config]="configEndereco" [url]="urlEndereco" [parametros]="parametros" [relacao]="url" [idRelacao]="id" [existeBotaoSalvar]=false [existeBotaoDetalhes]=false [existeModalForm]=true></app-table>
-</div>
-
-<div class="row table-responsive div-table">
-  <h4>E-mail's</h4>
-  <app-table [titulo]="tituloEmail" [config]="configEmail" [url]="urlEmail" [parametros]="parametros" [relacao]="url" [idRelacao]="id" [existeBotaoSalvar]=false [existeBotaoDetalhes]=false [existeModalForm]=true></app-table>
+<div *ngIf="!permissaoUsuario" class="container col-6">
+  <h5 class="text-dark">
+      Sem permissão para acessar usuário!
+      <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+  </h5>
 </div>
