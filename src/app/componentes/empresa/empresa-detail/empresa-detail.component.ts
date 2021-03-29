@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HttpService } from '../../geral/http/http.service';
 
 @Component({
   selector: 'app-empresa-detail',
@@ -18,7 +19,10 @@ export class EmpresaDetailComponent implements OnInit {
   tituloEndereco = 'Endereço';
   tituloEmail = 'E-mail';
   botaoVoltar = true;
+  botaoEditar = false;
   parametros;
+  parametrosConsulta;
+  id_usuario = window.localStorage.getItem('id_usuario');
   id_empresa = window.localStorage.getItem('id_empresa');
   fotoUrl = 'assets/images/user_group_icon.png'
   @Input() config = {
@@ -101,12 +105,19 @@ export class EmpresaDetailComponent implements OnInit {
   };
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private service: HttpService
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
     this.parametros = 'id_empresa=' + this.id + '&';
+    this.parametrosConsulta = 'id_usuario=' + this.id_usuario + '&' + this.parametros;
     if (this.id_empresa)
       this.botaoVoltar = false;
+    this.service.getConsultar('usuario_empresa', this.parametrosConsulta).subscribe((obj) => {
+      let objFuncionario = obj.body.data.dados;
+      if (objFuncionario[0]['ind_controle_acesso_bruto'] == 'A')
+        this.botaoEditar = true;
+    });
   }
 
   ngOnInit(): void {

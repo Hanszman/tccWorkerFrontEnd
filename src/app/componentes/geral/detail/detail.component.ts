@@ -20,6 +20,7 @@ export class DetailComponent implements OnInit {
   @Input() parametros;
   @Input() existemBotoes = true;
   @Input() existeBotaoVoltar = true;
+  @Input() existeBotaoEditar = true;
   @Input() existeBotaoExcluir = true;
   @Input() existeFoto = false;
   @Input() fotoUrl;

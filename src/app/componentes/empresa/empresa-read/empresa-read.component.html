@@ -18,7 +18,7 @@
   <div *ngFor="let item of listaEmpresas; let i = index" class="col-sm-4">
     <div class="card">
       <img [src]="fotoURL[i]" class="card-img-top">
-      <button *ngIf="item.ind_status_bruto != 'D'" [routerLink]="['../update/', item.id_empresa]" class="btn btn-light right-top" title="Editar empresa"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+      <button *ngIf="item.ind_status_bruto != 'D' && item.ind_controle_acesso_bruto == 'A'" [routerLink]="['../update/', item.id_empresa]" class="btn btn-light right-top" title="Editar empresa"><i class="fa fa-pencil" aria-hidden="true"></i></button>
       <div class="card-body">
         <h5 class="card-title">
           <a *ngIf="item.ind_status_bruto != 'D'" class="link-color" title="Detalhes da empresa" [routerLink]="['../read/', item.id_empresa]">
