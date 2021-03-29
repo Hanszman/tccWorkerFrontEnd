@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   id_empresa = window.localStorage.getItem('id_empresa');
   dsc_empresa = window.localStorage.getItem('dsc_empresa');
   id_usuario_empresa = window.localStorage.getItem('id_usuario_empresa');
+  ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
   objUsuario;
   objEmpresa;
   fotoUsuario;
@@ -111,7 +112,7 @@ export class HomeComponent implements OnInit {
         resposta['legendas'],
         [resposta['eixoY']],
         [this.componenteChart.selecionaCores(resposta['eixoY'].length)],
-        'Quantidade de Atividades por Etapa'
+        'Quantidade de Atividades por Etapa ' + resposta['nomeFuncionario']
       );
     });
   }
@@ -132,7 +133,7 @@ export class HomeComponent implements OnInit {
         resposta['legendas'],
         resposta['eixoY'],
         this.componenteChart.selecionaCores(resposta['tipos'].length),
-        'Quantidade de Atividades por Prioridade e por Etapa',
+        'Quantidade de Atividades por Prioridade e por Etapa ' + resposta['nomeFuncionario'],
         true
       );
     });
