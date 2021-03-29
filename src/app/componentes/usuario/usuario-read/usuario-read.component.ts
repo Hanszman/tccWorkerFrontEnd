@@ -35,6 +35,9 @@ export class UsuarioReadComponent implements OnInit {
   usuarioDetailField = false;
   fotoUrl = 'assets/images/user_icon.png'
   id_empresa = window.localStorage.getItem('id_empresa');
+  ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
+  botaoConfig = false;
+  exibeGraficos = false;
   chartProjetoFuncionario;
   chartAtividadeFuncionarioEtapa;
   private componenteChart = new ChartComponent();
@@ -210,6 +213,10 @@ export class UsuarioReadComponent implements OnInit {
       }
     });
     this.route.queryParams.subscribe(params => this.id_funcionario_parametro = params['id_funcionario_parametro']);
+    if (this.ind_controle_acesso == 'A')
+      this.botaoConfig = true;
+    if (this.ind_controle_acesso != 'C')
+      this.exibeGraficos = true;
   }
 
   ngOnInit(): void {

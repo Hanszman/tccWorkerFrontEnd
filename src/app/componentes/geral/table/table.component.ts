@@ -33,6 +33,7 @@ export class TableComponent implements OnInit {
   @Input() existeBotaoDetalhesEspecial = false;
   @Input() existeBotaoEditarEspecial = false;
   @Input() existeBotaoExcluirEspecial = false;
+  @Input() existeControleAcessoInfo = false;
   @Output() emiteClicaBotaoCriarEspecial = new EventEmitter();
   @Output() emiteClicaBotaoDetalhesEspecial = new EventEmitter();
   @Output() emiteClicaBotaoEditarEspecial = new EventEmitter();
@@ -89,6 +90,7 @@ export class TableComponent implements OnInit {
           });
           this.conjuntoDados.push(elemento);
         });
+
         if (this.config.hasOwnProperty('links')){
           if (this.config.links.hasOwnProperty('detail')) {
             if (this.config.links.detail)
@@ -104,6 +106,23 @@ export class TableComponent implements OnInit {
         else {
           for (let i = 0; i < this.config.cabecalhos.length; i++)
             this.conjuntoLinks.push(undefined);
+        }
+
+        if (this.existeControleAcessoInfo) {
+          let id_usuario = window.localStorage.getItem('id_usuario');
+          let ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
+          if (ind_controle_acesso != 'C') {
+            for (let i = 0; i < this.conjuntoDados.length; i++)
+              this.conjuntoDados[i]['permite_detalhes'] = true;
+          }
+          else {
+            for (let i = 0; i < this.conjuntoDados.length; i++) {
+              if (this.conjuntoDados[i]['id_usuario'] == id_usuario)
+                this.conjuntoDados[i]['permite_detalhes'] = true;
+              else
+                this.conjuntoDados[i]['permite_detalhes'] = false;
+            }
+          }
         }
       }
       else
