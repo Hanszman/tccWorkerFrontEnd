@@ -24,6 +24,7 @@ export class CalendarioReadComponent implements OnInit {
   id_usuario = window.localStorage.getItem('id_usuario');
   id_empresa = window.localStorage.getItem('id_empresa');
   id_usuario_empresa = window.localStorage.getItem('id_usuario_empresa');
+  ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
   listaUsuarios = [];
   private componenteChart = new ChartComponent();
   @Input() config = {
