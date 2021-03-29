@@ -34,7 +34,7 @@
           <strong>Data de Fundação:</strong> {{ item.dat_fundacao }}<br>
           <strong>Quantidade de Colaboradores:</strong> {{ item.qtd_usuario }}<br>
           <strong>Seu Cargo:</strong> {{ item.dsc_cargo }}<br>
-          <strong>Sua Situação:</strong> {{ item.ind_status }}<br>
+          <strong>Sua Situação:</strong><span [ngClass]="item.ind_status_bruto == 'D'?'danger-color':''"> {{ item.ind_status }}</span><br>
           <strong>Tipo de Contrato:</strong> {{ item.ind_contratacao }}<br>
           <strong>Data do Contrato:</strong> {{ item.dat_contratacao }}<br>
           <strong>Tipo de Usuário:</strong> {{ item.ind_controle_acesso }}<br>
