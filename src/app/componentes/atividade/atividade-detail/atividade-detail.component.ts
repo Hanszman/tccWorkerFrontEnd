@@ -22,6 +22,8 @@ export class AtividadeDetailComponent implements OnInit {
   parametrosConsulta;
   traducoesFuncionario;
   id_empresa = window.localStorage.getItem('id_empresa');
+  ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
+  existemBotoes = false;
   @Input() config = {
     titulo: 'atividade',
     cabecalhos: [
@@ -98,6 +100,8 @@ export class AtividadeDetailComponent implements OnInit {
         this.configAtividadeFuncionario.selects.id_usuario_empresa.labels.push(conjunto[i]['dsc_nome_completo']);
       }
     });
+    if (this.ind_controle_acesso != 'C')
+      this.existemBotoes = true;
   }
 
   ngOnInit(): void {

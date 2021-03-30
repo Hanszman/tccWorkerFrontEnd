@@ -27,6 +27,7 @@ export class QuadroDetailComponent implements OnInit {
   id_empresa = window.localStorage.getItem('id_empresa');
   id_usuario_empresa = window.localStorage.getItem('id_usuario_empresa');
   ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
+  existemBotoes = false;
   listaUsuarios = [];
   etapaList = [];
   @Input() config = {
@@ -113,6 +114,8 @@ export class QuadroDetailComponent implements OnInit {
     this.route.params.subscribe(params => this.id = params['id']);
     this.parametros = 'id_empresa=' + this.id_empresa + '&ordenarPor=ind_sequencia&direcao=asc&';
     this.parametrosConsulta = 'id_empresa=' + this.id_empresa + '&';
+    if (this.ind_controle_acesso != 'C')
+      this.existemBotoes = true;
   }
 
   ngOnInit(): void {

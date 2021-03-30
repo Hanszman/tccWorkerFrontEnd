@@ -16,6 +16,8 @@ export class QuadroFormComponent implements OnInit {
   mensagem = 'Cadastre um novo quadro';
   parametros;
   id_empresa = window.localStorage.getItem('id_empresa');
+  ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
+  existemBotoes = false;
   @Input() config = {
     titulo: 'quadro',
     cabecalhos: [
@@ -63,6 +65,8 @@ export class QuadroFormComponent implements OnInit {
         this.config.selects.id_projeto.labels.push(conjunto[i]['dsc_nome']);
       }
     });
+    if (this.ind_controle_acesso != 'C')
+      this.existemBotoes = true;
   }
 
   ngOnInit(): void {

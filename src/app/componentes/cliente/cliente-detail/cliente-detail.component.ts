@@ -28,6 +28,8 @@ export class ClienteDetailComponent implements OnInit {
   parametrosConsulta;
   traducoesProjeto;
   id_empresa = window.localStorage.getItem('id_empresa');
+  ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
+  existemBotoes = false;
   @Input() config = {
     titulo: 'cliente',
     cabecalhos: [
@@ -160,6 +162,8 @@ export class ClienteDetailComponent implements OnInit {
         this.configProjetoCliente.selects.id_projeto.labels.push(conjunto[i]['dsc_nome']);
       }
     });
+    if (this.ind_controle_acesso != 'C')
+      this.existemBotoes = true;
   }
 
   ngOnInit(): void {

@@ -11,6 +11,8 @@ export class QuadroReadComponent implements OnInit {
   titulo = 'Quadro';
   parametros;
   id_empresa = window.localStorage.getItem('id_empresa');
+  ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
+  existemBotoes = false;
   @Input() config = {
     titulo: 'quadro',
     cabecalhos: [
@@ -30,6 +32,8 @@ export class QuadroReadComponent implements OnInit {
 
   constructor() {
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
+    if (this.ind_controle_acesso != 'C')
+      this.existemBotoes = true;
   }
 
   ngOnInit(): void {

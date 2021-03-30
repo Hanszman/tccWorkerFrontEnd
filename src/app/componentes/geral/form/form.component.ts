@@ -23,6 +23,7 @@ export class FormComponent implements OnInit {
   @Input() existeFoto = false;
   @Input() fotoUrl;
   @Input() deleteClearLocal = false;
+  @Input() existeBotaoExcluir = true;
   @Input() exibeBotoesSubmit = true;
   registro: any = {};
   traducoes;
@@ -52,12 +53,13 @@ export class FormComponent implements OnInit {
       this.traducoes = traducoes;
     })
     this.padraoFotoURL = this.fotoUrl;
+    if (this.existeBotaoExcluir && this.id)
+      this.classeBotoes = "col-sm-4"
     if (this.id) {
       if (this.voltaId)
         this.voltarLink = "../../read/" + this.id;
       else
         this.voltarLink = "../../read";
-      this.classeBotoes = "col-sm-4"
       this.service.getConsultarForm(this.url + '/read', this.id).subscribe(resp => {
         for(let i = 0; i < this.config.cabecalhos.length; i++) {
           if (this.config.cabecalhos[i] == 'arq_foto' && this.existeFoto) {

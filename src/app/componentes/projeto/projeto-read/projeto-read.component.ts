@@ -14,6 +14,7 @@ export class ProjetoReadComponent implements OnInit {
   parametros;
   id_empresa = window.localStorage.getItem('id_empresa');
   ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
+  existemBotoes = false;
   chartAtividadeProjetoEtapa;
   private componenteChart = new ChartComponent();
   @Input() config = {
@@ -37,6 +38,8 @@ export class ProjetoReadComponent implements OnInit {
     private service: HttpService
   ) {
     this.parametros = 'id_empresa=' + this.id_empresa + '&';
+    if (this.ind_controle_acesso != 'C')
+      this.existemBotoes = true;
   }
 
   ngOnInit(): void {

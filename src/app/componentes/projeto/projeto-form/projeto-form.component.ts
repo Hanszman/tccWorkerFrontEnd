@@ -16,6 +16,8 @@ export class ProjetoFormComponent implements OnInit {
   mensagem = 'Cadastre um novo projeto';
   parametros;
   id_empresa = window.localStorage.getItem('id_empresa');
+  ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
+  existemBotoes = false;
   @Input() config = {
     titulo: 'projeto',
     cabecalhos: [
@@ -62,6 +64,8 @@ export class ProjetoFormComponent implements OnInit {
         this.config.selects.id_setor.labels.push(conjunto[i]['dsc_setor']);
       }
     });
+    if (this.ind_controle_acesso != 'C')
+      this.existemBotoes = true;
   }
 
   ngOnInit(): void {

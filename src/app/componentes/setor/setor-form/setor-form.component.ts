@@ -13,6 +13,8 @@ export class SetorFormComponent implements OnInit {
   titulo = 'Setor';
   operacao = 'Cadastrar';
   mensagem = 'Cadastre um novo setor';
+  ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
+  existemBotoes = false;
   @Input() config = {
     titulo: 'setor',
     cabecalhos: [
@@ -37,6 +39,8 @@ export class SetorFormComponent implements OnInit {
       this.operacao = 'Editar';
       this.mensagem = 'Edite o setor selecionado';
     }
+    if (this.ind_controle_acesso != 'C')
+      this.existemBotoes = true;
   }
 
   ngOnInit(): void {

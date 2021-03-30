@@ -13,6 +13,8 @@ export class ClienteFormComponent implements OnInit {
   titulo = 'Cliente';
   operacao = 'Cadastrar';
   mensagem = 'Cadastre um novo cliente';
+  ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
+  existemBotoes = false;
   @Input() config = {
     titulo: 'cliente',
     cabecalhos: [
@@ -42,6 +44,8 @@ export class ClienteFormComponent implements OnInit {
       this.operacao = 'Editar';
       this.mensagem = 'Edite o cliente selecionado';
     }
+    if (this.ind_controle_acesso != 'C')
+      this.existemBotoes = true;
   }
 
   ngOnInit(): void {

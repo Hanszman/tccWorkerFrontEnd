@@ -14,8 +14,8 @@
 </div>
 
 <div class="row table-responsive div-table space-margin-sm">
-    <app-table *ngIf="!tabelaAtividadeFuncionario && mostraTabela" [titulo]="titulo" [config]="config" [url]="url" [parametros]="parametros"></app-table>
-    <app-table *ngIf="tabelaAtividadeFuncionario && mostraTabela" [titulo]="titulo" [config]="configAtividadeFuncionario" [url]="urlAtividadeFuncionario" [urlEspecial]="url" [parametros]="parametrosAtividadeFuncionario"></app-table>
+    <app-table *ngIf="!tabelaAtividadeFuncionario && mostraTabela" [titulo]="titulo" [config]="config" [url]="url" [parametros]="parametros" [existeBotaoExcluir]="existemBotoes"></app-table>
+    <app-table *ngIf="tabelaAtividadeFuncionario && mostraTabela" [titulo]="titulo" [config]="configAtividadeFuncionario" [url]="urlAtividadeFuncionario" [urlEspecial]="url" [parametros]="parametrosAtividadeFuncionario" [existeBotaoExcluir]="existemBotoes"></app-table>
 </div>
 
 <div>
