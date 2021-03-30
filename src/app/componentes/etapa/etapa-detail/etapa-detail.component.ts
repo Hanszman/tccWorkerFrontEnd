@@ -15,6 +15,8 @@ export class EtapaDetailComponent implements OnInit {
   tituloAtividade = 'Atividade';
   parametros;
   id_empresa = window.localStorage.getItem('id_empresa');
+  ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
+  existemBotoes = false;
   @Input() config = {
     titulo: 'etapa',
     cabecalhos: [
@@ -51,6 +53,8 @@ export class EtapaDetailComponent implements OnInit {
   ) {
     this.route.params.subscribe(params => this.id = params['id']);
     this.parametros = 'id_etapa=' + this.id + '&id_empresa=' + this.id_empresa + '&';
+    if (this.ind_controle_acesso != 'C')
+      this.existemBotoes = true;
   }
 
   ngOnInit(): void {
