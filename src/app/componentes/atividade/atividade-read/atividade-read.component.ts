@@ -10,8 +10,8 @@ import { HttpService } from '../../geral/http/http.service';
 export class AtividadeReadComponent implements OnInit {
 
   url = 'atividade';
-  titulo = 'Atividade';
   urlAtividadeFuncionario = 'atividade_usuario_empresa';
+  titulo = 'Atividade';
   parametros;
   parametrosAtividadeFuncionario;
   tabelaAtividadeFuncionario = true;
