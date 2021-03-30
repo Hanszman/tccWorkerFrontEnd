@@ -7,7 +7,7 @@
 </div>
 
 <div class="row space-side">
-    <select id="filtro" class="form-control filter-select" (change)="alteraFiltroUsuarios($event)">
+    <select *ngIf="ind_controle_acesso != 'C'" id="filtro" class="form-control filter-select" (change)="alteraFiltroUsuarios($event)">
         <option value="0">Todos</option>
         <option *ngFor="let item of listaUsuarios" value="{{item['id_usuario_empresa']}}" [selected]="item['selected']">{{item['dsc_nome_completo']}}</option>
     </select>

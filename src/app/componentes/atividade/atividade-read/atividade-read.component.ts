@@ -19,6 +19,7 @@ export class AtividadeReadComponent implements OnInit {
   id_usuario = window.localStorage.getItem('id_usuario');
   id_empresa = window.localStorage.getItem('id_empresa');
   id_usuario_empresa = window.localStorage.getItem('id_usuario_empresa');
+  ind_controle_acesso = window.localStorage.getItem('ind_controle_acesso');
   listaUsuarios = [];
   chartAtividadeEtapa;
   chartAtividadePrioridadeEtapa;
@@ -152,7 +153,7 @@ export class AtividadeReadComponent implements OnInit {
         resposta['legendas'],
         [resposta['eixoY']],
         [this.componenteChart.selecionaCores(resposta['eixoY'].length)],
-        'Quantidade de Atividades por Etapa'
+        'Quantidade de Atividades por Etapa ' + resposta['nomeFuncionario']
       );
     });
   }
@@ -173,7 +174,7 @@ export class AtividadeReadComponent implements OnInit {
         resposta['legendas'],
         resposta['eixoY'],
         this.componenteChart.selecionaCores(resposta['tipos'].length),
-        'Quantidade de Atividades por Prioridade e por Etapa',
+        'Quantidade de Atividades por Prioridade e por Etapa ' + resposta['nomeFuncionario'],
         true
       );
     });
