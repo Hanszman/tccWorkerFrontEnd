@@ -10,7 +10,7 @@
 
 <div class="row table-responsive div-table">
     <h4>Quadros</h4>
-    <app-table [titulo]="tituloQuadro" [config]="configQuadro" [url]="urlQuadro" [parametros]="parametros" [agregacao]="url" [idAgregacao]="id" [existeBotaoSalvar]=false></app-table>
+    <app-table [titulo]="tituloQuadro" [config]="configQuadro" [url]="urlQuadro" [parametros]="parametros" [agregacao]="url" [idAgregacao]="id" [existeBotaoSalvar]=false [existeBotaoExcluir]="existemBotoes"></app-table>
 </div>
 
 <div class="row table-responsive div-table">
@@ -25,9 +25,9 @@
         [existeBotaoDetalhes]=false
         [existeBotaoEditar]=false
         [existeBotaoExcluir]=false
-        [existeBotaoCriarEspecial]=true
+        [existeBotaoCriarEspecial]="existemBotoes"
         [existeBotaoDetalhesEspecial]=true
-        [existeBotaoExcluirEspecial]=true
+        [existeBotaoExcluirEspecial]="existemBotoes"
         (emiteClicaBotaoCriarEspecial)="emiteClicaBotaoCriarEspecialCliente()"
         (emiteClicaBotaoDetalhesEspecial)="emiteClicaBotaoDetalhesEspecialCliente($event)"
         (emiteClicaBotaoExcluirEspecial)="emiteClicaBotaoExcluirEspecialCliente($event)"
@@ -46,9 +46,9 @@
         [existeBotaoDetalhes]=false
         [existeBotaoEditar]=false
         [existeBotaoExcluir]=false
-        [existeBotaoCriarEspecial]=true
+        [existeBotaoCriarEspecial]="existemBotoes"
         [existeBotaoDetalhesEspecial]=true
-        [existeBotaoExcluirEspecial]=true
+        [existeBotaoExcluirEspecial]="existemBotoes"
         (emiteClicaBotaoCriarEspecial)="emiteClicaBotaoCriarEspecialFornecedor()"
         (emiteClicaBotaoDetalhesEspecial)="emiteClicaBotaoDetalhesEspecialFornecedor($event)"
         (emiteClicaBotaoExcluirEspecial)="emiteClicaBotaoExcluirEspecialFornecedor($event)"
@@ -67,9 +67,10 @@
         [existeBotaoDetalhes]=false
         [existeBotaoEditar]=false
         [existeBotaoExcluir]=false
-        [existeBotaoCriarEspecial]=true
+        [existeBotaoCriarEspecial]="existemBotoes"
         [existeBotaoDetalhesEspecial]=true
-        [existeBotaoExcluirEspecial]=true
+        [existeBotaoExcluirEspecial]="existemBotoes"
+        [existeControleAcessoInfo]=true
         (emiteClicaBotaoCriarEspecial)="emiteClicaBotaoCriarEspecialFuncionario()"
         (emiteClicaBotaoDetalhesEspecial)="emiteClicaBotaoDetalhesEspecialFuncionario($event)"
         (emiteClicaBotaoExcluirEspecial)="emiteClicaBotaoExcluirEspecialFuncionario($event)"
